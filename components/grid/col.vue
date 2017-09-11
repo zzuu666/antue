@@ -67,7 +67,6 @@ export default {
       }
 
       ;['span', 'order', 'offset', 'push', 'pull'].forEach(el => {
-        this[el] && console.log(el)
         this[el] && res.push(el === 'span' ? `${this.prefixCls}-${this[el]}` : `${this.prefixCls}-${el}-${this[el]}`)
       })
 
@@ -81,8 +80,4 @@ export default {
   }
 }
 </script>
-
-<style lang="less">
-@import "./style/index";
-</style>
 
