@@ -1,10 +1,10 @@
 .slide-motion(@className, @keyframeName) {
   .make-motion(@className, @keyframeName);
-  .@{className}-enter,
-  .@{className}-appear {
+  .@{className}-enter{
     opacity: 0;
     animation-timing-function: @ease-out-quint;
   }
+  .@{className}-enter-to,
   .@{className}-leave {
     animation-timing-function: @ease-in-quint;
   }
