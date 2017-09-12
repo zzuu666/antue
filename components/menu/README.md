@@ -2,3 +2,4 @@
 
 ### TODO
 1. inline 模式下的动画
+2. 模式更改时 vertical 的动画需要取消

@@ -24,6 +24,7 @@ export default {
   },
   methods: {
     handleClickItem (e, index, path) {
+      this.mode !== 'inline' && (this.open = [])
       this.$emit('click', e, index, path)
     },
     handleSelect (e, index) {

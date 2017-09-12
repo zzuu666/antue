@@ -35,7 +35,8 @@ import { switchcaseF } from '../_util/swtichcase'
 export default {
   data () {
     return {
-      prefixCls: 'ant-menu'
+      prefixCls: 'ant-menu',
+      timer: null
     }
   },
   props: {
@@ -90,19 +91,19 @@ export default {
     }
   },
   methods: {
-    handleMouseenter () {
+    handleMouseenter (e) {
       if (this.mode === 'inline') return
       this.timer && clearTimeout(this.timer)
-      this.$parent.handleOpenChange(this.index, !this.open)
+      this.$parent.handleOpenChange(this.index, true)
     },
-    handleMouseleave () {
+    handleMouseleave (e) {
       if (this.mode === 'inline') return
       this.timer = setTimeout(() => {
-        this.$parent.handleOpenChange(this.index, !this.open)
+        this.$parent.handleOpenChange(this.index, false)
       }, 100)
     },
     handleClick () {
-      if (this.mode === 'horizontal') return
+      if (this.mode !== 'inline') return
       this.$parent.handleOpenChange(this.index, !this.open)
     }
   }
