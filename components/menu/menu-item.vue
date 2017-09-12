@@ -5,6 +5,7 @@
       disabled ? `${prefixCls}-disabled` : ``,
       selected ? `${prefixCls}-selected` : ``
     ]"
+    :style="style"
     @click="handleClick">
     <slot></slot>
   </li>
@@ -18,11 +19,27 @@ export default {
     }
   },
   computed: {
+    mode () {
+      return this.$parent.mode
+    },
     selected () {
       return this.$parent.selected.indexOf(this.index) > -1
     },
+    level () {
+      return this.$parent.level + 1
+    },
     path () {
       return this.$parent.path.slice().push(this.index)
+    },
+    inlineIndent () {
+      return this.$parent.inlineIndent
+    },
+    style () {
+      let res = {}
+      if (this.mode === 'inline' && this.level > 0) {
+        res['padding-left'] = this.level * this.inlineIndent + 'px'
+      }
+      return res
     }
   },
   props: {

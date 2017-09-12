@@ -4,12 +4,15 @@
       `${prefixCls}-submenu`,
       `${prefixCls}-submenu-${mode}`,
       disabled ? `${prefixCls}-submenu-disabled` : ``,
-      open ? `${prefixCls}-submenu-open` : ``,
-      open ? `${prefixCls}-submenu-active` : ``
+      open ? `${prefixCls}-submenu-open` : ``
     ]"
     @mouseenter="handleMouseenter"
     @mouseleave="handleMouseleave">
-    <span :class="`${prefixCls}-submenu-title`" :style="style" v-if="$slots.title">
+    <span
+      :class="`${prefixCls}-submenu-title`"
+      @click="handleClick"
+      :style="style"
+      v-if="$slots.title">
       <slot name="title"></slot>
     </span>
     <transition :name="animitionName" v-if="$slots.default">
@@ -27,6 +30,8 @@
 </template>
 
 <script>
+import { switchcaseF } from '../_util/swtichcase'
+
 export default {
   data () {
     return {
@@ -48,15 +53,15 @@ export default {
       return this.$parent.mode === 'horizontal' ? 'vertical' : this.$parent.mode
     },
     level () {
-      return this.$parent.level
+      return this.$parent.level + 1
     },
     inlineIndent () {
       return this.$parent.inlineIndent
     },
     style () {
       let res = {}
-      if (this.mode === 'inline' && this.level > 1) {
-        res['padding-left'] = this.level * this.inlineIndent + 8 + 'px'
+      if (this.mode === 'inline' && this.level > 0) {
+        res['padding-left'] = this.level * this.inlineIndent + 'px'
       }
       return res
     },
@@ -77,24 +82,28 @@ export default {
       return this.$parent.handleSelect
     },
     animitionName () {
-      return this.mode === 'horizontal' ? 'slide-up' : ''
+      return switchcaseF({
+        'horizontal': 'slide-up',
+        'vertical': 'zoom-big',
+        'inline': ''
+      })('')(this.mode)
     }
   },
   methods: {
     handleMouseenter () {
       if (this.mode === 'inline') return
       this.timer && clearTimeout(this.timer)
-      this.$parent.handleOpenChange(this.index, true)
+      this.$parent.handleOpenChange(this.index, !this.open)
     },
     handleMouseleave () {
       if (this.mode === 'inline') return
       this.timer = setTimeout(() => {
-        this.$parent.handleOpenChange(this.index, false)
+        this.$parent.handleOpenChange(this.index, !this.open)
       }, 100)
     },
     handleClick () {
       if (this.mode === 'horizontal') return
-      this.$parent.handleOpenChange(this.index)
+      this.$parent.handleOpenChange(this.index, !this.open)
     }
   }
 }

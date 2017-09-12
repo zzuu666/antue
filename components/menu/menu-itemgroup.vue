@@ -3,7 +3,6 @@
     :class="`${perfixCls}-item-group`">
     <div
       :class="`${perfixCls}-item-group-title`"
-      :style="style"
       v-if="title"
       v-text="title"></div>
     <ul
@@ -33,13 +32,6 @@ export default {
     },
     inlineIndent () {
       return this.$parent.inlineIndent
-    },
-    style () {
-      let res = {}
-      if (this.mode === 'inline' && this.level > 1) {
-        res['padding-left'] = this.level * this.inlineIndent + 8 + 'px'
-      }
-      return res
     },
     path () {
       let path = this.$parent.path.slice()
