@@ -1,8 +1,7 @@
-<div style="height: 80px; line-height: 80px; text-align: center">
-<img src="https://t.alipayobjects.com/images/rmsweb/T11aVgXc4eXXXXXXXX.svg" style="height: 80px; vertical-align: middle">
-<span style="font-size: 24px; color: #7e7e7e; margin: auto 4px auto 8px">+</span>
-<img src="https://vuejs.org/images/logo.png" style="height: 80px; vertical-align: middle">
+<div align="center">
+  <img src="./icon.svg">
 </div>
+
 ## Antd-Vue
 这里是 [Ant-Design](https://ant.design/index-cn) 的 [Vue](https://vuejs.org/) **完全**实现，开发和服务于企业级后台产品。
 
