@@ -8,7 +8,7 @@
 ## 开发指南
 ### clone代码库
 ``` bash
-git clone antd-vue
+git clone git@github.com:zzuu666/antd-vue.git
 cd antd-vue
 npm install # yarn install
 npm run dev
