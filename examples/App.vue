@@ -87,18 +87,12 @@ export default {
 </script>
 
 <style lang="less" scoped>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
 .header {
   position: relative;
   border-bottom: 1px solid #dfdfdf;
   &-logo {
     position: relative;
+    text-align: center;
     height: 60px;
     line-height: 60px;
     font-size: 18px;
