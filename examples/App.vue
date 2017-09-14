@@ -57,16 +57,20 @@ export default {
           title: 'General',
           items: [
             {
-              title: 'Button',
+              title: 'Button 按钮',
               route: 'button'
+            },
+            {
+              title: 'Icon 图标',
+              route: 'icon'
             }
           ]
         },
         {
-          title: 'Title',
+          title: 'Layout',
           items: [
             {
-              title: 'Grid',
+              title: 'Grid 栅格',
               route: 'grid'
             }
           ]
@@ -75,7 +79,7 @@ export default {
           title: 'Navigation',
           items: [
             {
-              title: 'Menu',
+              title: 'Menu 菜单',
               route: 'menu'
             }
           ]
