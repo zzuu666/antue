@@ -1,7 +1,7 @@
 {
   "name": "antd-vue",
   "version": "0.0.1",
-  "description": "An enterprise-class UI design language and Vue2-based implementation.",
+  "description": "An enterprise-class UI design language and Vue-based implementation.",
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./build/webpack.dev.config.js --open --hot",
