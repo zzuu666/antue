@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <h2 v-text="title"></h2>
-    <p v-text="profile"></p>
+    <h2 class="container-title" v-text="title"></h2>
+    <p class="container-profile" v-text="profile"></p>
     <slot></slot>
   </div>
 </template>
@@ -18,5 +18,9 @@ export default {
 <style lang="less" scoped>
 .container {
   position: relative;
+  text-align: left;
+  &-title {
+    position: relative;
+  }
 }
 </style>
