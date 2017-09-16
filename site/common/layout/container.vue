@@ -1,7 +1,5 @@
 <template>
-  <div class="container">
-    <h1 class="container-title" v-text="title"></h1>
-    <p class="container-profile" v-text="profile"></p>
+  <div class="container markdown">
     <slot></slot>
   </div>
 </template>

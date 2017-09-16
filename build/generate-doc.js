@@ -32,10 +32,28 @@ const writeUTF8FilePromise = (dir, name, data) => {
   })
 }
 
-const mkdirPromise = (path) => {
+const mkdirPromise = (route) => {
   return new Promise((resolve, reject) => {
-    fs.mkdir(path, err => err ? reject(err) : resolve('done'))
+    fs.mkdir(route, err => err ? reject(err) : resolve('done'))
   })
+}
+
+const mkdirsPromist = async (route) => {
+  const parentDir = path.dirname(route)
+  let existErr
+  ;[existErr] = await to(readDirPromise(parentDir))
+  if (existErr) {
+    generalLog(`${parentDir}不存在。即将创建${parentDir}`)
+    await mkdirsPromist(parentDir)
+    await mkdirPromise(route)
+  } else {
+    generalLog(`${parentDir}存在。即将创建${route}`)
+    try {
+      await mkdirPromise(route)
+    } catch (err) {
+      generalLog(`${route} 已存在。`)
+    }
+  }
 }
 
 const stableWriteFile = async (dir, name, data) => {
@@ -43,7 +61,8 @@ const stableWriteFile = async (dir, name, data) => {
     await writeUTF8FilePromise(dir, name, data)
   } catch (err) {
     generalLog(`${dir}不存在，尝试创建。`)
-    await mkdirPromise(dir)
+    await mkdirsPromist(dir)
+    generalLog(`${dir}已创建，正在写入。${name}`)
     await writeUTF8FilePromise(dir, name, data)
   }
   successLog(`文件${dir} ${name}创建成功。`)
@@ -121,8 +140,8 @@ const generateDocs = async (components) => {
 }
 
 const generateDomes = (route, demos) => {
-  return demos.forEach(demo => {
-    stableWriteFile(route, `${demo.name}.vue`, demo.code)
+  return demos.forEach(async demo => {
+    await stableWriteFile(route, `${demo.name}.vue`, demo.code)
   })
 }
 
@@ -163,9 +182,9 @@ const generateDoc = async (component) => {
   const zhData = zhIndexJson && generateVueContainer(zhIndexJson, demos)
   const enData = enIndexJson && generateVueContainer(enIndexJson, demos)
   const siteDocPath = path.join(resolve('site'), 'docs', component)
+  zhIndexJson && await stableWriteFile(siteDocPath, 'index-zh.vue', zhData)
+  enIndexJson && await stableWriteFile(siteDocPath, 'index-en.vue', enData)
   generateDomes(path.join(siteDocPath, 'demo'), demos)
-  zhIndexJson && stableWriteFile(siteDocPath, 'index-zh.vue', zhData)
-  enIndexJson && stableWriteFile(siteDocPath, 'index-en.vue', enData)
   return demos
 }
 
@@ -188,7 +207,7 @@ const generateVueContainer = (main, demos) => {
         title="${title}"
         desc="${desc}">
         ${demo.display}
-        <div slot="code">${codeHtml}</div>
+        <template slot="code">${codeHtml}</template>
       </code-show>
     </atu-col>
     `

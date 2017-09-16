@@ -28,11 +28,11 @@ There are `primary` button, `default` button, `dashed` button and `danger` butto
 </template>
 
 <script>
-import AntButton from '@/button'
-export default {
-  components: {
-    AntButton
+  import AntButton from '@/button'
+  export default {
+    components: {
+      AntButton
+    }
   }
-}
 </script>
 ````
