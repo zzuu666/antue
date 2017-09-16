@@ -42,6 +42,7 @@ examples # 开发时预览界面与将来的文档页面
 Button按钮|zzuu666|
 Grid栅格| zzuu666
 Menu导航菜单| zzuu666
+Spin加载中 | Yangmutong | 0%
 
 ## Todo List
 + Icon图标
@@ -87,7 +88,6 @@ Menu导航菜单| zzuu666
 + Notification通知提醒框
 + Progress进度条
 + Popconfirm气泡确认框
-+ Spin加载中
 + Anchor锚点
 + BackTop回到顶部
 + LocaleProvider国际化
