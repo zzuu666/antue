@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h2 class="container-title" v-text="title"></h2>
+    <h1 class="container-title" v-text="title"></h1>
     <p class="container-profile" v-text="profile"></p>
     <slot></slot>
   </div>
@@ -18,9 +18,17 @@ export default {
 <style lang="less" scoped>
 .container {
   position: relative;
-  text-align: left;
+  padding: 10px 20px;
   &-title {
     position: relative;
+    padding: 8px 0;
+  }
+  p {
+    position: relative;
+    padding: 8px 0;
+  }
+  &-profile {
+    
   }
 }
 </style>
