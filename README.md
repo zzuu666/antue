@@ -43,9 +43,9 @@ Button按钮|zzuu666|
 Grid栅格| zzuu666
 Menu导航菜单| zzuu666
 Spin加载中 | Yangmutong | 0%
+Icon图标 | zzuu666 | done
 
 ## Todo List
-+ Icon图标
 + Layout布局
 + Affix固钉
 + Breadcrumb面包屑
