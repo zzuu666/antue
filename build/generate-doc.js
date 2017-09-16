@@ -49,6 +49,12 @@ const stableWriteFile = async (dir, name, data) => {
   successLog(`文件${dir} ${name}创建成功。`)
 }
 
+const generateCamelName = (...argv) => {
+  const handleFirstLetter = (str) => str.replace(/\b\w+\b/g, word => word.substring(0, 1).toUpperCase() + word.substring(1))
+  argv.map((el, index) => index === 0 ? el.toLowerCase() : handleFirstLetter(el))
+  return argv.join('')
+}
+
 const ignoreDir = ['style', '_util', 'col', 'row']
 
 const parseDemoMd = (md, path, component, name) => {
@@ -166,7 +172,7 @@ const generateVueContainer = (main, demos) => {
     const desc = lang === 'zh-CN' ? marked(demo.zhCN) : marked(demo.enUS)
     const title = lang === 'zh-CN' ? demo['zh-CN'] : demo['en-US']
     const codeHtml = marked(demo.codeMd)
-    const componentName = demo.component.toLowerCase() + demo.name.replace(/\b\w+\b/g, word => word.substring(0, 1).toUpperCase() + word.substring(1))
+    const componentName = generateCamelName(demo.component, demo.name)
     const code =
     `
     <code-show
@@ -207,3 +213,55 @@ const generateVueContainer = (main, demos) => {
 }
 const params = process.argv.splice(2)
 generateDocs(params)
+
+// const generateRouterConfig = async () => {
+//   await to(readDirPromise(path.join(resolve(site), 'docs')))
+// }
+
+const generateComponentsRouterConfig = async () => {
+  let docsErr, docsPaths
+  ;[docsErr, docsPaths] = await to(readDirPromise(path.join(resolve('site'), 'docs')))
+  let importString = `import Vue from 'vue'
+  import Router from 'vue-router'
+  `
+  let zhRouterConfig = '['
+  let enRouterConfig = '['
+  docsPaths && docsPaths.forEach(component => {
+    const zhName = generateCamelName('zh', component)
+    const enName = generateCamelName('eh', component)
+    importString += `import ${zhName} from './docs/${component}/index-zh'\n`
+    importString += `import ${enName} from './docs/${component}/index-en'\n`
+    zhRouterConfig += `{
+      path: '${component}',
+      component: ${zhName},
+      name: '${component}-zh'
+    },`
+    enRouterConfig += `{
+      path: '${component}',
+      component: ${enName},
+      name: '${component}-en'
+    },`
+  })
+  importString += 'Vue.use(Router)\n'
+  zhRouterConfig += ']'
+  enRouterConfig += ']'
+
+  const config = `let router = new Router({
+  routes: [
+    {
+      path: '/component/zh-CN',
+      children: ${zhRouterConfig}
+    },
+    {
+      path: '/component/en-US',
+      children: ${enRouterConfig}
+    }
+  ]
+})
+
+export default router`
+  const sitePath = path.join(resolve('site'))
+  stableWriteFile(sitePath, 'router.js', importString + config)
+}
+
+generateComponentsRouterConfig()

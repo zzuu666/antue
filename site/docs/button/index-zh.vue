@@ -65,11 +65,11 @@ ghost | 幽灵属性，使按钮背景透明，版本 2.7 中增加 | boolean | 
   <script>
   import Container from '../common/container'
   import CodeShow from '../common/code-show'
-  import buttonBase from './demo/base'
+  import buttonbase from './demo/base'
 
   export default {
     components: {
-      buttonBase,
+      buttonbase,
 
       Container,
       CodeShow

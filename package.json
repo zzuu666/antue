@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./build/webpack.dev.config.js --open --hot",
+    "site": "cross-env NODE_ENV=development webpack-dev-server --config ./build/webpack.site.config.js --open --hot",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
