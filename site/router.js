@@ -1,15 +1,19 @@
 import Vue from 'vue'
   import Router from 'vue-router'
-  import zhbutton from './docs/button/index-zh'
-import ehbutton from './docs/button/index-en'
+  import zhButton from './docs/button/index-zh'
+import ehButton from './docs/button/index-en'
 Vue.use(Router)
 let router = new Router({
   routes: [
     {
+      path: '/',
+      component: zhButton
+    },
+    {
       path: '/component/zh-CN',
       children: [{
       path: 'button',
-      component: zhbutton,
+      component: zhButton,
       name: 'button-zh'
     },]
     },
@@ -17,7 +21,7 @@ let router = new Router({
       path: '/component/en-US',
       children: [{
       path: 'button',
-      component: ehbutton,
+      component: ehButton,
       name: 'button-en'
     },]
     }

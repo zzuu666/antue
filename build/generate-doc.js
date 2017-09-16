@@ -51,9 +51,15 @@ const stableWriteFile = async (dir, name, data) => {
 
 const generateCamelName = (...argv) => {
   const handleFirstLetter = (str) => str.replace(/\b\w+\b/g, word => word.substring(0, 1).toUpperCase() + word.substring(1))
-  argv.map((el, index) => index === 0 ? el.toLowerCase() : handleFirstLetter(el))
-  return argv.join('')
+  const res = argv.map((el, index) => index === 0 ? el.toLowerCase() : handleFirstLetter(el))
+  return res.join('')
 }
+
+marked.setOptions({
+  highlight: function (code) {
+    return require('highlight.js').highlightAuto(code).value
+  }
+})
 
 const ignoreDir = ['style', '_util', 'col', 'row']
 
@@ -100,6 +106,7 @@ const parseIndexMd = (md, lang) => {
   json.beforeCode = md.slice(end + 4, APIStart)
   json.afterCode = md.slice(APIStart, md.length - 1)
   json.lang = lang
+  json.cols = json.cols || 0
   return json
 }
 
@@ -164,47 +171,65 @@ const generateDoc = async (component) => {
 
 const generateVueContainer = (main, demos) => {
   const lang = main.lang
+  const span = main.cols ? 24 : 12
   let importString = ''
   let codeString = ''
   let componentsSting = ''
-
-  demos.forEach(demo => {
+  const sortDemos = demos.sort((a, b) => a.order - b.order)
+  sortDemos.forEach(demo => {
     const desc = lang === 'zh-CN' ? marked(demo.zhCN) : marked(demo.enUS)
     const title = lang === 'zh-CN' ? demo['zh-CN'] : demo['en-US']
     const codeHtml = marked(demo.codeMd)
     const componentName = generateCamelName(demo.component, demo.name)
     const code =
     `
-    <code-show
-      title="${title}"
-      desc="${desc}"
-      code="${codeHtml}">
-      ${demo.display}
-    </code-show>
+    <atu-col :span="${span}">
+      <code-show
+        title="${title}"
+        desc="${desc}">
+        ${demo.display}
+        <div slot="code">${codeHtml}</div>
+      </code-show>
+    </atu-col>
     `
     codeString += code
     importString += `import ${componentName} from './demo/${demo.name}'\n`
     componentsSting += `${componentName},\n`
   })
+  const handleMainContent = (content) => {
+    return {
+      title: content.title,
+      subtitle: content.subtitle || '',
+      beforeCode: marked(content.beforeCode),
+      afterCode: marked(content.afterCode)
+    }
+  }
+  const result = handleMainContent(main)
   const template =
   `<template>
     <container>
-      <h1>${main.title} ${main.subtitle}</h1>
-      ${main.beforeCode}
+      <h1>${result.title} ${result.subtitle}</h1>
+      ${result.beforeCode}
       <h2> 代码展示 </h2>
-      ${codeString}
-      ${main.afterCode}
+      <atu-row :gutter="12"> 
+        ${codeString}
+      </atu-row>
+      ${result.afterCode}
     </container>
   </template>
   <script>
-  import Container from '../common/container'
-  import CodeShow from '../common/code-show'
+  import Container from '../../common/layout/container'
+  import CodeShow from '../../common/layout/code-show'
+  import AtuRow from '@/row'
+  import AtuCol from '@/col'
   ${importString}
   export default {
     components: {
       ${componentsSting}
       Container,
-      CodeShow
+      CodeShow,
+      AtuRow,
+      AtuCol
     }
   }
   </script>
@@ -219,6 +244,7 @@ generateDocs(params)
 // }
 
 const generateComponentsRouterConfig = async () => {
+  const ignoreDir = ['common']
   let docsErr, docsPaths
   ;[docsErr, docsPaths] = await to(readDirPromise(path.join(resolve('site'), 'docs')))
   let importString = `import Vue from 'vue'
@@ -227,6 +253,7 @@ const generateComponentsRouterConfig = async () => {
   let zhRouterConfig = '['
   let enRouterConfig = '['
   docsPaths && docsPaths.forEach(component => {
+    if (ignoreDir.indexOf(component) > -1) return
     const zhName = generateCamelName('zh', component)
     const enName = generateCamelName('eh', component)
     importString += `import ${zhName} from './docs/${component}/index-zh'\n`
@@ -264,4 +291,4 @@ export default router`
   stableWriteFile(sitePath, 'router.js', importString + config)
 }
 
-generateComponentsRouterConfig()
+// generateComponentsRouterConfig()
