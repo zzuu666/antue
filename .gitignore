@@ -14,3 +14,4 @@ yarn-error.log
 # ignore site/docs because this is generate from .md
 site/docs
 site/components
+site/router.js
