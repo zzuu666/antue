@@ -135,8 +135,8 @@ const readDeomMds = async (route, component, name) => {
   return mdErr ? failLog(`读取文件${route}失败`) : parseDemoMd(md, route, component, name)
 }
 
-const generateDocs = async (components) => {
-  components.forEach(component => generateDoc(component))
+const generateComponents = async (components) => {
+  components.forEach(component => generateComponent(component))
 }
 
 const generateDomes = (route, demos) => {
@@ -145,7 +145,7 @@ const generateDomes = (route, demos) => {
   })
 }
 
-const generateDoc = async (component) => {
+const generateComponent = async (component) => {
   const componentsPath = resolve('components')
   const componentDemoPath = path.join(componentsPath, component, 'demo')
   let demos = []
@@ -181,7 +181,7 @@ const generateDoc = async (component) => {
 
   const zhData = zhIndexJson && generateVueContainer(zhIndexJson, demos)
   const enData = enIndexJson && generateVueContainer(enIndexJson, demos)
-  const siteDocPath = path.join(resolve('site'), 'docs', component)
+  const siteDocPath = path.join(resolve('site'), 'components', component)
   zhIndexJson && await stableWriteFile(siteDocPath, 'index-zh.vue', zhData)
   enIndexJson && await stableWriteFile(siteDocPath, 'index-en.vue', enData)
   generateDomes(path.join(siteDocPath, 'demo'), demos)
@@ -256,7 +256,7 @@ const generateVueContainer = (main, demos) => {
   return template
 }
 const params = process.argv.splice(2)
-generateDocs(params)
+generateComponents(params)
 
 // const generateRouterConfig = async () => {
 //   await to(readDirPromise(path.join(resolve(site), 'docs')))
@@ -303,7 +303,3 @@ export default router`
 }
 
 generateComponentsRouterConfig()
-
-const generateExplain = () => {
-  
-}
