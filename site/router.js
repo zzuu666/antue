@@ -6,25 +6,15 @@ Vue.use(Router)
 let router = new Router({
   routes: [
     {
-      path: '/',
-      component: zhButton
-    },
-    {
-      path: '/component/zh-CN',
-      children: [{
-      path: 'button',
+      path: '/component/zh-CN/button',
       component: zhButton,
       name: 'button-zh'
-    },]
     },
     {
-      path: '/component/en-US',
-      children: [{
-      path: 'button',
+      path: '/component/en-US/button',
       component: ehButton,
       name: 'button-en'
-    },]
-    }
+    },
   ]
 })
 

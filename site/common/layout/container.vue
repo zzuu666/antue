@@ -16,7 +16,7 @@ export default {
 <style lang="less" scoped>
 .container {
   position: relative;
-  padding: 10px 20px;
+  padding: 10px 80px 10px 20px;
   &-title {
     position: relative;
     padding: 8px 0;
@@ -24,9 +24,6 @@ export default {
   p {
     position: relative;
     padding: 8px 0;
-  }
-  &-profile {
-    
   }
 }
 </style>

@@ -269,8 +269,8 @@ const generateComponentsRouterConfig = async () => {
   let importString = `import Vue from 'vue'
   import Router from 'vue-router'
   `
-  let zhRouterConfig = '['
-  let enRouterConfig = '['
+  let zhRouterConfig = ''
+  let enRouterConfig = ''
   docsPaths && docsPaths.forEach(component => {
     if (ignoreDir.indexOf(component) > -1) return
     const zhName = generateCamelName('zh', component)
@@ -278,30 +278,22 @@ const generateComponentsRouterConfig = async () => {
     importString += `import ${zhName} from './docs/${component}/index-zh'\n`
     importString += `import ${enName} from './docs/${component}/index-en'\n`
     zhRouterConfig += `{
-      path: '${component}',
+      path: '/component/zh-CN/${component}',
       component: ${zhName},
       name: '${component}-zh'
     },`
     enRouterConfig += `{
-      path: '${component}',
+      path: '/component/en-US/${component}',
       component: ${enName},
       name: '${component}-en'
     },`
   })
   importString += 'Vue.use(Router)\n'
-  zhRouterConfig += ']'
-  enRouterConfig += ']'
 
   const config = `let router = new Router({
   routes: [
-    {
-      path: '/component/zh-CN',
-      children: ${zhRouterConfig}
-    },
-    {
-      path: '/component/en-US',
-      children: ${enRouterConfig}
-    }
+    ${zhRouterConfig}
+    ${enRouterConfig}
   ]
 })
 
@@ -310,4 +302,8 @@ export default router`
   stableWriteFile(sitePath, 'router.js', importString + config)
 }
 
-// generateComponentsRouterConfig()
+generateComponentsRouterConfig()
+
+const generateExplain = () => {
+  
+}
