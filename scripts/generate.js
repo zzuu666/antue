@@ -30,21 +30,20 @@ const generateNormalVue = (oriPath, oriDir, targePath, type = 'doc', demos = [])
       mdJson = type === 'component' ? parseComponentMarkdown(mdContent, lang) : parseDocMarkdown(mdContent, lang)
     }
     const data = generateVueContainer(mdJson, demos)
-    type === 'doc' && failLog('2222')
     stableWriteFile(targePath, file.replace('.md', '.vue'), data)
   })
 }
 
 const generateVueContainer = (main, demos = []) => {
-  const generateCodeJson = (demos) => {
+  const generateCodeJson = (demos, span) => {
     let importString = ''
     let codeString = ''
     let componentsSting = ''
-    if (demos) {
+    if (demos.length) {
       const sortDemos = demos.sort((a, b) => a.order - b.order)
       sortDemos.forEach(demo => {
         const desc = lang === 'zh-CN' ? marked(demo.zhCN) : marked(demo.enUS)
-        const title = lang === 'zh-CN' ? demo['zh-CN'] : demo['en-US']
+        const title = lang === 'zh-CN' ? demo.header['zh-CN'] : demo.header['en-US']
         const codeHtml = marked(demo.codeMd)
         const componentName = generateCamelName(demo.component, demo.name)
         const code =
@@ -89,7 +88,7 @@ const generateVueContainer = (main, demos = []) => {
     }
   }
   const result = handleMainContent(main)
-  const code = generateCodeJson(demos)
+  const code = generateCodeJson(demos, span)
   const template =
   `<template>
     <container>
@@ -180,7 +179,6 @@ const generateDocs = (docs) => {
       return
     }
     const siteDocPath = path.join(resolve('site'), 'docs', doc)
-    console.log(siteDocPath)
     generateNormalVue(docsDocPath, docsDoctDir, siteDocPath)
   }
 
@@ -189,12 +187,48 @@ const generateDocs = (docs) => {
   })
 }
 
+const generateComponentsRouterConfig = async () => {
+  const sitePath = resolve('site')
+  let importString = `import Vue from 'vue'
+  import Router from 'vue-router'
+  `
+  let configString = ''
+  await Promise.all(['components', 'docs'].map(async dir => {
+    let err, components
+    ;[err, components] = await to(readDirPromise(path.join(sitePath, dir)))
+    await Promise.all(components.map(async component => {
+      let err, files
+      ;[err, files] = await to(readDirPromise(path.join(sitePath, dir, component)))
+      getFilesByExtension(files, '.vue').forEach(file => {
+        let lang = file.indexOf('zh-CN') > -1 ? 'zh' : 'en'
+        let name = generateCamelName(dir, component, lang)
+        importString += `import ${name} from './${dir}/${component}/${file}'\n`
+        configString += `{
+          path: '/${dir}/${component}-${lang}',
+          component: ${name},
+          name: '${name}'
+        },`
+      })
+    }))
+  }))
+  importString += 'Vue.use(Router)\n'
+  const config = `let router = new Router({
+    routes: [
+      ${configString}
+    ]
+  })
+  
+  export default router`
+  stableWriteFile(sitePath, 'router.js', importString + config)
+}
+
 const generate = async (params) => {
   const cDir = await readDirPromise(resolve('components'))
   const dDir = await readDirPromise(resolve('docs'))
   if (params[0] === '-a') {
     generateDocs(dDir)
     generateComponents(cDir)
+    generateComponentsRouterConfig()
   } else if (params[0] === '-c') {
     generateComponents(cDir)
   } else if (params[0] === '-d') {

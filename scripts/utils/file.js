@@ -34,11 +34,16 @@ const mkdirRecursionPromise = async (route) => {
   ;[existErr] = await to(readDirPromise(parentDir))
   if (existErr) {
     await mkdirRecursionPromise(parentDir)
-    await mkdirPromise(route)
+    try {
+      await mkdirPromise(route)
+    } catch (err) {
+      generalLog(`${route} 已存在`)
+    }
   } else {
     try {
       await mkdirPromise(route)
     } catch (err) {
+      generalLog(`${route} 已存在`)
     }
   }
 }
