@@ -83,6 +83,15 @@ export default {
               route: 'menu'
             }
           ]
+        },
+        {
+          title: 'Data Entry',
+          items: [
+            {
+              title: 'Input 输入框',
+              route: 'input'
+            }
+          ]
         }
       ]
     }

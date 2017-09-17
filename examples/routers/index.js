@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Button from './button'
 import Menu from './menu'
 import Icon from './icon'
+import Input from './input/index.vue'
 
 Vue.use(Router)
 
@@ -19,6 +20,10 @@ let router = new Router({
     {
       path: '/icon',
       component: Icon
+    },
+    {
+      path: '/input',
+      component: Input
     }
   ]
 })
