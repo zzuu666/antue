@@ -1,54 +1,54 @@
 <template>
   <div id="app">
-    <a-row class="header">
-      <a-col class="header-logo" :span="4">
+    <atu-row class="header">
+      <atu-col class="header-logo" :span="5">
         <img src="../examples/logo.png"> Ant x Vue
-      </a-col>
-      <a-col class="header-title" :span="20">
-        
-      </a-col>
-    </a-row>
-    <a-row>
-      <a-col :span="4">
-        <a-menu mode="inline">
-          <a-menu-group
+      </atu-col>
+      <atu-col class="header-title" :span="19">
+      </atu-col>
+    </atu-row>
+    <atu-row>
+      <atu-col :span="5">
+        <atu-menu mode="inline">
+          <atu-menu-group
             v-for="group in menu"
             :key="group.title"
             :title="group.title">
-              <a-menu-item
+              <atu-menu-item
                 v-for="item in group.items"
                 :key="item.title"
                 :index="item.title">
                   <router-link :to="item.route" replace>
                     {{item.title}}
                   </router-link>
-              </a-menu-item>
-          </a-menu-group>
-        </a-menu>
-      </a-col>
-      <a-col :span="20">
+              </atu-menu-item>
+          </atu-menu-group>
+        </atu-menu>
+      </atu-col>
+      <atu-col :span="19">
         <router-view></router-view>
-      </a-col>
-    </a-row>
+      </atu-col>
+    </atu-row>
   </div>
 </template>
 
 <script>
-import aRow from '../components/row'
-import aCol from '../components/col'
-import aMenu from '../components/menu'
+import AtuRow from '@/row'
+import AtuCol from '@/col'
+import AtuMenu from '@/menu'
+import menuConfig from './common/menu.js'
 
-const aMenuItem = aMenu.Item
-const aMenuGroup = aMenu.ItemGroup
+const AtuMenuItem = AtuMenu.Item
+const AtuMenuGroup = AtuMenu.ItemGroup
 
 export default {
   name: 'app',
   components: {
-    aRow,
-    aCol,
-    aMenu,
-    aMenuItem,
-    aMenuGroup
+    AtuRow,
+    AtuCol,
+    AtuMenu,
+    AtuMenuItem,
+    AtuMenuGroup
   },
   data () {
     return {
@@ -114,5 +114,8 @@ export default {
     font-size: 24px;
     font-weight: 900;
   }
+}
+.ant-menu {
+  height: 100%;
 }
 </style>

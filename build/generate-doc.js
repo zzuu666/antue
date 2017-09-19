@@ -135,8 +135,8 @@ const readDeomMds = async (route, component, name) => {
   return mdErr ? failLog(`读取文件${route}失败`) : parseDemoMd(md, route, component, name)
 }
 
-const generateDocs = async (components) => {
-  components.forEach(component => generateDoc(component))
+const generateComponents = async (components) => {
+  components.forEach(component => generateComponent(component))
 }
 
 const generateDomes = (route, demos) => {
@@ -145,7 +145,7 @@ const generateDomes = (route, demos) => {
   })
 }
 
-const generateDoc = async (component) => {
+const generateComponent = async (component) => {
   const componentsPath = resolve('components')
   const componentDemoPath = path.join(componentsPath, component, 'demo')
   let demos = []
@@ -181,7 +181,7 @@ const generateDoc = async (component) => {
 
   const zhData = zhIndexJson && generateVueContainer(zhIndexJson, demos)
   const enData = enIndexJson && generateVueContainer(enIndexJson, demos)
-  const siteDocPath = path.join(resolve('site'), 'docs', component)
+  const siteDocPath = path.join(resolve('site'), 'components', component)
   zhIndexJson && await stableWriteFile(siteDocPath, 'index-zh.vue', zhData)
   enIndexJson && await stableWriteFile(siteDocPath, 'index-en.vue', enData)
   generateDomes(path.join(siteDocPath, 'demo'), demos)
@@ -256,7 +256,7 @@ const generateVueContainer = (main, demos) => {
   return template
 }
 const params = process.argv.splice(2)
-generateDocs(params)
+generateComponents(params)
 
 // const generateRouterConfig = async () => {
 //   await to(readDirPromise(path.join(resolve(site), 'docs')))
@@ -269,8 +269,8 @@ const generateComponentsRouterConfig = async () => {
   let importString = `import Vue from 'vue'
   import Router from 'vue-router'
   `
-  let zhRouterConfig = '['
-  let enRouterConfig = '['
+  let zhRouterConfig = ''
+  let enRouterConfig = ''
   docsPaths && docsPaths.forEach(component => {
     if (ignoreDir.indexOf(component) > -1) return
     const zhName = generateCamelName('zh', component)
@@ -278,30 +278,22 @@ const generateComponentsRouterConfig = async () => {
     importString += `import ${zhName} from './docs/${component}/index-zh'\n`
     importString += `import ${enName} from './docs/${component}/index-en'\n`
     zhRouterConfig += `{
-      path: '${component}',
+      path: '/component/zh-CN/${component}',
       component: ${zhName},
       name: '${component}-zh'
     },`
     enRouterConfig += `{
-      path: '${component}',
+      path: '/component/en-US/${component}',
       component: ${enName},
       name: '${component}-en'
     },`
   })
   importString += 'Vue.use(Router)\n'
-  zhRouterConfig += ']'
-  enRouterConfig += ']'
 
   const config = `let router = new Router({
   routes: [
-    {
-      path: '/component/zh-CN',
-      children: ${zhRouterConfig}
-    },
-    {
-      path: '/component/en-US',
-      children: ${enRouterConfig}
-    }
+    ${zhRouterConfig}
+    ${enRouterConfig}
   ]
 })
 
@@ -310,4 +302,4 @@ export default router`
   stableWriteFile(sitePath, 'router.js', importString + config)
 }
 
-// generateComponentsRouterConfig()
+generateComponentsRouterConfig()
