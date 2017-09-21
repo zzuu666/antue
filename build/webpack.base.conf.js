@@ -44,7 +44,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('components'), resolve('test')]
+        include: [resolve('components'), resolve('site'), resolve('examples')]
       },
       {
         test: /\.less$/,
