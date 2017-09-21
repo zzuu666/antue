@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./build/webpack.dev.config.js --open --hot",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "site": "cross-env NODE_ENV=development webpack-dev-server --config ./build/webpack.site.config.js --open --hot",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config ./build/webpack.dist.site.config.js"
   },
   "keywords": [
     "vue",
@@ -34,12 +36,15 @@
     "eslint-plugin-node": "^5.1.1",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
+    "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "friendly-errors-webpack-plugin": "^1.6.1",
+    "highlight.js": "^9.12.0",
     "html-webpack-plugin": "^2.30.1",
     "less": "^2.7.2",
     "less-loader": "^2.2.3",
-    "optimize-css-assets-webpack-plugin": "^3.1.1",
+    "marked": "^0.3.6",
+    "optimize-css-assets-webpack-plugin": "^3.2.0",
     "style-loader": "^0.18.2",
     "url-loader": "^0.5.9",
     "vue": "^2.4.2",

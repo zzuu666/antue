@@ -1,7 +1,7 @@
 ---
-order: 0
+order: 1
 title:
-  zh-CN: 按钮类型
+  zh-CN: 按钮类型1
   en-US: Type
 ---
 
@@ -28,11 +28,11 @@ There are `primary` button, `default` button, `dashed` button and `danger` butto
 </template>
 
 <script>
-  import AntButton from '@/button'
-  export default {
-    components: {
-      AntButton
-    }
+import AntButton from '@/button'
+export default {
+  components: {
+    AntButton
   }
+}
 </script>
 ````
