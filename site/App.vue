@@ -9,21 +9,7 @@
     </atu-row>
     <atu-row>
       <atu-col :span="5">
-        <atu-menu mode="inline">
-          <atu-menu-group
-            v-for="group in menu"
-            :key="group.title"
-            :title="group.title">
-              <atu-menu-item
-                v-for="item in group.items"
-                :key="item.title"
-                :index="item.title">
-                  <router-link :to="item.route" replace>
-                    {{item.title}}
-                  </router-link>
-              </atu-menu-item>
-          </atu-menu-group>
-        </atu-menu>
+        <site-menu></site-menu>
       </atu-col>
       <atu-col :span="19">
         <router-view></router-view>
@@ -35,20 +21,14 @@
 <script>
 import AtuRow from '@/row'
 import AtuCol from '@/col'
-import AtuMenu from '@/menu'
-import menuConfig from './common/menu.js'
-
-const AtuMenuItem = AtuMenu.Item
-const AtuMenuGroup = AtuMenu.ItemGroup
+import SiteMenu from './common/layout/menu'
 
 export default {
   name: 'app',
   components: {
     AtuRow,
     AtuCol,
-    AtuMenu,
-    AtuMenuItem,
-    AtuMenuGroup
+    SiteMenu
   },
   data () {
     return {

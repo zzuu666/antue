@@ -72,7 +72,6 @@ export default {
     position: relative;
     overflow-x: auto;
     border-top: 1px dashed #dfdfdf;
-    padding: 0 16px;
     pre {
       background-color: #fff
     }

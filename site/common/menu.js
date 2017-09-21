@@ -1,19 +1,23 @@
 const menu = {
   items: [
     {
-      title: '',
-      route: ''
+      title: '开发规范',
+      route: 'docsDevZh'
     }
   ],
-  subitem: {
-    title: '',
-    group: [
+  submenu: {
+    title: 'Components',
+    groups: [
       {
-        title: '',
+        title: 'General',
         items: [
           {
-            title: '',
-            route: ''
+            title: 'Button 按钮',
+            route: 'componentsButtonZh'
+          },
+          {
+            title: 'Icon 按钮',
+            route: 'componentsIconZh'
           }
         ]
       }
