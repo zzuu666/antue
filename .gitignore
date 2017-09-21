@@ -10,3 +10,8 @@ yarn-error.log
 *.ntvs*
 *.njsproj
 *.sln
+
+# ignore site/docs because this is generate from .md
+site/docs
+site/components
+site/router.js
