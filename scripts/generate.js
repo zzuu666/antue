@@ -228,12 +228,12 @@ const generate = async (params) => {
   if (params[0] === '-a') {
     generateDocs(dDir)
     generateComponents(cDir)
-    generateComponentsRouterConfig()
   } else if (params[0] === '-c') {
     generateComponents(cDir)
   } else if (params[0] === '-d') {
     generateDocs(dDir)
-  } else {
+  } else if (params[0] === '-r') {
+    generateComponentsRouterConfig()
   }
 }
 
