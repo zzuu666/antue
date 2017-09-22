@@ -2,7 +2,7 @@
   <img src="./icon.svg">
 </div>
 
-## Antd-Vue
+## Antue
 [![Build Status](https://travis-ci.org/zzuu666/antue.svg?branch=master)](https://travis-ci.org/zzuu666/antue)
 
 这里是 [Ant-Design](https://ant.design/index-cn) 的 [Vue](https://vuejs.org/) **完全**实现，开发和服务于企业级后台产品。

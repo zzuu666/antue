@@ -16,7 +16,7 @@ export default {
 <style lang="less" scoped>
 .container {
   position: relative;
-  padding: 10px 80px 10px 20px;
+  padding: 0px 40px 120px 40px;
   &-title {
     position: relative;
     padding: 8px 0;
