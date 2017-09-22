@@ -1,4 +1,5 @@
-import './style/index.less'
+import './style/index.js'
+
 import Menu from './menu'
 import Item from './menu-item'
 import SubMenu from './menu-submenu'

@@ -1,17 +1,30 @@
 {
-  "name": "antd-vue",
+  "name": "antue",
   "version": "0.0.1",
-  "description": "An enterprise-class UI design language and Vue-based implementation.",
-  "main": "index.js",
+  "description": "A set of enterprise-class Vue UI components, following the Ant Design specification.",
+  "main": "dist/antue.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./build/webpack.dev.config.js --open --hot",
     "site": "cross-env NODE_ENV=development webpack-dev-server --config ./build/webpack.site.config.js --open --hot",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config ./build/webpack.dist.site.config.js"
+    "build:site": "webpack --config ./build/webpack.dist.site.config.js",
+    "build:dev": "webpack --config ./build/webpack.dist.dev.config.js",
+    "build": "webpack --config ./build/webpack.dist.prod.config.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zzuu666/antue"
+  },
+  "bugs": {
+    "url": "https://github.com/zzuu666/antue/issues"
   },
   "keywords": [
     "vue",
-    "ant-design"
+    "ant-design",
+    "antue"
   ],
   "author": "zzuu666",
   "license": "MIT",

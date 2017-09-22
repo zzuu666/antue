@@ -1,4 +1,4 @@
-import './style/index.less'
+import './style/index.js'
 import Button from './button'
 // import ButtonGroup from './button-group'
 

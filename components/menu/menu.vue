@@ -11,7 +11,6 @@
 </template>
 
 <script>
-import './style/index'
 export default {
   data () {
     return {
