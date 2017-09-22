@@ -2,7 +2,7 @@
   <img src="./icon.svg">
 </div>
 
-## Antd-Vue
+## Antue
 [![Build Status](https://travis-ci.org/zzuu666/antue.svg?branch=master)](https://travis-ci.org/zzuu666/antue)
 
 这里是 [Ant-Design](https://ant.design/index-cn) 的 [Vue](https://vuejs.org/) **完全**实现，开发和服务于企业级后台产品。
@@ -10,8 +10,8 @@
 ## 开发指南
 ### clone代码库
 ``` bash
-git clone git@github.com:zzuu666/antd-vue.git
-cd antd-vue
+git clone git@github.com:zzuu666/antue.git
+cd antue
 npm install # 如果你用 npm 
 yarn # 如果你用 yarn
 npm run dev
@@ -66,6 +66,7 @@ Grid栅格| zzuu666
 Menu导航菜单| zzuu666
 Spin加载中 | Yangmutong | 0%
 Icon图标 | zzuu666 | done
+Input输入框 | sky-admin | 
 
 ## Todo List
 + Layout布局
