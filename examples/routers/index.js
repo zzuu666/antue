@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Button from './button'
 import Menu from './menu'
 import Icon from './icon'
-import Input from './input/index.vue'
+import Input from './input/index'
 
 Vue.use(Router)
 
