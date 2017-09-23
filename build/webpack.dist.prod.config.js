@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
+const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
 process.env.NODE_ENV = 'production'
 
@@ -24,7 +25,7 @@ module.exports = merge(baseWebpackConfig, {
   output: {
     path: path.resolve(__dirname, '../dist'),
     publicPath: '/dist/',
-    filename: 'antue.js',
+    filename: 'antue.min.js',
     library: 'antue',
     libraryTarget: 'umd',
     umdNamedDefine: true
@@ -43,6 +44,16 @@ module.exports = merge(baseWebpackConfig, {
         NODE_ENV: '"production"'
       }
     }),
-    new ExtractTextPlugin("antue.css")
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    }),
+    new ExtractTextPlugin("antue.min.css"),
+    new OptimizeCSSPlugin({
+      cssProcessorOptions: {
+        safe: true
+      }
+    })
   ]
 });

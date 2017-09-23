@@ -1,4 +1,4 @@
-import './style/index.less'
+import './style/index.js'
 import Row from './row'
 import Col from './col'
 

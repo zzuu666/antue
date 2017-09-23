@@ -44,15 +44,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('components'), resolve('test')]
-      },
-      {
-        test: /\.less$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          'less-loader'
-        ]
+        include: [resolve('components'), resolve('site'), resolve('examples')]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
