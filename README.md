@@ -67,6 +67,7 @@ Menu导航菜单| zzuu666
 Spin加载中 | Yangmutong | 0%
 Icon图标 | zzuu666 | done
 Input输入框 | sky-admin | 
+Rate评分 | sinchang | 
 
 ## Todo List
 + Layout布局
@@ -83,7 +84,6 @@ Input输入框 | sky-admin |
 + InputNumber数字输入框
 + Input输入框
 + Mention提及
-+ Rate评分
 + Radio单选框
 + Select选择器
 + Slider滑动输入条
