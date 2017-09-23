@@ -2,7 +2,7 @@
   <header class="header">
     <atu-row>
       <atu-col class="header-logo" :span="4">
-        <embed class="header-icon" src="../icon.svg" height="36" type="image/svg+xml" pluginspage="http://www.adobe.com/svg/viewer/install/" />
+        <img class="header-icon" src="https://github.com/zzuu666/antue/raw/master/icon.svg?sanitize=true" height="36" type="image/svg" />
         <span class="header-name">ANTUE</span>
       </atu-col>
       <atu-col :span="20">
