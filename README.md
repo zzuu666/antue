@@ -29,7 +29,7 @@ components
 	|--  _util # 公用方法
 	|--  style # 组件样式 复用ant-design一般情况下不做修改
 	|--  button
-		|-- dome # 用法相关文档
+		|-- demo # 用法相关文档
 		|-- style # 组件样式 复用ant-design一般情况下不做修改
 		|-- button.vue # button组件
 		|-- index.js # 出口文件
