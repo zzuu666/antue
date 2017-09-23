@@ -4,6 +4,8 @@
 
 ## Antue
 [![Build Status](https://travis-ci.org/zzuu666/antue.svg?branch=master)](https://travis-ci.org/zzuu666/antue)
+[![dependencies Status](https://david-dm.org/zzuu666/antue/status.svg)](https://david-dm.org/zzuu666/antue)
+[![devDependencies Status](https://david-dm.org/zzuu666/antue/dev-status.svg)](https://david-dm.org/zzuu666/antue?type=dev)
 
 这里是 [Ant-Design](https://ant.design/index-cn) 的 [Vue](https://vuejs.org/) **完全**实现，开发和服务于企业级后台产品。
 
