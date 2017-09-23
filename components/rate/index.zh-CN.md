@@ -24,7 +24,7 @@ title: Rate
 | allowHalf | 是否允许半选   | boolean | false |
 | disabled | 只读，无法进行交互 | boolean | false |
 | className | 自定义样式类名 | string | - |
-| style | 自定义样式对象 | object | - |
+| styles | 自定义样式对象 | object | - |
 
 ## Slot
 

@@ -23,7 +23,7 @@ Rate component.
 | allowHalf | whether to allow semi selection   | boolean | false |
 | disabled | read only, unable to interact | boolean | false |
 | className | custom class name of rate | string | - |
-| style | custom style object of rate | object | - |
+| styles | custom style object of rate | object | - |
 
 ## Slot
 
