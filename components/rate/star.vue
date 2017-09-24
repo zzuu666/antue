@@ -1,7 +1,7 @@
 <template>
   <li :class="getClassName()" @click="onClickHandler" @mousemove="onHoverHandler">
-    <div :class="`${this.prefixCls}-first`"><slot character></slot></div>
-    <div :class="`${this.prefixCls}-second`"><slot character></slot></div>
+    <div :class="`${this.prefixCls}-first`"><slot></slot></div>
+    <div :class="`${this.prefixCls}-second`"><slot></slot></div>
   </li>
 </template>
 
@@ -24,11 +24,11 @@ export default {
   methods: {
     onHoverHandler (e) {
       if (this.disabled) return
-      this.onHover(e, this.index)
+      this.$emit('onHover', e, this.index)
     },
     onClickHandler (e) {
       if (this.disabled) return
-      this.onClick(e, this.index)
+      this.$emit('onClick', e, this.index)
     },
     getClassName () {
       const starValue = this.index

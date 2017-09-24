@@ -16,7 +16,7 @@ Support select half star.
 ````html
 <template>
   <div>
-    <ant-rate :allowHalf="allowHalf"></ant-rate>
+    <ant-rate :allow-half="allowHalf"></ant-rate>
   </div>
 </template>
 <script>

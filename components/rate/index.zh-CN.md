@@ -18,16 +18,8 @@ title: Rate
 |------------|----------------|-------------------|-------------|
 | count    | star 总数 | number | 5 |
 | value | 当前数，受控值 | number | - |
-| defaultValue | 默认值 | number | 0 |
+| default-value | 默认值 | number | 0 |
 | onChange | 选择时的回调 | Function(value: number) | - |
 | onHoverChange | 鼠标经过时数值变化的回调 | Function(value: number) | - |
-| allowHalf | 是否允许半选   | boolean | false |
+| allow-half | 是否允许半选   | boolean | false |
 | disabled | 只读，无法进行交互 | boolean | false |
-| className | 自定义样式类名 | string | - |
-| styles | 自定义样式对象 | object | - |
-
-## Slot
-
-| name        | 说明           | 默认值       |
-|------------|----------------|-------------|
-| character    | 自定义字符 | `<Icon type="star" />`

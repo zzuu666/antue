@@ -1,18 +1,18 @@
 <template>
-  <ul :style="styles" :class="[prefixCls, disabled ? `${prefixCls}-disabled`: '', className]" @mouseleave="onMouseLeave">
+  <ul :class="[prefixCls, disabled ? `${prefixCls}-disabled`: '']" @mouseleave="onMouseLeave">
     <star v-for="i in count"
       ref="stars"
       :key="i"
       :disabled="disabled"
       :index="i"
-      :newValue="newValue"
+      :new-value="newValue"
       :value="value"
-      :allowHalf="allowHalf"
-      :onClick="onClick"
-      :onHover="onHover"
-      :prefixCls="`${prefixCls}-star`">
-      <template scope="character">
-        <slot character>
+      :allow-half="allowHalf"
+      @onClick="onClick"
+      @onHover="onHover"
+      :prefix-cls="`${prefixCls}-star`">
+      <template scope="props">
+        <slot>
            <Icon type="star"></Icon>
         </slot>
       </template>
@@ -40,12 +40,6 @@ export default {
       type: Boolean,
       default: false
     },
-    styles: {
-      type: Object,
-      default () {
-        return {}
-      }
-    },
     prefixCls: {
       type: String,
       default: 'ant-rate'
@@ -57,8 +51,7 @@ export default {
     onHoverChange: {
       type: Function,
       default: noop
-    },
-    className: String
+    }
   },
   data () {
     return {
@@ -84,11 +77,11 @@ export default {
       const value = this.getStarValue(index, e.pageX)
       this.markValue = value
       this.onMouseLeave()
-      this.onChange(value)
+      this.$emit('onChange', value)
     },
     onHover (e, index) {
       this.hoverValue = this.getStarValue(index, e.pageX)
-      this.onHoverChange(this.hoverValue)
+      this.$emit('onHoverChange', this.hoverValue)
     },
     getStarDOM (index) {
       return this.$refs.stars[index].$el
@@ -106,7 +99,7 @@ export default {
     },
     onMouseLeave () {
       this.hoverValue = undefined
-      this.onHoverChange(undefined)
+      this.$emit('onHoverChange', undefined)
     }
   },
   components: {

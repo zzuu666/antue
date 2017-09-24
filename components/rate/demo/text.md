@@ -30,7 +30,6 @@ export default {
   },
   data () {
     return {
-      allowHalf: true,
       value: 3
     }
   },
