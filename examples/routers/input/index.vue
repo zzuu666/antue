@@ -1,24 +1,23 @@
 <template>
-    <container
-            title="Input 输入框"
-            profile="通过鼠标或键盘输入内容，是最基础的表单域的包装。">
-        <h2>何时使用</h2>
-        <p>需要用户输入表单域内容时。</p>
-        <p>提供组合型输入框，带搜索的输入框，还可以进行大小选择。</p>
-        <h2>代码演示</h2>
-        <a-row :gutter="12">
-            <a-col :span="12">
-                <code-show title="按钮类型" desc="按钮有四种类型：主按钮、次按钮、虚线按钮、危险按钮。主按钮在同一个操作区域最多出现一次。">
-                    <demo-base></demo-base>
-                </code-show>
-            </a-col>
-            <a-col :span="12">
-                <code-show title="图标按钮" desc="当需要在 Button 内嵌入 Icon 时，可以设置 icon 属性，或者直接在 Button 内使用 Icon 组件。如果想控制 Icon 具体的位置，只能直接使用 Icon 组件，而非 icon 属性。">
-                    <demo-base></demo-base>
-                </code-show>
-            </a-col>
-        </a-row>
-    </container>
+  <container title="Input 输入框" profile="通过鼠标或键盘输入内容，是最基础的表单域的包装。">
+    <h2>何时使用</h2>
+    <p>需要用户输入表单域内容时。</p>
+    <p>提供组合型输入框，带搜索的输入框，还可以进行大小选择。</p>
+    <h2>代码演示</h2>
+    <a-row :gutter="12">
+      <a-col :span="12">
+        <code-show title="基本使用" desc="基本使用">
+          <base-demo></base-demo>
+        </code-show>
+      </a-col>
+      <a-col :span="12">
+        <code-show title="图标按钮" desc="我们为 <input /> 输入框定义了三种尺寸（大、默认、小），高度分别为 32px、28px 和 22px。
+注意： 在表单里面，我们只使用大尺寸的输入框。">
+          <size-demo></size-demo>
+        </code-show>
+      </a-col>
+    </a-row>
+  </container>
 </template>
 
 <script>
@@ -26,14 +25,17 @@
   import CodeShow from '../../common/code-show'
   import ARow from '@/row'
   import ACol from '@/col'
-  import DemoBase from './demo/base'
+  import BaseDemo from './demo/base'
+  import SizeDemo from './demo/size'
+
   export default {
     components: {
       Container,
       ARow,
       ACol,
-      DemoBase,
-      CodeShow
+      BaseDemo,
+      CodeShow,
+      SizeDemo
     }
   }
 </script>
