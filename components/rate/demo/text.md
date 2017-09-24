@@ -17,7 +17,7 @@ Add copywriting in rate components.
 <template>
   <div>
     <span>
-      <rate :onChange="onChange" :value="value"></rate>
+      <rate @onChange="onChange" :value="value"></rate>
       <span class="ant-rate-text">{{ value }} star</span>
     </span>
   </div>

@@ -18,21 +18,21 @@ Replace the default star to other character like alphabet, digit, iconfont or ev
   <div>
     <div>
       <rate :allow-half="allowHalf">
-        <template scope="character">
+        <template scope="props">
           <Icon type="heart"></Icon>
         </template>
       </rate>
     </div>
     <div>
       <rate :allow-half="allowHalf">
-        <template scope="character">
+        <template scope="props">
           <span>A</span>
         </template>
       </rate>
     </div>
     <div>
       <rate :allow-half="allowHalf">
-        <template scope="character">
+        <template scope="props">
           <span>好</span>
         </template>
       </rate>
