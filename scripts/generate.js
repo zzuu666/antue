@@ -201,10 +201,12 @@ const generateComponentsRouterConfig = async () => {
       ;[err, files] = await to(readDirPromise(path.join(sitePath, dir, component)))
       getFilesByExtension(files, '.vue').forEach(file => {
         let lang = file.indexOf('zh-CN') > -1 ? 'zh' : 'en'
-        let name = generateCamelName(dir, component, lang)
+        let mdName = file.split('.')[0]
+        let dirName = dir.slice(0, 4)
+        let name = generateCamelName(dirName, component, mdName, lang)
         importString += `import ${name} from './${dir}/${component}/${file}'\n`
         configString += `{
-          path: '/${dir}/${component}-${lang}',
+          path: '/${dir}/${component}/${mdName}/${lang}',
           component: ${name},
           name: '${name}'
         },`
