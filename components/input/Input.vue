@@ -24,12 +24,10 @@
         type: Boolean,
         default: false
       },
-      className: String,
       prefixCls: {
         type: String,
         default: 'ant-input'
       },
-      autosize: [Boolean, Object],
       value: null
     },
     computed: {
@@ -70,7 +68,3 @@
     }
   }
 </script>
-
-<style>
-
-</style>
