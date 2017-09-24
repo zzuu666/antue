@@ -4,6 +4,7 @@ import Button from './button'
 import Menu from './menu'
 import Icon from './icon'
 import Rate from './rate'
+import Card from './card'
 
 Vue.use(Router)
 
@@ -24,6 +25,10 @@ let router = new Router({
     {
       path: '/rate',
       component: Rate
+    },
+    {
+      path: '/card',
+      component: Card
     }
   ]
 })
