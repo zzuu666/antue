@@ -5,7 +5,7 @@
         <img src="./logo.png"> Ant x Vue
       </a-col>
       <a-col class="header-title" :span="20">
-        
+
       </a-col>
     </a-row>
     <a-row>
@@ -88,8 +88,13 @@ export default {
           title: 'Data Entry',
           items: [
             {
+
               title: 'Input 输入框',
               route: 'input'
+            },
+            {
+              title: 'Rate 评分',
+              route: 'rate'
             }
           ]
         }
