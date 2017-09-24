@@ -69,7 +69,8 @@ Menu导航菜单| zzuu666
 Spin加载中 | Yangmutong | 0%
 Icon图标 | zzuu666 | done
 Input输入框 | sky-admin | 
-Rate评分 | sinchang | 
+Rate评分 | sinchang | done
+Card卡片 | echaoo |
 
 ## Todo List
 + Layout布局
@@ -97,7 +98,6 @@ Rate评分 | sinchang |
 + Avatar头像
 + Badge徽标数
 + Calendar日历
-+ Card卡片
 + Carousel走马灯
 + Collapse折叠面板
 + Popover气泡卡片
