@@ -13,7 +13,7 @@ title:
 
 The simplest usage.
 
-````html
+```` html
 <template>
   <div>
     <ant-rate></ant-rate>

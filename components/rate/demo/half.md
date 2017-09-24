@@ -13,7 +13,7 @@ title:
 
 Support select half star.
 
-````html
+```` html
 <template>
   <div>
     <ant-rate :allow-half="allowHalf"></ant-rate>
