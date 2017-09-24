@@ -13,9 +13,7 @@ export default {
     index: Number,
     prefixCls: String,
     allowHalf: Boolean,
-    disabled: Boolean,
-    onHover: Function,
-    onClick: Function
+    disabled: Boolean
   },
   data () {
     return {
@@ -24,11 +22,11 @@ export default {
   methods: {
     onHoverHandler (e) {
       if (this.disabled) return
-      this.$emit('onHover', e, this.index)
+      this.$emit('hover', e, this.index)
     },
     onClickHandler (e) {
       if (this.disabled) return
-      this.$emit('onClick', e, this.index)
+      this.$emit('click', e, this.index)
     },
     getClassName () {
       const starValue = this.index

@@ -11,7 +11,7 @@
     <a-row :gutter="12" class="mt20">
       <a-col :span="12">
         <code-show title="基本" desc="最简单的用法。">
-          <rate @onChange="onChange" @onHoverChange="onHoverChange" :value="value"></rate>
+          <rate @change="onChange" @hoverChange="onHoverChange" :value="value"></rate>
         </code-show>
       </a-col>
       <a-col :span="12">
@@ -22,7 +22,7 @@
       <a-col :span="12" class="mt20">
         <code-show title="文案展现" desc="给评分组件加上文案展示。">
           <span>
-            <rate :value="value1" @onChange="onChange"></rate>
+            <rate :value="value1" @change="onChange"></rate>
             <span class="ant-rate-text">{{value1}} star</span>
           </span>
         </code-show>

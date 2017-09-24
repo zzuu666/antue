@@ -18,7 +18,7 @@ Rate component.
 | count    | star count | number | 5 |
 | value | current value | number | - |
 | default-value | default value | number | 0 |
-| onChange | callback when select value | Function(value: number) | - |
-| onHoverChange | callback when hover item | Function(value: number) | - |
+| change | callback when select value | Function(value: number) | - |
+| hoverChange | callback when hover item | Function(value: number) | - |
 | allow-half | whether to allow semi selection   | boolean | false |
 | disabled | read only, unable to interact | boolean | false |

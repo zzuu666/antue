@@ -19,7 +19,7 @@ title: Rate
 | count    | star 总数 | number | 5 |
 | value | 当前数，受控值 | number | - |
 | default-value | 默认值 | number | 0 |
-| onChange | 选择时的回调 | Function(value: number) | - |
-| onHoverChange | 鼠标经过时数值变化的回调 | Function(value: number) | - |
+| change | 选择时的回调 | Function(value: number) | - |
+| hoverChange | 鼠标经过时数值变化的回调 | Function(value: number) | - |
 | allow-half | 是否允许半选   | boolean | false |
 | disabled | 只读，无法进行交互 | boolean | false |

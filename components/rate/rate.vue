@@ -8,8 +8,8 @@
       :new-value="newValue"
       :value="value"
       :allow-half="allowHalf"
-      @onClick="onClick"
-      @onHover="onHover"
+      @click="onClick"
+      @hover="onHover"
       :prefix-cls="`${prefixCls}-star`">
       <template scope="props">
         <slot>
@@ -23,7 +23,7 @@
 <script>
 import Star from './star.vue'
 import Icon from '../icon/index'
-import { noop, getOffsetLeft } from '../_util/util'
+import { getOffsetLeft } from '../_util/util'
 export default {
   props: {
     disabled: Boolean,
@@ -43,14 +43,6 @@ export default {
     prefixCls: {
       type: String,
       default: 'ant-rate'
-    },
-    onChange: {
-      type: Function,
-      default: noop
-    },
-    onHoverChange: {
-      type: Function,
-      default: noop
     }
   },
   data () {
@@ -77,11 +69,11 @@ export default {
       const value = this.getStarValue(index, e.pageX)
       this.markValue = value
       this.onMouseLeave()
-      this.$emit('onChange', value)
+      this.$emit('change', value)
     },
     onHover (e, index) {
       this.hoverValue = this.getStarValue(index, e.pageX)
-      this.$emit('onHoverChange', this.hoverValue)
+      this.$emit('hoverChange', this.hoverValue)
     },
     getStarDOM (index) {
       return this.$refs.stars[index].$el
@@ -99,7 +91,7 @@ export default {
     },
     onMouseLeave () {
       this.hoverValue = undefined
-      this.$emit('onHoverChange', undefined)
+      this.$emit('hoverChange', undefined)
     }
   },
   components: {
