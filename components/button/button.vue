@@ -8,16 +8,21 @@
       isLoading ? `${prefixCls}-loading` : ``,
       ghost ? `${prefixCls}-background-ghost` : ``,
       clicked ? `${prefixCls}-clicked` : ``,
+      !children && icon && !loading ? `${prefixCls}-icon-only` : ``
     ]"
     @click="handleClick"
-    @mouseup="handleMouseUp">
+    @mouseup="handleMouseUp"
+    @mousedown="handleMouseDown">
     <span>
-      <slot></slot>
+      <atu-icon v-if="icon" :type="icon" />
+      <slot v-if="!shape"></slot>
     </span>
   </button>
 </template>
 
 <script>
+import AtuIcon from '../icon'
+
 export default {
   data () {
     return {
@@ -27,6 +32,9 @@ export default {
       delayTimeout: null,
       isLoading: false
     }
+  },
+  components: {
+    AtuIcon
   },
   methods: {
     handleClick (e) {
@@ -38,6 +46,10 @@ export default {
     // Handle auto focus when click button in Chrome
     handleMouseUp (e) {
       e.currentTarget.blur()
+      this.$emit('mouseup', e)
+    },
+    handleMouseDown (e) {
+      this.$emit('mousedown', e)
     }
   },
   props: {
@@ -72,9 +84,17 @@ export default {
       }
     }
   },
+  computed: {
+    children () {
+      return this.$slots.default
+    }
+  },
   beforeDestroy () {
     this.timeout && clearTimeout(this.timeout)
     this.delayTimeout && clearTimeout(this.delayTimeout)
+  },
+  mounted () {
+    console.log(this)
   }
 }
 </script>

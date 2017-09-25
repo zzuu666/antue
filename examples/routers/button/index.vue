@@ -13,7 +13,7 @@
       </a-col>
       <a-col :span="12">
         <code-show title="图标按钮" desc="当需要在 Button 内嵌入 Icon 时，可以设置 icon 属性，或者直接在 Button 内使用 Icon 组件。如果想控制 Icon 具体的位置，只能直接使用 Icon 组件，而非 icon 属性。">
-          <demo-base></demo-base>
+          <icon-base></icon-base>
         </code-show>
       </a-col>
     </a-row>
@@ -26,12 +26,14 @@ import CodeShow from '../../common/code-show'
 import ARow from '@/row'
 import ACol from '@/col'
 import DemoBase from './demo/base'
+import IconBase from './demo/icon'
 export default {
   components: {
     Container,
     ARow,
     ACol,
     DemoBase,
+    IconBase,
     CodeShow
   }
 }
