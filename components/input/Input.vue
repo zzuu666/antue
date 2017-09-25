@@ -1,11 +1,21 @@
 <template>
-  <span :class="`${prefixCls}-affix-wrapper`">
-    <span v-if="prefix" :class="`${prefixCls}-prefix`">
+  <span :class="addonBefore||addonAfter ? `${prefixCls}-group-wrapper`:''">
+    <span :class="[
+      addonBefore||addonAfter ? `${prefixCls}-wrapper`:'',
+      addonBefore||addonAfter ? `${prefixCls}-group`:'',
+      prefix || suffix ? `${prefixCls}-affix-wrapper`:''
+    ]">
+      <slot name="addonBefore">
+        <span v-if="addonBefore" :class="`${prefixCls}-group-addon`">
+          {{addonBefore}}
+        </span>
+      </slot>
+      <span v-if="prefix" :class="`${prefixCls}-prefix`">
       <slot name="prefix">
           {{prefix}}
       </slot>
     </span>
-    <input
+      <input
       :class="[
         prefixCls,
         styleSize ? `${prefixCls}-${styleSize}` : ``,
@@ -28,9 +38,15 @@
       @click="handleClick"
       @change="handleChange"
     />
-    <span v-if="suffix" :class="`${prefixCls}-suffix`">
+      <span v-if="suffix" :class="`${prefixCls}-suffix`">
       <slot name="suffix">
         {{suffix}}
+      </slot>
+    </span>
+      <slot name="addonAfter">
+        <span v-if="addonAfter" :class="`${prefixCls}-group-addon`">
+          {{addonAfter}}
+        </span>
       </slot>
     </span>
   </span>
