@@ -5,11 +5,11 @@
       addonBefore||addonAfter ? `${prefixCls}-group`:'',
       prefix || suffix ? `${prefixCls}-affix-wrapper`:''
     ]">
-      <slot name="addonBefore">
-        <span v-if="addonBefore" :class="`${prefixCls}-group-addon`">
+      <span v-if="addonBefore" :class="`${prefixCls}-group-addon`">
+        <slot name="addonBefore">
           {{addonBefore}}
-        </span>
-      </slot>
+        </slot>
+      </span>
       <span v-if="prefix" :class="`${prefixCls}-prefix`">
       <slot name="prefix">
           {{prefix}}
@@ -43,11 +43,11 @@
         {{suffix}}
       </slot>
     </span>
-      <slot name="addonAfter">
-        <span v-if="addonAfter" :class="`${prefixCls}-group-addon`">
+      <span v-if="addonAfter" :class="`${prefixCls}-group-addon`">
+        <slot name="addonAfter">
           {{addonAfter}}
-        </span>
-      </slot>
+        </slot>
+      </span>
     </span>
   </span>
 </template>

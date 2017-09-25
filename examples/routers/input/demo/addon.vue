@@ -1,7 +1,8 @@
 <template>
   <div class="ant-input-addon">
-    <ant-input v-model="inputData" placeholder="Enter your username" addonBefore="Http://" addonAfter=".com">
-      <!--<ant-icon slot="prefix" type="user"></ant-icon>-->
+    <ant-input v-model="inputData" placeholder="Enter your username" addonBefore="Http://" addonAfter=".com"></ant-input>
+    <ant-input style="margin-top: 10px" v-model="inputData" placeholder="Enter your username" addonAfter="true">
+      <ant-icon slot="addonAfter" type="setting"></ant-icon>
     </ant-input>
   </div>
 </template>
