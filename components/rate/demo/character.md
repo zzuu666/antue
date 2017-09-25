@@ -13,37 +13,39 @@ title:
 
 Replace the default star to other character like alphabet, digit, iconfont or even Chinese word.
 
-````html
+```` html
 <template>
   <div>
     <div>
-      <rate :allow-half="allowHalf">
+      <ant-rate :allow-half="allowHalf">
         <template scope="props">
           <Icon type="heart"></Icon>
         </template>
-      </rate>
+      </ant-rate>
     </div>
     <div>
-      <rate :allow-half="allowHalf">
+      <ant-rate :allow-half="allowHalf">
         <template scope="props">
           <span>A</span>
         </template>
-      </rate>
+      </ant-rate>
     </div>
     <div>
-      <rate :allow-half="allowHalf">
+      <ant-rate :allow-half="allowHalf">
         <template scope="props">
           <span>好</span>
         </template>
-      </rate>
+      </ant-rate>
     </div>
   </div>
 </template>
 <script>
+import Icon from '@/icon'
 import AntRate from '@/rate'
 export default {
   components: {
-    AntRate
+    AntRate,
+    Icon
   },
   data () {
     return {
