@@ -1,19 +1,39 @@
 <template>
-  <input
-    :class="[
-      prefixCls,
-      styleSize ? `${prefixCls}-${styleSize}` : ``,
-      disabled ? `${prefixCls}-disabled` : ``
-    ]"
-    :disabled="disabled"
-    :value="value"
-    @keypress="handleKeyDown"
-    @input="updateValue($event.target.value)"
-    @blur="handleBlur"
-    @focus="handleFocus"
-    @click="handleClick"
-    @change="handleChange"
-  />
+  <span :class="`${prefixCls}-affix-wrapper`">
+    <span v-if="prefix" :class="`${prefixCls}-prefix`">
+      <slot name="prefix">
+          {{prefix}}
+      </slot>
+    </span>
+    <input
+      :class="[
+        prefixCls,
+        styleSize ? `${prefixCls}-${styleSize}` : ``,
+        disabled ? `${prefixCls}-disabled` : ``
+      ]"
+      :type="type"
+      :value="value"
+      :placeholder="placeholder"
+      :readonly="readonly"
+      :name="name"
+      :number="number"
+      :autofocus="autofocus"
+      :disabled="disabled"
+      :id="id"
+      :autocomplete="autocomplete"
+      @keypress="handleKeyDown"
+      @input="updateValue($event.target.value)"
+      @blur="handleBlur"
+      @focus="handleFocus"
+      @click="handleClick"
+      @change="handleChange"
+    />
+    <span v-if="suffix" :class="`${prefixCls}-suffix`">
+      <slot name="suffix">
+        {{suffix}}
+      </slot>
+    </span>
+  </span>
 </template>
 
 <script>
@@ -28,7 +48,41 @@
         type: String,
         default: 'ant-input'
       },
-      value: null
+      value: null,
+      addonBefore: String,
+      addonAfter: String,
+      prefix: String,
+      suffix: String,
+      // input需要的一些属性
+      type: {
+        type: String
+      },
+      number: {
+        type: Boolean,
+        default: false
+      },
+      autofocus: {
+        type: Boolean,
+        default: false
+      },
+      autocomplete: {
+        type: String,
+        default: 'off'
+      },
+      id: {
+        type: String
+      },
+      readonly: {
+        type: Boolean,
+        default: false
+      },
+      placeholder: {
+        type: String,
+        default: ''
+      },
+      name: {
+        type: String
+      }
     },
     computed: {
       styleSize () {
