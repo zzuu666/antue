@@ -11,9 +11,14 @@
         </code-show>
       </a-col>
       <a-col :span="12">
-        <code-show title="图标按钮" desc="我们为 <input /> 输入框定义了三种尺寸（大、默认、小），高度分别为 32px、28px 和 22px。
+        <code-show title="三种大小" desc="我们为 <input /> 输入框定义了三种尺寸（大、默认、小），高度分别为 32px、28px 和 22px。
 注意： 在表单里面，我们只使用大尺寸的输入框。">
           <size-demo></size-demo>
+        </code-show>
+      </a-col>
+      <a-col :span="12">
+        <code-show title="前缀和后缀" desc="在输入框上添加前缀或后缀图标。">
+          <prefix-demo></prefix-demo>
         </code-show>
       </a-col>
     </a-row>
@@ -27,6 +32,7 @@
   import ACol from '@/col'
   import BaseDemo from './demo/base'
   import SizeDemo from './demo/size'
+  import PrefixDemo from './demo/prefix.vue'
 
   export default {
     components: {
@@ -35,7 +41,8 @@
       ACol,
       BaseDemo,
       CodeShow,
-      SizeDemo
+      SizeDemo,
+      PrefixDemo
     }
   }
 </script>
