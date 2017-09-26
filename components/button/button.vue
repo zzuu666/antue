@@ -1,22 +1,14 @@
 <template>
   <button
-    :class="[
-      prefixCls,
-      type ? `${prefixCls}-${type}` : ``,
-      shape ? `${prefixCls}-${shape}` : ``,
-      size ? `${prefixCls}-${size}` : ``,
-      isLoading ? `${prefixCls}-loading` : ``,
-      ghost ? `${prefixCls}-background-ghost` : ``,
-      clicked ? `${prefixCls}-clicked` : ``,
-      !children && icon && !loading ? `${prefixCls}-icon-only` : ``
-    ]"
+    :class="classes"
     @click="handleClick"
     @mouseup="handleMouseUp"
     @mousedown="handleMouseDown">
-    <span>
-      <atu-icon v-if="icon" :type="icon" />
-      <slot v-if="!shape"></slot>
+    <atu-icon v-if="icon" :type="icon" />
+    <span v-if="!shape && justText">
+      <slot></slot>
     </span>
+    <slot v-if="!shape && !justText"></slot>
   </button>
 </template>
 
@@ -24,13 +16,57 @@
 import AtuIcon from '../icon'
 
 export default {
+  name: 'button',
+  props: {
+    ghost: {
+      type: Boolean,
+      default: false
+    },
+    htmlType: {
+      type: String,
+      default: 'button'
+    },
+    icon: String,
+    loading: {
+      type: [Boolean, Object],
+      default: false
+    },
+    shape: String,
+    size: {
+      type: String,
+      default: 'default'
+    },
+    type: String
+  },
   data () {
     return {
       prefixCls: 'ant-btn',
       clicked: false,
       timeout: null,
       delayTimeout: null,
-      isLoading: false
+      isLoading: false,
+      justText: false
+    }
+  },
+  computed: {
+    children () {
+      return this.$slots.default
+    },
+    classes () {
+      const prefixCls = this.prefixCls
+      return [
+        `${prefixCls}`,
+        {
+          [`${prefixCls}-${this.type}`]: !!this.type,
+          [`${prefixCls}-${this.shape}`]: !!this.shape,
+          [`${prefixCls}-${this.size}`]: !!this.size,
+          [`${prefixCls}-loading`]: !!this.loading,
+          [`${prefixCls}-background-ghost`]: !!this.ghost,
+          [`${prefixCls}-clicked`]: !!this.clicked,
+          [`${prefixCls}-icon-only`]: !this.children && this.icon && !this.loading
+        }
+
+      ]
     }
   },
   components: {
@@ -52,27 +88,6 @@ export default {
       this.$emit('mousedown', e)
     }
   },
-  props: {
-    type: String,
-    htmlType: {
-      type: String,
-      default: 'button'
-    },
-    icon: String,
-    shape: String,
-    size: {
-      type: String,
-      default: 'default'
-    },
-    loading: {
-      type: [Boolean, Object],
-      default: false
-    },
-    ghost: {
-      type: Boolean,
-      default: false
-    }
-  },
   watch: {
     loading (next, cur) {
       cur && this.delayTimeout && clearTimeout(this.delayTimeout)
@@ -84,17 +99,13 @@ export default {
       }
     }
   },
-  computed: {
-    children () {
-      return this.$slots.default
-    }
-  },
   beforeDestroy () {
     this.timeout && clearTimeout(this.timeout)
     this.delayTimeout && clearTimeout(this.delayTimeout)
   },
-  mounted () {
-    console.log(this)
+  created () {
+    const children = this.$slots.default
+    children && children.length === 1 && children[0].text && (this.justText = true)
   }
 }
 </script>
