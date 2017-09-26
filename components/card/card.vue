@@ -2,14 +2,24 @@
   <div
     :class="[
       prefixCls,
-      loading ? `${prefixCls}-loading` : ``
+      loading ? `${prefixCls}-loading` : ``,
+      bordered ? `${prefixCls}-bordered` : '',
+      noHovering ? `${prefixCls}-no-hovering` : '',
+      widerPadding ? `${prefixCls}-wider-padding` : '',
+      updateWiderPaddingCalled ? `${prefixCls}-padding-transition` : ''
     ]"
     ref=card>
     <div :class="[`${prefixCls}-head`]">
       <div v-if="title" :class="[`${prefixCls}-head-title`]">
-        {{title}}
+        <slot name="title">
+          {{title}}
+        </slot>
       </div>
-      <!--{extra ? <div class={`${prefixCls}-extra`}>{extra}</div> : null}-->
+      <div v-if="extra" :class="[`${prefixCls}-extra`]">
+        <slot name="extra">
+          {{extra}}
+        </slot>
+      </div>
     </div>
     <div :class="`${prefixCls}-body`" :style="bodyStyle">
       <div v-if="loading" :class="`${prefixCls}-loading-content`">
@@ -38,21 +48,35 @@
 </template>
 
 <script>
-export default {
-  data () {
-    return {
-      prefixCls: 'ant-card',
-      title: '123',
-      bodyStyle: {}
-    }
-  },
-  props: {
-    loading: {
-      type: Boolean,
-      default: false
+  export default {
+    data () {
+      return {
+        widerPadding: false,
+        updateWiderPaddingCalled: true
+      }
+    },
+    props: {
+      loading: {
+        type: Boolean,
+        default: false
+      },
+      prefixCls: {
+        type: String,
+        default: 'ant-card'
+      },
+      title: String,
+      extra: String,
+      bordered: {
+        type: Boolean,
+        default: true
+      },
+      bodyStyle: Object,
+      noHovering: Boolean,
+      children: String,
+      id: String,
+      className: String
     }
   }
-}
 </script>
 
 <style>
