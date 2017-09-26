@@ -71,7 +71,7 @@ Icon图标 | zzuu666 | done
 Input输入框 | sky-admin | 
 Rate评分 | sinchang | done
 Card卡片 | echaoo |
-
+Avatar头像 | targeral |
 ## Todo List
 + Layout布局
 + Affix固钉
@@ -95,7 +95,6 @@ Card卡片 | echaoo |
 + TimePicker时间选择框
 + Transfer穿梭框
 + Upload上传
-+ Avatar头像
 + Badge徽标数
 + Calendar日历
 + Carousel走马灯
