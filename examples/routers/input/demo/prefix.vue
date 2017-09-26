@@ -1,6 +1,6 @@
 <template>
   <div class="ant-input-prefix">
-    <ant-input v-model="inputData" placeholder="Enter your username" prefix="true">
+    <ant-input v-model="inputData" placeholder="Enter your username">
       <ant-icon slot="prefix" type="user"></ant-icon>
       <!--<ant-icon slot="suffix" type="search"></ant-icon>-->
     </ant-input>
