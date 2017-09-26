@@ -1,49 +1,41 @@
 <template>
-  <span :class="addonBefore||addonAfter ? `${prefixCls}-group-wrapper`:''">
-    <span :class="[
-      addonBefore||addonAfter ? `${prefixCls}-wrapper`:'',
-      addonBefore||addonAfter ? `${prefixCls}-group`:'',
-      prefix || suffix ? `${prefixCls}-affix-wrapper`:''
-    ]">
-      <span v-if="addonBefore" :class="`${prefixCls}-group-addon`">
+  <span :class="showAddonBefore || showAddonAfter ? `${prefixCls}-group-wrapper`:''">
+    <span :class="addonWrapper">
+      <span v-if="showAddonBefore" :class="`${prefixCls}-group-addon`">
         <slot name="addonBefore">
           {{addonBefore}}
         </slot>
       </span>
-      <span v-if="prefix" :class="`${prefixCls}-prefix`">
-      <slot name="prefix">
+      <span v-if="showPrefix" :class="`${prefixCls}-prefix`">
+        <slot name="prefix">
           {{prefix}}
-      </slot>
-    </span>
+        </slot>
+      </span>
       <input
-      :class="[
-        prefixCls,
-        styleSize ? `${prefixCls}-${styleSize}` : ``,
-        disabled ? `${prefixCls}-disabled` : ``
-      ]"
-      :type="type"
-      :value="value"
-      :placeholder="placeholder"
-      :readonly="readonly"
-      :name="name"
-      :number="number"
-      :autofocus="autofocus"
-      :disabled="disabled"
-      :id="id"
-      :autocomplete="autocomplete"
-      @keypress="handleKeyDown"
-      @input="updateValue($event.target.value)"
-      @blur="handleBlur"
-      @focus="handleFocus"
-      @click="handleClick"
-      @change="handleChange"
-    />
-      <span v-if="suffix" :class="`${prefixCls}-suffix`">
-      <slot name="suffix">
-        {{suffix}}
-      </slot>
-    </span>
-      <span v-if="addonAfter" :class="`${prefixCls}-group-addon`">
+        :class="inputClass"
+        :type="type"
+        :value="value"
+        :placeholder="placeholder"
+        :readonly="readonly"
+        :name="name"
+        :number="number"
+        :autofocus="autofocus"
+        :disabled="disabled"
+        :id="id"
+        :autocomplete="autocomplete"
+        @keypress="handleKeyDown"
+        @input="updateValue($event.target.value)"
+        @blur="handleBlur"
+        @focus="handleFocus"
+        @click="handleClick"
+        @change="handleChange"
+      />
+      <span v-if="showSuffix" :class="`${prefixCls}-suffix`">
+        <slot name="suffix">
+          {{suffix}}
+        </slot>
+      </span>
+      <span v-if="showAddonAfter" :class="`${prefixCls}-group-addon`">
         <slot name="addonAfter">
           {{addonAfter}}
         </slot>
@@ -54,8 +46,18 @@
 
 <script>
   export default {
+    name: 'Input',
     props: {
-      size: String,
+      addonAfter: String,
+      addonBefore: String,
+      autocomplete: {
+        type: String,
+        default: 'off'
+      },
+      autofocus: {
+        type: Boolean,
+        default: false
+      },
       disabled: {
         type: Boolean,
         default: false
@@ -64,43 +66,59 @@
         type: String,
         default: 'ant-input'
       },
-      value: null,
-      addonBefore: String,
-      addonAfter: String,
-      prefix: String,
-      suffix: String,
-      // input需要的一些属性
-      type: {
+      id: {
+        type: String
+      },
+      name: {
         type: String
       },
       number: {
         type: Boolean,
         default: false
       },
-      autofocus: {
-        type: Boolean,
-        default: false
-      },
-      autocomplete: {
+      prefix: String,
+      placeholder: {
         type: String,
-        default: 'off'
-      },
-      id: {
-        type: String
+        default: ''
       },
       readonly: {
         type: Boolean,
         default: false
       },
-      placeholder: {
-        type: String,
-        default: ''
-      },
-      name: {
+      size: String,
+      suffix: String,
+      type: {
         type: String
-      }
+      },
+      value: null
     },
     computed: {
+      addonWrapper () {
+        return [
+          this.showAddonAfter || this.showAddonBefore ? `${this.prefixCls}-wrapper` : '',
+          this.showAddonAfter || this.showAddonBefore ? `${this.prefixCls}-group` : '',
+          this.showSuffix || this.showPrefix ? `${this.prefixCls}-affix-wrapper` : ''
+        ]
+      },
+      inputClass () {
+        return [
+          this.prefixCls,
+          this.styleSize ? `${this.prefixCls}-${this.styleSize}` : ``,
+          this.disabled ? `${this.prefixCls}-disabled` : ``
+        ]
+      },
+      showAddonAfter () {
+        return this.addonAfter || this.$slots.addonAfter !== undefined
+      },
+      showAddonBefore () {
+        return this.addonBefore || this.$slots.addonBefore !== undefined
+      },
+      showPrefix () {
+        return this.prefix || this.$slots.prefix !== undefined
+      },
+      showSuffix () {
+        return this.suffix || this.$slots.suffix !== undefined
+      },
       styleSize () {
         if (this.size) {
           switch (this.size) {
