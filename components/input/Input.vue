@@ -62,10 +62,6 @@
         type: Boolean,
         default: false
       },
-      prefixCls: {
-        type: String,
-        default: 'ant-input'
-      },
       id: {
         type: String
       },
@@ -76,10 +72,14 @@
         type: Boolean,
         default: false
       },
-      prefix: String,
       placeholder: {
         type: String,
         default: ''
+      },
+      prefix: String,
+      prefixCls: {
+        type: String,
+        default: 'ant-input'
       },
       readonly: {
         type: Boolean,
