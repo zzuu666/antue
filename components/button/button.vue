@@ -1,6 +1,7 @@
 <template>
   <button
     :class="classes"
+    :type="htmlType"
     @click="handleClick"
     @mouseup="handleMouseUp"
     @mousedown="handleMouseDown">
