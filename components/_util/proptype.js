@@ -1,7 +1,7 @@
 /**
- * Check if a value in vaildList 
+ * Check if a value in validList 
  * @param {String} value 
- * @param {Array} vaildList 
+ * @param {Array} validList 
  * @return {Boolean} 
  */
-export const oneOf = (value, vaildList) => vaildList.indexOf(value) > -1
+export const oneOf = (value, validList) => validList.indexOf(value) > -1
