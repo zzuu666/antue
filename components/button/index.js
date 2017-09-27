@@ -1,6 +1,6 @@
 import './style/index.js'
 import Button from './button'
-// import ButtonGroup from './button-group'
+import ButtonGroup from './button-group'
 
-// Button.Group = ButtonGroup
+Button.Group = ButtonGroup
 export default Button
