@@ -26,6 +26,8 @@ export default {
 如果你发现写了太多复杂并难以阅读的行内表达式，那么可以使用 method 或是 computed 属性来替代其功能。
 
 ``` html
+✅ 这是对的
+
 <menu :style="style">
 
 <script>
@@ -39,6 +41,53 @@ computed: {
   }
 }
 </script>
+```
+
+``` html
+
+⚠️ 对于繁多的条件class
+
+<button
+  :class="[
+    prefixCls,
+    type ? `${prefixCls}-${type}` : ``,
+    shape ? `${prefixCls}-${shape}` : ``,
+    size ? `${prefixCls}-${size}` : ``,
+    isLoading ? `${prefixCls}-loading` : ``,
+    ghost ? `${prefixCls}-background-ghost` : ``,
+    clicked ? `${prefixCls}-clicked` : ``,
+  ]">
+</button>
+
+✅ 可以这样做
+
+<button
+  :class="classes">
+</button>
+
+<script>
+export default {
+  computed: {
+    classes () {
+      return [
+        `${prefixCls}`,
+        {
+          [`${prefixCls}-${this.type}`]: !!this.type,
+          [`${prefixCls}-${this.shape}`]: !!this.shape,
+          [`${prefixCls}-${this.size}`]: !!this.size,
+          [`${prefixCls}-loading`]: !!this.loading,
+          [`${prefixCls}-background-ghost`]: !!this.ghost,
+          [`${prefixCls}-clicked`]: !!this.clicked
+        }
+      ]
+    }
+  }
+}
+</script>
+
+
+
+
 ```
 
 ### 使用$emit来暴露事件
@@ -66,7 +115,17 @@ computed: {
 
 在 Vue.js 中，组件的 props 即 API，一个稳定并可预测的 API 会使得你的组件更容易被其他开发者使用。
 
-组件 props 通过自定义标签的属性来传递。属性的值可以是 Vue.js 字符串`(:attr="value" 或 v-bind:attr="value")`或是不传。你需要保证组件的 props 能应对不同的情况。
+我们在 `components/_util/proptype`中提供了可供 `validator` 使用的函数，如果需要其他的，请给我们提`issue`。
+
+``` js
+// type 的值需为 'primary', 'dashed', 'danger' 其中之一。
+type: {
+  type: String,
+  validator (value) {
+    return oneOf(value, ['primary', 'dashed', 'danger'])
+  }
+}
+```
 
 ### 组件结构化
 
