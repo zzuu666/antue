@@ -12,9 +12,6 @@ import AntButton from '@/button'
 export default {
   components: {
     AntButton
-  },
-  mounted () {
-    console.log(this)
   }
 }
 </script>
