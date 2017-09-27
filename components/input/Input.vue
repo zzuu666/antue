@@ -46,7 +46,7 @@
 
 <script>
   export default {
-    name: 'Input',
+    name: 'input',
     props: {
       addonAfter: String,
       addonBefore: String,

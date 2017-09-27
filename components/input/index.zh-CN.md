@@ -33,7 +33,7 @@ title: Input
 | click | 点击输入框时触发的事件 | Function | |
 | change | 内容改变时触发的事件，注意，只在失去焦点后才对比判断 | Function | |
 
-> value 和 defaultValue不再需要，使用Vue风格的v-model来进行数据绑定。前后标签、后缀若是使用其他自定义组件，不仅需要slot对应名称，还需要把属性也置为非空，建议放个true占位。
+> value 和 defaultValue不再需要，使用Vue风格的v-model来进行数据绑定。
 
 ```html
 <ant-input v-model="value" type="text" @onPressEnter="handlePressEnter">
