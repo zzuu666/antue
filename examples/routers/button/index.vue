@@ -32,6 +32,11 @@
           <button-ghost></button-ghost>
         </code-show>
       </a-col>
+      <a-col :span="12">
+        <code-show title="幽灵按钮" desc="当需要在 Button 内嵌入 Icon 时，可以设置 icon 属性，或者直接在 Button 内使用 Icon 组件。如果想控制 Icon 具体的位置，只能直接使用 Icon 组件，而非 icon 属性。">
+          <button-size></button-size>
+        </code-show>
+      </a-col>
     </a-row>
   </container>
 </template>
@@ -46,6 +51,8 @@ import IconBase from './demo/icon'
 import ButtonGroup from './demo/button-group'
 import ButtonDisabled from './demo/disabled'
 import ButtonGhost from './demo/ghost'
+import ButtonSize from './demo/size'
+
 export default {
   components: {
     Container,
@@ -56,7 +63,8 @@ export default {
     CodeShow,
     ButtonGroup,
     ButtonDisabled,
-    ButtonGhost
+    ButtonGhost,
+    ButtonSize
   }
 }
 </script>

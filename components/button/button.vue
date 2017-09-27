@@ -5,7 +5,7 @@
     @click="handleClick"
     @mouseup="handleMouseUp"
     @mousedown="handleMouseDown">
-    <atu-icon v-if="icon" :type="icon" />
+    <a-icon v-if="icon" :type="icon" />
     <span v-if="!shape && justText">
       <slot></slot>
     </span>
@@ -14,7 +14,13 @@
 </template>
 
 <script>
-import AtuIcon from '../icon'
+import AIcon from '../icon'
+import { oneOf } from '../_util/proptype'
+
+const SIZEMAP = {
+  'small': 'sm',
+  'large': 'lg'
+}
 
 export default {
   name: 'button',
@@ -32,12 +38,24 @@ export default {
       type: [Boolean, Object],
       default: false
     },
-    shape: String,
+    shape: {
+      type: String,
+      validator (value) {
+        return oneOf(value, ['circle', 'circle-outline'])
+      }
+    },
     size: {
       type: String,
-      default: 'default'
+      validator (value) {
+        return oneOf(value, ['small', 'large'])
+      }
     },
-    type: String
+    type: {
+      type: String,
+      validator (value) {
+        return oneOf(value, ['primary', 'dashed', 'danger'])
+      }
+    }
   },
   data () {
     return {
@@ -55,12 +73,13 @@ export default {
     },
     classes () {
       const prefixCls = this.prefixCls
+      const size = this.size && SIZEMAP[this.size]
       return [
         `${prefixCls}`,
         {
           [`${prefixCls}-${this.type}`]: !!this.type,
           [`${prefixCls}-${this.shape}`]: !!this.shape,
-          [`${prefixCls}-${this.size}`]: !!this.size,
+          [`${prefixCls}-${size}`]: !!size,
           [`${prefixCls}-loading`]: !!this.loading,
           [`${prefixCls}-background-ghost`]: !!this.ghost,
           [`${prefixCls}-clicked`]: !!this.clicked,
@@ -71,7 +90,7 @@ export default {
     }
   },
   components: {
-    AtuIcon
+    AIcon
   },
   methods: {
     handleClick (e) {

@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import { oneOf } from '../_util/proptype'
 
 const SIZEMAP = {
   'small': 'sm',
@@ -14,7 +15,12 @@ const SIZEMAP = {
 export default {
   name: 'buttonGroup',
   props: {
-    size: String
+    size: {
+      type: String,
+      validator (value) {
+        return oneOf(value, ['small', 'large'])
+      }
+    }
   },
   data () {
     return {
@@ -24,11 +30,11 @@ export default {
   computed: {
     classes () {
       const prefixCls = this.prefixCls
-      const size = SIZEMAP[this.size]
+      const size = this.size && SIZEMAP[this.size]
       return [
         `${prefixCls}`,
         {
-          [`${prefixCls}-${size}`]: !!this.size
+          [`${prefixCls}-${size}`]: !!size
         }
       ]
     }
