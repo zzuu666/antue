@@ -88,6 +88,11 @@ export default {
           title: 'Data Entry',
           items: [
             {
+
+              title: 'Input 输入框',
+              route: 'input'
+            },
+            {
               title: 'Rate 评分',
               route: 'rate'
             }
