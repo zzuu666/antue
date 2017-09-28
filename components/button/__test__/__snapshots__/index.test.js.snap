@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button has correct icon filling 1`] = `"<button type=\\"button\\" data-server-rendered=\\"true\\" class=\\"ant-btn ant-btn-icon-only\\"><i class=\\"anticon anticon-search\\"></i> <!----> </button>"`;
+
+exports[`Button should not show text when specify shape 1`] = `"<button type=\\"button\\" data-server-rendered=\\"true\\" class=\\"ant-btn ant-btn-circle\\"><i class=\\"anticon anticon-search\\"></i> <!----> <!----></button>"`;
+
+exports[`Button should show has span tag when content just text 1`] = `"<button type=\\"button\\" data-server-rendered=\\"true\\" class=\\"ant-btn\\"><i class=\\"anticon anticon-search\\"></i> <span>Test</span> <!----></button>"`;
+
+exports[`Button should show loading icon when specify loading 1`] = `"<button type=\\"button\\" data-server-rendered=\\"true\\" class=\\"ant-btn ant-btn-loading\\"><i class=\\"anticon anticon-loading anticon-spin\\"></i> <!----> </button>"`;
