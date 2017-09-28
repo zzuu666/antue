@@ -15,6 +15,13 @@ export const renderer = () => {
   return renderer
 }
 
+export const renderVmString = (vm, callback) => {
+  const renderer = require('vue-server-renderer').createRenderer()
+  renderer.renderToString(vm, (err, str) => {
+    return err ? new Error(err) : callback(str)
+  })
+}
+
 export const creatVueVm = (options) => {
   const vm = new Vue(options)
   return vm
