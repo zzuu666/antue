@@ -19,13 +19,13 @@ npm run dev
 执行以下指令将在`/site`路径下生成对应目录的`.vue`文件。
 
 ``` bash
-node script/generate.js -a
+node scripts/generate.js -a
 ```
 
 执行以下指令将在`/site`路径下生成`router.js`文件。
 
 ```
-node script/generate.js -r
+node scripts/generate.js -r
 ```
 
 执行以下指令，查看生成的官网。（menu需要在`/site/common/menu.js`中配置）
