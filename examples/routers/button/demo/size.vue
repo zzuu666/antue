@@ -8,12 +8,10 @@
 
 <script>
 import AtuButton from '@/button'
-const BtnGroup = AtuButton.Group
 
 export default {
   components: {
-    AtuButton,
-    BtnGroup
+    AtuButton
   }
 }
 </script>

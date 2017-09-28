@@ -18,6 +18,7 @@ const parseMarkdownHeader = (md, mark) => {
     const array = el.split(':')
     json[array[0].trim()] = array[1] && array[1].trim()
   })
+  json.order && (json.order = parseInt(json.order, 10))
   return json
 }
 
@@ -28,7 +29,6 @@ const parseDeomMarkdown = (md, component, name) => {
   if (typeof json.header.order === 'undefined') {
     generalLog(`需要为文件${mark}指定头部order`)
   }
-  json.header.order = parseInt(json.order, 10)
   const vueHtml = `<${component}-${name}></${component}-${name}>\n`
   json.display = vueHtml
   const zhCNStart = md.indexOf('## zh-CN')

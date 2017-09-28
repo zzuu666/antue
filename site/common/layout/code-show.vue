@@ -42,6 +42,7 @@ export default {
   position: relative;
   border: 1px solid #dfdfdf;
   border-radius: 4px;
+  margin: 12px 0;
 
   &-example {
     position: relative;
