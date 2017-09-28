@@ -3,6 +3,7 @@
 
 <p align="center">
   <a href="https://travis-ci.org/zzuu666/antue"><img src="https://travis-ci.org/zzuu666/antue.svg?branch=master" alt="Build Status"></a>
+  <a href="https://codecov.io/gh/zzuu666/antue"><img src="https://codecov.io/gh/zzuu666/antue/branch/master/graph/badge.svg" alt="Codecov" /></a>
   <a href="https://david-dm.org/zzuu666/antue"><img src="https://david-dm.org/zzuu666/antue/status.svg" alt="dependencies Status"></a>
   <a href="https://david-dm.org/zzuu666/antue?type=dev"><img src="https://david-dm.org/zzuu666/antue/dev-status.svg" alt="devDependencies Status"></a>
 </p>
