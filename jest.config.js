@@ -11,5 +11,7 @@ module.exports = {
   'moduleNameMapper': {
     '\\.(css|less)$': '<rootDir>/tests/__mocks__/style.js',
     'util.js': '<rootDir>/tests/util.js'
-  }
+  },
+  'coverageDirectory': './coverage/',
+  'collectCoverage': true
 }
