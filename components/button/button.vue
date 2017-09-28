@@ -47,7 +47,7 @@ export default {
     size: {
       type: String,
       validator (value) {
-        return oneOf(value, ['small', 'large'])
+        return oneOf(value, ['small', 'large', ''])
       }
     },
     type: {
