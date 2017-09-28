@@ -21,5 +21,5 @@ See [Projects](https://github.com/zzuu666/antue/projects) Components Development
 
 ## Join Us
 
-We welcome you to join in the development of Antue. Before doing, [Here](https://zzuu666.github.io/antue/) are something you should konw.
+We welcome you to join in the development of Antue. If you decide to join us [HERE](https://zzuu666.github.io/antue/) are something you want to know.
 
