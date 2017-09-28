@@ -82,7 +82,7 @@ const generateVueContainer = (main, demos = []) => {
 
     const codeInfoArray = (codes) => {
       return codes
-        .sort((a, b) => a.order - b.order)
+        .sort((a, b) => a.header.order - b.header.order)
         .map((el, index) => {
           const desc = lang === 'zh-CN' ? marked(el.zhCN) : marked(el.enUS)
           const title = lang === 'zh-CN' ? el.header['zh-CN'] : el.header['en-US']
