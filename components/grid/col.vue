@@ -1,7 +1,7 @@
 <template>
   <div
     :style="style"
-    :class="classList">
+    :class="classes">
     <slot></slot>
   </div>
 </template>
@@ -14,28 +14,28 @@ export default {
     }
   },
   props: {
-    span: Number,
+    span: [Number, String],
     order: {
-      type: Number,
+      type: [Number, String],
       default: 0
     },
     offset: {
-      type: Number,
+      type: [Number, String],
       default: 0
     },
     push: {
-      type: Number,
+      type: [Number, String],
       default: 0
     },
     pull: {
-      type: Number,
+      type: [Number, String],
       default: 0
     },
-    xs: [Number, Object],
-    sm: [Number, Object],
-    md: [Number, Object],
-    lg: [Number, Object],
-    xl: [Number, Object]
+    xs: [Number, String, Object],
+    sm: [Number, String, Object],
+    md: [Number, String, Object],
+    lg: [Number, String, Object],
+    xl: [Number, String, Object]
   },
   computed: {
     gutter () {
@@ -49,20 +49,20 @@ export default {
       }
       return ret
     },
-    classList () {
+    classes () {
       let res = []
 
-      function mergePropToClassList (list, size, props) {
-        Object.keys[props].forEach(prop => {
+      const mergePropToClassList = (list, size, props) => {
+        Object.keys(props).forEach(prop => {
           list.push(prop === 'span' ? `${this.prefixCls}-${size}-${props[prop]}` : `${this.prefixCls}-${size}-${prop}-${props[prop]}`)
         })
       }
 
-      function isNumber (variable) {
-        return typeof variable === 'number'
+      const isNumber = (variable) => {
+        return typeof variable === 'number' || typeof variable === 'string'
       }
 
-      function isObject (variable) {
+      const isObject = (variable) => {
         return typeof variable === 'object'
       }
 
@@ -70,9 +70,10 @@ export default {
         this[el] && res.push(el === 'span' ? `${this.prefixCls}-${this[el]}` : `${this.prefixCls}-${el}-${this[el]}`)
       })
 
-      ;['xs', 'sm', 'md', 'lg', 'xs'].forEach(el => {
-        isNumber(el) ? res.push(`${this.prefixCls}-${el}-${this[el]}`)
-          : isObject(el) && mergePropToClassList(res, el, this[el])
+      ;['xs', 'sm', 'md', 'lg', 'xl'].forEach(el => {
+        const value = this[el]
+        value && (isNumber(value) ? res.push(`${this.prefixCls}-${el}-${value}`)
+          : isObject(value) && mergePropToClassList(res, el, value))
       })
 
       return res
