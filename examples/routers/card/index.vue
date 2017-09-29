@@ -21,8 +21,8 @@
     </a-row>
     <a-row :gutter="12" style="margin-bottom: 20px">
       <a-col :span="24">
-        <code-show title="简洁卡片" desc="只包含内容区域。">
-          <base-demo></base-demo>
+        <code-show title="更灵活的内容展示" desc="可以调整默认边距，设定宽度。">
+          <image-demo></image-demo>
         </code-show>
       </a-col>
     </a-row>
@@ -35,13 +35,15 @@
   import ARow from '@/row'
   import ACol from '@/col'
   import BaseDemo from './demo/base'
+  import ImageDemo from './demo/image'
   export default {
     components: {
       Container,
       ARow,
       ACol,
       BaseDemo,
-      CodeShow
+      CodeShow,
+      ImageDemo
     }
   }
 </script>

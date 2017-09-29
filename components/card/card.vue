@@ -75,9 +75,6 @@
       children: String,
       id: String,
       className: String
-    },
-    mounted () {
-      console.log(this.title)
     }
   }
 </script>
