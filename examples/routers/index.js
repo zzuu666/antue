@@ -5,6 +5,7 @@ import Menu from './menu'
 import Icon from './icon'
 import Input from './input'
 import Rate from './rate'
+import Grid from './grid'
 
 Vue.use(Router)
 
@@ -29,6 +30,10 @@ let router = new Router({
     {
       path: '/rate',
       component: Rate
+    },
+    {
+      path: '/grid',
+      component: Grid
     }
   ]
 })
