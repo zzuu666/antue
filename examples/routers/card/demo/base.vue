@@ -1,6 +1,8 @@
 <template>
-  <div class="ant-card-base">
-    <ant-card title="Card title" extra="more" style="width: 300px">
+  <div :class="[
+    'ant-card-base',
+    !bordered ? `ant-bgc` : '']">
+    <ant-card :title="title" :extra="extra" style="width: 300px" :bordered="bordered">
       <a href="#" slot="extra">More</a>
       <p>Card content</p>
       <p>Card content</p>
@@ -14,6 +16,14 @@
   export default {
     components: {
       AntCard
+    },
+    props: {
+      bordered: {
+        type: Boolean,
+        default: true
+      },
+      title: String,
+      extra: String
     }
   }
 </script>
@@ -22,5 +32,9 @@
   .ant-card-base {
     padding: 10px 30px;
     text-align: left;
+  }
+
+  .ant-bgc {
+    background-color: rgba(236,236,236,1);
   }
 </style>

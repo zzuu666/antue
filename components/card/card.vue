@@ -9,8 +9,8 @@
       updateWiderPaddingCalled ? `${prefixCls}-padding-transition` : ''
     ]"
     ref=card>
-    <div :class="[`${prefixCls}-head`]">
-      <div v-if="title" :class="[`${prefixCls}-head-title`]">
+    <div :class="[`${prefixCls}-head`]" v-if="!!title">
+      <div :class="[`${prefixCls}-head-title`]">
         <slot name="title">
           {{title}}
         </slot>
@@ -75,6 +75,9 @@
       children: String,
       id: String,
       className: String
+    },
+    mounted () {
+      console.log(this.title)
     }
   }
 </script>
