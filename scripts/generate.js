@@ -71,8 +71,8 @@ const generateVueContainer = (main, demos = []) => {
     const renderCodeShowCode = (title, desc, display, code) => {
       const string = `
         <code-show
-          title="${title}"
-          desc="${desc}">
+          title="${title}">
+          <template slot="desc">${desc}</template>
           ${display}
           <template slot="code">${code}</template>
         </code-show>
@@ -123,7 +123,7 @@ const generateVueContainer = (main, demos = []) => {
     return mergeInfo(codeInfoArray(demos), isOne)
   }
   const lang = main.lang
-  const isOne = !!main.cols
+  const isOne = !!main.header.cols
 
   const handleMainContent = (content) => {
     return {
