@@ -5,7 +5,9 @@
     </div>
     <div class="code-show-content">
       <span class="code-show-content-title" v-text="title"></span>
-      <p class="code-show-content-desc" v-html="desc"></p>
+      <p class="code-show-content-desc">
+        <slot name="desc"></slot>
+      </p>
       <atu-icon @click.native="showCode" class="code-show-content-icon" :type="isShow ? 'up' : 'down'" />
     </div>
      <div v-show="isShow" class="code-show-code">
@@ -23,8 +25,7 @@ export default {
     }
   },
   props: {
-    title: String,
-    desc: String
+    title: String
   },
   components: {
     AtuIcon
@@ -47,7 +48,7 @@ export default {
   &-example {
     position: relative;
     text-align: center;
-    padding: 32px 0;
+    padding: 42px 20px 50px;
   }
   &-content {
     position: relative;
