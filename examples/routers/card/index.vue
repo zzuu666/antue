@@ -33,6 +33,13 @@
         </code-show>
       </a-col>
     </a-row>
+    <a-row :gutter="12" style="margin-bottom: 20px">
+      <a-col :span="24">
+        <code-show title="预加载的卡片" desc="数据读入前会有文本块样式。">
+          <base-demo title="Card title" :loading="true"></base-demo>
+        </code-show>
+      </a-col>
+    </a-row>
   </container>
 </template>
 

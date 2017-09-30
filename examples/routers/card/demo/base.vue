@@ -2,7 +2,7 @@
   <div :class="[
     'ant-card-base',
     !bordered ? `ant-bgc` : '']">
-    <ant-card :title="title" :extra="extra" style="width: 300px" :bordered="bordered">
+    <ant-card :title="title" :extra="extra" :loading="loading" style="width: 300px" :bordered="bordered">
       <a href="#" slot="extra">More</a>
       <p>Card content</p>
       <p>Card content</p>
@@ -23,7 +23,11 @@
         default: true
       },
       title: String,
-      extra: String
+      extra: String,
+      loading: {
+        type: Boolean,
+        default: false
+      }
     }
   }
 </script>
