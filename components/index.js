@@ -9,3 +9,5 @@ export { default as Menu } from './menu'
 export { default as Row } from './row'
 
 export { default as Rate } from './rate'
+
+export { default as Avatar } from './avatar'

@@ -53,6 +53,15 @@ const menu = {
             // }
           ]
         },
+        {
+          title: 'Data Display',
+          items: [
+            {
+              title: 'Avatar 头像',
+              route: 'compAvatarIndexZh'
+            }
+          ]
+        }
         // {
         //   title: 'Data Entry',
         //   items: [
