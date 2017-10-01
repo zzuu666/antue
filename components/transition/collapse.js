@@ -22,8 +22,7 @@ class Collapse {
         el.style.opacity = 1
       },
       leave (el) {
-        el.style.height = 0
-        el.style.opacity = 0
+        el.scrollHeight && (el.style.height = 0)
       },
       afterLeave (el) {
         el.style.height = ''
