@@ -1,17 +1,14 @@
 <template>
   <ul
-    :class="[
-      prefixCls,
-      `${prefixCls}-root`,
-      `${prefixCls}-${theme}`,
-      `${prefixCls}-${mode}`
-    ]">
+    :class="classes">
     <slot></slot>
   </ul>
 </template>
 
 <script>
+import { oneOf } from '../_util/proptype'
 export default {
+  name: 'menu',
   data () {
     return {
       prefixCls: 'ant-menu',
@@ -21,47 +18,20 @@ export default {
       open: []
     }
   },
-  methods: {
-    handleClickItem (e, index, path) {
-      this.mode !== 'inline' && (this.open = [])
-      this.$emit('click', e, index, path)
-    },
-    handleSelect (e, index) {
-      if (!this.selectable) return
-      this.selected = this.multiple ? this.selected.concat([index]) : [index]
-      this.$emit('select', e, index, this.selected)
-    },
-    handleOpenChange (index, isIncrease) {
-      let changed = false
-      const increaseOpen = () => {
-        const pos = this.open.indexOf(index)
-        pos < 0 && this.open.push(index) && (changed = true)
-      }
-      const deleteOpen = () => {
-        const pos = this.open.indexOf(index)
-        pos > -1 && this.open.splice(pos, 1) && (changed = true)
-      }
-      isIncrease ? increaseOpen() : deleteOpen()
-      changed && this.$emit('open-change', this.open)
-    }
-  },
-  created () {
-    function mergeDefaultAndSetting (def, setting) {
-      const arr = setting.length ? setting.slice()
-        : def.length ? def.slice() : []
-      return arr
-    }
-    this.selected = mergeDefaultAndSetting(this.defaultSelectedKeys, this.selectedKeys)
-    this.open = mergeDefaultAndSetting(this.defaultOpenKeys, this.openKeys)
-  },
   props: {
     theme: {
       type: String,
-      default: 'light'
+      default: 'light',
+      validator (value) {
+        return oneOf(value, ['dark', 'light'])
+      }
     },
     mode: {
       type: String,
-      default: 'vertical'
+      default: 'vertical',
+      validator (value) {
+        return oneOf(value, ['vertical', 'horizontal', 'inline'])
+      }
     },
     selectedKeys: {
       type: Array,
@@ -100,6 +70,53 @@ export default {
       type: Boolean,
       default: true
     }
+  },
+  computed: {
+    classes () {
+      const prefixCls = this.prefixCls
+      return [
+        `${prefixCls}`,
+        `${prefixCls}-root`,
+        `${prefixCls}-${this.theme}`,
+        `${prefixCls}-${this.mode}`,
+        {
+          [`${prefixCls}-inline-collapsed`]: this.inlineCollapsed
+        }
+      ]
+    }
+  },
+  methods: {
+    handleClickItem (e, index, path) {
+      this.mode !== 'inline' && (this.open = [])
+      this.$emit('click', e, index, path)
+    },
+    handleSelect (e, index) {
+      if (!this.selectable) return
+      this.selected = this.multiple ? this.selected.concat([index]) : [index]
+      this.$emit('select', e, index, this.selected)
+    },
+    handleOpenChange (index, isIncrease) {
+      let changed = false
+      const increaseOpen = () => {
+        const pos = this.open.indexOf(index)
+        pos < 0 && this.open.push(index) && (changed = true)
+      }
+      const deleteOpen = () => {
+        const pos = this.open.indexOf(index)
+        pos > -1 && this.open.splice(pos, 1) && (changed = true)
+      }
+      isIncrease ? increaseOpen() : deleteOpen()
+      changed && this.$emit('open-change', this.open)
+    }
+  },
+  created () {
+    function mergeDefaultAndSetting (def, setting) {
+      const arr = setting.length ? setting.slice()
+        : def.length ? def.slice() : []
+      return arr
+    }
+    this.selected = mergeDefaultAndSetting(this.defaultSelectedKeys, this.selectedKeys)
+    this.open = mergeDefaultAndSetting(this.defaultOpenKeys, this.openKeys)
   }
 }
 </script>

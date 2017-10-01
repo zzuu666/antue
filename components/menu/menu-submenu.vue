@@ -15,7 +15,7 @@
       v-if="$slots.title">
       <slot name="title"></slot>
     </span>
-    <transition :name="animitionName" v-if="$slots.default">
+    <atu-transition :type="animition.type" :motion="animition.motion" v-if="$slots.default">
       <ul
         :class="[
           prefixCls,
@@ -25,12 +25,13 @@
         v-show="open">
         <slot></slot>
       </ul>
-    </transition>
+    </atu-transition>
   </li>
 </template>
 
 <script>
-import { switchcaseF } from '../_util/swtichcase'
+import { switchcase } from '../_util/switchcase'
+import AtuTransition from '@/transition'
 
 export default {
   data () {
@@ -45,6 +46,9 @@ export default {
       default: false
     },
     index: [String, Number]
+  },
+  components: {
+    AtuTransition
   },
   computed: {
     mode () {
@@ -82,11 +86,19 @@ export default {
     handleSelect () {
       return this.$parent.handleSelect
     },
-    animitionName () {
-      return switchcaseF({
-        'horizontal': 'slide-up',
-        'vertical': 'zoom-big',
-        'inline': ''
+    animition () {
+      return switchcase({
+        'horizontal': {
+          type: 'slide',
+          motion: 'up'
+        },
+        'vertical': {
+          type: 'zoom',
+          motion: 'big'
+        },
+        'inline': {
+          type: 'collapse'
+        }
       })('')(this.mode)
     }
   },
