@@ -21,6 +21,11 @@
           <demo-vertical></demo-vertical>
         </code-show>
       </a-col>
+      <a-col :span="24">
+        <code-show class="menu-code" title="只展开父级" desc="按钮有四种类型：主按钮、次按钮、虚线按钮、危险按钮。主按钮在同一个操作区域最多出现一次。">
+          <demo-current></demo-current>
+        </code-show>
+      </a-col>
     </a-row>
   </container>
 </template>
@@ -34,6 +39,7 @@ import DemoHorizontal from './demo/horizontal'
 import DemoInline from './demo/inline'
 import DemoInlineCollapsed from './demo/inline-collapsed'
 import DemoVertical from './demo/vertical'
+import DemoCurrent from './demo/sider-current'
 
 export default {
   components: {
@@ -44,7 +50,8 @@ export default {
     DemoHorizontal,
     DemoInline,
     DemoInlineCollapsed,
-    DemoVertical
+    DemoVertical,
+    DemoCurrent
   }
 }
 </script>
