@@ -1,9 +1,5 @@
 <template>
-  <a-menu
-    mode="inline"
-    style="width: 240px;"
-    :open-keys="open"
-    @open-change="openChange">
+  <a-menu :mode="mode" style="width: 240px;">
     <a-sub-menu index="1">
       <template slot="title">
         <icon type="setting" />Navigation One
@@ -42,15 +38,6 @@
         <a-menu-item index="3-3">Option 3</a-menu-item>
         <a-menu-item index="3-4">Option 4</a-menu-item>
       </a-item-group>
-      <a-sub-menu index="4">
-        <template slot="title">
-          <icon type="setting" />Navigation Three
-        </template>
-          <a-menu-item index="4-1">Option 1</a-menu-item>
-          <a-menu-item index="4-2">Option 2</a-menu-item>
-          <a-menu-item index="4-3">Option 3</a-menu-item>
-          <a-menu-item index="4-4">Option 4</a-menu-item>
-      </a-sub-menu>
     </a-sub-menu>
   </a-menu>
 </template>
@@ -66,18 +53,7 @@ const AItemGroup = AMenu.ItemGroup
 export default {
   data () {
     return {
-      open: ['1'],
-      rootKeys: ['1', '2', '3']
-    }
-  },
-  methods: {
-    openChange (keys) {
-      const latestOpenKey = keys.find(key => this.open.indexOf(key) === -1)
-      if (this.rootKeys.indexOf(latestOpenKey) === -1) {
-        latestOpenKey && (this.open = keys)
-      } else {
-        this.open = latestOpenKey ? [latestOpenKey] : []
-      }
+      mode: 'inline'
     }
   },
   components: {
