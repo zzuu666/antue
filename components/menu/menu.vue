@@ -1,5 +1,7 @@
 <template>
   <ul
+    aria-activedescendant
+    role="menu"
     :class="classes">
     <slot></slot>
   </ul>
@@ -11,7 +13,6 @@ export default {
   name: 'menu',
   data () {
     return {
-      prefixCls: 'ant-menu',
       level: 0,
       path: [],
       selected: [],
@@ -19,6 +20,10 @@ export default {
     }
   },
   props: {
+    prefixCls: {
+      type: String,
+      default: 'ant-menu'
+    },
     theme: {
       type: String,
       default: 'light',
@@ -86,14 +91,16 @@ export default {
     }
   },
   methods: {
-    handleClickItem (e, index, path) {
+    handleClickItem (info) {
       this.mode !== 'inline' && (this.open = [])
-      this.$emit('click', e, index, path)
+      this.$emit('click', info)
     },
-    handleSelect (e, index) {
+    handleSelect (info) {
+      const { index } = info
       if (!this.selectable) return
       this.selected = this.multiple ? this.selected.concat([index]) : [index]
-      this.$emit('select', e, index, this.selected)
+      info.selected = this.selected
+      this.$emit('select', info)
     },
     handleOpenChange (index, isIncrease) {
       let changed = false
@@ -107,6 +114,17 @@ export default {
       }
       isIncrease ? increaseOpen() : deleteOpen()
       changed && this.$emit('open-change', this.open)
+    },
+    handleDeSelect (info) {
+      this.$emit('de-select', info)
+    }
+  },
+  watch: {
+    openKeys (value) {
+      this.open = value.slice()
+    },
+    selectedKeys (value) {
+      this.selected = value.slice()
     }
   },
   created () {

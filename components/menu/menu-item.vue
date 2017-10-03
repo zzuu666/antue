@@ -1,24 +1,28 @@
 <template>
   <li
-    :class="[
-      prefixCls,
-      disabled ? `${prefixCls}-disabled` : ``,
-      selected ? `${prefixCls}-selected` : ``
-    ]"
+    role="menuitem"
+    :aria-selected="selected"
+    :aria-disabled="disabled"
+    :class="classes"
     :style="style"
-    @click="handleClick">
+    @click="handleClick"
+    @keydown.enter="handleKeyDown">
     <slot></slot>
   </li>
 </template>
 
 <script>
 export default {
+  name: 'menuItem',
   data () {
     return {
       prefixCls: 'ant-menu-item'
     }
   },
   computed: {
+    multiple () {
+      return this.$parent.multiple
+    },
     mode () {
       return this.$parent.mode
     },
@@ -40,6 +44,16 @@ export default {
         res['padding-left'] = this.level * this.inlineIndent + 'px'
       }
       return res
+    },
+    classes () {
+      const prefixCls = this.prefixCls
+      return [
+        prefixCls,
+        {
+          [`${prefixCls}-disabled`]: this.disabled,
+          [`${prefixCls}-selected`]: this.selected
+        }
+      ]
     }
   },
   props: {
@@ -51,8 +65,18 @@ export default {
   },
   methods: {
     handleClick (e) {
-      this.$parent.handleClickItem(e, this.index, this.path)
-      this.$parent.handleSelect(e, this.index)
+      const info = {
+        e,
+        vm: this,
+        path: this.path,
+        index: this.index
+      }
+      this.$parent.handleClickItem(info)
+      this.multiple ? this.selected ? this.$parent.handleDeSelect(info) : this.$parent.handleSelect(info)
+        : !this.selected && this.$parent.handleSelect(info)
+    },
+    handleKeyDown (e) {
+      this.handleClick(e)
     }
   }
 }

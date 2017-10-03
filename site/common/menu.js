@@ -83,6 +83,15 @@ const menu = {
               route: 'compRateIndexZh'
             }
           ]
+        },
+        {
+          title: 'Transition',
+          items: [
+            {
+              title: 'Transition 动画',
+              route: 'compTransitionIndexZh'
+            }
+          ]
         }
       ]
     }

@@ -97,6 +97,16 @@ export default {
               route: 'rate'
             }
           ]
+        },
+        {
+          title: 'Transition',
+          items: [
+            {
+
+              title: 'Transition 输入框',
+              route: 'transition'
+            }
+          ]
         }
       ]
     }

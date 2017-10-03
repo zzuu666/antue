@@ -1,13 +1,15 @@
 <template>
   <li
+    :aria-expanded="isOpen"
+    aria-haspopup="true"
     :class="[
       `${prefixCls}-submenu`,
       `${prefixCls}-submenu-${mode}`,
       disabled ? `${prefixCls}-submenu-disabled` : ``,
-      open ? `${prefixCls}-submenu-open` : ``
+      isOpen ? `${prefixCls}-submenu-open` : ``
     ]"
-    @mouseenter="handleMouseenter"
-    @mouseleave="handleMouseleave">
+    @mouseenter="handleMouseEnter"
+    @mouseleave="handleMouseLeave">
     <span
       :class="`${prefixCls}-submenu-title`"
       @click="handleClick"
@@ -22,7 +24,7 @@
           `${prefixCls}-sub`,
           `${prefixCls}-${subMode}`
         ]"
-        v-show="open">
+        v-show="isOpen">
         <slot></slot>
       </ul>
     </atu-transition>
@@ -34,6 +36,7 @@ import { switchcase } from '../_util/switchcase'
 import AtuTransition from '@/transition'
 
 export default {
+  name: 'menuSubmenu',
   data () {
     return {
       prefixCls: 'ant-menu',
@@ -70,8 +73,11 @@ export default {
       }
       return res
     },
-    open () {
+    isOpen () {
       return this.$parent.open.indexOf(this.index) > -1
+    },
+    open () {
+      return this.$parent.open
     },
     path () {
       let path = this.$parent.path.slice()
@@ -85,6 +91,12 @@ export default {
     },
     handleSelect () {
       return this.$parent.handleSelect
+    },
+    handleDeSelect () {
+      return this.$parent.handleDeSelect
+    },
+    handleOpenChange () {
+      return this.$parent.handleOpenChange
     },
     animition () {
       return switchcase({
@@ -103,12 +115,12 @@ export default {
     }
   },
   methods: {
-    handleMouseenter (e) {
+    handleMouseEnter (e) {
       if (this.mode === 'inline') return
       this.timer && clearTimeout(this.timer)
       this.$parent.handleOpenChange(this.index, true)
     },
-    handleMouseleave (e) {
+    handleMouseLeave (e) {
       if (this.mode === 'inline') return
       this.timer = setTimeout(() => {
         this.$parent.handleOpenChange(this.index, false)
@@ -116,7 +128,7 @@ export default {
     },
     handleClick () {
       if (this.mode !== 'inline') return
-      this.$parent.handleOpenChange(this.index, !this.open)
+      this.$parent.handleOpenChange(this.index, !this.isOpen)
     }
   }
 }

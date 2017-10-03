@@ -15,6 +15,7 @@
 
 <script>
 export default {
+  name: 'menuItemGroup',
   data () {
     return {
       perfixCls: 'ant-menu'
@@ -45,6 +46,9 @@ export default {
     },
     handleSelect () {
       return this.$parent.handleSelect
+    },
+    handleDeSelect () {
+      return this.$parent.handleDeSelect
     }
   }
 }
