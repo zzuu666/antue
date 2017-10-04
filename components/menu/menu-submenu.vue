@@ -37,25 +37,55 @@ import AtuTransition from '@/transition'
 
 export default {
   name: 'menuSubmenu',
-  data () {
-    return {
-      prefixCls: 'ant-menu',
-      timer: null
-    }
-  },
   props: {
     disabled: {
       type: Boolean,
       default: false
     },
-    index: [String, Number]
+    index: [String, Number],
+    prefixCls: {
+      type: String,
+      default: 'ant-menu'
+    }
   },
-  components: {
-    AtuTransition
+  data () {
+    return {
+      timer: null
+    }
   },
   computed: {
+    animition () {
+      return switchcase({
+        'horizontal': {
+          type: 'slide',
+          motion: 'up'
+        },
+        'vertical': {
+          type: 'zoom',
+          motion: 'big'
+        },
+        'inline': {
+          type: 'collapse'
+        }
+      })('')(this.mode)
+    },
+    path () {
+      let path = this.$parent.path.slice()
+      return path
+    },
+    style () {
+      let res = {}
+      if (this.mode === 'inline' && this.level > 0) {
+        res['padding-left'] = this.level * this.inlineIndent + 'px'
+      }
+      return res
+    },
+    // From parent
     mode () {
       return this.$parent.mode
+    },
+    multiple () {
+      return this.$parent.multiple
     },
     subMode () {
       return this.$parent.mode === 'horizontal' ? 'vertical' : this.$parent.mode
@@ -66,22 +96,11 @@ export default {
     inlineIndent () {
       return this.$parent.inlineIndent
     },
-    style () {
-      let res = {}
-      if (this.mode === 'inline' && this.level > 0) {
-        res['padding-left'] = this.level * this.inlineIndent + 'px'
-      }
-      return res
-    },
     isOpen () {
       return this.$parent.open.indexOf(this.index) > -1
     },
     open () {
       return this.$parent.open
-    },
-    path () {
-      let path = this.$parent.path.slice()
-      return path
     },
     selected () {
       return this.$parent.selected
@@ -97,24 +116,16 @@ export default {
     },
     handleOpenChange () {
       return this.$parent.handleOpenChange
-    },
-    animition () {
-      return switchcase({
-        'horizontal': {
-          type: 'slide',
-          motion: 'up'
-        },
-        'vertical': {
-          type: 'zoom',
-          motion: 'big'
-        },
-        'inline': {
-          type: 'collapse'
-        }
-      })('')(this.mode)
     }
   },
+  components: {
+    AtuTransition
+  },
   methods: {
+    handleClick () {
+      if (this.mode !== 'inline') return
+      this.$parent.handleOpenChange(this.index, !this.isOpen)
+    },
     handleMouseEnter (e) {
       if (this.mode === 'inline') return
       this.timer && clearTimeout(this.timer)
@@ -125,13 +136,7 @@ export default {
       this.timer = setTimeout(() => {
         this.$parent.handleOpenChange(this.index, false)
       }, 100)
-    },
-    handleClick () {
-      if (this.mode !== 'inline') return
-      this.$parent.handleOpenChange(this.index, !this.isOpen)
     }
   }
 }
 </script>
-
-

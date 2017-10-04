@@ -16,17 +16,19 @@
 <script>
 export default {
   name: 'menuItemGroup',
-  data () {
-    return {
-      perfixCls: 'ant-menu'
-    }
-  },
   props: {
-    title: String
+    title: String,
+    perfixCls: {
+      type: String,
+      default: 'ant-menu'
+    }
   },
   computed: {
     mode () {
       return this.$parent.mode
+    },
+    multiple () {
+      return this.$parent.multiple
     },
     level () {
       return this.$parent.level
@@ -49,6 +51,9 @@ export default {
     },
     handleDeSelect () {
       return this.$parent.handleDeSelect
+    },
+    handleOpenChange () {
+      return this.$parent.handleOpenChange
     }
   }
 }

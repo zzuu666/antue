@@ -11,46 +11,12 @@
 import { oneOf } from '../_util/proptype'
 export default {
   name: 'menu',
-  data () {
-    return {
-      level: 0,
-      path: [],
-      selected: [],
-      open: []
-    }
-  },
   props: {
     prefixCls: {
       type: String,
       default: 'ant-menu'
     },
-    theme: {
-      type: String,
-      default: 'light',
-      validator (value) {
-        return oneOf(value, ['dark', 'light'])
-      }
-    },
-    mode: {
-      type: String,
-      default: 'vertical',
-      validator (value) {
-        return oneOf(value, ['vertical', 'horizontal', 'inline'])
-      }
-    },
-    selectedKeys: {
-      type: Array,
-      default () {
-        return []
-      }
-    },
     defaultSelectedKeys: {
-      type: Array,
-      default () {
-        return []
-      }
-    },
-    openKeys: {
       type: Array,
       default () {
         return []
@@ -62,18 +28,52 @@ export default {
         return []
       }
     },
+    inlineCollapsed: Boolean,
     inlineIndent: {
       type: Number,
       default: 24
+    },
+    mode: {
+      type: String,
+      default: 'vertical',
+      validator (value) {
+        return oneOf(value, ['vertical', 'horizontal', 'inline'])
+      }
     },
     multiple: {
       type: Boolean,
       default: false
     },
-    inlineCollapsed: Boolean,
+    openKeys: {
+      type: Array,
+      default () {
+        return []
+      }
+    },
     selectable: {
       type: Boolean,
       default: true
+    },
+    selectedKeys: {
+      type: Array,
+      default () {
+        return []
+      }
+    },
+    theme: {
+      type: String,
+      default: 'light',
+      validator (value) {
+        return oneOf(value, ['dark', 'light'])
+      }
+    }
+  },
+  data () {
+    return {
+      level: 0,
+      path: [],
+      selected: [],
+      open: []
     }
   },
   computed: {
@@ -90,17 +90,21 @@ export default {
       ]
     }
   },
+  watch: {
+    openKeys (value) {
+      this.open = value.slice()
+    },
+    selectedKeys (value) {
+      this.selected = value.slice()
+    }
+  },
   methods: {
     handleClickItem (info) {
       this.mode !== 'inline' && (this.open = [])
       this.$emit('click', info)
     },
-    handleSelect (info) {
-      const { index } = info
-      if (!this.selectable) return
-      this.selected = this.multiple ? this.selected.concat([index]) : [index]
-      info.selected = this.selected
-      this.$emit('select', info)
+    handleDeSelect (info) {
+      this.$emit('de-select', info)
     },
     handleOpenChange (index, isIncrease) {
       let changed = false
@@ -115,16 +119,12 @@ export default {
       isIncrease ? increaseOpen() : deleteOpen()
       changed && this.$emit('open-change', this.open)
     },
-    handleDeSelect (info) {
-      this.$emit('de-select', info)
-    }
-  },
-  watch: {
-    openKeys (value) {
-      this.open = value.slice()
-    },
-    selectedKeys (value) {
-      this.selected = value.slice()
+    handleSelect (info) {
+      const { index } = info
+      if (!this.selectable) return
+      this.selected = this.multiple ? this.selected.concat([index]) : [index]
+      info.selected = this.selected
+      this.$emit('select', info)
     }
   },
   created () {
@@ -138,4 +138,3 @@ export default {
   }
 }
 </script>
-

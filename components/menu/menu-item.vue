@@ -14,12 +14,25 @@
 <script>
 export default {
   name: 'menuItem',
-  data () {
-    return {
-      prefixCls: 'ant-menu-item'
-    }
-  },
   computed: {
+    classes () {
+      const prefixCls = this.prefixCls
+      return [
+        prefixCls,
+        {
+          [`${prefixCls}-disabled`]: this.disabled,
+          [`${prefixCls}-selected`]: this.selected
+        }
+      ]
+    },
+    style () {
+      let res = {}
+      if (this.mode === 'inline' && this.level > 0) {
+        res['padding-left'] = this.level * this.inlineIndent + 'px'
+      }
+      return res
+    },
+    // From parent
     multiple () {
       return this.$parent.multiple
     },
@@ -37,23 +50,6 @@ export default {
     },
     inlineIndent () {
       return this.$parent.inlineIndent
-    },
-    style () {
-      let res = {}
-      if (this.mode === 'inline' && this.level > 0) {
-        res['padding-left'] = this.level * this.inlineIndent + 'px'
-      }
-      return res
-    },
-    classes () {
-      const prefixCls = this.prefixCls
-      return [
-        prefixCls,
-        {
-          [`${prefixCls}-disabled`]: this.disabled,
-          [`${prefixCls}-selected`]: this.selected
-        }
-      ]
     }
   },
   props: {
@@ -61,7 +57,11 @@ export default {
       type: Boolean,
       default: false
     },
-    index: [String, Number]
+    index: [String, Number],
+    prefixCls: {
+      type: String,
+      default: 'ant-menu-item'
+    }
   },
   methods: {
     handleClick (e) {
@@ -81,4 +81,3 @@ export default {
   }
 }
 </script>
-
