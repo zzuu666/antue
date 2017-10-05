@@ -95,6 +95,10 @@ export default {
             {
               title: 'Rate 评分',
               route: 'rate'
+            },
+            {
+              title: 'Radio 单选框',
+              route: 'radio'
             }
           ]
         },
