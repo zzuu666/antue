@@ -102,7 +102,6 @@ export default {
           title: 'Transition',
           items: [
             {
-
               title: 'Transition 输入框',
               route: 'transition'
             }

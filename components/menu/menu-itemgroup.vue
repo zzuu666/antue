@@ -37,8 +37,7 @@ export default {
       return this.$parent.inlineIndent
     },
     path () {
-      let path = this.$parent.path.slice()
-      return path
+      return this.$parent.path.slice()
     },
     selected () {
       return this.$parent.selected

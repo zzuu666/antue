@@ -26,7 +26,7 @@ export default {
       ]
     },
     style () {
-      let res = {}
+      const res = {}
       if (this.mode === 'inline' && this.level > 0) {
         res['padding-left'] = this.level * this.inlineIndent + 'px'
       }

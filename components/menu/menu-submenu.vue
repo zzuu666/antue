@@ -70,11 +70,10 @@ export default {
       })('')(this.mode)
     },
     path () {
-      let path = this.$parent.path.slice()
-      return path
+      return this.$parent.path.slice().push(this.index)
     },
     style () {
-      let res = {}
+      const res = {}
       if (this.mode === 'inline' && this.level > 0) {
         res['padding-left'] = this.level * this.inlineIndent + 'px'
       }
