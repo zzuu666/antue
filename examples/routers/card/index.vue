@@ -40,6 +40,13 @@
         </code-show>
       </a-col>
     </a-row>
+    <a-row :gutter="12" style="margin-bottom: 20px">
+      <a-col :span="24">
+        <code-show title="网格型内嵌卡片" desc="一种常见的卡片内容区隔模式。">
+          <net-demo></net-demo>
+        </code-show>
+      </a-col>
+    </a-row>
   </container>
 </template>
 
@@ -51,6 +58,7 @@
   import BaseDemo from './demo/base'
   import ImageDemo from './demo/image'
   import GridDemo from './demo/grids'
+  import NetDemo from './demo/net'
   export default {
     components: {
       Container,
@@ -59,7 +67,8 @@
       BaseDemo,
       CodeShow,
       ImageDemo,
-      GridDemo
+      GridDemo,
+      NetDemo
     }
   }
 </script>
