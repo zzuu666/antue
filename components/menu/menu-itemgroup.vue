@@ -1,12 +1,12 @@
 <template>
   <li
-    :class="`${perfixCls}-item-group`">
+    :class="`${prefixCls}-item-group`">
     <div
-      :class="`${perfixCls}-item-group-title`"
+      :class="`${prefixCls}-item-group-title`"
       v-if="title"
       v-text="title"></div>
     <ul
-      :class="`${perfixCls}-item-group-list`"
+      :class="`${prefixCls}-item-group-list`"
       v-if="$slots.default">
       <slot></slot>
     </ul>
@@ -18,7 +18,7 @@ export default {
   name: 'menuItemGroup',
   props: {
     title: String,
-    perfixCls: {
+    prefixCls: {
       type: String,
       default: 'ant-menu'
     }

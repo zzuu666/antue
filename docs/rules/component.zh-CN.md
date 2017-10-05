@@ -15,7 +15,7 @@ title: 组件规范
 export default {
 	name: 'button',
   props: {
-    perfixCls: {
+    prefixCls: {
       type: String,
       default: 'ant-button'
     }
