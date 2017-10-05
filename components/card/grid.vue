@@ -1,5 +1,5 @@
 <template>
-  <div :class="[`${prefixCls}-grid`, className]">
+  <div :class="`${prefixCls}-grid`">
     <slot></slot>
   </div>
 </template>
@@ -10,8 +10,7 @@
       prefixCls: {
         type: String,
         default: 'ant-card'
-      },
-      className: String
+      }
     }
   }
 </script>

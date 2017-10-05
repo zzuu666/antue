@@ -64,10 +64,7 @@
         default: true
       },
       bodyStyle: Object,
-      noHovering: Boolean,
-      children: String,
-      id: String,
-      className: String
+      noHovering: Boolean
     },
     computed: {
       classes () {
