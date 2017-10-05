@@ -13,7 +13,7 @@ title:
 
 Read only, can't use mouse to interact.
 
-````html
+```` html
 <template>
   <div>
     <ant-rate :disabled="disabled"></ant-rate>
