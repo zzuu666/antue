@@ -1,16 +1,9 @@
 <template>
   <div
-    :class="[
-      prefixCls,
-      loading ? `${prefixCls}-loading` : ``,
-      bordered ? `${prefixCls}-bordered` : '',
-      noHovering ? `${prefixCls}-no-hovering` : '',
-      widerPadding ? `${prefixCls}-wider-padding` : '',
-      updateWiderPaddingCalled ? `${prefixCls}-padding-transition` : ''
-    ]"
+    :class="classes"
     ref=card>
-    <div :class="[`${prefixCls}-head`]" v-if="!!title">
-      <div :class="[`${prefixCls}-head-title`]">
+    <div :class="`${prefixCls}-head`" v-if="!!title">
+      <div :class="`${prefixCls}-head-title`">
         <slot name="title">
           {{title}}
         </slot>
@@ -75,6 +68,18 @@
       children: String,
       id: String,
       className: String
+    },
+    computed: {
+      classes () {
+        return [
+          this.prefixCls,
+          this.loading ? `${this.prefixCls}-loading` : ``,
+          this.bordered ? `${this.prefixCls}-bordered` : '',
+          this.noHovering ? `${this.prefixCls}-no-hovering` : '',
+          this.widerPadding ? `${this.prefixCls}-wider-padding` : '',
+          this.updateWiderPaddingCalled ? `${this.prefixCls}-padding-transition` : ''
+        ]
+      }
     }
   }
 </script>

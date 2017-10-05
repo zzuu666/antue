@@ -1,13 +1,11 @@
 <template>
-  <div :class="[
-    'ant-card-base',
-    !bordered ? `ant-bgc` : '']">
-    <ant-card :title="title" :extra="extra" style="width: 300px" :bordered="bordered">
+  <div class="ant-card-base">
+    <ant-card :title="title" :extra="extra" style="width: 240px" :bordered="bordered" :body-style="{padding: 0}">
       <a href="#" slot="extra">More</a>
-      <div className="custom-image">
+      <div class="custom-image">
         <img alt="example" width="100%" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />
       </div>
-      <div className="custom-card">
+      <div class="custom-card">
         <h3>Europe Street beat</h3>
         <p>www.instagram.com</p>
       </div>
@@ -38,7 +36,13 @@
     text-align: left;
   }
 
-  .ant-bgc {
-    background-color: rgba(236,236,236,1);
+  .custom-image img {
+    display: block;
+  }
+  .custom-card {
+    padding: 10px 16px;
+  }
+  .custom-card p {
+    color: #999;
   }
 </style>
