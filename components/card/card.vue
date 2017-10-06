@@ -1,7 +1,5 @@
 <template>
-  <div
-    :class="classes"
-    ref=card>
+  <div :class="classes">
     <div :class="`${prefixCls}-head`" v-if="!!title">
       <div :class="`${prefixCls}-head-title`">
         <slot name="title">
@@ -42,12 +40,7 @@
 
 <script>
   export default {
-    data () {
-      return {
-        widerPadding: false,
-        updateWiderPaddingCalled: true
-      }
-    },
+    name: 'card',
     props: {
       loading: {
         type: Boolean,
@@ -72,15 +65,9 @@
           this.prefixCls,
           this.loading ? `${this.prefixCls}-loading` : ``,
           this.bordered ? `${this.prefixCls}-bordered` : '',
-          this.noHovering ? `${this.prefixCls}-no-hovering` : '',
-          this.widerPadding ? `${this.prefixCls}-wider-padding` : '',
-          this.updateWiderPaddingCalled ? `${this.prefixCls}-padding-transition` : ''
+          this.noHovering ? `${this.prefixCls}-no-hovering` : ''
         ]
       }
     }
   }
 </script>
-
-<style>
-
-</style>
