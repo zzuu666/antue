@@ -6,6 +6,7 @@ import Icon from './icon'
 import Input from './input'
 import Rate from './rate'
 import Grid from './grid'
+import Switch from './switch'
 
 Vue.use(Router)
 
@@ -34,6 +35,10 @@ let router = new Router({
     {
       path: '/grid',
       component: Grid
+    },
+    {
+      path: '/switch',
+      component: Switch
     }
   ]
 })

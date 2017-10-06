@@ -95,6 +95,10 @@ export default {
             {
               title: 'Rate 评分',
               route: 'rate'
+            },
+            {
+              title: 'Switch 开关',
+              route: 'switch'
             }
           ]
         }
