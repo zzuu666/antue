@@ -23,7 +23,7 @@ Disabled state of `Switch`.
 
 <script>
 import AtuSwitch from '@/switch'
-import AtuButton from '@/switch'
+import AtuButton from '@/button'
 export default {
   data () {
     return {

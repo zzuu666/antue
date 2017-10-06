@@ -28,14 +28,18 @@ With text and icon.
       :defaultChecked="true">
       <icon type="check" slot="checkedChildren" />
       <icon type="cross" slot="unCheckedChildren" />
+    </atu-switch>
   </div>
 </template>
 
 <script>
 import AtuSwitch from '@/switch'
+import Icon from '@/icon'
+
 export default {
   components: {
-    AtuSwitch
+    AtuSwitch,
+    Icon
   },
   methods: {
     handleChange (checked) {
