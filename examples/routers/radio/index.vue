@@ -9,6 +9,9 @@
         <code-show title="基本" desc="最简单的用法。">
           <base-demo></base-demo>
         </code-show>
+        <code-show title="单选组合" desc="一组互斥的Radio配合使用。">
+          <group-demo></group-demo>
+        </code-show>
       </a-col>
       <a-col :span="12">
         <code-show title="不可用" desc="Radio不可用。">
@@ -26,6 +29,7 @@
   import ACol from '@/col'
   import BaseDemo from './demo/base'
   import DisabledDemo from './demo/disable'
+  import GroupDemo from './demo/group'
 
   export default {
     components: {
@@ -34,7 +38,8 @@
       ACol,
       CodeShow,
       BaseDemo,
-      DisabledDemo
+      DisabledDemo,
+      GroupDemo
     }
   }
 </script>
