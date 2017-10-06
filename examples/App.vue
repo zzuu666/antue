@@ -106,6 +106,15 @@ export default {
               route: 'card'
             }
           ]
+        },
+        {
+          title: 'Transition',
+          items: [
+            {
+              title: 'Transition 输入框',
+              route: 'transition'
+            }
+          ]
         }
       ]
     }

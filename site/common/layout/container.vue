@@ -1,6 +1,12 @@
 <template>
-  <div class="container markdown">
-    <slot></slot>
+  <div class="container">
+    <div class="markdown">
+      <slot name="before"></slot>
+    </div>
+    <slot name="code"></slot>
+    <div class="markdown">
+      <slot name="after"></slot>
+    </div>
   </div>
 </template>
 

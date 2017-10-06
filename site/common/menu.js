@@ -66,15 +66,33 @@ const menu = {
             // }
           ]
         },
-        // {
-        //   title: 'Data Entry',
-        //   items: [
-        //     {
-        //       title: 'Rate 评分',
-        //       route: 'compRateIndexZh'
-        //     }
-        //   ]
-        // }
+        {
+          title: 'Navigation',
+          items: [
+            {
+              title: 'Menu 菜单',
+              route: 'compMenuIndexZh'
+            }
+          ]
+        },
+        {
+          title: 'Data Entry',
+          items: [
+            {
+              title: 'Rate 评分',
+              route: 'compRateIndexZh'
+            }
+          ]
+        },
+        {
+          title: 'Transition',
+          items: [
+            {
+              title: 'Transition 动画',
+              route: 'compTransitionIndexZh'
+            }
+          ]
+        }
       ]
     }
   ]

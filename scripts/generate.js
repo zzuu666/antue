@@ -57,7 +57,7 @@ const generateVueContainer = (main, demos = []) => {
     }
 
     const renderCodeRow = (isOneCol, code, odd) => {
-      const h2 = `<h2> 代码展示 </h2>`
+      const h2 = `<div class="markdown"><h2> 代码展示 </h2></div>`
       const col = isOneCol ? renderCodeOneCol(code) : renderCodeTowCols(code, odd)
       const string = `
       ${h2}
@@ -65,7 +65,7 @@ const generateVueContainer = (main, demos = []) => {
         ${col}
       </atu-row>
       `
-      return string
+      return code ? string : ''
     }
 
     const renderCodeShowCode = (title, desc, display, code) => {
@@ -139,11 +139,17 @@ const generateVueContainer = (main, demos = []) => {
   const template =
   `<template>
     <container>
-      <h1>${result.title} ${result.subtitle}</h1>
-      ${result.beforeCode}
-      ${result.content}
-      ${code.code}
-      ${result.afterCode}
+      <template slot="before">
+        <h1>${result.title} ${result.subtitle}</h1>
+        ${result.beforeCode}
+        ${result.content}
+      </template>
+      <template slot="code">
+        ${code.code}
+      </template>
+      <template slot="after">
+        ${result.afterCode}
+      </template>
     </container>
   </template>
   <script>

@@ -1,24 +1,41 @@
 <template>
   <li
-    :class="[
-      prefixCls,
-      disabled ? `${prefixCls}-disabled` : ``,
-      selected ? `${prefixCls}-selected` : ``
-    ]"
+    role="menuitem"
+    :aria-selected="selected"
+    :aria-disabled="disabled"
+    :class="classes"
     :style="style"
-    @click="handleClick">
+    @click="handleClick"
+    @keydown.enter="handleKeyDown">
     <slot></slot>
   </li>
 </template>
 
 <script>
 export default {
-  data () {
-    return {
-      prefixCls: 'ant-menu-item'
-    }
-  },
+  name: 'menuItem',
   computed: {
+    classes () {
+      const prefixCls = this.prefixCls
+      return [
+        prefixCls,
+        {
+          [`${prefixCls}-disabled`]: this.disabled,
+          [`${prefixCls}-selected`]: this.selected
+        }
+      ]
+    },
+    style () {
+      const res = {}
+      if (this.mode === 'inline' && this.level > 0) {
+        res['padding-left'] = this.level * this.inlineIndent + 'px'
+      }
+      return res
+    },
+    // From parent
+    multiple () {
+      return this.$parent.multiple
+    },
     mode () {
       return this.$parent.mode
     },
@@ -33,13 +50,6 @@ export default {
     },
     inlineIndent () {
       return this.$parent.inlineIndent
-    },
-    style () {
-      let res = {}
-      if (this.mode === 'inline' && this.level > 0) {
-        res['padding-left'] = this.level * this.inlineIndent + 'px'
-      }
-      return res
     }
   },
   props: {
@@ -47,14 +57,27 @@ export default {
       type: Boolean,
       default: false
     },
-    index: [String, Number]
+    index: [String, Number],
+    prefixCls: {
+      type: String,
+      default: 'ant-menu-item'
+    }
   },
   methods: {
     handleClick (e) {
-      this.$parent.handleClickItem(e, this.index, this.path)
-      this.$parent.handleSelect(e, this.index)
+      const info = {
+        e,
+        vm: this,
+        path: this.path,
+        index: this.index
+      }
+      this.$parent.handleClickItem(info)
+      this.multiple ? this.selected ? this.$parent.handleDeSelect(info) : this.$parent.handleSelect(info)
+        : !this.selected && this.$parent.handleSelect(info)
+    },
+    handleKeyDown (e) {
+      this.handleClick(e)
     }
   }
 }
 </script>
-
