@@ -13,14 +13,35 @@ title:
 
 With text and icon.
 
-````jsx
-import { Switch, Icon } from 'antd';
+```` html
+<template>
+  <div>
+    <atu-switch
+      :defaultChecked="true"
+      checkedChildren="开"
+      unCheckedChildren="关"></atu-switch>
+    <atu-switch
+      :defaultChecked="true"
+      checkedChildren="1"
+      unCheckedChildren="0"></atu-switch>
+    <atu-switch
+      :defaultChecked="true">
+      <icon type="check" slot="checkedChildren" />
+      <icon type="cross" slot="unCheckedChildren" />
+  </div>
+</template>
 
-ReactDOM.render(<div>
-  <Switch checkedChildren="开" unCheckedChildren="关" />
-  <br />
-  <Switch checkedChildren="1" unCheckedChildren="0" />
-  <br />
-  <Switch checkedChildren={<Icon type="check" />} unCheckedChildren={<Icon type="cross" />} />
-</div>, mountNode);
+<script>
+import AtuSwitch from '@/switch'
+export default {
+  components: {
+    AtuSwitch
+  },
+  methods: {
+    handleChange (checked) {
+      console.log(`switch to ${checked}`)
+    }
+  }
+}
+</script>
 ````

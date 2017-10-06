@@ -13,28 +13,35 @@ Switch 失效状态。
 
 Disabled state of `Switch`.
 
-````jsx
-import { Switch, Button } from 'antd';
+```` html
+<template>
+  <div>
+    <atu-switch :defaultChecked="false" :disabled="disabled" @change="handleChange" />
+    <atu-button type="primary" @click="toggle"> Toggle disabled </atu-button>
+  </div>
+</template>
 
-class App extends React.Component {
-  state = {
-    disabled: true,
-  }
-  toggle = () => {
-    this.setState({
-      disabled: !this.state.disabled,
-    });
-  }
-  render() {
-    return (
-      <div>
-        <Switch disabled={this.state.disabled} />
-        <br />
-        <Button type="primary" onClick={this.toggle}>Toggle disabled</Button>
-      </div>
-    );
+<script>
+import AtuSwitch from '@/switch'
+import AtuButton from '@/switch'
+export default {
+  data () {
+    return {
+      disabled: true
+    }
+  },
+  components: {
+    AtuSwitch,
+    AtuButton
+  },
+  methods: {
+    handleChange (checked) {
+      console.log(`switch to ${checked}`)
+    },
+    toggle () {
+      this.disabled = !this.disabled
+    }
   }
 }
-
-ReactDOM.render(<App />, mountNode);
+</script>
 ````

@@ -65,7 +65,8 @@ export default {
         prefixCls,
         {
           [`${prefixCls}-checked`]: this.isChecked,
-          [`${prefixCls}-disabled`]: this.disabled
+          [`${prefixCls}-disabled`]: this.disabled,
+          [`${prefixCls}-small`]: this.size === 'small'
         }
       ]
     }
@@ -104,4 +105,3 @@ export default {
   }
 }
 </script>
-

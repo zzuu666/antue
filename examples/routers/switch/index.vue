@@ -6,6 +6,17 @@
       disabled
       checkedChildren="开"
       unCheckedChildren="关"></atu-switch>
+    <atu-switch
+      :defaultChecked="true"
+      disabled
+      checkedChildren="开"
+      unCheckedChildren="关"
+      size="small"></atu-switch>
+    <atu-switch
+      :defaultChecked="true">
+      <icon type="check" slot="checkedChildren" />
+      <icon type="cross" slot="unCheckedChildren" />
+    </atu-switch>
   </container>
 </template>
 

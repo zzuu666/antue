@@ -13,14 +13,25 @@ title:
 
 `size="small"` represents a small sized switch.
 
-````jsx
-import { Switch } from 'antd';
-
-ReactDOM.render(
+```` html
+<template>
   <div>
-    <Switch />
-    <br />
-    <Switch size="small" />
+    <atu-switch size="small" :defaultChecked="false" @change="handleChange" />
+    <atu-switch :defaultChecked="false" @change="handleChange" />
   </div>
-, mountNode);
+</template>
+
+<script>
+import AtuSwitch from '@/switch'
+export default {
+  components: {
+    AtuSwitch
+  },
+  methods: {
+    handleChange (checked) {
+      console.log(`switch to ${checked}`)
+    }
+  }
+}
+</script>
 ````

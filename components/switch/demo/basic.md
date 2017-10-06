@@ -13,21 +13,24 @@ title:
 
 The most basic usage.
 
-````jsx
-import { Switch } from 'antd';
+```` html
+<template>
+  <div>
+    <atu-switch :defaultChecked="false" @change="handleChange" />
+  </div>
+</template>
 
-function onChange(checked) {
-  console.log(`switch to ${checked}`);
+<script>
+import AtuSwitch from '@/switch'
+export default {
+  components: {
+    AtuSwitch
+  },
+  methods: {
+    handleChange (checked) {
+      console.log(`switch to ${checked}`)
+    }
+  }
 }
-
-ReactDOM.render(
-  <Switch defaultChecked={false} onChange={onChange} />,
-  mountNode
-);
+</script>
 ````
-
-<style>
-.ant-switch {
-  margin-bottom: 8px;
-}
-<style>
