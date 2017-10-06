@@ -4,14 +4,14 @@
     <br>
     <radio :disabled="disabled">Disabled</radio>
     <div style="margin-top: 20px">
-      <ant-button type="primary" @click="handleClick">Toggle Disabled</ant-button>
+      <atu-button type="primary">Toggle Disabled</atu-button>
     </div>
   </div>
 </template>
 
 <script>
   import Radio from '@/radio'
-  import AntButton from '@/Button'
+  import AtuButton from '@/button'
   export default {
     data () {
       return {
@@ -25,7 +25,7 @@
     },
     components: {
       Radio,
-      AntButton
+      AtuButton
     }
   }
 </script>
