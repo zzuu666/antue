@@ -97,6 +97,15 @@ export default {
               route: 'rate'
             }
           ]
+        },
+        {
+          title: 'Data Display',
+          items: [
+            {
+              title: 'Card 卡片',
+              route: 'card'
+            }
+          ]
         }
       ]
     }
