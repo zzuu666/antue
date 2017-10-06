@@ -5,8 +5,10 @@ import Menu from './menu'
 import Icon from './icon'
 import Input from './input'
 import Rate from './rate'
+import Card from './card'
 import Grid from './grid'
 import Switch from './switch'
+import Transition from './transition'
 
 Vue.use(Router)
 
@@ -33,12 +35,21 @@ let router = new Router({
       component: Rate
     },
     {
+      path: '/card',
+      component: Card
+    },
+    {
       path: '/grid',
       component: Grid
     },
     {
+<<<<<<< HEAD
       path: '/switch',
       component: Switch
+=======
+      path: '/transition',
+      component: Transition
+>>>>>>> master
     }
   ]
 })

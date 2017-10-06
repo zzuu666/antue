@@ -101,6 +101,24 @@ export default {
               route: 'switch'
             }
           ]
+        },
+        {
+          title: 'Data Display',
+          items: [
+            {
+              title: 'Card 卡片',
+              route: 'card'
+            }
+          ]
+        },
+        {
+          title: 'Transition',
+          items: [
+            {
+              title: 'Transition 输入框',
+              route: 'transition'
+            }
+          ]
         }
       ]
     }
