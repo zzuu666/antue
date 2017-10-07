@@ -43,13 +43,12 @@ let router = new Router({
       component: Grid
     },
     {
-<<<<<<< HEAD
       path: '/switch',
       component: Switch
-=======
+    },
+    {
       path: '/transition',
       component: Transition
->>>>>>> master
     }
   ]
 })
