@@ -33,4 +33,4 @@ cols: 1
 
 Property | Description | Type | Default
 ---------|-------------|------|---------
-Card | 网格中的卡片 | slot | - |
+Card | 网格中的卡片 | slot | - 
