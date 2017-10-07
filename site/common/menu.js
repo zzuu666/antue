@@ -90,6 +90,10 @@ const menu = {
             {
               title: 'Rate 评分',
               route: 'compRateIndexZh'
+            },
+            {
+              title: 'Switch 开关',
+              route: 'compSwitchIndexZh'
             }
           ]
         },

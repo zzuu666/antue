@@ -70,7 +70,7 @@ export default {
       })('')(this.mode)
     },
     path () {
-      return this.$parent.path.slice().push(this.index)
+      return this.$parent.path.slice().concat(this.index)
     },
     style () {
       const res = {}
