@@ -14,7 +14,7 @@ title:
 Customizing default width and margin.
 
 
-````vue
+```` html
 <template>
   <div>
     <ant-card style="width: 240px" :body-style="{padding: 0}">

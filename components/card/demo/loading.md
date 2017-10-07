@@ -13,7 +13,7 @@ title:
 
 Shows a loading indicator while the contents of the card is being fetched.
 
-````vue
+```` html
 <template>
   <div>
     <ant-card title="Card title" style="width: 34%" :loading="true">

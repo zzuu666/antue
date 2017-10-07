@@ -13,10 +13,10 @@ title:
 
 A basic card containing a title, content and an extra corner content.
 
-````vue
+```` html
 <template>
   <div>
-    <ant-card :title="title" style="width: 300px">
+    <ant-card title="Card title" style="width: 300px">
       <a href="#" slot="extra">More</a>
       <p>Card content</p>
       <p>Card content</p>

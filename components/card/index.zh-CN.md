@@ -22,8 +22,8 @@ cols: 1
 
 | 参数     | 说明           | 类型     | 默认值       |
 |----------|----------------|----------|--------------|
-| title    | 卡片标题 | string\|ReactNode   |  -  |
-| extra    | 卡片右上角的操作区域 | string\|ReactNode   | - |
+| title    | 卡片标题 | string\slot   |  -  |
+| extra    | 卡片右上角的操作区域 | string\slot   | - |
 | bordered | 是否有边框 | boolean   |  true  |
 | bodyStyle | 内容区域自定义样式 | object   |  -  |
 | noHovering | 取消鼠标移过浮起 | boolean | false |
@@ -33,5 +33,4 @@ cols: 1
 
 Property | Description | Type | Default
 ---------|-------------|------|---------
-className | 网格容器类名 | string | -
-style | 定义网格容器类名的样式 | object | -
+Card | 网格中的卡片 | slot | - |

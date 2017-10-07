@@ -13,7 +13,7 @@ title:
 
 Grid style card content.
 
-````vue
+```` html
 <template>
   <div>
     <card title="Card Title" noHovering>

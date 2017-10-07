@@ -13,18 +13,18 @@ title:
 
 Cards usually cooperate with grid column layout in overview page.
 
-````vue
+```` html
 <template>
   <div style="background: #ececec; padding: 30px">
     <a-row :gutter="12">
       <a-col :span="8">
-        <ant-card :title="title" :bordered="false">Card content</ant-card>
+        <ant-card title="Card title" :bordered="false">Card content</ant-card>
       </a-col>
       <a-col :span="8">
-        <ant-card :title="title" :bordered="false">Card content</ant-card>
+        <ant-card title="Card title" :bordered="false">Card content</ant-card>
       </a-col>
       <a-col :span="8">
-        <ant-card :title="title" :bordered="false">Card content</ant-card>
+        <ant-card title="Card title" :bordered="false">Card content</ant-card>
       </a-col>
     </a-row>
   </div>

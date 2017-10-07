@@ -13,7 +13,7 @@ title:
 
 A simple card only containing a content area.
 
-````vue
+```` html
 <template>
   <div>
     <ant-card style="width: 300px">

@@ -13,10 +13,10 @@ title:
 
 A borderless card on a gray background.
 
-````vue
+```` html
 <template>
   <div style="background: #ECECEC; padding: 30px">
-    <ant-card style="width: 300px" :bordered="false">
+    <ant-card title="Card title" style="width: 300px" :bordered="false">
       <p>Card content</p>
       <p>Card content</p>
       <p>Card content</p>

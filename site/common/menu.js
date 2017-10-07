@@ -76,6 +76,15 @@ const menu = {
           ]
         },
         {
+          title: 'Data Display',
+          items: [
+            {
+              title: 'Card 卡片',
+              route: 'compCardIndexZh'
+            }
+          ]
+        },
+        {
           title: 'Data Entry',
           items: [
             {
