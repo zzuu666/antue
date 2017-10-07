@@ -1,12 +1,12 @@
 <template>
   <li
-    :class="`${perfixCls}-item-group`">
+    :class="`${prefixCls}-item-group`">
     <div
-      :class="`${perfixCls}-item-group-title`"
+      :class="`${prefixCls}-item-group-title`"
       v-if="title"
       v-text="title"></div>
     <ul
-      :class="`${perfixCls}-item-group-list`"
+      :class="`${prefixCls}-item-group-list`"
       v-if="$slots.default">
       <slot></slot>
     </ul>
@@ -15,17 +15,20 @@
 
 <script>
 export default {
-  data () {
-    return {
-      perfixCls: 'ant-menu'
-    }
-  },
+  name: 'menuItemGroup',
   props: {
-    title: String
+    title: String,
+    prefixCls: {
+      type: String,
+      default: 'ant-menu'
+    }
   },
   computed: {
     mode () {
       return this.$parent.mode
+    },
+    multiple () {
+      return this.$parent.multiple
     },
     level () {
       return this.$parent.level
@@ -34,8 +37,7 @@ export default {
       return this.$parent.inlineIndent
     },
     path () {
-      let path = this.$parent.path.slice()
-      return path
+      return this.$parent.path.slice()
     },
     selected () {
       return this.$parent.selected
@@ -45,6 +47,12 @@ export default {
     },
     handleSelect () {
       return this.$parent.handleSelect
+    },
+    handleDeSelect () {
+      return this.$parent.handleDeSelect
+    },
+    handleOpenChange () {
+      return this.$parent.handleOpenChange
     }
   }
 }
