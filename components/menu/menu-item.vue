@@ -46,7 +46,7 @@ export default {
       return this.$parent.level + 1
     },
     path () {
-      return this.$parent.path.slice().push(this.index)
+      return this.$parent.path.slice().concat(this.index)
     },
     inlineIndent () {
       return this.$parent.inlineIndent
