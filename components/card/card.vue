@@ -1,12 +1,12 @@
 <template>
   <div :class="classes">
-    <div :class="`${prefixCls}-head`" v-if="!!title">
+    <div :class="`${prefixCls}-head`" v-if="showHead">
       <div :class="`${prefixCls}-head-title`">
         <slot name="title">
           {{title}}
         </slot>
       </div>
-      <div v-if="extra" :class="[`${prefixCls}-extra`]">
+      <div :class="[`${prefixCls}-extra`]">
         <slot name="extra">
           {{extra}}
         </slot>
@@ -67,6 +67,9 @@
           this.bordered ? `${this.prefixCls}-bordered` : '',
           this.noHovering ? `${this.prefixCls}-no-hovering` : ''
         ]
+      },
+      showHead () {
+        return this.$slots.title !== undefined || this.$slots.extra || this.title || this.extra
       }
     }
   }
