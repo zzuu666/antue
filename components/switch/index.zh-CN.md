@@ -18,9 +18,22 @@ title: Switch
 
 | 参数      | 说明                                     | 类型        |默认值 |
 |-----------|------------------------------------------|------------|--------|
-| checked | 指定当前是否选中 | boolean    | false    |
+| checked | 指定当前是否选中，可使用 `v-model` | boolean    | false    |
 | defaultChecked | 初始是否选中 | boolean  | false |
-| onChange | 变化时回调函数 | Function(checked:Boolean) |   |
-| checkedChildren | 选中时的内容 | string\|ReactNode |   |
-| unCheckedChildren | 非选中时的内容 | string\|ReactNode |  |
+| checkedChildren | 选中时的内容 | string |   |
+| unCheckedChildren | 非选中时的内容 | string |  |
 | size | 开关大小，可选值：`default` `small` | string  | default |
+
+### Event
+
+| 参数      | 说明                                     | 类型        |默认值 |
+|-----------|------------------------------------------|------------|--------|
+| change | 变化时回调函数 | Function(checked:Boolean) |   | |
+
+### Slot
+
+| name      | 说明                                     | 类型        |默认值 |
+|-----------|------------------------------------------|------------|--------|
+| checkedChildren | 选中时的内容 | DOM |   |
+| unCheckedChildren | 非选中时的内容 | DOM |  | |
+

@@ -27,6 +27,10 @@ export default {
       isChecked: false
     }
   },
+  model: {
+    prop: 'checked',
+    event: 'change'
+  },
   props: {
     prefixCls: {
       type: String,
