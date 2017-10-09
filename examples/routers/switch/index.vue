@@ -3,9 +3,7 @@
     title="Switch 开关">
     <atu-switch
       :defaultChecked="true"
-      disabled
-      checkedChildren="开"
-      unCheckedChildren="关"></atu-switch>
+      ></atu-switch>
     <atu-switch
       :defaultChecked="true"
       disabled
@@ -13,7 +11,9 @@
       unCheckedChildren="关"
       size="small"></atu-switch>
     <atu-switch
-      :defaultChecked="true">
+      :defaultChecked="true"
+      v-model="check"
+      @change="canChange">
       <icon type="check" slot="checkedChildren" />
       <icon type="cross" slot="unCheckedChildren" />
     </atu-switch>
@@ -28,6 +28,16 @@ import Icon from '@/icon'
 import ACol from '@/col'
 import AtuSwitch from '@/switch'
 export default {
+  data () {
+    return {
+      check: false
+    }
+  },
+  methods: {
+    canChange (value) {
+      console.log(this.check)
+    }
+  },
   components: {
     Container,
     ARow,
