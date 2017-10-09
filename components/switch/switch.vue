@@ -6,11 +6,11 @@
     @keydown="handleKeyDown"
     :tabindex="number">
      <span :class="`${prefixCls}-inner`">
-       <slot name="checkedChildren" v-if="isChecked">
-         {{checkedChildren}}
+       <slot name="on" v-if="checked">
+         {{on}}
        </slot>
-       <slot name="unCheckedChildren" v-else>
-         {{unCheckedChildren}}
+       <slot name="off" v-else>
+         {{off}}
        </slot>
      </span>
   </span>
@@ -22,11 +22,6 @@ import { noop } from '../_util/util'
 
 export default {
   name: 'switch',
-  data () {
-    return {
-      isChecked: false
-    }
-  },
   model: {
     prop: 'checked',
     event: 'change'
@@ -38,13 +33,9 @@ export default {
     },
     checked: {
       type: Boolean,
-      default: undefined
+      required: true
     },
-    checkedChildren: String,
-    defaultChecked: {
-      type: Boolean,
-      default: false
-    },
+    on: String,
     disabled: {
       type: Boolean,
       default: false
@@ -60,7 +51,7 @@ export default {
         return oneOf(value, ['default', 'small', 'large'])
       }
     },
-    unCheckedChildren: String
+    off: String
   },
   computed: {
     classes () {
@@ -68,22 +59,16 @@ export default {
       return [
         prefixCls,
         {
-          [`${prefixCls}-checked`]: this.isChecked,
+          [`${prefixCls}-checked`]: this.checked,
           [`${prefixCls}-disabled`]: this.disabled,
           [`${prefixCls}-small`]: this.size === 'small'
         }
       ]
     }
   },
-  watch: {
-    checked (value) {
-      this.setChecked(value)
-    }
-  },
   methods: {
     handleKeyDown (e) {
       const keyCode = e.keyCode
-      this.toggle()
       keyCode === 37 ? this.setChecked(false)
         : keyCode === 39 ? this.setChecked(true)
           : keyCode === 32 || keyCode === 13 ? this.toggle()
@@ -92,20 +77,14 @@ export default {
     handleMouseUp (e) {
       e.currentTarget.blur()
     },
-    toggle (e) {
-      const checked = !this.isChecked
+    toggle () {
+      const checked = !this.checked
       this.setChecked(checked)
-      this.$emit('click', e, checked)
     },
     setChecked (checked) {
       if (this.disabled) return
-      const old = this.isChecked
-      this.isChecked = checked
-      ;(old !== this.isChecked) && this.$emit('change', checked)
+      ;(checked !== this.checked) && this.$emit('change', checked)
     }
-  },
-  created () {
-    this.isChecked = typeof this.checked !== 'undefined' ? this.checked : this.defaultChecked
   }
 }
 </script>

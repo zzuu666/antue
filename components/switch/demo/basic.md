@@ -16,7 +16,14 @@ The most basic usage.
 ```` html
 <template>
   <div>
-    <atu-switch :defaultChecked="false" @change="handleChange" />
+    <div>
+      <atu-switch v-model="checked" />
+    </div>
+    <!-- 语法糖 -->
+    <h3 class="atu-gap-top atu-gap-bottom">等效于</h3>
+    <div>
+      <atu-switch :checked="checked2" @change="handleChange" />
+    </div>
   </div>
 </template>
 
@@ -26,8 +33,15 @@ export default {
   components: {
     AtuSwitch
   },
+  data () {
+    return {
+      checked: false,
+      checked2: false
+    }
+  },
   methods: {
     handleChange (checked) {
+      this.checked2 = checked
       console.log(`switch to ${checked}`)
     }
   }

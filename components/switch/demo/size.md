@@ -16,21 +16,22 @@ title:
 ```` html
 <template>
   <div>
-    <atu-switch size="small" :defaultChecked="false" @change="handleChange" />
-    <atu-switch :defaultChecked="false" @change="handleChange" />
+    <atu-switch size="small" v-model="switch1"/>
+    <atu-switch v-model="switch2" />
   </div>
 </template>
 
 <script>
 import AtuSwitch from '@/switch'
 export default {
+  data () {
+    return {
+      switch1: false,
+      switch2: false
+    }
+  },
   components: {
     AtuSwitch
-  },
-  methods: {
-    handleChange (checked) {
-      console.log(`switch to ${checked}`)
-    }
   }
 }
 </script>
