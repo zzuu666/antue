@@ -19,9 +19,8 @@ Switching Selector.
 Property | Description | Type | Default |
 -----|-----|-----|------|
 checked | determine whether the `Switch` is checked, can use `v-model`  | boolean | false |
-defaultChecked | to set the initial state | boolean | false |
-checkedChildren | content to be shown when the state is checked | string\|ReactNode  | |
-unCheckedChildren | content to be shown when the state is unchecked | string\|ReactNode  | |
+on | content to be shown when the state is checked | string | |
+off | content to be shown when the state is unchecked | string | |
 size | the size of the `Switch`, options: `default` `small` | string | default |
 
 
@@ -33,7 +32,9 @@ size | the size of the `Switch`, options: `default` `small` | string | default |
 
 ### Slot
 
+> `slot` have priority than `props`
+
 | name      | 说明                                     | 类型        |默认值 |
 |-----------|------------------------------------------|------------|--------|
-| checkedChildren | content to be shown when the state is checked | DOM |   |
-| unCheckedChildren | content to be shown when the state is unchecked | DOM |  | |
+| on | content to be shown when the state is checked | DOM |   |
+| off | content to be shown when the state is unchecked | DOM |  | |
