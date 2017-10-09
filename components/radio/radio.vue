@@ -1,7 +1,7 @@
 <template>
   <label :class="classes" @click="handleClick">
     <span :class="spanClasses">
-      <input :value="value" :class="`${this.prefixCls}-input`">
+      <input :value="value" type="radio" :class="`${this.prefixCls}-input`">
       <span :class="`${this.prefixCls}-inner`"></span>
     </span>
     <span>
@@ -52,6 +52,17 @@
           this.checkedValue ? `${this.prefixCls}-checked` : '',
           this.disabled ? `${this.prefixCls}-disabled` : ''
         ]
+      },
+      isRadioGroup () {
+        let parent = this.$parent
+        while (parent) {
+          if (parent.$options.componentName !== 'RadioGroup') {
+            parent = parent.$parent
+          } else {
+            return true
+          }
+        }
+        return false
       }
     },
     methods: {
