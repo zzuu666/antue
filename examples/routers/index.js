@@ -9,6 +9,7 @@ import Card from './card'
 import Grid from './grid'
 import Switch from './switch'
 import Transition from './transition'
+import Tag from './tag'
 
 Vue.use(Router)
 
@@ -49,6 +50,10 @@ let router = new Router({
     {
       path: '/transition',
       component: Transition
+    },
+    {
+      path: '/tag',
+      component: Tag
     }
   ]
 })
