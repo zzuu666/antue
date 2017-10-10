@@ -35,7 +35,8 @@
     data () {
       return {
         radioValue: null,
-        checkedValue: this.checked
+        checkedValue: this.checked,
+        parent: null
       }
     },
     computed: {
@@ -54,10 +55,10 @@
         ]
       },
       isRadioGroup () {
-        let parent = this.$parent
-        while (parent) {
-          if (parent.$options.componentName !== 'RadioGroup') {
-            parent = parent.$parent
+        this.parent = this.$parent
+        while (this.parent) {
+          if (this.parent.$options.componentName !== 'RadioGroup') {
+            this.parent = this.parent.$parent
           } else {
             return true
           }
@@ -67,8 +68,15 @@
     },
     methods: {
       handleClick () {
+        if (this.isRadioGroup) {
+          this.parent.change(this.value)
+        } else {
+          this.checkedValue = true
+          this.$emit('change', this.value)
+        }
+      },
+      checkchange () {
         this.checkedValue = true
-        this.$emit('change', this.value)
       }
     },
     watch: {

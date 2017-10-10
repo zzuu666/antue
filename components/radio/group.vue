@@ -7,6 +7,7 @@
 <script>
   export default {
     name: 'radioGroup',
+    componentName: 'RadioGroup',
     model: {
       prop: 'check',
       event: 'change'
@@ -19,22 +20,22 @@
     },
     computed: {
       checkedData () {
+        console.log(this.$children)
         if (this.$children.length !== 0) {
           for (let i = 0; i < this.$children.length; i++) {
             if (this.$children[i].checked) {
-              return this.$children[i].value
+              return i
+            } else {
+              return 0
             }
           }
         }
       }
     },
-    watch: {
-      checkedData () {
-      //        if (this.check === this.value) {
-      //          this.checkedValue = true
-      //        } else {
-        this.checkedValue = this.checkedData
-      //        }
+    methods: {
+      change (val) {
+        console.log(this.checkedData)
+        this.$children[this.checkedData].checkchange()
       }
     }
   }
