@@ -7,40 +7,48 @@
 <script>
   export default {
     name: 'radioGroup',
-    componentName: 'RadioGroup',
-    model: {
-      prop: 'check',
-      event: 'change'
-    },
     props: {
       prefixCls: {
         type: String,
         default: 'ant-radio'
-      }
+      },
+      value: null
     },
-    computed: {
-      checkedData () {
-        console.log(this.$children)
-        if (this.$children.length !== 0) {
-          for (let i = 0; i < this.$children.length; i++) {
-            if (this.$children[i].checked) {
-              return i
-            } else {
-              return 0
-            }
-          }
-        }
+    data () {
+      return {
+        valueList: [],
+        radioList: [],
+        currentValue: this.value
       }
     },
     methods: {
       change (val) {
-        console.log(this.checkedData)
-        this.$children[this.checkedData].checkchange()
+        this.currentValue = val
+        this.judge()
+        this.$emit('input', val)
+      },
+      initValueList () {
+        this.radioList = this.$children.filter(item => item.$options.name === 'radio')
+        this.valueList = this.radioList.map(item => item.value)
+        this.judge()
+      },
+      judge () {
+        this.valueList.forEach((item, index) => {
+          if (item === this.currentValue) {
+            this.radioList[index].checkChange(true)
+          } else {
+            this.radioList[index].checkChange(false)
+          }
+        })
       }
+    },
+    watch: {
+      value (val) {
+        this.currentValue = val
+      }
+    },
+    mounted () {
+      this.initValueList()
     }
   }
 </script>
-
-<style>
-
-</style>
