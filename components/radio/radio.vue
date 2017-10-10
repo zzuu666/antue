@@ -12,6 +12,7 @@
 
 <script>
   export default {
+    name: 'radio',
     props: {
       checked: {
         type: Boolean,
@@ -57,7 +58,7 @@
       isRadioGroup () {
         this.parent = this.$parent
         while (this.parent) {
-          if (this.parent.$options.componentName !== 'RadioGroup') {
+          if (this.parent.$options.name !== 'radioGroup') {
             this.parent = this.parent.$parent
           } else {
             return true
@@ -68,29 +69,22 @@
     },
     methods: {
       handleClick () {
+        this.checkedValue = true
         if (this.isRadioGroup) {
           this.parent.change(this.value)
         } else {
-          this.checkedValue = true
           this.$emit('change', this.value)
         }
       },
-      checkchange () {
-        this.checkedValue = true
+      checkChange (value) {
+        // console.log(value)
+        this.checkedValue = value
       }
     },
     watch: {
       check () {
-        if (this.check === this.value) {
-          this.checkedValue = true
-        } else {
-          this.checkedValue = false
-        }
+        this.checkedValue = this.check === this.value
       }
     }
   }
 </script>
-
-<style>
-
-</style>
