@@ -26,6 +26,16 @@ export default {
         this.animated ? `${prefixCls}-content-animated` : `${prefixCls}-content-no-animated`
       ]
     }
+  },
+  methods: {
+    panes () {
+      return this.$children.filter(item => item.$options.name === 'pane')
+    }
+  },
+  mounted () {
+    this.$nextTick(() => {
+      this.$emit('panes', this.panes())
+    })
   }
 }
 </script>

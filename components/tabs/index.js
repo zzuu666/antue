@@ -1,3 +1,4 @@
+import './style/index.js'
 import Tabs from './tabs'
 import Pane from './pane'
 

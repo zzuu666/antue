@@ -33,8 +33,14 @@
             this.animated ? `${prefixCls}-nav-animated` : `${prefixCls}-nav-no-animated`
           ]" ref="nav">
           <!--content-->
-          <tabs-ink></tabs-ink>
-          <tabs-tab></tabs-tab>
+          <tabs-ink :activeNode="activeNode" :offset="inkOffset"></tabs-ink>
+          <tabs-tab
+            ref="tabs"
+            v-for="tab in tabs"
+            :key="tab.index"
+            :index="tab.index"
+            :tab="tab.tab"
+            @change="handleChange"></tabs-tab>
           </div>
       </div>
     </div>
@@ -50,7 +56,10 @@ export default {
   data () {
     return {
       next: false,
-      prev: false
+      prev: false,
+      activeNode: null,
+      inkWidth: 0,
+      inkOffset: 0
     }
   },
   props: {
@@ -61,6 +70,15 @@ export default {
     animated: {
       type: Boolean,
       default: true
+    },
+    active: {
+      type: [String, Number]
+    },
+    size: {
+      type: String
+    },
+    tabs: {
+      type: Array
     }
   },
   components: {
@@ -81,12 +99,37 @@ export default {
       return this.next || this.prev
     }
   },
+  watch: {
+    tabs () {
+      this.getActiveNode()
+    },
+    active () {
+      this.getActiveNode()
+    }
+  },
   methods: {
+    handleChange (index) {
+      this.$emit('change', index)
+    },
     handlePrev () {
 
     },
     handleNext () {
 
+    },
+    getActiveNode () {
+      this.$nextTick(() => {
+        const index = this.tabs.findIndex(tab => tab.index === this.active)
+        const gutter = this.size === 'small' ? 16 : 24
+        this.activeNode = index > -1 ? this.$refs.tabs[index].$el : null
+        this.inkWidth = this.activeNode ? this.activeNode.offsetWidth : 0
+        this.inkOffset = this.activeNode
+          ? this.$refs.tabs
+            .filter((vm, i) => i < index)
+            .map(vm => vm.$el.offsetWidth)
+            .reduce((sum, value) => sum + value + gutter, 0)
+          : 0
+      })
     }
   }
 }

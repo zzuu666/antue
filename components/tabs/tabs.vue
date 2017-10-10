@@ -1,7 +1,11 @@
 <template>
   <div :class="classes">
-    <tabs-bar></tabs-bar>
-    <tabs-content>
+    <tabs-bar
+      :tabs="tabs"
+      :size="size"
+      :active="active"
+      @change="handleChange"></tabs-bar>
+    <tabs-content @panes="getPanes">
       <slot></slot>
     </tabs-content>
   </div>
@@ -14,6 +18,15 @@ import TabsContent from './tabs-content'
 
 export default {
   name: 'tabs',
+  data () {
+    return {
+      panes: []
+    }
+  },
+  model: {
+    prop: 'active',
+    event: 'change'
+  },
   props: {
     prefixCls: {
       type: String,
@@ -66,6 +79,22 @@ export default {
           [`${prefixCls}-no-animation`]: this.animated
         }
       ]
+    },
+    tabs () {
+      return this.panes.map(vm => {
+        return {
+          index: vm.index,
+          tab: vm.tab
+        }
+      })
+    }
+  },
+  methods: {
+    getPanes (value) {
+      this.panes = value
+    },
+    handleChange (index) {
+      this.$emit('change', index)
     }
   }
 }

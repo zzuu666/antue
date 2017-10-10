@@ -1,6 +1,10 @@
 <template>
   <div role="tablist" :class="`${prefixCls}-bar`">
-    <tabs-nav></tabs-nav>
+    <tabs-nav
+      :active="active"
+      :size="size"
+      :tabs="tabs"
+      @change="handleChange"></tabs-nav>
   </div>
 </template>
 
@@ -13,10 +17,24 @@ export default {
     prefixCls: {
       type: String,
       default: 'ant-tabs'
+    },
+    active: {
+      type: [String, Number]
+    },
+    size: {
+      type: String
+    },
+    tabs: {
+      type: Array
     }
   },
   components: {
     TabsNav
+  },
+  methods: {
+    handleChange (index) {
+      this.$emit('change', index)
+    }
   }
 }
 </script>

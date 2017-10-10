@@ -3,7 +3,9 @@
     role="tab"
     :aria-disabled="disabled"
     :aria-selected="active"
-    :class="classes">
+    :class="classes"
+    @click="handleClick">
+    <template>{{tab}}</template>
   </div>
 </template>
 
@@ -18,7 +20,13 @@ export default {
     },
     disabled: {
       type: Boolean,
-      default: true
+      default: false
+    },
+    index: {
+      type: [String, Number]
+    },
+    tab: {
+      type: String
     }
   },
   computed: {
@@ -33,7 +41,17 @@ export default {
       ]
     },
     active () {
-      return false
+      return this.index === this.$parent.active
+    }
+  },
+  methods: {
+    handleClick (e) {
+      !this.active && this.$emit('change', this.index)
+      this.$emit('tabClick', {
+        e,
+        vm: this,
+        index: this.index
+      })
     }
   }
 }
