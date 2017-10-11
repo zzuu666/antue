@@ -40,6 +40,7 @@
             :key="tab.index"
             :index="tab.index"
             :tab="tab.tab"
+            :disabled="tab.disabled"
             @change="handleChange"></tabs-tab>
           </div>
       </div>

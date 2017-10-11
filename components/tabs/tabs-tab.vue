@@ -5,7 +5,7 @@
     :aria-selected="active"
     :class="classes"
     @click="handleClick">
-    <template>{{tab}}</template>
+    {{tab}}
   </div>
 </template>
 
@@ -46,6 +46,7 @@ export default {
   },
   methods: {
     handleClick (e) {
+      if (this.disabled) return
       !this.active && this.$emit('change', this.index)
       this.$emit('tabClick', {
         e,

@@ -5,7 +5,10 @@
       :size="size"
       :active="active"
       @change="handleChange"></tabs-bar>
-    <tabs-content @panes="getPanes">
+    <tabs-content
+      :active="active"
+      :activeIndex="activeIndex"
+      @panes="getPanes">
       <slot></slot>
     </tabs-content>
   </div>
@@ -76,7 +79,7 @@ export default {
           [`${prefixCls}-mini`]: this.size === 'small',
           [`${prefixCls}-vertical`]: this.position === 'left' || this.postion === 'right',
           [`${prefixCls}-card`]: this.type === 'card' || this.type === 'editable-card',
-          [`${prefixCls}-no-animation`]: this.animated
+          [`${prefixCls}-no-animation`]: !this.animated
         }
       ]
     },
@@ -84,9 +87,13 @@ export default {
       return this.panes.map(vm => {
         return {
           index: vm.index,
-          tab: vm.tab
+          tab: vm.tab,
+          disabled: vm.disabled
         }
       })
+    },
+    activeIndex () {
+      return this.panes.findIndex(vm => vm.index === this.active)
     }
   },
   methods: {

@@ -1,5 +1,7 @@
 <template>
-  <div :class="classes">
+  <div
+    :class="classes"
+    :style="style">
     <slot></slot>
   </div>
 </template>
@@ -11,6 +13,12 @@ export default {
     prefixCls: {
       type: String,
       default: 'ant-tabs'
+    },
+    active: {
+      type: [String, Number]
+    },
+    activeIndex: {
+      type: Number
     },
     animated: {
       type: Boolean,
@@ -25,6 +33,13 @@ export default {
         `${prefixCls}-content`,
         this.animated ? `${prefixCls}-content-animated` : `${prefixCls}-content-no-animated`
       ]
+    },
+    style () {
+      const marginLeft = this.activeIndex > -1 ? this.activeIndex * 100 : 0
+      const style = {
+        marginLeft: `-${marginLeft}%`
+      }
+      return style
     }
   },
   methods: {

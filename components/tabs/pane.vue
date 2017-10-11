@@ -1,7 +1,7 @@
 <template>
   <div
     role="pane"
-    :aria-hidden="active"
+    :aria-hidden="!active+''"
     :class="classes">
     <slot></slot>
   </div>
@@ -14,6 +14,10 @@ export default {
     prefixCls: {
       type: String,
       default: 'ant-tabs'
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     },
     index: {
       type: [String, Number],
@@ -33,8 +37,7 @@ export default {
       ]
     },
     active () {
-      // TODO
-      return false
+      return this.index === this.$parent.active
     }
   }
 }

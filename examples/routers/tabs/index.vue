@@ -1,11 +1,13 @@
 <template>
   <container>
     <code-show>
-      <atu-tabs v-model="active">
-        <atu-pane tab="Tab1" :index="1">Tab 1</atu-pane>
-        <atu-pane tab="Tab2" :index="2">Tab 2</atu-pane>
-        <atu-pane tab="Tab3" :index="3">Tab 3</atu-pane>
-      </atu-tabs>
+      <demo-basic></demo-basic>
+    </code-show>
+    <code-show>
+      <demo-disabled></demo-disabled>
+    </code-show>
+    <code-show>
+      <demo-icon></demo-icon>
     </code-show>
   </container>
 </template>
@@ -13,8 +15,9 @@
 <script>
 import Container from '../../common/container'
 import CodeShow from '../../common/code-show'
-import AtuTabs from '@/tabs'
-const AtuPane = AtuTabs.Pane
+import DemoBasic from './demo/basic'
+import DemoDisabled from './demo/disabled'
+import DemoIcon from './demo/icon'
 
 export default {
   data () {
@@ -23,10 +26,11 @@ export default {
     }
   },
   components: {
-    AtuTabs,
-    AtuPane,
     Container,
-    CodeShow
+    CodeShow,
+    DemoBasic,
+    DemoDisabled,
+    DemoIcon
   }
 }
 </script>
