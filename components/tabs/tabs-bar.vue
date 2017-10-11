@@ -4,6 +4,7 @@
       :active="active"
       :size="size"
       :tabs="tabs"
+      :position="position"
       @change="handleChange"></tabs-nav>
   </div>
 </template>
@@ -26,6 +27,9 @@ export default {
     },
     tabs: {
       type: Array
+    },
+    position: {
+      type: String
     }
   },
   components: {

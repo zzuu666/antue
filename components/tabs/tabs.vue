@@ -4,6 +4,7 @@
       :tabs="tabs"
       :size="size"
       :active="active"
+      :position="position"
       @change="handleChange"></tabs-bar>
     <tabs-content
       :active="active"

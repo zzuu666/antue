@@ -31,7 +31,9 @@
           :class="[
             `${prefixCls}-nav`,
             this.animated ? `${prefixCls}-nav-animated` : `${prefixCls}-nav-no-animated`
-          ]" ref="nav">
+          ]"
+          :style="style"
+          ref="nav">
           <!--content-->
           <tabs-ink :activeNode="activeNode" :offset="inkOffset"></tabs-ink>
           <tabs-tab
@@ -61,7 +63,8 @@ export default {
       prev: false,
       activeNode: null,
       inkWidth: 0,
-      inkOffset: 0
+      inkOffset: 0,
+      offset: 0
     }
   },
   props: {
@@ -81,6 +84,9 @@ export default {
     },
     tabs: {
       type: Array
+    },
+    position: {
+      type: String
     }
   },
   components: {
@@ -97,8 +103,18 @@ export default {
         }
       ]
     },
+    style () {
+      const target = Math.min(0, this.offset)
+      return {
+        transform: this.isVertical ? `translate3d(0,${target}px,0)` : `translate3d(${target}px,0,0)`
+      }
+    },
     showNextPrev () {
       return this.next || this.prev
+    },
+    isVertical () {
+      const position = this.position
+      return position === 'left' || position === 'right'
     }
   },
   watch: {
@@ -114,10 +130,14 @@ export default {
       this.$emit('change', index)
     },
     handlePrev () {
-
+      const warp = this.$refs.wrap
+      const warpWH = this.getOffsetWH(warp)
+      this.offset += warpWH
     },
     handleNext () {
-
+      const warp = this.$refs.wrap
+      const warpWH = this.getOffsetWH(warp)
+      this.offset -= warpWH
     },
     getActiveNode () {
       this.$nextTick(() => {
@@ -132,7 +152,40 @@ export default {
             .reduce((sum, value) => sum + value + gutter, 0)
           : 0
       })
+    },
+    getOffsetWH (node) {
+      return this.isVertical
+        ? node.offsetHeight
+        : node.offsetWidth
+    },
+    getOffsetLT (node) {
+      return this.isVertical
+        ? node.getBoundingClientRect().top
+        : node.getBoundingClientRect().left
+    },
+    setNextPrev () {
+      const nav = this.$refs.nav
+      const navWH = this.getOffsetWH(nav)
+      const warp = this.$refs.wrap
+      const warpWH = this.getOffsetWH(warp)
+      const minOffset = warpWH - navWH
+      if (minOffset >= 0) {
+        this.next = false
+        this.offset = 0
+      } else if (minOffset < this.offset) {
+        this.next = true
+      } else {
+        this.next = false
+        this.offset = minOffset
+      }
+      this.prev = this.offset < 0
     }
+  },
+  mounted () {
+    this.setNextPrev()
+  },
+  beforeUpdate () {
+    this.setNextPrev()
   }
 }
 </script>
