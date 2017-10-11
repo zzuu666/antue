@@ -87,8 +87,9 @@ export default {
       return this.panes.map(vm => {
         return {
           index: vm.index,
-          tab: vm.tab,
-          disabled: vm.disabled
+          tab: vm.$slots.tab ? vm.$slots.tab : vm.tab,
+          disabled: vm.disabled,
+          icon: vm.icon
         }
       })
     },

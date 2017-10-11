@@ -39,6 +39,7 @@
             v-for="tab in tabs"
             :key="tab.index"
             :index="tab.index"
+            :icon="tab.icon"
             :tab="tab.tab"
             :disabled="tab.disabled"
             @change="handleChange"></tabs-tab>

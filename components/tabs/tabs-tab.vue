@@ -1,16 +1,6 @@
-<template>
-  <div
-    role="tab"
-    :aria-disabled="disabled"
-    :aria-selected="active"
-    :class="classes"
-    @click="handleClick">
-    {{tab}}
-  </div>
-</template>
-
-
 <script>
+import AtuIcon from '../icon'
+
 export default {
   name: 'tabsTab',
   props: {
@@ -22,11 +12,14 @@ export default {
       type: Boolean,
       default: false
     },
+    icon: {
+      type: String
+    },
     index: {
       type: [String, Number]
     },
     tab: {
-      type: String
+      type: [String, Object, Array]
     }
   },
   computed: {
@@ -44,6 +37,9 @@ export default {
       return this.index === this.$parent.active
     }
   },
+  components: {
+    AtuIcon
+  },
   methods: {
     handleClick (e) {
       if (this.disabled) return
@@ -54,6 +50,29 @@ export default {
         index: this.index
       })
     }
+  },
+  render (h) {
+    const icon = this.icon
+      ? h('atu-icon', {
+        props: {
+          type: this.icon
+        }
+      }) : ''
+
+    return h('div', {
+      'class': this.classes,
+      attr: {
+        role: 'tab',
+        'aria-disabled': this.disabled + '',
+        'aria-selected': this.active + ''
+      },
+      on: {
+        click: this.handleClick
+      }
+    }, [
+      icon,
+      this.tab
+    ])
   }
 }
 </script>

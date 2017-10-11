@@ -23,9 +23,11 @@ export default {
       type: [String, Number],
       required: true
     },
+    icon: {
+      type: String
+    },
     tab: {
-      type: String,
-      required: true
+      type: [String, Object]
     }
   },
   computed: {
