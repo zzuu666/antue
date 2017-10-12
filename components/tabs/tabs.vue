@@ -5,7 +5,9 @@
       :size="size"
       :active="active"
       :position="position"
-      @change="handleChange"></tabs-bar>
+      @change="handleChange">
+      <slot name="extra"></slot>
+    </tabs-bar>
     <tabs-content
       :active="active"
       :activeIndex="activeIndex"

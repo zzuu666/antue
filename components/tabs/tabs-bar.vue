@@ -1,5 +1,8 @@
 <template>
   <div role="tablist" :class="`${prefixCls}-bar`">
+    <div :class="`${prefixCls}-extra-content`" style="float: right;">
+      <slot></slot>
+    </div>
     <tabs-nav
       :active="active"
       :size="size"
