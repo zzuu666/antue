@@ -35,7 +35,7 @@
           :style="style"
           ref="nav">
           <!--content-->
-          <tabs-ink :activeNode="activeNode" :offset="inkOffset"></tabs-ink>
+          <tabs-ink :activeNode="activeNode" :offset="inkOffset" :vertical="isVertical"></tabs-ink>
           <tabs-tab
             ref="tabs"
             v-for="tab in tabs"
@@ -142,13 +142,13 @@ export default {
     getActiveNode () {
       this.$nextTick(() => {
         const index = this.tabs.findIndex(tab => tab.index === this.active)
-        const gutter = this.size === 'small' ? 16 : 24
+        const gutter = this.isVertical ? 16 : this.size === 'small' ? 16 : 24
         this.activeNode = index > -1 ? this.$refs.tabs[index].$el : null
         this.inkWidth = this.activeNode ? this.activeNode.offsetWidth : 0
         this.inkOffset = this.activeNode
           ? this.$refs.tabs
             .filter((vm, i) => i < index)
-            .map(vm => vm.$el.offsetWidth)
+            .map(vm => this.getOffsetWH(vm.$el))
             .reduce((sum, value) => sum + value + gutter, 0)
           : 0
       })
@@ -185,6 +185,7 @@ export default {
     this.setNextPrev()
   },
   beforeUpdate () {
+    this.getActiveNode()
     this.setNextPrev()
   }
 }

@@ -19,6 +19,9 @@ export default {
     },
     offset: {
       type: Number
+    },
+    vertical: {
+      type: Boolean
     }
   },
   computed: {
@@ -30,16 +33,24 @@ export default {
       ]
     },
     style () {
+      const verticalStyle = (node, offset) => {
+        return {
+          transform: `translate3d(0, ${offset}px, 0)`,
+          height: `${node.offsetHeight}px`
+        }
+      }
+      const horizontalStyle = (node, offset) => {
+        return {
+          transform: `translate3d(${offset}px, 0, 0)`,
+          width: `${node.offsetWidth}px`
+        }
+      }
       const activeNode = this.activeNode
-      const style = {
-        dispaly: 'none'
-      }
-      if (activeNode) {
-        style.dispaly = 'block'
-        style.width = `${activeNode.offsetWidth}px`
-        style.transform = `translate3d(${this.offset}px,0,0)`
-      }
-      return style
+      return activeNode
+        ? this.vertical
+          ? verticalStyle(activeNode, this.offset)
+          : horizontalStyle(activeNode, this.offset)
+        : {}
     }
   }
 }

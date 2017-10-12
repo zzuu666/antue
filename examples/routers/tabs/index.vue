@@ -9,6 +9,9 @@
     <code-show>
       <demo-icon></demo-icon>
     </code-show>
+    <code-show>
+      <demo-slide></demo-slide>
+    </code-show>
   </container>
 </template>
 
@@ -18,6 +21,7 @@ import CodeShow from '../../common/code-show'
 import DemoBasic from './demo/basic'
 import DemoDisabled from './demo/disabled'
 import DemoIcon from './demo/icon'
+import DemoSlide from './demo/slide'
 
 export default {
   data () {
@@ -30,7 +34,8 @@ export default {
     CodeShow,
     DemoBasic,
     DemoDisabled,
-    DemoIcon
+    DemoIcon,
+    DemoSlide
   }
 }
 </script>
