@@ -142,7 +142,7 @@ export default {
     getActiveNode () {
       this.$nextTick(() => {
         const index = this.tabs.findIndex(tab => tab.index === this.active)
-        const gutter = this.isVertical ? 16 : this.size === 'small' ? 16 : 24
+        const gutter = this.isVertical ? 16 : this.size === 'small' ? 0 : 24
         this.activeNode = index > -1 ? this.$refs.tabs[index].$el : null
         this.inkWidth = this.activeNode ? this.activeNode.offsetWidth : 0
         this.inkOffset = this.activeNode

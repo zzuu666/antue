@@ -15,6 +15,9 @@
     <code-show>
       <demo-extra></demo-extra>
     </code-show>
+    <code-show>
+      <demo-size></demo-size>
+    </code-show>
   </container>
 </template>
 
@@ -26,6 +29,7 @@ import DemoDisabled from './demo/disabled'
 import DemoIcon from './demo/icon'
 import DemoSlide from './demo/slide'
 import DemoExtra from './demo/extra'
+import DemoSize from './demo/size'
 
 export default {
   data () {
@@ -40,7 +44,8 @@ export default {
     DemoDisabled,
     DemoIcon,
     DemoSlide,
-    DemoExtra
+    DemoExtra,
+    DemoSize
   }
 }
 </script>
