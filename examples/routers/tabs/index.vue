@@ -21,6 +21,12 @@
     <code-show>
       <demo-position></demo-position>
     </code-show>
+    <code-show>
+      <demo-card></demo-card>
+    </code-show>
+    <code-show>
+      <demo-editable-card></demo-editable-card>
+    </code-show>
   </container>
 </template>
 
@@ -34,6 +40,8 @@ import DemoSlide from './demo/slide'
 import DemoExtra from './demo/extra'
 import DemoSize from './demo/size'
 import DemoPosition from './demo/position'
+import DemoCard from './demo/card'
+import DemoEditableCard from './demo/editable-card'
 
 export default {
   data () {
@@ -50,7 +58,9 @@ export default {
     DemoSlide,
     DemoExtra,
     DemoSize,
-    DemoPosition
+    DemoPosition,
+    DemoCard,
+    DemoEditableCard
   }
 }
 </script>

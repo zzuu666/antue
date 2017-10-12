@@ -43,8 +43,10 @@
             :index="tab.index"
             :icon="tab.icon"
             :tab="tab.tab"
+            :type="type"
             :disabled="tab.disabled"
-            @change="handleChange"></tabs-tab>
+            @change="handleChange"
+            @remove="handleRemove"></tabs-tab>
           </div>
       </div>
     </div>
@@ -79,13 +81,16 @@ export default {
     active: {
       type: [String, Number]
     },
+    position: {
+      type: String
+    },
     size: {
       type: String
     },
     tabs: {
       type: Array
     },
-    position: {
+    type: {
       type: String
     }
   },
@@ -128,6 +133,9 @@ export default {
   methods: {
     handleChange (index) {
       this.$emit('change', index)
+    },
+    handleRemove (index) {
+      this.$emit('remove', index)
     },
     handlePrev () {
       const warp = this.$refs.wrap

@@ -47,10 +47,8 @@ export default {
       return this.$children.filter(item => item.$options.name === 'pane')
     }
   },
-  mounted () {
-    this.$nextTick(() => {
-      this.$emit('panes', this.panes())
-    })
+  updated () {
+    this.$emit('contentUpdate')
   }
 }
 </script>

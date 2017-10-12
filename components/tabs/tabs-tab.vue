@@ -8,6 +8,10 @@ export default {
       type: String,
       default: 'ant-tabs'
     },
+    closable: {
+      type: Boolean,
+      default: true
+    },
     disabled: {
       type: Boolean,
       default: false
@@ -20,6 +24,9 @@ export default {
     },
     tab: {
       type: [String, Object, Array]
+    },
+    type: {
+      type: String
     }
   },
   computed: {
@@ -49,6 +56,10 @@ export default {
         vm: this,
         index: this.index
       })
+    },
+    handleClose (e) {
+      this.$emit('remove', this.index)
+      e.stopPropagation()
     }
   },
   render (h) {
@@ -57,7 +68,17 @@ export default {
         props: {
           type: this.icon
         }
-      }) : ''
+      }) : null
+
+    const close = this.type === 'editable-card' && this.closable
+      ? h('atu-icon', {
+        props: {
+          type: 'close'
+        },
+        nativeOn: {
+          click: this.handleClose
+        }
+      }) : null
 
     return h('div', {
       'class': this.classes,
@@ -71,7 +92,8 @@ export default {
       }
     }, [
       icon,
-      this.tab
+      this.tab,
+      close
     ])
   }
 }

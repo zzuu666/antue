@@ -5,13 +5,16 @@
       :size="size"
       :active="active"
       :position="position"
-      @change="handleChange">
+      :type="type"
+      @change="handleChange"
+      @edit="handleEdit">
       <slot name="extra"></slot>
     </tabs-bar>
     <tabs-content
+      ref="content"
       :active="active"
       :activeIndex="activeIndex"
-      @panes="getPanes">
+      @contentUpdate="getPanes">
       <slot></slot>
     </tabs-content>
   </div>
@@ -102,11 +105,18 @@ export default {
   },
   methods: {
     getPanes (value) {
-      this.panes = value
+      const slots = this.$refs.content.$children
+      this.panes = slots
     },
     handleChange (index) {
       this.$emit('change', index)
+    },
+    handleEdit (action, index) {
+      this.$emit('edit', action, index)
     }
+  },
+  mounted () {
+    this.getPanes()
   }
 }
 </script>
