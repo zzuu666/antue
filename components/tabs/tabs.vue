@@ -80,7 +80,7 @@ export default {
         `${prefixCls}-${this.type}`,
         {
           [`${prefixCls}-mini`]: this.size === 'small',
-          [`${prefixCls}-vertical`]: this.position === 'left' || this.postion === 'right',
+          [`${prefixCls}-vertical`]: this.position === 'left' || this.position === 'right',
           [`${prefixCls}-card`]: this.type === 'card' || this.type === 'editable-card',
           [`${prefixCls}-no-animation`]: !this.animated
         }
