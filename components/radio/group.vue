@@ -2,7 +2,7 @@
   <div :class="`${this.prefixCls}-group`">
     <div v-if="isOptions">
       <span v-for="option in  options">
-        <radio :value="calculateValue(option)" :disabled="calculateDisabled(option)">{{ calculateLabel(option) }}</radio>
+        <radio :value="calculateValue(option)" :disabled="calculateDisabled(option)" :name="name">{{ calculateLabel(option) }}</radio>
       </span>
     </div>
     <slot v-if="!isOptions"></slot>
@@ -17,6 +17,10 @@
       prefixCls: {
         type: String,
         default: 'ant-radio'
+      },
+      name: {
+        type: String,
+        default: ''
       },
       options: {
         type: Array,

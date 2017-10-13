@@ -15,6 +15,9 @@
         <code-show title="RadioGroup 组合 - 配置方式" desc="通过配置 options 参数来渲染单选框。">
           <group-options-demo></group-options-demo>
         </code-show>
+        <code-show title="单选组合 - 配合 name 使用" desc="可以为 RadioGroup 配置 name 参数，为组合内的 input 元素赋予相同的 name 属性，使浏览器把 RadioGroup 下的 Radio 真正看作是一组（例如可以通过方向键始终在同一组内更改选项）。">
+          <group-with-name-demo></group-with-name-demo>
+        </code-show>
       </a-col>
       <a-col :span="12">
         <code-show title="不可用" desc="Radio不可用。">
@@ -34,6 +37,7 @@
   import DisabledDemo from './demo/disable'
   import GroupDemo from './demo/group'
   import GroupOptionsDemo from './demo/group-options'
+  import GroupWithNameDemo from './demo/group-with-name'
 
   export default {
     components: {
@@ -44,7 +48,8 @@
       BaseDemo,
       DisabledDemo,
       GroupDemo,
-      GroupOptionsDemo
+      GroupOptionsDemo,
+      GroupWithNameDemo
     }
   }
 </script>

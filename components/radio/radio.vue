@@ -1,7 +1,7 @@
 <template>
   <label :class="classes" @click="handleClick">
     <span :class="spanClasses">
-      <input :value="value" type="radio" :class="`${this.prefixCls}-input`">
+      <input :value="value" type="radio" :class="`${this.prefixCls}-input`" :name="name">
       <span :class="`${this.prefixCls}-inner`"></span>
     </span>
     <span>
@@ -21,6 +21,10 @@
       disabled: {
         type: Boolean,
         default: false
+      },
+      name: {
+        type: String,
+        default: ''
       },
       prefixCls: {
         type: String,
