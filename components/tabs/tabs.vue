@@ -1,25 +1,3 @@
-<template>
-  <div :class="classes">
-    <tabs-bar
-      :tabs="tabs"
-      :size="size"
-      :active="active"
-      :position="position"
-      :type="type"
-      @change="handleChange"
-      @edit="handleEdit">
-      <slot name="extra"></slot>
-    </tabs-bar>
-    <tabs-content
-      ref="content"
-      :active="active"
-      :activeIndex="activeIndex"
-      @contentUpdate="getPanes">
-      <slot></slot>
-    </tabs-content>
-  </div>
-</template>
-
 <script>
 import { oneOf } from '../_util/proptype'
 import TabsBar from './tabs-bar'
@@ -47,6 +25,10 @@ export default {
     animated: {
       type: Boolean,
       default: true
+    },
+    hideAdd: {
+      type: Boolean,
+      default: false
     },
     position: {
       type: String,
@@ -91,11 +73,14 @@ export default {
     },
     tabs () {
       return this.panes.map(vm => {
+        const { closable, disabled, icon, index } = vm
+        const tab = vm.$slots.tab ? vm.$slots.tab : vm.tab
         return {
-          index: vm.index,
-          tab: vm.$slots.tab ? vm.$slots.tab : vm.tab,
-          disabled: vm.disabled,
-          icon: vm.icon
+          closable,
+          disabled,
+          icon,
+          index,
+          tab
         }
       })
     },
@@ -117,6 +102,42 @@ export default {
   },
   mounted () {
     this.getPanes()
+  },
+  render (h) {
+    const bar = h('tabs-bar', {
+      props: {
+        active: this.active,
+        hideAdd: this.hideAdd,
+        size: this.size,
+        position: this.position,
+        tabs: this.tabs,
+        type: this.type
+      },
+      on: {
+        change: this.handleChange,
+        edit: this.handleEdit
+      }
+    }, [
+      this.$slots.extra
+    ])
+
+    const content = h('tabs-content', {
+      ref: 'content',
+      props: {
+        active: this.active,
+        activeIndex: this.activeIndex
+      },
+      on: {
+        contentUpdate: this.getPanes
+      }
+    }, [
+      this.$slots.default
+    ])
+
+    const children = this.position !== 'bottom' ? [bar, content] : [content, bar]
+    return h('div', {
+      'class': this.classes
+    }, children)
   }
 }
 </script>

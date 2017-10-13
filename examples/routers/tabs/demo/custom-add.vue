@@ -1,15 +1,19 @@
 <template>
-  <atu-tabs v-model="active" type="editable-card" @edit="handleEdit">
-    <atu-pane
-      v-for="pane in panes"
-      :closable="pane.closable"
-      :key="pane.index"
-      :tab="pane.tab"
-      :index="pane.index">{{pane.tab}}</atu-pane>
-  </atu-tabs>
+  <div>
+    <atu-button @click="add"> Add </atu-button>
+    <atu-tabs v-model="active" hide-add type="editable-card" @edit="handleEdit">
+      <atu-pane
+        v-for="pane in panes"
+        :closable="pane.closable"
+        :key="pane.index"
+        :tab="pane.tab"
+        :index="pane.index">{{pane.tab}}</atu-pane>
+    </atu-tabs>
+  </div>
 </template>
 
 <script>
+import AtuButton from '@/button'
 import AtuTabs from '@/tabs'
 const AtuPane = AtuTabs.Pane
 
@@ -39,7 +43,8 @@ export default {
   },
   components: {
     AtuTabs,
-    AtuPane
+    AtuPane,
+    AtuButton
   },
   methods: {
     handleEdit (action, index) {

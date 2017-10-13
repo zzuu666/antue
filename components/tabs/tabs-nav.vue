@@ -43,6 +43,7 @@
             :index="tab.index"
             :icon="tab.icon"
             :tab="tab.tab"
+            :closable="tab.closable"
             :type="type"
             :disabled="tab.disabled"
             @change="handleChange"

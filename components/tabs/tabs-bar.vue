@@ -29,17 +29,20 @@ export default {
     active: {
       type: [String, Number]
     },
-    size: {
-      type: String
-    },
-    tabs: {
-      type: Array
+    hideAdd: {
+      type: Boolean
     },
     panes: {
       type: Array
     },
     position: {
       type: String
+    },
+    size: {
+      type: String
+    },
+    tabs: {
+      type: Array
     },
     type: {
       type: String
@@ -51,7 +54,7 @@ export default {
   },
   computed: {
     isShowPlus () {
-      return this.type === 'editable-card'
+      return this.type === 'editable-card' && !this.hideAdd
     }
   },
   methods: {

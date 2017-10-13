@@ -28,6 +28,10 @@ export default {
     },
     tab: {
       type: [String, Object]
+    },
+    closable: {
+      type: Boolean,
+      default: true
     }
   },
   computed: {

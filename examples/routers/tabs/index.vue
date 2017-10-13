@@ -27,6 +27,9 @@
     <code-show>
       <demo-editable-card></demo-editable-card>
     </code-show>
+    <code-show>
+      <demo-custom-add></demo-custom-add>
+    </code-show>
   </container>
 </template>
 
@@ -42,6 +45,7 @@ import DemoSize from './demo/size'
 import DemoPosition from './demo/position'
 import DemoCard from './demo/card'
 import DemoEditableCard from './demo/editable-card'
+import DemoCustomAdd from './demo/custom-add'
 
 export default {
   data () {
@@ -60,7 +64,8 @@ export default {
     DemoSize,
     DemoPosition,
     DemoCard,
-    DemoEditableCard
+    DemoEditableCard,
+    DemoCustomAdd
   }
 }
 </script>
