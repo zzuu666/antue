@@ -2,7 +2,7 @@
   <div :class="`${this.prefixCls}-group`">
     <div v-if="isOptions">
       <span v-for="option in  options">
-        <radio :value="option.value">{{ option.label }}</radio>
+        <radio :value="calculateValue(option)" :disabled="calculateDisabled(option)">{{ calculateLabel(option) }}</radio>
       </span>
     </div>
     <slot v-if="!isOptions"></slot>
@@ -57,6 +57,27 @@
             this.radioList[index].checkChange(false)
           }
         })
+      },
+      calculateValue (option) {
+        if (typeof option === 'string') {
+          return option
+        } else if (typeof option === 'object') {
+          return option.value
+        }
+      },
+      calculateLabel (option) {
+        if (typeof option === 'string') {
+          return option
+        } else if (typeof option === 'object') {
+          return option.label
+        }
+      },
+      calculateDisabled (option) {
+        if (typeof option.disabled === 'undefined') {
+          return false
+        } else {
+          return option.disabled
+        }
       }
     },
     watch: {

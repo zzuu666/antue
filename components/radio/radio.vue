@@ -69,10 +69,12 @@
     },
     methods: {
       handleClick () {
-        this.checkedValue = true
-        if (this.isRadioGroup) {
+        if (!this.disabled) {
+          this.checkedValue = true
+        }
+        if (this.isRadioGroup && this.disabled !== true) {
           this.parent.change(this.value)
-        } else {
+        } else if (!this.isRadioGroup && this.disabled !== true) {
           this.$emit('change', this.value)
         }
       },

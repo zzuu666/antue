@@ -12,6 +12,9 @@
         <code-show title="单选组合" desc="一组互斥的Radio配合使用。">
           <group-demo></group-demo>
         </code-show>
+        <code-show title="RadioGroup 组合 - 配置方式" desc="通过配置 options 参数来渲染单选框。">
+          <group-options-demo></group-options-demo>
+        </code-show>
       </a-col>
       <a-col :span="12">
         <code-show title="不可用" desc="Radio不可用。">
@@ -30,6 +33,7 @@
   import BaseDemo from './demo/base'
   import DisabledDemo from './demo/disable'
   import GroupDemo from './demo/group'
+  import GroupOptionsDemo from './demo/group-options'
 
   export default {
     components: {
@@ -39,7 +43,8 @@
       CodeShow,
       BaseDemo,
       DisabledDemo,
-      GroupDemo
+      GroupDemo,
+      GroupOptionsDemo
     }
   }
 </script>
