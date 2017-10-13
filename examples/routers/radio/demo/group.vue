@@ -1,12 +1,11 @@
 <template>
   <div class="radio-base-container">
-    <radio-group v-model="checkedValue">
-      <radio value="123">123</radio>
-      <radio value="456">456</radio>
-      <radio value="789">789</radio>
+    <radio-group v-model="checkedValue" @change="handleChange">
+      <radio value="a">A</radio>
+      <radio value="b">B</radio>
+      <radio value="c">C</radio>
+      <radio value="d">D</radio>
     </radio-group>
-
-    <p>选定的值为: {{checkedValue}}</p>
   </div>
 </template>
 
@@ -15,7 +14,12 @@
   export default {
     data () {
       return {
-        checkedValue: '123'
+        checkedValue: 'a'
+      }
+    },
+    methods: {
+      handleChange (val) {
+        console.log(val)
       }
     },
     components: {
