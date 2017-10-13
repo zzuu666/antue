@@ -23,6 +23,10 @@
         <code-show title="不可用" desc="Radio不可用。">
           <disabled-demo></disabled-demo>
         </code-show>
+        <code-show title="RadioGroup 垂直
+" desc="垂直的 RadioGroup，配合更多输入框选项。">
+          <group-more-demo></group-more-demo>
+        </code-show>
       </a-col>
     </a-row>
   </container>
@@ -38,6 +42,7 @@
   import GroupDemo from './demo/group'
   import GroupOptionsDemo from './demo/group-options'
   import GroupWithNameDemo from './demo/group-with-name'
+  import GroupMoreDemo from './demo/group-more'
 
   export default {
     components: {
@@ -49,7 +54,8 @@
       DisabledDemo,
       GroupDemo,
       GroupOptionsDemo,
-      GroupWithNameDemo
+      GroupWithNameDemo,
+      GroupMoreDemo
     }
   }
 </script>
