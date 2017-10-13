@@ -13,44 +13,48 @@ title:
 
 Tab's position: left, right, top or bottom.
 
-````jsx
-import { Tabs, Select } from 'antd';
-const TabPane = Tabs.TabPane;
-const Option = Select.Option;
+```` html
+<template>
+  <div>
+    <atu-button-group>
+      <atu-button @click="togglePosition('top')">Top</atu-button>
+      <atu-button @click="togglePosition('bottom')">Bottom</atu-button>
+      <atu-button @click="togglePosition('left')">Left</atu-button>
+      <atu-button @click="togglePosition('right')">Right</atu-button>
+    </atu-button-group>
+    <atu-tabs :position="position" v-model="active">
+      <atu-pane tab="Tab 1" :index="1">Tab 1</atu-pane>
+      <atu-pane tab="Tab 2" :index="2">Tab 2</atu-pane>
+      <atu-pane tab="Tab 3" :index="3">Tab 3</atu-pane>
+    </atu-tabs>
+  </div>
+</template>
 
+<script>
+import AtuButton from '@/button'
+import AtuTabs from '@/tabs'
+const AtuPane = AtuTabs.Pane
+const AtuButtonGroup = AtuButton.Group
 
-class Demo extends React.Component {
-  state = {
-    tabPosition: 'top',
-  }
-  changeTabPosition = (tabPosition) => {
-    this.setState({ tabPosition });
-  }
-  render() {
-    return (
-      <div>
-        <div style={{ marginBottom: 16 }}>
-          Tab position：
-          <Select
-            value={this.state.tabPosition}
-            onChange={this.changeTabPosition}
-            dropdownMatchSelectWidth={false}
-          >
-            <Option value="top">top</Option>
-            <Option value="bottom">bottom</Option>
-            <Option value="left">left</Option>
-            <Option value="right">right</Option>
-          </Select>
-        </div>
-        <Tabs tabPosition={this.state.tabPosition}>
-          <TabPane tab="Tab 1" key="1">Content of Tab 1</TabPane>
-          <TabPane tab="Tab 2" key="2">Content of Tab 2</TabPane>
-          <TabPane tab="Tab 3" key="3">Content of Tab 3</TabPane>
-        </Tabs>
-      </div>
-    );
+export default {
+  data () {
+    return {
+      active: 1,
+      position: 'top'
+    }
+  },
+  components: {
+    AtuTabs,
+    AtuPane,
+    AtuButton,
+    AtuButtonGroup
+  },
+  methods: {
+    togglePosition (pos) {
+      this.position = pos
+    }
   }
 }
+</script>
 
-ReactDOM.render(<Demo />, mountNode);
 ````

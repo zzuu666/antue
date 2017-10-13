@@ -14,17 +14,33 @@ title:
 You can add extra actions to the right of Tabs.
 
 
-````jsx
-import { Tabs, Button } from 'antd';
-const TabPane = Tabs.TabPane;
+```` html
+<template>
+  <atu-tabs v-model="active">
+    <atu-button slot="extra">Extra Button</atu-button>
+    <atu-pane tab="Tab 1" :index="1">Tab 1</atu-pane>
+    <atu-pane tab="Tab 2" :index="2">Tab 2</atu-pane>
+    <atu-pane tab="Tab 3" :index="3">Tab 3</atu-pane>
+  </atu-tabs>
+</template>
 
-const operations = <Button>Extra Action</Button>;
+<script>
+import AtuButton from '@/button'
+import AtuTabs from '@/tabs'
+const AtuPane = AtuTabs.Pane
 
-ReactDOM.render(
-  <Tabs tabBarExtraContent={operations}>
-    <TabPane tab="Tab 1" key="1">Content of tab 1</TabPane>
-    <TabPane tab="Tab 2" key="2">Content of tab 2</TabPane>
-    <TabPane tab="Tab 3" key="3">Content of tab 3</TabPane>
-  </Tabs>
-, mountNode);
+export default {
+  data () {
+    return {
+      active: 1
+    }
+  },
+  components: {
+    AtuTabs,
+    AtuPane,
+    AtuButton
+  }
+}
+</script>
+
 ````
