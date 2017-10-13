@@ -98,6 +98,15 @@ export default {
     },
     handleEdit (action, index) {
       this.$emit('edit', action, index)
+    },
+    handleTabClick (info) {
+      this.$emit('tab-click', info)
+    },
+    handlePrevClick (e) {
+      this.$emit('prev-click', e)
+    },
+    handleNextClick (e) {
+      this.$emit('next-click', e)
     }
   },
   mounted () {
@@ -115,7 +124,10 @@ export default {
       },
       on: {
         change: this.handleChange,
-        edit: this.handleEdit
+        edit: this.handleEdit,
+        'tab-click': this.handleTabClick,
+        'next-click': this.handleNextClick,
+        'prev-click': this.handlePrevClick
       }
     }, [
       this.$slots.extra

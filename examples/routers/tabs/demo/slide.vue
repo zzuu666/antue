@@ -1,7 +1,7 @@
 <template>
   <div>
     <atu-switch on="Vertical" off="Horizontal" v-model="checked" />
-    <atu-tabs :position="position" v-model="active" style="height:220px">
+    <atu-tabs @prev-click="test" @next-click="test" :position="position" v-model="active" style="height:220px">
       <atu-pane v-for="i in 15" :key="i" :tab="`Tab ${i}`" :index="i">Tab {{i}}</atu-pane>
     </atu-tabs>
   </div>
@@ -28,6 +28,11 @@ export default {
     AtuTabs,
     AtuPane,
     AtuSwitch
+  },
+  methods: {
+    test (e) {
+      console.log(e)
+    }
   }
 }
 </script>

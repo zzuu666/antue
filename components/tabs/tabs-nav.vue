@@ -47,7 +47,8 @@
             :type="type"
             :disabled="tab.disabled"
             @change="handleChange"
-            @remove="handleRemove"></tabs-tab>
+            @remove="handleRemove"
+            @click="handleTabClick"></tabs-tab>
           </div>
       </div>
     </div>
@@ -138,15 +139,22 @@ export default {
     handleRemove (index) {
       this.$emit('remove', index)
     },
-    handlePrev () {
+    handleTabClick (info) {
+      this.$emit('tab-click', info)
+    },
+    handlePrev (e) {
+      if (!this.prev) return
       const warp = this.$refs.wrap
       const warpWH = this.getOffsetWH(warp)
       this.offset += warpWH
+      this.$emit('prev-click', e)
     },
-    handleNext () {
+    handleNext (e) {
+      if (!this.next) return
       const warp = this.$refs.wrap
       const warpWH = this.getOffsetWH(warp)
       this.offset -= warpWH
+      this.$emit('next-click', e)
     },
     getActiveNode () {
       this.$nextTick(() => {

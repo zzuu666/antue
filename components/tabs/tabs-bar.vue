@@ -11,7 +11,10 @@
       :type="type"
       :position="position"
       @change="handleChange"
-      @remove="handleRemove"></tabs-nav>
+      @remove="handleRemove"
+      @tab-click="handleTabClick"
+      @prev-click="handlePrevClick"
+      @next-click="handleNextClick"></tabs-nav>
   </div>
 </template>
 
@@ -66,6 +69,15 @@ export default {
     },
     handleRemove (index) {
       this.$emit('edit', 'remove', index)
+    },
+    handleTabClick (info) {
+      this.$emit('tab-click', info)
+    },
+    handlePrevClick (e) {
+      this.$emit('prev-click', e)
+    },
+    handleNextClick (e) {
+      this.$emit('next-click', e)
     }
   }
 }

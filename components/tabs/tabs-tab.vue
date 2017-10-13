@@ -51,7 +51,7 @@ export default {
     handleClick (e) {
       if (this.disabled) return
       !this.active && this.$emit('change', this.index)
-      this.$emit('tabClick', {
+      this.$emit('click', {
         e,
         vm: this,
         index: this.index
