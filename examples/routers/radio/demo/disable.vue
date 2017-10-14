@@ -4,7 +4,7 @@
     <br>
     <radio :disabled="disabled">Disabled</radio>
     <div style="margin-top: 20px">
-      <atu-button type="primary">Toggle Disabled</atu-button>
+      <atu-button type="primary" @click="handleClick">Toggle Disabled</atu-button>
     </div>
   </div>
 </template>

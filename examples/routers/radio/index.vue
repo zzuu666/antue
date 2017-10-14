@@ -23,9 +23,14 @@
         <code-show title="不可用" desc="Radio不可用。">
           <disabled-demo></disabled-demo>
         </code-show>
-        <code-show title="RadioGroup 垂直
-" desc="垂直的 RadioGroup，配合更多输入框选项。">
+        <code-show title="RadioGroup 垂直" desc="垂直的 RadioGroup，配合更多输入框选项。">
           <group-more-demo></group-more-demo>
+        </code-show>
+        <code-show title="按钮样式" desc="按钮样式的单选组合。">
+          <group-button-demo></group-button-demo>
+        </code-show>
+        <code-show title="大小" desc="大中小三种组合，可以和表单输入框进行对应配合。">
+          <group-size-button-demo></group-size-button-demo>
         </code-show>
       </a-col>
     </a-row>
@@ -43,6 +48,8 @@
   import GroupOptionsDemo from './demo/group-options'
   import GroupWithNameDemo from './demo/group-with-name'
   import GroupMoreDemo from './demo/group-more'
+  import GroupButtonDemo from './demo/group-button.vue'
+  import GroupSizeButtonDemo from './demo/group-button-size.vue'
 
   export default {
     components: {
@@ -55,7 +62,9 @@
       GroupDemo,
       GroupOptionsDemo,
       GroupWithNameDemo,
-      GroupMoreDemo
+      GroupMoreDemo,
+      GroupButtonDemo,
+      GroupSizeButtonDemo
     }
   }
 </script>
