@@ -41,22 +41,27 @@
       return {
         radioValue: null,
         checkedValue: this.checked,
-        parent: null
+        parent: null,
+        disabledValue: this.disabled
       }
     },
     computed: {
       classes () {
         return [
           `${this.prefixCls}-wrapper`,
-          this.checkedValue ? `${this.prefixCls}-wrapper-checked` : '',
-          this.disabled ? `${this.prefixCls}-wrapper-disabled` : ''
+          {
+            [`${this.prefixCls}-wrapper-checked`]: this.checkedValue,
+            [`${this.prefixCls}-wrapper-disabled`]: this.disabledValue
+          }
         ]
       },
       spanClasses () {
         return [
           this.prefixCls,
-          this.checkedValue ? `${this.prefixCls}-checked` : '',
-          this.disabled ? `${this.prefixCls}-disabled` : ''
+          {
+            [`${this.prefixCls}-checked`]: this.checkedValue,
+            [`${this.prefixCls}-disabled`]: this.disabledValue
+          }
         ]
       },
       isRadioGroup () {
@@ -73,23 +78,25 @@
     },
     methods: {
       handleClick () {
-        if (!this.disabled) {
+        if (!this.disabledValue) {
           this.checkedValue = true
         }
-        if (this.isRadioGroup && this.disabled !== true) {
+        if (this.isRadioGroup && this.disabledValue !== true) {
           this.parent.change(this.value)
-        } else if (!this.isRadioGroup && this.disabled !== true) {
+        } else if (!this.isRadioGroup && this.disabledValue !== true) {
           this.$emit('change', this.value)
         }
       },
       checkChange (value) {
-        // console.log(value)
         this.checkedValue = value
       }
     },
     watch: {
       check () {
         this.checkedValue = this.check === this.value
+      },
+      disabled () {
+        this.disabledValue = this.disabled
       }
     }
   }
