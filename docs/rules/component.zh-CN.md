@@ -9,16 +9,17 @@ title: 组件规范
 
 ### 必选属性
 + 组件名：与文件名保持一致，但是使用驼峰式例如`button`、`buttonGroup`。
-+ 类前缀: 在 data 中声明，与 Ant-Design 保持一致。
++ 类前缀: 为了使组件有拓展性，类名前缀在 props 中声明，与 Ant-Design 保持一致。
 
 ``` js
 export default {
 	name: 'button',
-	data () {
-		return {
-			prefixCls: `ant-button`
-		}
-	}
+  props: {
+    prefixCls: {
+      type: String,
+      default: 'ant-button'
+    }
+  }
 }
 ```
 

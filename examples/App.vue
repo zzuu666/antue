@@ -95,6 +95,28 @@ export default {
             {
               title: 'Rate 评分',
               route: 'rate'
+            },
+            {
+              title: 'Switch 开关',
+              route: 'switch'
+            }
+          ]
+        },
+        {
+          title: 'Data Display',
+          items: [
+            {
+              title: 'Card 卡片',
+              route: 'card'
+            }
+          ]
+        },
+        {
+          title: 'Transition',
+          items: [
+            {
+              title: 'Transition 输入框',
+              route: 'transition'
             }
           ]
         }
