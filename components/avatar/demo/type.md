@@ -25,7 +25,7 @@ Image, Icon and letter are supported, and the latter two kinds avatar can have c
   </div>
 </template>
 <script>
-import { Avatar } from '@';
+import Avatar from '@/avatar'
 export default {
   components: {
     Avatar

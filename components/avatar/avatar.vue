@@ -1,37 +1,85 @@
 <template>
   <span :class="classString">
-    <template v-if="src && isImgExist">
-      <img :src="src" @error="handleImgLoadError" />
-    </template>
-    <template v-else-if="icon">
-      <Icon :type="icon" />
-    </template>
-    <template v-else>
-      <span ref="childrenNode" :class="`${ prefixCls }--string`" :style="childrenStyle">
-        <slot></slot>
-      </span>
-    </template>
+    <img v-if="src && isImgExist" :src="src" @error="handleImgLoadError" />
+    <Icon v-else-if="icon" :type="icon" />
+    <span v-else ref="children" :class="`${ prefixCls }-string`" :style="childrenStyle">
+      <slot></slot>
+    </span>
   </span>
 </template>
 
 <script>
 import Icon from '../icon'
+import { oneOf } from '../_util/proptype'
+
+const SIZEMAP = {
+  'small': 'sm',
+  'large': 'lg'
+}
 
 export default {
   name: 'avatar',
+  props: {
+    icon: String,
+    prefixCls: {
+      type: String,
+      default: 'ant-avatar'
+    },
+    shape: {
+      validator: function (value) {
+        return oneOf(value, ['circle', 'square'])
+      },
+      default: 'circle'
+    },
+    size: {
+      validator: function (value) {
+        return oneOf(value, ['large', 'small', 'default'])
+      },
+      default: 'default'
+    },
+    src: {
+      type: String
+    }
+  },
   data () {
     return {
       scale: 1,
       isImgExist: true,
-      prevChildren: null,
-      prevScale: ''
+      offsetWidth: 0
     }
+  },
+  computed: {
+    childrenStyle () {
+      return {
+        transform: `scale(${this.scale})`,
+        position: 'absolute',
+        display: 'inline-block',
+        left: `calc(50% - ${Math.round(this.offsetWidth / 2)}px)`
+      }
+    },
+    classString () {
+      const prefixCls = this.prefixCls
+      const size = this.size && SIZEMAP[this.size]
+      return [
+        `${prefixCls}`,
+        {
+          [`${prefixCls}-${size}`]: !!size,
+          [`${prefixCls}-${this.shape}`]: !!this.shape,
+          [`${prefixCls}-image`]: !!this.src,
+          [`${prefixCls}-icon`]: !!this.icon
+        }
+      ]
+    }
+  },
+  components: {
+    Icon
   },
   methods: {
     setScale () {
-      const childrenNode = this.$refs.childrenNode
+      const childrenNode = this.$refs.children
       if (childrenNode) {
-        const childrenWidth = childrenNode.offsetWidth
+        // scale can`t affect offsetWidth, but affect actual size（or computed size）
+        const childrenWidth = this.offsetWidth
         const avatarWidth = this.$el.getBoundingClientRect().width
 
         if (avatarWidth - 8 < childrenWidth) {
@@ -43,87 +91,18 @@ export default {
     },
     handleImgLoadError () {
       this.isImgExist = false
+    },
+    getOffSet () {
+      this.offsetWidth = this.$refs.children && this.$refs.children.offsetWidth
     }
-  },
-  props: {
-    className: String,
-    icon: String,
-    prefixCls: {
-      type: String,
-      default: 'ant-avatar'
-    },
-    shape: {
-      validator: function (value) {
-        const SHAPES = ['circle', 'square']
-        return SHAPES.indexOf(value) > -1
-      },
-      default: 'circle'
-    },
-    size: {
-      validator: function (value) {
-        const SIZES = ['large', 'small', 'default']
-        return SIZES.indexOf(value) > -1
-      },
-      default: 'default'
-    },
-    src: {
-      type: String,
-      default: ''
-    }
-  },
-  computed: {
-    childrenStyle () {
-      return (this.$refs.childrenNode || this.scale !== 1)
-        ? {
-          msTransform: `scale(${this.scale})`,
-          WebkitTransform: `scale(${this.scale})`,
-          transform: `scale(${this.scale})`,
-          position: 'absolute',
-          display: 'inline-block',
-          left: `calc(50% - ${Math.round(this.$refs.childrenNode.offsetWidth / 2)}px)`
-        }
-        : {}
-    },
-    sizeCls () {
-      return {
-        [`${this.prefixCls}-lg`]: this.size === 'large',
-        [`${this.prefixCls}-sm`]: this.size === 'small'
-      }
-    },
-    classString () {
-      return [
-        `${this.prefixCls}`,
-        this.sizeCls,
-        {
-          [`${this.prefixCls}-${this.shape}`]: !!this.shape,
-          [`${this.prefixCls}-image`]: !!this.src,
-          [`${this.prefixCls}-icon`]: !!this.icon
-        }
-      ]
-    }
-  },
-  watch: {
-    '$refs.childrenNode' (newV, oldV) {
-      console.log(newV, oldV)
-    },
-    'scale' (newV, oldV) {
-      console.log(newV, oldV)
-    }
-  },
-  components: {
-    Icon
   },
   mounted () {
+    this.getOffSet()
     this.setScale()
-    this.prevChildren = this.$refs.childrenNode
-    this.prevScale = this.scale
   },
   updated () {
-    console.log('updated')
-    let prev = this.prevChildren
-    if (prev !== this.$refs.childrenNode || (this.prevScale !== this.scale && this.scale === 1)) {
-      this.setScale()
-    }
+    this.getOffSet()
+    this.setScale()
   }
 }
 </script>

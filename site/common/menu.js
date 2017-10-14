@@ -54,6 +54,19 @@ const menu = {
           ]
         },
         {
+          title: 'Layout',
+          items: [
+            {
+              title: 'Grid 栅格',
+              route: 'compGridIndexZh'
+            },
+            // {
+            //   title: 'Icon 按钮',
+            //   route: 'componentsIconZh'
+            // }
+          ]
+        },
+        {
           title: 'Data Display',
           items: [
             {
