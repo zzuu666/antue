@@ -97,6 +97,10 @@ export default {
               route: 'rate'
             },
             {
+              title: 'Radio 单选框',
+              route: 'radio'
+            },
+            {
               title: 'Switch 开关',
               route: 'switch'
             }

@@ -7,6 +7,7 @@ import Input from './input'
 import Rate from './rate'
 import Card from './card'
 import Grid from './grid'
+import Radio from './radio'
 import Switch from './switch'
 import Transition from './transition'
 
@@ -41,6 +42,10 @@ let router = new Router({
     {
       path: '/grid',
       component: Grid
+    },
+    {
+      path: '/radio',
+      component: Radio
     },
     {
       path: '/switch',
