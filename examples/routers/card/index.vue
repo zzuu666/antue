@@ -29,7 +29,7 @@
     <a-row :gutter="12" style="margin-bottom: 20px">
       <a-col :span="24">
         <code-show title="栅格卡片" desc="在系统概览页面常常和栅格进行配合。">
-          <grid-demo title="Card title" extra="more" :bordered="false"></grid-demo>
+          <grid-demo></grid-demo>
         </code-show>
       </a-col>
     </a-row>

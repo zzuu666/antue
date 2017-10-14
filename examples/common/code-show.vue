@@ -24,11 +24,15 @@ export default {
   position: relative;
   border: 1px solid #dfdfdf;
   border-radius: 4px;
+  margin: 12px 0;
 
   &-example {
     position: relative;
     text-align: center;
-    padding: 16px 0;
+    padding: 42px 20px 50px;
+  }
+  .menu-code &-example {
+    text-align: left;
   }
   &-content {
     position: relative;

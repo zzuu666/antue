@@ -21,8 +21,8 @@ A card can be used to display content related to a single subject. The content c
 
 | Property     | Description           | Type     | Default       |
 |----------|----------------|----------|--------------|
-| title    | Card title | string\|ReactNode   |  -  |
-| extra    | Content to render in the top-right corner of the card | string\|ReactNode   | - |
+| title    | Card title | string\slot   |  -  |
+| extra    | Content to render in the top-right corner of the card | string\slot   | - |
 | bordered | Toggles rendering of the border around the card | boolean   |  `true`  |
 | bodyStyle | Inline style to apply to the card content | object   |  -  |
 | noHovering | Whether to disable hover effect on mouse over | boolean | `false` |
@@ -32,5 +32,4 @@ A card can be used to display content related to a single subject. The content c
 
 Property | Description | Type | Default
 ---------|-------------|------|---------
-className | className of container | string | -
-style | style object of container | object | -
+Card | card in grid | slot | - 

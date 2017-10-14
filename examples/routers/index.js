@@ -8,6 +8,8 @@ import Rate from './rate'
 import Card from './card'
 import Grid from './grid'
 import Radio from './radio'
+import Switch from './switch'
+import Transition from './transition'
 
 Vue.use(Router)
 
@@ -44,6 +46,14 @@ let router = new Router({
     {
       path: '/radio',
       component: Radio
+    },
+    {
+      path: '/switch',
+      component: Switch
+    },
+    {
+      path: '/transition',
+      component: Transition
     }
   ]
 })

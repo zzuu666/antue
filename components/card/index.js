@@ -1,5 +1,5 @@
 /**
- * Created by yiche on 17/9/24.
+ * Created by echaoo on 17/9/24.
  */
 import './style/index.js'
 

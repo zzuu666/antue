@@ -6,6 +6,7 @@
 
 <script>
   export default {
+    name: 'cardGrid',
     props: {
       prefixCls: {
         type: String,

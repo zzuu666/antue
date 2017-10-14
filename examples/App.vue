@@ -99,6 +99,10 @@ export default {
             {
               title: 'Radio 单选框',
               route: 'radio'
+            },
+            {
+              title: 'Switch 开关',
+              route: 'switch'
             }
           ]
         },
@@ -108,6 +112,15 @@ export default {
             {
               title: 'Card 卡片',
               route: 'card'
+            }
+          ]
+        },
+        {
+          title: 'Transition',
+          items: [
+            {
+              title: 'Transition 输入框',
+              route: 'transition'
             }
           ]
         }
