@@ -92,6 +92,10 @@ const menu = {
               route: 'compRateIndexZh'
             },
             {
+              title: 'Radio 单选框',
+              route: 'compRadioIndexZh'
+            },
+            {
               title: 'Switch 开关',
               route: 'compSwitchIndexZh'
             }
