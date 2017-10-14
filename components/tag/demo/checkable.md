@@ -17,25 +17,32 @@ title:
 
 > it is an absolute controlled component and has no uncontrolled mode.
 
-````jsx
-import { Tag } from 'antd';
-const { CheckableTag } = Tag;
+```` html
+<template>
+  <div>
+    <atu-checke-tag v-model="tag1">Tag 1</atu-checke-tag>
+    <atu-checke-tag v-model="tag2">Tag 2</atu-checke-tag>
+    <atu-checke-tag v-model="tag3">Tag 3</atu-checke-tag>
+  </div>
+</template>
 
-class MyTag extends React.Component {
-  state = { checked: true };
-  handleChange = (checked) => {
-    this.setState({ checked });
-  }
-  render() {
-    return <CheckableTag {...this.props} checked={this.state.checked} onChange={this.handleChange} />;
+<script>
+import AtuTag from '@/tag'
+
+const AtuCheckeTag = AtuTag.CheckableTag
+
+export default {
+  components: {
+    AtuCheckeTag
+  },
+  data () {
+    return {
+      tag1: true,
+      tag2: true,
+      tag3: true
+    }
   }
 }
+</script>
 
-ReactDOM.render(
-  <div>
-    <MyTag>Tag1</MyTag>
-    <MyTag>Tag2</MyTag>
-    <MyTag>Tag3</MyTag>
-  </div>
-, mountNode);
 ````

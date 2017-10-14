@@ -13,25 +13,26 @@ title:
 
 Usage of basic Tag, and it could be closable by set `closable` property. Closable Tag supports `onClose` `afterClose` events.
 
-````jsx
-import { Tag } from 'antd';
-
-function log(e) {
-  console.log(e);
-}
-
-function preventDefault(e) {
-  e.preventDefault();
-  console.log('Clicked! But prevent default.');
-}
-
-ReactDOM.render(
+```` html
+<template>
   <div>
-    <Tag>Tag 1</Tag>
-    <Tag><a href="https://github.com/ant-design/ant-design/issues/1862">Link</a></Tag>
-    <Tag closable onClose={log}>Tag 2</Tag>
-    <Tag closable onClose={preventDefault}>Prevent Default</Tag>
-  </div>,
-  mountNode
-);
+    <atu-tag>Tag 1</atu-tag>
+    <atu-tag closable @afterClose="test">Tag 2</atu-tag>
+  </div>
+</template>
+
+<script>
+import AtuTag from '@/tag'
+export default {
+  components: {
+    AtuTag
+  },
+  methods: {
+    test () {
+      console.log('666')
+    }
+  }
+}
+</script>
+
 ````
