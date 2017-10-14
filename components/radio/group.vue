@@ -1,7 +1,7 @@
 <template>
   <div :class="classes">
     <div v-if="isOptions">
-      <span v-for="option in  options">
+      <span v-for="(option, index) in options" :key="index">
         <radio :value="calculateValue(option)" :disabled="calculateDisabled(option)" :name="name">{{ calculateLabel(option) }}</radio>
       </span>
     </div>

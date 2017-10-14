@@ -39,7 +39,6 @@
     },
     data () {
       return {
-        radioValue: null,
         checkedValue: this.checked,
         parent: null,
         disabledValue: this.disabled
