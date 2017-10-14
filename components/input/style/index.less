@@ -27,3 +27,9 @@
     min-height: 100%;  // use min-height, assume that no smaller height to override
   }
 }
+
+// In case to fix bug: cant change input component width with inline style
+// TODO: use better way to fix this bug, like antd's way: dont render span if no addon or prefix
+.@{ant-prefix}-input-vue-wrapper {
+  display: inline-block;
+}
