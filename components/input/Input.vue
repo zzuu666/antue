@@ -1,5 +1,5 @@
 <template>
-  <span :class="showAddonBefore || showAddonAfter ? `${prefixCls}-group-wrapper`:''">
+  <span :class="showAddonBefore || showAddonAfter ? `${prefixCls}-group-wrapper`:`${prefixCls}-vue-wrapper`">
     <span :class="addonWrapper">
       <span v-if="showAddonBefore" :class="`${prefixCls}-group-addon`">
         <slot name="addonBefore">
