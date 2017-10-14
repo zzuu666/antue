@@ -47,7 +47,6 @@ export default {
 
   &-example {
     position: relative;
-    text-align: center;
     padding: 42px 20px 50px;
 
     .ant-menu {
@@ -57,12 +56,12 @@ export default {
   &-content {
     position: relative;
     border-top: 1px solid #dfdfdf;
-    padding: 16px 12px;
+    padding: 17px 16px 15px 20px;
 
     &-title {
       position: absolute;
       top: -15px;
-      left: 10;
+      left: 10px;
       padding: 2px 4px;
       background: #fff;
     }
@@ -77,6 +76,7 @@ export default {
    &-code {
     position: relative;
     overflow-x: auto;
+    margin-right: 1px;
     border-top: 1px dashed #dfdfdf;
     pre {
       background-color: #fff

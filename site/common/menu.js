@@ -76,11 +76,24 @@ const menu = {
           ]
         },
         {
+          title: 'Data Display',
+          items: [
+            {
+              title: 'Card 卡片',
+              route: 'compCardIndexZh'
+            }
+          ]
+        },
+        {
           title: 'Data Entry',
           items: [
             {
               title: 'Rate 评分',
               route: 'compRateIndexZh'
+            },
+            {
+              title: 'Switch 开关',
+              route: 'compSwitchIndexZh'
             }
           ]
         },
