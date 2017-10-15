@@ -17,17 +17,16 @@ With text and icon.
 <template>
   <div>
     <atu-switch
-      :defaultChecked="true"
-      checkedChildren="开"
-      unCheckedChildren="关"></atu-switch>
+      v-model="checked1"
+      on="开"
+      off="关"></atu-switch>
     <atu-switch
-      :defaultChecked="true"
-      checkedChildren="1"
-      unCheckedChildren="0"></atu-switch>
-    <atu-switch
-      :defaultChecked="true">
-      <icon type="check" slot="checkedChildren" />
-      <icon type="cross" slot="unCheckedChildren" />
+      v-model="checked2"
+      on="1"
+      off="0"></atu-switch>
+    <atu-switch v-model="checked3">
+      <icon type="check" slot="on" />
+      <icon type="cross" slot="off" />
     </atu-switch>
   </div>
 </template>
@@ -40,6 +39,13 @@ export default {
   components: {
     AtuSwitch,
     Icon
+  },
+  data () {
+    return {
+      checked1: false,
+      checked2: true,
+      checked3: false
+    }
   },
   methods: {
     handleChange (checked) {

@@ -16,7 +16,7 @@ Disabled state of `Switch`.
 ```` html
 <template>
   <div>
-    <atu-switch :defaultChecked="false" :disabled="disabled" @change="handleChange" />
+    <atu-switch v-model="checked" :disabled="disabled" />
     <atu-button type="primary" @click="toggle"> Toggle disabled </atu-button>
   </div>
 </template>
@@ -27,7 +27,8 @@ import AtuButton from '@/button'
 export default {
   data () {
     return {
-      disabled: true
+      disabled: true,
+      checked: true
     }
   },
   components: {
@@ -35,9 +36,6 @@ export default {
     AtuButton
   },
   methods: {
-    handleChange (checked) {
-      console.log(`switch to ${checked}`)
-    },
     toggle () {
       this.disabled = !this.disabled
     }
