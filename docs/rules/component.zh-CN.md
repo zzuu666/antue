@@ -23,6 +23,21 @@ export default {
 }
 ```
 
+### 组件暴露事件
++ 为了兼容 `inline-template` 模式，对于暴露出来的事件，一律采用 `kebab-case` 的写法。
+
+``` js
+export default {
+	name: 'button',
+  methods: {
+    handleTabClick () {
+      this.$emit('tab-click')  // Good
+      this.$emit('tabClick')   // Bad
+    }
+  }
+}
+```
+
 ### 组件表达式简单化
 如果你发现写了太多复杂并难以阅读的行内表达式，那么可以使用 method 或是 computed 属性来替代其功能。
 
