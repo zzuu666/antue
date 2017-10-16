@@ -20,12 +20,16 @@ Tag for categorizing or markup.
 |--------------|-----------------------|----------|--------------|
 | color        | Color of the Tag      | string | - |
 | closable     | Whether Tag can be closed    | boolean  | `false`        |
-| onClose      | Callback executed when tag is closed | (e) => void | - |
-| afterClose   | Callback executed when close animation is completed | () => void | - |
+
+# Events
+| Property     | Description           | Type     | Default      |
+|--------------|-----------------------|----------|--------------|
+| close      | Callback executed when tag is closed | (e) => void | - |
+| after-close   | Callback executed when close animation is completed | () => void | - |
 
 ### Tag.CheckableTag
 
 | Property     | Description           | Type     | Default      |
 |--------------|-----------------------|----------|--------------|
 | checked      | Checked status of Tag | boolean | `false` |
-| onChange     | Callback executed when Tag is checked/unchecked | (checked) => void | - |
+| change     | Callback executed when Tag is checked/unchecked | (checked) => void | - |

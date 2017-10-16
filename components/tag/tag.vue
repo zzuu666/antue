@@ -70,7 +70,7 @@ export default {
       this.$emit('close')
     },
     handleAfterClose () {
-      this.$emit('afterClose')
+      this.$emit('after-close')
     }
   }
 }
