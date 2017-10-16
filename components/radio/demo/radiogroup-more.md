@@ -44,7 +44,7 @@ Vertical RadioGroup, with more radios.
     },
     components: {
       Radio,
-      RadioGroup: Radio.group,
+      RadioGroup: Radio.Group,
       AtuInput
     }
   }

@@ -34,7 +34,7 @@
     },
     components: {
       Radio,
-      RadioGroup: Radio.group
+      RadioGroup: Radio.Group
     }
   }
 </script>

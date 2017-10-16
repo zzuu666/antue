@@ -58,8 +58,8 @@ There are three sizes available: large, medium, and small. It can coordinate wit
     },
     components: {
       Radio,
-      RadioGroup: Radio.group,
-      RadioButton: Radio.radioButton
+      RadioGroup: Radio.Group,
+      RadioButton: Radio.Button
     }
   }
 </script>

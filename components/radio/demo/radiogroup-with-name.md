@@ -35,7 +35,7 @@ Passing the `name` property to all `input[type="radio"]` that are in the same Ra
     },
     components: {
       Radio,
-      RadioGroup: Radio.group
+      RadioGroup: Radio.Group
     }
   }
 </script>
