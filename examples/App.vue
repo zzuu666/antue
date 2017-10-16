@@ -103,6 +103,10 @@ export default {
             {
               title: 'Switch 开关',
               route: 'switch'
+            },
+            {
+              title: 'Message 全局提示',
+              route: 'message'
             }
           ]
         },
