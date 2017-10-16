@@ -112,6 +112,10 @@ export default {
             {
               title: 'Card 卡片',
               route: 'card'
+            },
+            {
+              title: 'Tag 标签',
+              route: 'tag'
             }
           ]
         },
