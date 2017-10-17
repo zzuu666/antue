@@ -103,10 +103,6 @@ export default {
             {
               title: 'Switch 开关',
               route: 'switch'
-            },
-            {
-              title: 'Message 全局提示',
-              route: 'message'
             }
           ]
         },
@@ -116,6 +112,15 @@ export default {
             {
               title: 'Card 卡片',
               route: 'card'
+            }
+          ]
+        },
+        {
+          title: 'Feedback',
+          items: [
+            {
+              title: 'Message 全局提示',
+              route: 'message'
             }
           ]
         },
