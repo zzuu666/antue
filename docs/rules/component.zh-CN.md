@@ -13,7 +13,7 @@ title: 组件规范
 
 ``` js
 export default {
-	name: 'button',
+  name: 'button',
   props: {
     prefixCls: {
       type: String,
@@ -28,7 +28,7 @@ export default {
 
 ``` js
 export default {
-	name: 'button',
+  name: 'button',
   methods: {
     handleTabClick () {
       this.$emit('tab-click')  // Good
