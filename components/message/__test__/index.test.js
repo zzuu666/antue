@@ -7,33 +7,37 @@ const delay = timeout => new Promise(resolve => setTimeout(resolve, timeout))
 describe('message', () => {
   afterEach(() => {
     message.destroy()
+    message.config({
+      prefixCls: 'ant-message',
+      duration: 3
+    })
   })
 
-  if('message-box should has prefixCls class', () => {
+  it('message-box should has prefixCls class', () => {
     const vm = creatComponentVm(MessageBox, {
       prefixCls: 'test-message-box'
     })
     expect(vm.$el.classList.contains('test-message-box')).toBeTruthy()
   })
 
-  if('should has prefixCls class', () => {
+  it('should has prefixCls class', () => {
     const vm = creatComponentVm(Message, {
       prefixCls: 'test-message'
     })
     expect(vm.$el.classList.contains('test-message-notice')).toBeTruthy()
-    expect(vm.$el.classList.contains('test-message-notice-content')).toBeTruthy()
   })
 
-  if('should has type class', () => {
-    const vm = creatComponentVm(Message, {
-      type: 'success'
-    })
-    expect(vm.$el.classList.contains('ant-message-success')).toBeTruthy()
+  it('should be able to args onClose', async () => {
+    let closeFlag = 1
+    const userOnClose = () => closeFlag = 2
+    message.info('whatever', 1, userOnClose)
+    await delay(1200)
+    expect(closeFlag).toBe(2)
   })
 
   it('should be able to config top', () => {
     message.config({
-      top: 100,
+      top: 100
     })
     message.info('whatever')
     expect(document.querySelectorAll('.ant-message')[0].style.top).toBe('100px')
@@ -48,13 +52,31 @@ describe('message', () => {
         return div
       }
     })
-    message.info('whatever')
+    message.success('whatever')
     expect(document.querySelectorAll('.custom-container').length).toBe(1)
   })
 
+  it('should be able to config duration', () => {
+    message.config({
+      duration: 1
+    })
+    message.warning('whatever')
+    setTimeout(() => {
+      expect(document.querySelectorAll('.ant-message-notice').length).toBe(0)
+    }, 1200)
+  })
+
+  it('should be able to config prefixCls', () => {
+    message.config({
+      prefixCls: 'prefix-message'
+    })
+    message.error('whatever')
+    expect(document.querySelectorAll('.prefix-message').length).toBe(1)
+  })
+
   it('should be able to hide manually', async () => {
-    const hide1 = message.info('whatever', 0)
-    const hide2 = message.info('whatever', 0)
+    const hide1 = message.loading('whatever', 0)
+    const hide2 = message.loading('whatever', 0)
     expect(document.querySelectorAll('.ant-message-notice').length).toBe(2)
     await delay(100)
     hide1()
@@ -69,8 +91,8 @@ describe('message', () => {
   })
 
   it('should be able to destroy globally', () => {
-    message.info('whatever', 0)
-    message.info('whatever', 0)
+    message.warn('whatever', 0)
+    message.warn('whatever', 0)
     expect(document.querySelectorAll('.ant-message').length).toBe(1)
     expect(document.querySelectorAll('.ant-message-notice').length).toBe(2)
     message.destroy()

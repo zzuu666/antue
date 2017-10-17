@@ -34,6 +34,7 @@ function getBoxEl () {
 function notice (content, duration, type, onClose) {
   const boxEl = getBoxEl()
   const options = {
+    prefixCls,
     content: content,
     duration: duration,
     type: type,
