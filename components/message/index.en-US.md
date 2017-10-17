@@ -25,7 +25,7 @@ This components provides some static methods, with usage and arguments as follow
 
 | Argument   | Description                        | Type                     | Default      |
 |------------|------------------------------------|--------------------------|--------------|
-| content    | content of the message             | string\|ReactNode | -            |
+| content    | content of the message             | string  | -            |
 | duration   | time before auto-dismiss, in seconds | number                   | 1.5          |
 | onClose   | Specify a function that will be called when the message is closed| Function                   | -          |
 
