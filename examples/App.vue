@@ -114,6 +114,10 @@ export default {
               route: 'card'
             },
             {
+              title: 'Tabs 标签页',
+              route: 'tabs'
+            },
+            {
               title: 'Tag 标签',
               route: 'tag'
             }
