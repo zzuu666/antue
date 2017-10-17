@@ -24,25 +24,41 @@ Ant Design 依次提供了三级选项卡，分别用于不同的场景。
 
 | 参数             | 说明                                         | 类型     | 默认值        |
 |------------------|----------------------------------------------|----------|---------------|
-| activeKey        | 当前激活 tab 面板的 key                      | string   | 无            |
-| defaultActiveKey | 初始化选中面板的 key，如果没有设置 activeKey | string   | 第一个面板    |
-| onChange         | 切换面板的回调                               | Function | 无            |
-| onTabClick       | tab 被点击的回调                             | Function | 无            |
-| onPrevClick      | prev 按钮被点击的回调                         | Function | 无            |
-| onNextClick      | next 按钮被点击的回调                         | Function | 无            |
-| tabBarExtraContent | tab bar 上额外的元素                       | React.ReactNode | 无          |
-| tabBarStyle      | tab bar 的样式对象                           | object   | -             |
+| active        | 当前激活 tab 面板的 key                      | string   | 无            |
 | type | 页签的基本样式，可选 `line`、`card` `editable-card` 类型   | string   | 'line'      |
 | size | 大小，提供 `default` 和 `small` 两种大小，仅当 `type="line"` 时生效。  | string   | 'default'      |
-| tabPosition | 页签位置，可选值有 `top` `right` `bottom` `left`  | string   | 'top'      |
-| onEdit | 新增和删除页签的回调，在 `type="editable-card"` 时有效 | (targetKey, action): void | 无 |
+| position | 页签位置，可选值有 `top` `right` `bottom` `left`  | string   | 'top'      |
 | hideAdd | 是否隐藏加号图标，在 `type="editable-card"` 时有效 | boolean   | false    |
 | animated | 是否使用动画切换 Tabs，在 `tabPosition=top|bottom` 时有效 | boolean \| {inkBar:boolean, tabPane:boolean} | true, 当 type="card" 时为 false |
+
+### Events
+
+| 参数             | 说明                                         | 类型     | 默认值        |
+|------------------|----------------------------------------------|----------|---------------|
+| change         | 切换面板的回调                               | Function | 无            |
+| tab-click       | tab 被点击的回调                             | Function | 无            |
+| prev-click      | prev 按钮被点击的回调                         | Function | 无            |
+| next-click      | next 按钮被点击的回调                         | Function | 无            |
+| edit | 新增和删除页签的回调，在 `type="editable-card"` 时有效 | (targetKey, action): void | 无 |
+
+
+### Slot
+
+| 参数             | 说明                                         | 
+|------------------|----------------------------------------------|
+| extra | tab bar 上额外的元素                       |
+
 
 ### Tabs.TabPane
 
 | 参数 | 说明             | 类型                    | 默认值 |
 |------|------------------|-------------------------|--------|
-| key  | 对应 activeKey   | string                  | 无     |
-| tab  | 选项卡头显示文字 | string\|ReactNode | 无     |
-| forceRender | 被隐藏时是否渲染 DOM 结构 | boolean | false |
+| index  | 对应 activeKey   | string                  | 无     |
+| tab  | 选项卡头显示文字 | string\Render | 无     |
+
+### TabPane Slot
+
+| 参数             | 说明                                         | 
+|------------------|----------------------------------------------|
+| tab | 选项卡头显示文字(优先于 tab 属性)                      |
+

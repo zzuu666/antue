@@ -14,9 +14,11 @@ export default {
       type: String,
       default: 'ant-tabs'
     },
+    // pane component used
     active: {
       type: [String, Number]
     },
+    // pane component used
     activeIndex: {
       type: Number
     },

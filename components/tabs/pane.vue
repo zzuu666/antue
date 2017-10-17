@@ -15,6 +15,10 @@ export default {
       type: String,
       default: 'ant-tabs'
     },
+    closable: {
+      type: Boolean,
+      default: true
+    },
     disabled: {
       type: Boolean,
       default: false
@@ -28,10 +32,6 @@ export default {
     },
     tab: {
       type: [String, Object]
-    },
-    closable: {
-      type: Boolean,
-      default: true
     }
   },
   computed: {
