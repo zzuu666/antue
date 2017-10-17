@@ -18,26 +18,26 @@ The combination of radio button style.
   <div>
     <div>
       <radio-group v-model="checkedValue1" @change="handleChange">
-        <radio prefixCls="ant-radio-button" value="a">Hangzhou</radio>
-        <radio prefixCls="ant-radio-button" value="b">Shanghai</radio>
-        <radio prefixCls="ant-radio-button" value="c">Beijing</radio>
-        <radio prefixCls="ant-radio-button" value="d">Chengdu</radio>
+        <radio-button value="a">Hangzhou</radio-button>
+        <radio-button value="b">Shanghai</radio-button>
+        <radio-button value="c">Beijing</radio-button>
+        <radio-button value="d">Chengdu</radio-button>
       </radio-group>
     </div>
     <div style="margin-top: 16px">
       <radio-group v-model="checkedValue2" @change="handleChange">
-        <radio prefixCls="ant-radio-button" value="a">Hangzhou</radio>
-        <radio prefixCls="ant-radio-button" disabled value="b">Shanghai</radio>
-        <radio prefixCls="ant-radio-button" value="c">Beijing</radio>
-        <radio prefixCls="ant-radio-button" value="d">Chengdu</radio>
+        <radio-button value="a">Hangzhou</radio-button>
+        <radio-button disabled value="b">Shanghai</radio-button>
+        <radio-button value="c">Beijing</radio-button>
+        <radio-button value="d">Chengdu</radio-button>
       </radio-group>
     </div>
     <div style="margin-top: 16px">
       <radio-group v-model="checkedValue3" disabled @change="handleChange">
-        <radio prefixCls="ant-radio-button" value="a">Hangzhou</radio>
-        <radio prefixCls="ant-radio-button" value="b">Shanghai</radio>
-        <radio prefixCls="ant-radio-button" value="c">Beijing</radio>
-        <radio prefixCls="ant-radio-button" value="d">Chengdu</radio>
+        <radio-button value="a">Hangzhou</radio-button>
+        <radio-button value="b">Shanghai</radio-button>
+        <radio-button value="c">Beijing</radio-button>
+        <radio-button value="d">Chengdu</radio-button>
       </radio-group>
     </div>
   </div>
@@ -60,7 +60,8 @@ The combination of radio button style.
     },
     components: {
       Radio,
-      RadioGroup: Radio.group
+      RadioGroup: Radio.Group,
+      RadioButton: Radio.Button
     }
   }
 </script>
