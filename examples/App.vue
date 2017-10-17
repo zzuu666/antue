@@ -97,6 +97,10 @@ export default {
               route: 'rate'
             },
             {
+              title: 'Radio 单选框',
+              route: 'radio'
+            },
+            {
               title: 'Switch 开关',
               route: 'switch'
             }
@@ -112,6 +116,10 @@ export default {
             {
               title: 'Tabs 标签页',
               route: 'tabs'
+            },
+            {
+              title: 'Tag 标签',
+              route: 'tag'
             }
           ]
         },
