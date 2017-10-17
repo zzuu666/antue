@@ -16,9 +16,9 @@ let getContainer
 
 function getBoxEl () {
   boxInstance = boxInstance || new MessageBoxConstructor({
-    data: {
+    propsData: {
       prefixCls,
-      styles: { top: defaultTop }
+      styles: { top: `${defaultTop}px` }
     }
   })
   boxInstance.vm = boxInstance.$mount()
@@ -43,7 +43,7 @@ function notice (content, duration, type, onClose) {
   }
   let id = `${prefixCls}${seed++}`
   let messageInstance = new MessageConstructor({
-    data: options
+    propsData: options
   })
   messageInstance.id = id
   messageInstance.vm = messageInstance.$mount()

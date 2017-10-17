@@ -5,10 +5,14 @@
 <script>
 export default {
   name: 'messageBox',
-  data () {
-    return {
-      prefixCls: 'ant-message-box',
-      styles: {}
+  props: {
+    prefixCls: {
+      type: String,
+      default: 'ant-message-box'
+    },
+    styles: {
+      type: Object,
+      default: {}
     }
   }
 }
