@@ -14,7 +14,7 @@
 <script>
 import AtuTransition from '../transition'
 import Icon from '../icon'
-const IconTypes = {
+const ICONTYPES = {
   info: 'info-circle',
   success: 'check-circle',
   error: 'cross-circle',
@@ -57,7 +57,7 @@ export default {
       return this.duration * 1000
     },
     iconType () {
-      return IconTypes[this.type]
+      return ICONTYPES[this.type]
     }
   },
   components: {
@@ -78,9 +78,7 @@ export default {
     },
     handleClose () {
       this.closed = true
-      if (typeof this.onClose === 'function') {
-        this.onClose(this)
-      }
+      this.onClose()
     },
     clearTimer () {
       clearTimeout(this.timer)

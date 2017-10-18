@@ -3,8 +3,8 @@ import './style/index.js'
 import MessageBox from './message-box'
 import Message from './message'
 
-let MessageBoxConstructor = Vue.extend(MessageBox)
-let MessageConstructor = Vue.extend(Message)
+const MessageBoxConstructor = Vue.extend(MessageBox)
+const MessageConstructor = Vue.extend(Message)
 let boxInstance
 let boxEl
 let messageInstances = []
@@ -14,7 +14,7 @@ let defaultTop = 24
 let defaultDuration = 3
 let getContainer
 
-function getBoxEl () {
+const getBoxEl = () => {
   boxInstance = boxInstance || new MessageBoxConstructor({
     propsData: {
       prefixCls,
@@ -31,7 +31,7 @@ function getBoxEl () {
   return boxEl
 }
 
-function notice (content, duration, type, onClose) {
+const notice = (content, duration, type, onClose) => {
   const boxEl = getBoxEl()
   const options = {
     prefixCls,
@@ -42,7 +42,7 @@ function notice (content, duration, type, onClose) {
       close(id, onClose)
     }
   }
-  let id = `${prefixCls}${seed++}`
+  const id = `${prefixCls}${seed++}`
   let messageInstance = new MessageConstructor({
     propsData: options
   })
@@ -52,12 +52,12 @@ function notice (content, duration, type, onClose) {
   messageInstance.vm.visible = true
   messageInstances.push(messageInstance)
 
-  return function () {
+  return () => {
     messageInstance.vm.visible = false
   }
 }
 
-function close (id, userOnClose) {
+const close = (id, userOnClose) => {
   for (let i = 0, len = messageInstances.length; i < len; i++) {
     if (id === messageInstances[i].id) {
       if (typeof userOnClose === 'function') {
@@ -69,25 +69,23 @@ function close (id, userOnClose) {
   }
 }
 
-const onCloseDefault = () => true
-
-let message = {
-  info (content, duration = defaultDuration, onClose = onCloseDefault) {
+const message = {
+  info (content, duration = defaultDuration, onClose) {
     return notice(content, duration, 'info', onClose)
   },
-  success (content, duration = defaultDuration, onClose = onCloseDefault) {
+  success (content, duration = defaultDuration, onClose) {
     return notice(content, duration, 'success', onClose)
   },
-  error (content, duration = defaultDuration, onClose = onCloseDefault) {
+  error (content, duration = defaultDuration, onClose) {
     return notice(content, duration, 'error', onClose)
   },
-  warn (content, duration = defaultDuration, onClose = onCloseDefault) {
+  warn (content, duration = defaultDuration, onClose) {
     return notice(content, duration, 'warning', onClose)
   },
-  warning (content, duration = defaultDuration, onClose = onCloseDefault) {
+  warning (content, duration = defaultDuration, onClose) {
     return notice(content, duration, 'warning', onClose)
   },
-  loading (content, duration = defaultDuration, onClose = onCloseDefault) {
+  loading (content, duration = defaultDuration, onClose) {
     return notice(content, duration, 'loading', onClose)
   },
   config (options) {

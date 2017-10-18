@@ -2,6 +2,7 @@ import message from '..'
 import MessageBox from '../message-box'
 import Message from '../message'
 import { creatComponentVm } from 'util.js'
+
 const delay = timeout => new Promise(resolve => setTimeout(resolve, timeout))
 
 describe('message', () => {
@@ -27,9 +28,19 @@ describe('message', () => {
     expect(vm.$el.classList.contains('test-message-notice')).toBeTruthy()
   })
 
+  it('should be able to all message', () => {
+    message.info('whatever')
+    message.success('whatever')
+    message.error('whatever')
+    message.warn('whatever')
+    message.warning('whatever')
+    message.loading('whatever')
+    expect(document.querySelectorAll('.ant-message-notice').length).toBe(6)
+  })
+
   it('should be able to args onClose', async () => {
     let closeFlag = 1
-    const userOnClose = function () {
+    const userOnClose =  () => {
       closeFlag = 2
     }
     message.info('whatever', 1, userOnClose)
@@ -54,7 +65,7 @@ describe('message', () => {
         return div
       }
     })
-    message.success('whatever')
+    message.info('whatever')
     expect(document.querySelectorAll('.custom-container').length).toBe(1)
   })
 
@@ -62,7 +73,7 @@ describe('message', () => {
     message.config({
       duration: 1
     })
-    message.warning('whatever')
+    message.info('whatever')
     setTimeout(() => {
       expect(document.querySelectorAll('.ant-message-notice').length).toBe(0)
     }, 1200)
@@ -72,13 +83,13 @@ describe('message', () => {
     message.config({
       prefixCls: 'prefix-message'
     })
-    message.error('whatever')
+    message.info('whatever')
     expect(document.querySelectorAll('.prefix-message').length).toBe(1)
   })
 
   it('should be able to hide manually', async () => {
-    const hide1 = message.loading('whatever', 0)
-    const hide2 = message.loading('whatever', 0)
+    const hide1 = message.info('whatever', 0)
+    const hide2 = message.info('whatever', 0)
     expect(document.querySelectorAll('.ant-message-notice').length).toBe(2)
     await delay(100)
     hide1()
@@ -93,8 +104,8 @@ describe('message', () => {
   })
 
   it('should be able to destroy globally', () => {
-    message.warn('whatever', 0)
-    message.warn('whatever', 0)
+    message.info('whatever', 0)
+    message.info('whatever', 0)
     expect(document.querySelectorAll('.ant-message').length).toBe(1)
     expect(document.querySelectorAll('.ant-message-notice').length).toBe(2)
     message.destroy()
