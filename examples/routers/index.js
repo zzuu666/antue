@@ -58,13 +58,12 @@ let router = new Router({
       component: Transition
     },
     {
-<<<<<<< HEAD
       path: '/tabs',
       component: Tabs
-=======
+    },
+    {
       path: '/tag',
       component: Tag
->>>>>>> master
     }
   ]
 })
