@@ -1,7 +1,7 @@
 import message from '..'
 import MessageBox from '../message-box'
 import Message from '../message'
-import { creatComponentVm, creatVueVm, simulateEvent, nextTick, renderVmString } from 'util.js'
+import { creatComponentVm } from 'util.js'
 const delay = timeout => new Promise(resolve => setTimeout(resolve, timeout))
 
 describe('message', () => {
@@ -29,7 +29,9 @@ describe('message', () => {
 
   it('should be able to args onClose', async () => {
     let closeFlag = 1
-    const userOnClose = () => closeFlag = 2
+    const userOnClose = function () {
+      closeFlag = 2
+    }
     message.info('whatever', 1, userOnClose)
     await delay(1200)
     expect(closeFlag).toBe(2)
