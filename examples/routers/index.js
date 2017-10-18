@@ -10,6 +10,7 @@ import Grid from './grid'
 import Radio from './radio'
 import Switch from './switch'
 import Transition from './transition'
+import Breadcrumb from './breadcrumb'
 
 Vue.use(Router)
 
@@ -54,6 +55,10 @@ let router = new Router({
     {
       path: '/transition',
       component: Transition
+    },
+    {
+      path: '/breadcrumb',
+      component: Breadcrumb
     }
   ]
 })
