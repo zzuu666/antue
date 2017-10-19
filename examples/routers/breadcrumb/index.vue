@@ -10,6 +10,7 @@
     <a-row :gutter="12" style="margin-bottom: 20px">
     <a-col :span="24">
       <code-show title="典型卡片" desc="包含标题、内容、操作区域。">
+        <base-demo></base-demo>
       </code-show>
     </a-col>
   </a-row>
@@ -21,12 +22,14 @@
   import CodeShow from '../../common/code-show'
   import ARow from '@/row'
   import ACol from '@/col'
+  import BaseDemo from './demo/base'
   export default {
     components: {
       Container,
       ARow,
       ACol,
-      CodeShow
+      CodeShow,
+      BaseDemo
     }
   }
 </script>
