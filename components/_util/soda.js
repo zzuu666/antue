@@ -3,16 +3,26 @@ class Soda {
     this.mutations = options.mutations
     this.state = options.state
     this._inject = false
+    this.root = vm
+
+    // const { commit } = this
+
+    // const store = this
+
+    // this.commit = function boundCommit (type, payload, options) {
+    //   return commit.call(store, type, payload, options)
+    // }
 
     const init = root => {
       const map = (_vm) => {
-        if (!vm.$children.length) return
+        if (!_vm.$children.length) return
         _vm.$children.forEach(child => {
           inject(child)
           map(child)
         })
       }
       const inject = (_vm) => {
+        if (typeof _vm.soda === 'undefined') return
         _vm.$soda = this
         _vm.soda = this.state
       }
@@ -24,7 +34,7 @@ class Soda {
   }
 
   commit (type, payload) {
-    this.mutations[type](this.state, payload)
+    this.mutations[type].call(this, this.state, payload)
   }
 }
 
