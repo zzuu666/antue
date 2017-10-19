@@ -1,6 +1,6 @@
 import './style/index.js'
-import Button from './button'
-import ButtonGroup from './button-group'
+import Breadcrumb from './breadcrumb'
+import BreadcrumbItem from './breadcrumb-item'
 
-Button.Group = ButtonGroup
-export default Button
+Breadcrumb.Item = BreadcrumbItem
+export default Breadcrumb

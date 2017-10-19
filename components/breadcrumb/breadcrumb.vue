@@ -1,6 +1,6 @@
 <template>
-  <div :class="prefixCls" :style="style">
-    {crumbs}
+  <div :class="prefixCls">
+    <slot></slot>
   </div>
 </template>
 
