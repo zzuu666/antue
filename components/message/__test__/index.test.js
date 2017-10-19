@@ -40,7 +40,7 @@ describe('message', () => {
 
   it('should be able to args onClose', async () => {
     let closeFlag = 1
-    const userOnClose =  () => {
+    const userOnClose = () => {
       closeFlag = 2
     }
     message.info('whatever', 1, userOnClose)
