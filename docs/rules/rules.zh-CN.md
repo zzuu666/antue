@@ -2,7 +2,7 @@
 title: 开发规范
 ---
 
-开发组件之前请发邮件至[antue-dev@outlook.com](mailto:antue-dev@outlook.com)认领组件，作者会更新README中Todo List，避免重复开发。
+开发组件之前请在仓库[Projects Components Development Status](https://github.com/zzuu666/antue/projects/1) TODO 中确认要开发的组件，发邮件至[antue-dev@outlook.com](mailto:antue-dev@outlook.com)认领组件，避免重复开发。
 
 ### 写在前面
 > Antue 的定位是一个用 Vue 实现的**纯粹**的 Antd 组件库。所谓纯粹是指，参照 [Antd 官方文档](https://ant.design/docs/react/introduce-cn) 完全实现其样式与API。

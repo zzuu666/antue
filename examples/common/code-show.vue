@@ -28,7 +28,7 @@ export default {
 
   &-example {
     position: relative;
-    text-align: center;
+    text-align: left;
     padding: 42px 20px 50px;
   }
   .menu-code &-example {

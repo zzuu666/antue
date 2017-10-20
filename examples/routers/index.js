@@ -7,8 +7,12 @@ import Input from './input'
 import Rate from './rate'
 import Card from './card'
 import Grid from './grid'
+import Radio from './radio'
 import Switch from './switch'
+import Message from './message'
 import Transition from './transition'
+import Tabs from './tabs'
+import Tag from './tag'
 
 Vue.use(Router)
 
@@ -43,12 +47,28 @@ let router = new Router({
       component: Grid
     },
     {
+      path: '/radio',
+      component: Radio
+    },
+    {
       path: '/switch',
       component: Switch
     },
     {
+      path: '/message',
+      component: Message
+    },
+    {
       path: '/transition',
       component: Transition
+    },
+    {
+      path: '/tabs',
+      component: Tabs
+    },
+    {
+      path: '/tag',
+      component: Tag
     }
   ]
 })
