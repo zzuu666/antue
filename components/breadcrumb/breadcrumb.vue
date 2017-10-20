@@ -11,6 +11,10 @@
       prefixCls: {
         type: String,
         default: 'ant-breadcrumb'
+      },
+      separator: {
+        type: String,
+        default: '/'
       }
     }
   }

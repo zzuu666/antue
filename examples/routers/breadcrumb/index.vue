@@ -12,6 +12,9 @@
         <code-show title="基本" desc="最简单的用法。">
           <base-demo></base-demo>
         </code-show>
+        <code-show title="分隔符" desc="使用separator='>' 可以自定义分隔符。">
+          <separator-demo></separator-demo>
+        </code-show>
       </a-col>
       <a-col :span="12">
         <code-show title="带有图标的" desc="图标放在文字前面。">
@@ -29,6 +32,7 @@
   import ACol from '@/col'
   import BaseDemo from './demo/base'
   import IconDemo from './demo/icon'
+  import SeparatorDemo from './demo/separator'
   export default {
     components: {
       Container,
@@ -36,7 +40,8 @@
       ACol,
       CodeShow,
       BaseDemo,
-      IconDemo
+      IconDemo,
+      SeparatorDemo
     }
   }
 </script>

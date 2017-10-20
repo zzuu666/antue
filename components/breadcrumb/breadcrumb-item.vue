@@ -14,10 +14,11 @@
       prefixCls: {
         type: String,
         default: 'ant-breadcrumb'
-      },
-      separator: {
-        type: String,
-        default: '/'
+      }
+    },
+    computed: {
+      separator () {
+        return this.$parent.separator
       }
     }
   }
