@@ -8,12 +8,17 @@
     <p>当需要向上导航的功能。</p>
     <h2>代码演示</h2>
     <a-row :gutter="12" style="margin-bottom: 20px">
-    <a-col :span="24">
-      <code-show title="典型卡片" desc="包含标题、内容、操作区域。">
-        <base-demo></base-demo>
-      </code-show>
-    </a-col>
-  </a-row>
+      <a-col :span="12">
+        <code-show title="基本" desc="最简单的用法。">
+          <base-demo></base-demo>
+        </code-show>
+      </a-col>
+      <a-col :span="12">
+        <code-show title="带有图标的" desc="图标放在文字前面。">
+          <icon-demo></icon-demo>
+        </code-show>
+      </a-col>
+    </a-row>
   </container>
 </template>
 
@@ -23,13 +28,15 @@
   import ARow from '@/row'
   import ACol from '@/col'
   import BaseDemo from './demo/base'
+  import IconDemo from './demo/icon'
   export default {
     components: {
       Container,
       ARow,
       ACol,
       CodeShow,
-      BaseDemo
+      BaseDemo,
+      IconDemo
     }
   }
 </script>
