@@ -81,6 +81,10 @@ export default {
             {
               title: 'Menu 菜单',
               route: 'menu'
+            },
+            {
+              title: 'Pagination 分页',
+              route: 'pagination'
             }
           ]
         },
