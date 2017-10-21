@@ -1,7 +1,10 @@
 <template>
     <span>
       <span :class="`${prefixCls}-link`">
-        <slot></slot>
+        <a :href="href" v-if="href!==undefined">
+          <slot></slot>
+        </a>
+        <slot v-if="href===undefined"></slot>
       </span>
       <span :class="`${prefixCls}-separator`">{{separator}}</span>
     </span>
@@ -14,7 +17,8 @@
       prefixCls: {
         type: String,
         default: 'ant-breadcrumb'
-      }
+      },
+      href: String
     },
     computed: {
       separator () {

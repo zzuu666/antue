@@ -2,8 +2,8 @@
   <div class="breadcrumb-container">
     <breadcrumb separator=">">
       <breadcrumb-item>Home</breadcrumb-item>
-      <breadcrumb-item><a href="">Application Center</a></breadcrumb-item>
-      <breadcrumb-item><a href="">Application List</a></breadcrumb-item>
+      <breadcrumb-item href="">Application Center</breadcrumb-item>
+      <breadcrumb-item href="">Application List</breadcrumb-item>
       <breadcrumb-item>An Application</breadcrumb-item>
     </breadcrumb>
   </div>
