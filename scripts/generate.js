@@ -3,7 +3,7 @@ const marked = require('marked')
 const to = require('./utils/to')
 const ignore = require('./config/ignore')
 const { failLog, generalLog } = require('./utils/log')
-const { parseComponentMarkdown, parseDocMarkdown, parseDeomMarkdown } = require('./utils/parse')
+const { parseComponentMarkdown, parseDocMarkdown, parseDemoMarkdown } = require('./utils/parse')
 const { readUTF8FilePromise, readDirPromise, stableWriteFile } = require('./utils/file')
 const { getFilesByExtension, generateCamelName } = require('./utils/utils')
 
@@ -17,8 +17,8 @@ marked.setOptions({
   }
 })
 const generateNormalVue = (oriPath, oriDir, targePath, type = 'doc', demos = []) => {
-  const componentMarkdonwFile = getFilesByExtension(oriDir, '.md')
-  componentMarkdonwFile.forEach(async file => {
+  const componentMarkdownFile = getFilesByExtension(oriDir, '.md')
+  componentMarkdownFile.forEach(async file => {
     if (file.indexOf('zh-CN') === -1 && file.indexOf('en-US') === -1) return
     const lang = file.indexOf('zh-CN') > -1 ? 'zh-CN' : 'en-US'
     const route = path.join(oriPath, file)
@@ -173,10 +173,10 @@ const generateVueContainer = (main, demos = []) => {
 }
 
 const generateComponents = (components) => {
-  const readDeomMds = async (route, component, name) => {
+  const readDemoMds = async (route, component, name) => {
     let mdErr, md
     ;[mdErr, md] = await to(readUTF8FilePromise(route))
-    return mdErr ? failLog(`读取文件${route}失败`) : parseDeomMarkdown(md, component, name)
+    return mdErr ? failLog(`读取文件${route}失败`) : parseDemoMarkdown(md, component, name)
   }
 
   const generateDomes = (route, demos) => {
@@ -205,7 +205,7 @@ const generateComponents = (components) => {
       vaildComponentDemoMdPaths && await Promise.all(vaildComponentDemoMdPaths.map(componentDemoMdPath => {
         const route = path.join(componentDemoPath, componentDemoMdPath)
         const name = componentDemoMdPath.replace('.md', '')
-        return readDeomMds(route, component, name)
+        return readDemoMds(route, component, name)
       })).then(v => {
         demos = v
       })
@@ -225,14 +225,14 @@ const generateDocs = (docs) => {
   const generateDoc = async (doc) => {
     const docsPath = resolve('docs')
     const docsDocPath = path.join(docsPath, doc)
-    let docsDocErr, docsDoctDir
-    ;[docsDocErr, docsDoctDir] = await to(readDirPromise(docsDocPath))
+    let docsDocErr, docsDocDir
+    ;[docsDocErr, docsDocDir] = await to(readDirPromise(docsDocPath))
     if (docsDocErr) {
-      generalLog(`${docsDoctDir}不是文件夹，已跳过。`)
+      generalLog(`${docsDocDir}不是文件夹，已跳过。`)
       return
     }
     const siteDocPath = path.join(resolve('site'), 'docs', doc)
-    generateNormalVue(docsDocPath, docsDoctDir, siteDocPath)
+    generateNormalVue(docsDocPath, docsDocDir, siteDocPath)
   }
 
   docs.forEach(doc => {

@@ -22,7 +22,7 @@ const parseMarkdownHeader = (md, mark) => {
   return json
 }
 
-const parseDeomMarkdown = (md, component, name) => {
+const parseDemoMarkdown = (md, component, name) => {
   let json = {}
   const mark = `${component}/${name}`
   json.header = parseMarkdownHeader(md, mark)
@@ -63,7 +63,7 @@ const parseDocMarkdown = (md) => {
 }
 
 module.exports = {
-  parseDeomMarkdown,
+  parseDemoMarkdown,
   parseComponentMarkdown,
   parseDocMarkdown
 }
