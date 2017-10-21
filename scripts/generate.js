@@ -2,7 +2,7 @@ const path = require('path')
 const marked = require('marked')
 const to = require('./utils/to')
 const ignore = require('./config/ignore')
-const { failLog, generalLog, successLog } = require('./utils/log')
+const { failLog, generalLog } = require('./utils/log')
 const { parseComponentMarkdown, parseDocMarkdown, parseDeomMarkdown } = require('./utils/parse')
 const { readUTF8FilePromise, readDirPromise, stableWriteFile } = require('./utils/file')
 const { getFilesByExtension, generateCamelName } = require('./utils/utils')
@@ -242,38 +242,29 @@ const generateDocs = (docs) => {
 
 const generateComponentsRouterConfig = async () => {
   const sitePath = resolve('site')
-  let importString = `import Vue from 'vue'
-  import Router from 'vue-router'
-  `
+  let importString = `import Vue from 'vue'\nimport Router from 'vue-router'\n`
   let configString = ''
   await Promise.all(['components', 'docs'].map(async dir => {
     let err, components
     ;[err, components] = await to(readDirPromise(path.join(sitePath, dir)))
+    err !== null && console.log(err)
     await Promise.all(components.map(async component => {
       let err, files
       ;[err, files] = await to(readDirPromise(path.join(sitePath, dir, component)))
+      err !== null && console.log(err)
       getFilesByExtension(files, '.vue').forEach(file => {
         let lang = file.indexOf('zh-CN') > -1 ? 'zh' : 'en'
         let mdName = file.split('.')[0]
         let dirName = dir.slice(0, 4)
         let name = generateCamelName(dirName, component, mdName, lang)
         importString += `import ${name} from './${dir}/${component}/${file}'\n`
-        configString += `{
-          path: '/${dir}/${component}/${mdName}/${lang}',
-          component: ${name},
-          name: '${name}'
-        },`
+        configString += `    {\n      path: '/${dir}/${component}/${mdName}/${lang}',\n      component: ${name},\n      name: '${name}'\n    },\n`
       })
     }))
   }))
+  configString = configString.substring(0, configString.length - 2)
   importString += 'Vue.use(Router)\n'
-  const config = `let router = new Router({
-    routes: [
-      ${configString}
-    ]
-  })
-  
-  export default router`
+  const config = '\nlet router = new Router({\n  routes: [\n' + configString + '\n  ]\n})\n\nexport default router\n'
   stableWriteFile(sitePath, 'router.js', importString + config)
 }
 
@@ -288,7 +279,7 @@ const generate = async (params) => {
   } else if (params[0] === '-d') {
     generateDocs(dDir)
   } else if (params[0] === '-r') {
-    generateComponentsRouterConfig()
+    generateComponentsRouterConfig().catch(err => console.log(err))
   }
 }
 
