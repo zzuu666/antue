@@ -1,63 +1,7 @@
-<template>
-  <div :class="classes">
-    <span
-      unselectable="unselectable"
-      :class="[
-        `${prefixCls}-tab-prev`,
-        {
-          [`${prefixCls}-tab-btn-disabled`]: !prev,
-          [`${prefixCls}-tab-arrow-show`]: showNextPrev
-        }
-      ]"
-      @click="handlePrev">
-      <span :class="`${prefixCls}-tab-prev-icon`"></span>
-    </span>
-    <span
-      unselectable="unselectable"
-      :class="[
-        `${prefixCls}-tab-next`,
-        {
-          [`${prefixCls}-tab-btn-disabled`]: !next,
-          [`${prefixCls}-tab-arrow-show`]: showNextPrev
-        }
-      ]"
-      @click="handleNext">
-      <span :class="`${prefixCls}-tab-next-icon`"></span>
-    </span>
-
-    <div :class="`${prefixCls}-nav-wrap`" ref="wrap">
-      <div :class="`${prefixCls}-nav-scroll`">
-        <div
-          :class="[
-            `${prefixCls}-nav`,
-            this.animated ? `${prefixCls}-nav-animated` : `${prefixCls}-nav-no-animated`
-          ]"
-          :style="style"
-          ref="nav">
-          <!--content-->
-          <tabs-ink :activeNode="activeNode" :offset="inkOffset" :vertical="isVertical"></tabs-ink>
-          <tabs-tab
-            ref="tabs"
-            v-for="tab in tabs"
-            :key="tab.index"
-            :index="tab.index"
-            :icon="tab.icon"
-            :tab="tab.tab"
-            :closable="tab.closable"
-            :type="type"
-            :disabled="tab.disabled"
-            @change="handleChange"
-            @remove="handleRemove"
-            @click="handleTabClick"></tabs-tab>
-          </div>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script>
 import TabsInk from './tabs-ink'
 import TabsTab from './tabs-tab'
+import debounce from 'lodash.debounce'
 
 export default {
   name: 'tabsNav',
@@ -65,10 +9,12 @@ export default {
     return {
       next: false,
       prev: false,
+      shouldScroll: true,
       activeNode: null,
-      inkWidth: 0,
+      inkSize: 0,
       inkOffset: 0,
-      offset: 0
+      offset: 0,
+      soda: {}
     }
   },
   props: {
@@ -124,61 +70,92 @@ export default {
       return position === 'left' || position === 'right'
     }
   },
-  watch: {
-    tabs () {
-      this.getActiveNode()
-    },
-    active () {
-      this.getActiveNode()
-    }
-  },
   methods: {
-    handleChange (index) {
-      this.$emit('change', index)
-    },
-    handleRemove (index) {
-      this.$emit('remove', index)
-    },
-    handleTabClick (info) {
-      this.$emit('tab-click', info)
+    handleTabChange (index) {
+      this.shouldScroll = true
+      this.$soda.commit('handleTabChange', index)
     },
     handlePrev (e) {
       if (!this.prev) return
       const warp = this.$refs.wrap
       const warpWH = this.getOffsetWH(warp)
       this.offset += warpWH
-      this.$emit('prev-click', e)
+      this.$soda.commit('handlePrevClick', e)
     },
     handleNext (e) {
       if (!this.next) return
       const warp = this.$refs.wrap
       const warpWH = this.getOffsetWH(warp)
       this.offset -= warpWH
-      this.$emit('next-click', e)
+      this.$soda.commit('handleNextClick', e)
     },
     getActiveNode () {
-      this.$nextTick(() => {
-        const index = this.tabs.findIndex(tab => tab.index === this.active)
-        const gutter = this.isVertical ? 16 : this.size === 'small' ? 0 : 24
-        this.activeNode = index > -1 ? this.$refs.tabs[index].$el : null
-        this.inkWidth = this.activeNode ? this.activeNode.offsetWidth : 0
-        this.inkOffset = this.activeNode
-          ? this.$refs.tabs
-            .filter((vm, i) => i < index)
-            .map(vm => this.getOffsetWH(vm.$el))
-            .reduce((sum, value) => sum + value + gutter, 0)
-          : 0
-      })
+      // const gutter = this.isVertical ? 16 : this.size === 'small' ? 0 : 24
+      // const activeNode = this.$refs.active.$el
+      // this.inkSize = this.getOffsetWH(activeNode)
+      // this.inkOffset = this.activeNode
+      //   ? this.$refs.tabs
+      //     .filter((vm, i) => i < index)
+      //     .map(vm => this.getOffsetWH(vm.$el))
+      //     .reduce((sum, value) => sum + value + gutter, 0)
+      //   : 0
+      // this.$nextTick(() => {
+      //   const gutter = this.isVertical ? 16 : this.size === 'small' ? 0 : 24
+      //   this.activeNode = index > -1 ? this.$refs.tabs[index].$el : null
+      //   this.inkWidth = this.activeNode ? this.activeNode.offsetWidth : 0
+      //   this.inkOffset = this.activeNode
+      //     ? this.$refs.tabs
+      //       .filter((vm, i) => i < index)
+      //       .map(vm => this.getOffsetWH(vm.$el))
+      //       .reduce((sum, value) => sum + value + gutter, 0)
+      //     : 0
+      // })
+    },
+    setInk () {
+      const nav = this.$refs.nav
+      const active = this.$refs.active && this.$refs.active.$el
+      const containerOffset = this.getOffsetLT(nav)
+      if (active) {
+        const tabOffset = this.getOffsetLT(active)
+        this.inkOffset = tabOffset - containerOffset
+        this.inkSize = this.getOffsetWH(active)
+      }
     },
     getOffsetWH (node) {
-      return this.isVertical
-        ? node.offsetHeight
-        : node.offsetWidth
+      return node
+        ? this.isVertical
+          ? node.offsetHeight
+          : node.offsetWidth
+        : 0
     },
     getOffsetLT (node) {
-      return this.isVertical
-        ? node.getBoundingClientRect().top
-        : node.getBoundingClientRect().left
+      return node
+        ? this.isVertical
+          ? node.getBoundingClientRect().top
+          : node.getBoundingClientRect().left
+        : 0
+    },
+    scrollToActive () {
+      const active = this.$refs.active && this.$refs.active.$el
+      const warp = this.$refs.wrap
+      if (active) {
+        const activeTabWH = this.getOffsetWH(active)
+        const navWrapWH = this.getOffsetWH(warp)
+        const activeOffset = this.getOffsetLT(active)
+        const navOffset = this.getOffsetLT(warp)
+        setTimeout(() => {
+          console.log(activeTabWH, navWrapWH, activeOffset, this.getOffsetLT(this.$refs.wrap))
+        }, 1000)
+        console.log(this.getOffsetWH(this.$refs.prev))
+        console.log(activeTabWH, navWrapWH, activeOffset, this.getOffsetLT(this.$refs.wrap))
+        if (navOffset > activeOffset) {
+          this.offset += (navOffset - activeOffset)
+        } else if ((navOffset + navWrapWH) < (activeOffset + activeTabWH)) {
+          this.offset -= (activeOffset + activeTabWH) - (navOffset + navWrapWH)
+        }
+        console.log(this.offset)
+        this.shouldScroll = false
+      }
     },
     setNextPrev () {
       const nav = this.$refs.nav
@@ -199,11 +176,121 @@ export default {
     }
   },
   mounted () {
-    this.setNextPrev()
+    const debouncedResize = debounce(() => {
+      this.setNextPrev()
+      this.scrollToActive()
+    }, 200)
+    this.resizeEvent = window.addEventListener('resize', debouncedResize)
   },
   beforeUpdate () {
-    this.getActiveNode()
     this.setNextPrev()
+  },
+  updated () {
+    this.setInk()
+    this.shouldScroll && this.scrollToActive()
+  },
+  render (h) {
+    const prefixCls = this.prefixCls
+
+    const prev = h('span', {
+      attrs: {
+        unselectable: 'unselectable'
+      },
+      'class': [
+        `${prefixCls}-tab-prev`,
+        {
+          [`${prefixCls}-tab-btn-disabled`]: !this.prev,
+          [`${prefixCls}-tab-arrow-show`]: this.showNextPrev
+        }
+      ],
+      on: {
+        click: this.handlePrev
+      },
+      ref: 'prev'
+    }, [
+      h('span', {
+        'class': [
+          `${prefixCls}-tab-prev-icon`
+        ]
+      })
+    ])
+
+    const next = h('span', {
+      attrs: {
+        unselectable: 'unselectable'
+      },
+      'class': [
+        `${prefixCls}-tab-next`,
+        {
+          [`${prefixCls}-tab-btn-disabled`]: !this.next,
+          [`${prefixCls}-tab-arrow-show`]: this.showNextPrev
+        }
+      ],
+      on: {
+        click: this.handleNext
+      }
+    }, [
+      h('span', {
+        'class': [
+          `${prefixCls}-tab-next-icon`
+        ]
+      })
+    ])
+
+    const ink = h('tabs-ink', {
+      props: {
+        size: this.inkSize,
+        offset: this.inkOffset,
+        vertical: this.isVertical
+      }
+    })
+
+    const tabs = this.tabs.map(item => h('tabs-tab', {
+      props: {
+        closable: item.closable,
+        disabled: item.disabled,
+        index: item.index,
+        icon: item.icon,
+        tab: item.tab,
+        type: this.type
+      },
+      on: {
+        change: this.handleTabChange
+      },
+      key: item.index,
+      ref: item.index === this.soda.active ? 'active' : ''
+    }))
+
+    const nav = h('div', {
+      'class': `${prefixCls}-nav-scroll`
+    }, [
+      h('div', {
+        'class': [
+          `${prefixCls}-nav`,
+          this.animated ? `${prefixCls}-nav-animated` : `${prefixCls}-nav-no-animated`
+        ],
+        style: this.style,
+        ref: 'nav'
+      }, [
+        ink,
+        tabs
+      ])
+    ])
+
+    const warp = h('div', {
+      'class': `${prefixCls}-nav-wrap`,
+      ref: 'wrap'
+    }, [
+      nav
+    ])
+
+    return h('div', {
+      'class': this.classes
+    }, [
+      prev,
+      next,
+      warp
+    ])
   }
 }
 </script>
