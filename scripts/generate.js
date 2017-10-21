@@ -16,7 +16,7 @@ marked.setOptions({
     return require('highlight.js').highlightAuto(code).value
   }
 })
-const generateNormalVue = (oriPath, oriDir, targePath, type = 'doc', demos = []) => {
+const generateNormalVue = (oriPath, oriDir, targetPath, type = 'doc', demos = []) => {
   const componentMarkdownFile = getFilesByExtension(oriDir, '.md')
   componentMarkdownFile.forEach(async file => {
     if (file.indexOf('zh-CN') === -1 && file.indexOf('en-US') === -1) return
@@ -30,7 +30,7 @@ const generateNormalVue = (oriPath, oriDir, targePath, type = 'doc', demos = [])
       mdJson = type === 'component' ? parseComponentMarkdown(mdContent, lang) : parseDocMarkdown(mdContent, lang)
     }
     const data = generateVueContainer(mdJson, demos)
-    stableWriteFile(targePath, file.replace('.md', '.vue'), data)
+    stableWriteFile(targetPath, file.replace('.md', '.vue'), data)
   })
 }
 
@@ -98,16 +98,16 @@ const generateVueContainer = (main, demos = []) => {
         })
     }
 
-    const renderImortString = (component, file) => {
+    const renderImportString = (component, file) => {
       return `import ${component} from './demo/${file}'`
     }
 
     const renderComponentsString = (component) => {
-      return `${component},`
+      return `    ${component},`
     }
 
     const mergeInfo = (infos, isOne) => {
-      const imports = infos.map(el => renderImortString(el.componentName, el.name)).join('\n')
+      const imports = infos.map(el => renderImportString(el.componentName, el.name)).join('\n')
       const components = infos.map(el => renderComponentsString(el.componentName)).join('\n')
       const all = infos.map(el => el.code).join('')
       const odd = infos.filter(el => el.index % 2).map(el => el.code).join('')
@@ -137,38 +137,36 @@ const generateVueContainer = (main, demos = []) => {
   const result = handleMainContent(main)
   const code = generateCodeJson(demos, isOne)
   const template =
-  `<template>
-    <container>
-      <template slot="before">
-        <h1>${result.title} ${result.subtitle}</h1>
-        ${result.beforeCode}
-        ${result.content}
-      </template>
-      <template slot="code">
-        ${code.code}
-      </template>
-      <template slot="after">
-        ${result.afterCode}
-      </template>
-    </container>
-  </template>
-  <script>
-  import Container from '../../common/layout/container'
-  import CodeShow from '../../common/layout/code-show'
-  import AtuRow from '@/row'
-  import AtuCol from '@/col'
-  ${code.imports}
-  export default {
-    components: {
-      ${code.components}
-      Container,
-      CodeShow,
-      AtuRow,
-      AtuCol
-    }
+`<template>
+  <container>
+    <template slot="before">
+      <h1>${result.title} ${result.subtitle}</h1>
+      ${result.beforeCode}
+      ${result.content}
+    </template>
+    <template slot="code">
+      ${code.code}
+    </template>
+    <template slot="after">
+      ${result.afterCode}
+    </template>
+  </container>
+</template>\n<script>
+import Container from '../../common/layout/container'
+import CodeShow from '../../common/layout/code-show'
+import AtuRow from '@/row'
+import AtuCol from '@/col'
+${code.imports}
+export default {
+  components: {\n${code.components}
+    Container,
+    CodeShow,
+    AtuRow,
+    AtuCol
   }
-  </script>
-  `
+}
+</script>
+`
   return template
 }
 
