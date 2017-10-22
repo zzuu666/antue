@@ -54,6 +54,8 @@
     >
       <a :class="`${prefixCls}-item-link`"></a>
     </li>
+
+
   </ul>
 </template>
 
@@ -117,7 +119,7 @@
           } else if (this.currentPage <= 2) {
             rs = this.range(1, 5)
           } else {
-            rs = this.range(this.calculatePage - 5, this.calculatePage)
+            rs = this.range(this.calculatePage - 4, this.calculatePage)
           }
         } else {
           rs = this.range(1, this.calculatePage)
@@ -125,10 +127,10 @@
         return rs
       },
       showJumpNext () {
-        return this.calculatePage - this.currentPage > 3
+        return this.calculatePage - this.currentPage > 3 && this.calculatePage > 5
       },
       showJumpPrev () {
-        return this.currentPage > 4
+        return this.currentPage > 4 && this.calculatePage > 5
       }
     },
     watch: {
@@ -167,7 +169,9 @@
         return [
           `${this.prefixCls}-item`,
           {
-            [`${this.prefixCls}-item-active`]: this.currentPage === i
+            [`${this.prefixCls}-item-active`]: this.currentPage === i,
+            [`${this.prefixCls}-item-after-jump-prev`]: i === this.pageRange[0] && this.showJumpPrev,
+            [`${this.prefixCls}-item-before-jump-next`]: i === this.pageRange[this.pageRange.length - 1] && this.showJumpNext
           }
         ]
       },
