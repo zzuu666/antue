@@ -1,12 +1,16 @@
 <template>
-    <span>
-      <span :class="`${prefixCls}-link`">
-        <a :href="href" v-if="href!==undefined">
-          <slot></slot>
-        </a>
-        <slot v-if="href===undefined"></slot>
+    <span @click="handleClick">
+      <a :href="href" :class="`${prefixCls}-link`" v-if="href!==undefined || to!==undefined">
+        <slot></slot>
+      </a>
+      <span :class="`${prefixCls}-link`" v-else>
+        <slot></slot>
       </span>
-      <span :class="`${prefixCls}-separator`">{{separator}}</span>
+      <span :class="`${prefixCls}-separator`">
+        <slot name="separator">
+          {{separator}}
+        </slot>
+      </span>
     </span>
 </template>
 
@@ -18,16 +22,27 @@
         type: String,
         default: 'ant-breadcrumb'
       },
-      href: String
+      href: String,
+      replace: {
+        type: Boolean,
+        default: false
+      },
+      to: Object
     },
     computed: {
       separator () {
         return this.$parent.separator
       }
+    },
+    methods: {
+      handleClick (e) {
+        if (this.to === undefined) {
+          this.$emit('click', e)
+        } else {
+          e.preventDefault()
+          this.replace ? this.$router.replace(this.to) : this.$router.push(this.to)
+        }
+      }
     }
   }
 </script>
-
-<style>
-
-</style>
