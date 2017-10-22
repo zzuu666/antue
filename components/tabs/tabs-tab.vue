@@ -3,6 +3,11 @@ import AtuIcon from '../icon'
 
 export default {
   name: 'tabsTab',
+  data () {
+    return {
+      soda: {}
+    }
+  },
   props: {
     prefixCls: {
       type: String,
@@ -41,7 +46,7 @@ export default {
       ]
     },
     active () {
-      return this.index === this.$parent.active
+      return this.index === this.soda.active
     }
   },
   components: {
@@ -51,14 +56,15 @@ export default {
     handleClick (e) {
       if (this.disabled) return
       !this.active && this.$emit('change', this.index)
-      this.$emit('click', {
+      const info = {
         e,
         vm: this,
         index: this.index
-      })
+      }
+      this.$soda.commit('handleTabClick', info)
     },
     handleClose (e) {
-      this.$emit('remove', this.index)
+      this.$soda.commit('handleTabClose', this.index)
       e.stopPropagation()
     }
   },

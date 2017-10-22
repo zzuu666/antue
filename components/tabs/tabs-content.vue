@@ -15,10 +15,6 @@ export default {
       default: 'ant-tabs'
     },
     // pane component used
-    active: {
-      type: [String, Number]
-    },
-    // pane component used
     activeIndex: {
       type: Number
     },
@@ -42,11 +38,6 @@ export default {
         marginLeft: `-${marginLeft}%`
       }
       return style
-    }
-  },
-  methods: {
-    panes () {
-      return this.$children.filter(item => item.$options.name === 'pane')
     }
   },
   updated () {

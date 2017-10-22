@@ -9,12 +9,7 @@
       :size="size"
       :tabs="tabs"
       :type="type"
-      :position="position"
-      @change="handleChange"
-      @remove="handleRemove"
-      @tab-click="handleTabClick"
-      @prev-click="handlePrevClick"
-      @next-click="handleNextClick"></tabs-nav>
+      :position="position"></tabs-nav>
   </div>
 </template>
 
@@ -61,23 +56,8 @@ export default {
     }
   },
   methods: {
-    handleChange (index) {
-      this.$emit('change', index)
-    },
     handleCreate () {
       this.$emit('edit', 'add')
-    },
-    handleRemove (index) {
-      this.$emit('edit', 'remove', index)
-    },
-    handleTabClick (info) {
-      this.$emit('tab-click', info)
-    },
-    handlePrevClick (e) {
-      this.$emit('prev-click', e)
-    },
-    handleNextClick (e) {
-      this.$emit('next-click', e)
     }
   }
 }
