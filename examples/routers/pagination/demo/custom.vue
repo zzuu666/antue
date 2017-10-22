@@ -1,6 +1,9 @@
 <template>
   <div>
-    <ant-page :total="50"></ant-page>
+    <ant-page :total="500" :current="1">
+      <a slot="prev">Previous</a>
+      <a slot="next">Next</a>
+    </ant-page>
   </div>
 </template>
 

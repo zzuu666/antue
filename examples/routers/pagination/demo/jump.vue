@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ant-page :total="50"></ant-page>
+    <ant-page :total="600" :current="6" showQuickJumper></ant-page>
   </div>
 </template>
 
