@@ -13,11 +13,26 @@ title: 组件规范
 
 ``` js
 export default {
-	name: 'button',
+  name: 'button',
   props: {
     prefixCls: {
       type: String,
       default: 'ant-button'
+    }
+  }
+}
+```
+
+### 组件暴露事件
++ 为了兼容 `inline-template` 模式，对于暴露出来的事件，一律采用 `kebab-case` 的写法。
+
+``` js
+export default {
+  name: 'button',
+  methods: {
+    handleTabClick () {
+      this.$emit('tab-click')  // Good
+      this.$emit('tabClick')   // Bad
     }
   }
 }

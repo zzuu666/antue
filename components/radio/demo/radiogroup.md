@@ -40,7 +40,7 @@ A group of radio components.
     },
     components: {
       Radio,
-      RadioGroup: Radio.group
+      RadioGroup: Radio.Group
     }
   }
 </script>
