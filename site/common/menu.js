@@ -102,6 +102,15 @@ const menu = {
           ]
         },
         {
+          title: 'Feedback',
+          items: [
+            {
+              title: 'Message 全局提示',
+              route: 'compMessageIndexZh'
+            }
+          ]
+        },
+        {
           title: 'Transition',
           items: [
             {

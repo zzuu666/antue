@@ -18,26 +18,26 @@ There are three sizes available: large, medium, and small. It can coordinate wit
   <div>
     <div>
       <radio-group v-model="checkedValue" @change="handleChange" size="large">
-        <radio prefixCls="ant-radio-button" value="a">Hangzhou</radio>
-        <radio prefixCls="ant-radio-button" value="b">Shanghai</radio>
-        <radio prefixCls="ant-radio-button" value="c">Beijing</radio>
-        <radio prefixCls="ant-radio-button" value="d">Chengdu</radio>
+        <radio-button value="a">Hangzhou</radio-button>
+        <radio-button value="b">Shanghai</radio-button>
+        <radio-button value="c">Beijing</radio-button>
+        <radio-button value="d">Chengdu</radio-button>
       </radio-group>
     </div>
     <div style="margin-top: 16px">
       <radio-group v-model="checkedValue" @change="handleChange">
-        <radio prefixCls="ant-radio-button" value="a">Hangzhou</radio>
-        <radio prefixCls="ant-radio-button" value="b">Shanghai</radio>
-        <radio prefixCls="ant-radio-button" value="c">Beijing</radio>
-        <radio prefixCls="ant-radio-button" value="d">Chengdu</radio>
+        <radio-button value="a">Hangzhou</radio-button>
+        <radio-button value="b">Shanghai</radio-button>
+        <radio-button value="c">Beijing</radio-button>
+        <radio-button value="d">Chengdu</radio-button>
       </radio-group>
     </div>
     <div style="margin-top: 16px">
       <radio-group v-model="checkedValue" @change="handleChange" size="small">
-        <radio prefixCls="ant-radio-button" value="a">Hangzhou</radio>
-        <radio prefixCls="ant-radio-button" value="b">Shanghai</radio>
-        <radio prefixCls="ant-radio-button" value="c">Beijing</radio>
-        <radio prefixCls="ant-radio-button" value="d">Chengdu</radio>
+        <radio-button value="a">Hangzhou</radio-button>
+        <radio-button value="b">Shanghai</radio-button>
+        <radio-button value="c">Beijing</radio-button>
+        <radio-button value="d">Chengdu</radio-button>
       </radio-group>
     </div>
   </div>
@@ -58,7 +58,8 @@ There are three sizes available: large, medium, and small. It can coordinate wit
     },
     components: {
       Radio,
-      RadioGroup: Radio.group
+      RadioGroup: Radio.Group,
+      RadioButton: Radio.Button
     }
   }
 </script>
