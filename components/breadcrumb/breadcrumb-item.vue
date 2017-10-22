@@ -27,7 +27,7 @@
         type: Boolean,
         default: false
       },
-      to: Object
+      to: [Object, String]
     },
     computed: {
       separator () {

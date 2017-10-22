@@ -15,26 +15,29 @@ A breadcrumb displays the current location within a hierarchy. It allows going b
 
 ## API
 
-| Property      | Description                              | Type              |  Optional | Default |
-|-----------|-----------------------------------|-----------------|---------|--------|
-| routes    | The routing stack information of router | object[]             |         | -      |
-| params    | Routing parameters                        | object            |         | -      |
-| separator | Custom separator                      | string\|ReactNode |         | `/`    |
-| itemRender | Custom item renderer | (route, params, routes, paths) => ReactNode | | - |
+### Breadcrumb
 
-> `linkRender` and `nameRender` were removed after `antd@2.0`, please use `itemRender` instead.
+| Property      | Description                              | Type            | Default |
+|-----------|-----------------------------------|----------------|--------|
+| separator | Custom separator       | string | '/'    |
 
-### Use with browserHistory
+### Breadcrumb.Item
 
-The link of Breadcrumb item targets `#` by default, you can use `itemRender` to make a `browserHistory` Link.
+| Property      | Description                              | Type           | Default |
+|-----------|-----------------------------------|----------------|--------|
+| href | the url you wanna go                      | string |  -  |
+| to | use it with vue-router          | Object/String |  -  |
+| replace | if use vue-router, it decide use replace model or not(replace model will not add record in history)  | Boolean | false   |
 
-```jsx
-import { Link } from 'react-router';
+#### Slot
 
-function itemRender(route, params, routes, paths) {
-  const last = routes.indexOf(route) === routes.length - 1;
-  return last ? <span>{route.breadcrumbName}</span> : <Link to={paths.join('/')}>{route.breadcrumbName}</Link>;
-}
+| Name      | Description                              | Type              |
+|-----------|-----------------------------------|-----------------|
+| separator | Custom separator                    | DOM |
 
-return <Breadcrumb itemRender={itemRender} />;
-```
+
+#### Event
+
+| EventName  | Description | Type              |
+|-----------|-----------------------------------|-----------------|
+| click | Triggered when click breadcrumb-item, can custom handle click      | Function(e) |
