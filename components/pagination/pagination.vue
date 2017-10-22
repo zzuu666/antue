@@ -8,7 +8,9 @@
       @click="prev"
       @keypress="runIfEnterPrev"
     >
-      <a class="ant-pagination-item-link"></a>
+      <slot name="prev">
+        <a class="ant-pagination-item-link"></a>
+      </slot>
     </li>
 
     <!--first page : when current -->
@@ -52,9 +54,12 @@
       @click="next"
       @keydown="runIfEnterNext"
     >
-      <a :class="`${prefixCls}-item-link`"></a>
+      <slot name="next">
+        <a :class="`${prefixCls}-item-link`"></a>
+      </slot>
     </li>
 
+    <page-option v-if="showQuickJumper" @jump-to="handleQuickJump"></page-option>
 
   </ul>
 </template>
@@ -62,9 +67,14 @@
 <script>
   //  import KEYCODE from './KeyCode'
   import LOCALE from './locale/zh_CN'
+  import PageOption from './option'
 
   export default {
     props: {
+      controlled: {
+        type: Boolean,
+        default: false
+      },
       current: {
         type: Number,
         default: 1
@@ -150,10 +160,21 @@
         this.handleChange(i)
       },
       handleChange (i) {
-        this.currentPage = i
         this.$emit('change-page', i)
+        if (!this.controlled) this.currentPage = i
       },
       handleGoTO () {},
+      handleQuickJump (newPageText) {
+        const newPage = parseInt(newPageText, 10)
+        if (isNaN(newPage)) return false
+        if (newPage < 1) {
+          this.handleChange(1)
+        } else if (newPage > this.calculatePage) {
+          this.handleChange(this.calculatePage)
+        } else {
+          this.handleChange(newPage)
+        }
+      },
       jumpNext () {
         this.calculatePage - this.currentPage > 5 ? this.handleChange(this.currentPage + 5) : this.handleChange(this.calculatePage)
       },
@@ -199,6 +220,9 @@
       runIfEnterPrev (event) {
         (event.key === 'Enter' || event.charCode === 13) && this.prev()
       }
+    },
+    components: {
+      PageOption
     }
   }
 </script>

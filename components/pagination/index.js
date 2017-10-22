@@ -1,5 +1,4 @@
 import './style/index.js'
-import Pagination from './Pagination'
+import Pagination from './pagination'
 
-export { PaginationProps } from './Pagination'
 export default Pagination
