@@ -29,7 +29,7 @@ For letter type Avatar, when the letters are too long to display, the font size 
     data () {
       return {
         user: UserList[0],
-        color: colorList[0],
+        color: colorList[0]
       }
     },
     components: {
