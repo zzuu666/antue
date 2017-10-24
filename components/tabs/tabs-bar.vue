@@ -6,6 +6,7 @@
     </div>
     <tabs-nav
       :active="active"
+      :animated="animated"
       :size="size"
       :tabs="tabs"
       :type="type"
@@ -26,6 +27,9 @@ export default {
     },
     active: {
       type: [String, Number]
+    },
+    animated: {
+      type: Boolean
     },
     hideAdd: {
       type: Boolean

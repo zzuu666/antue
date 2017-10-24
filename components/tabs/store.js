@@ -1,8 +1,7 @@
 const store = {
   state () {
     return {
-      active: '',
-      tabs: []
+      active: ''
     }
   },
   mutations: {
@@ -20,22 +19,6 @@ const store = {
     },
     handleNextClick (state, event) {
       this.root.$emit('next-click', event)
-    },
-    generateTabs (state, { panes, active }) {
-      const tabs = panes.map(vm => {
-        const { closable, disabled, icon, index } = vm
-        const tab = vm.$slots.tab ? vm.$slots.tab : vm.tab
-        const isActive = active === index
-        return {
-          closable,
-          disabled,
-          icon,
-          index,
-          isActive,
-          tab
-        }
-      })
-      state.tabs = tabs
     }
   }
 }

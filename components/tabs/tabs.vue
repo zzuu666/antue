@@ -74,8 +74,8 @@ export default {
         {
           [`${prefixCls}-mini`]: this.size === 'small',
           [`${prefixCls}-vertical`]: this.position === 'left' || this.position === 'right',
-          [`${prefixCls}-card`]: this.type === 'card' || this.type === 'editable-card',
-          [`${prefixCls}-no-animation`]: !this.animated
+          [`${prefixCls}-card`]: this.isCard,
+          [`${prefixCls}-no-animation`]: !this.animated || this.isCard
         }
       ]
     },
@@ -96,6 +96,9 @@ export default {
     },
     activeIndex () {
       return this.panes.findIndex(vm => vm.index === this.active)
+    },
+    isCard () {
+      return this.type === 'card' || this.type === 'editable-card'
     }
   },
   methods: {
@@ -104,15 +107,10 @@ export default {
       const panes = this.$refs.content.$children
       if (oldPanesLenght !== panes.length) {
         this.panes = panes
-        console.log(6)
         this.$nextTick(() => {
           this.$soda && this.$soda.init()
         })
       }
-      // this.$soda.commit('generateTabs', {
-      //   panes: slots,
-      //   active: this.active
-      // })
     },
     handleEdit (action, index) {
       this.$emit('edit', action, index)
@@ -129,9 +127,10 @@ export default {
     const bar = h('tabs-bar', {
       props: {
         active: this.active,
+        animated: this.animated,
         hideAdd: this.hideAdd,
-        size: this.size,
         position: this.position,
+        size: this.size,
         tabs: this.tabs,
         type: this.type
       },
@@ -145,7 +144,7 @@ export default {
     const content = h('tabs-content', {
       ref: 'content',
       props: {
-        active: this.active,
+        animated: this.animated,
         activeIndex: this.activeIndex
       },
       on: {

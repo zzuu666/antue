@@ -7,8 +7,8 @@ export default {
   name: 'tabsNav',
   data () {
     return {
-      next: false,
-      prev: false,
+      next: true,
+      prev: true,
       shouldScroll: true,
       activeNode: null,
       inkSize: 0,
@@ -23,8 +23,7 @@ export default {
       default: 'ant-tabs'
     },
     animated: {
-      type: Boolean,
-      default: true
+      type: Boolean
     },
     active: {
       type: [String, Number]
@@ -89,28 +88,6 @@ export default {
       this.offset -= warpWH
       this.$soda.commit('handleNextClick', e)
     },
-    getActiveNode () {
-      // const gutter = this.isVertical ? 16 : this.size === 'small' ? 0 : 24
-      // const activeNode = this.$refs.active.$el
-      // this.inkSize = this.getOffsetWH(activeNode)
-      // this.inkOffset = this.activeNode
-      //   ? this.$refs.tabs
-      //     .filter((vm, i) => i < index)
-      //     .map(vm => this.getOffsetWH(vm.$el))
-      //     .reduce((sum, value) => sum + value + gutter, 0)
-      //   : 0
-      // this.$nextTick(() => {
-      //   const gutter = this.isVertical ? 16 : this.size === 'small' ? 0 : 24
-      //   this.activeNode = index > -1 ? this.$refs.tabs[index].$el : null
-      //   this.inkWidth = this.activeNode ? this.activeNode.offsetWidth : 0
-      //   this.inkOffset = this.activeNode
-      //     ? this.$refs.tabs
-      //       .filter((vm, i) => i < index)
-      //       .map(vm => this.getOffsetWH(vm.$el))
-      //       .reduce((sum, value) => sum + value + gutter, 0)
-      //     : 0
-      // })
-    },
     setInk () {
       const nav = this.$refs.nav
       const active = this.$refs.active && this.$refs.active.$el
@@ -143,17 +120,11 @@ export default {
         const navWrapWH = this.getOffsetWH(warp)
         const activeOffset = this.getOffsetLT(active)
         const navOffset = this.getOffsetLT(warp)
-        setTimeout(() => {
-          console.log(activeTabWH, navWrapWH, activeOffset, this.getOffsetLT(this.$refs.wrap))
-        }, 1000)
-        console.log(this.getOffsetWH(this.$refs.prev))
-        console.log(activeTabWH, navWrapWH, activeOffset, this.getOffsetLT(this.$refs.wrap))
         if (navOffset > activeOffset) {
           this.offset += (navOffset - activeOffset)
         } else if ((navOffset + navWrapWH) < (activeOffset + activeTabWH)) {
           this.offset -= (activeOffset + activeTabWH) - (navOffset + navWrapWH)
         }
-        console.log(this.offset)
         this.shouldScroll = false
       }
     },
@@ -239,6 +210,7 @@ export default {
 
     const ink = h('tabs-ink', {
       props: {
+        animated: this.animated,
         size: this.inkSize,
         offset: this.inkOffset,
         vertical: this.isVertical
@@ -266,8 +238,7 @@ export default {
     }, [
       h('div', {
         'class': [
-          `${prefixCls}-nav`,
-          this.animated ? `${prefixCls}-nav-animated` : `${prefixCls}-nav-no-animated`
+          `${prefixCls}-nav`
         ],
         style: this.style,
         ref: 'nav'

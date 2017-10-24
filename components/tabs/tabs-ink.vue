@@ -11,8 +11,7 @@ export default {
       default: 'ant-tabs'
     },
     animated: {
-      type: Boolean,
-      default: true
+      type: Boolean
     },
     offset: {
       type: Number
