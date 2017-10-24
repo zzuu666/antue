@@ -15,7 +15,7 @@ Image, Icon and letter are supported, and the latter two kinds avatar can have c
 
 ```` html
 <template>
-  <div id="#components-avatar-demo-type">
+  <div>
     <Avatar icon="user" />
     <Avatar>U</Avatar>
     <Avatar>USER</Avatar>

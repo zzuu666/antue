@@ -15,7 +15,7 @@ Three sizes and two shapes are available.
 
 ```` html
 <template>
-  <div id="components-avatar-demo-basic">
+  <div>
     <div>
       <Avatar size="large" icon="user" />
       <Avatar icon="user" />
