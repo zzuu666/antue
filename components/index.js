@@ -10,4 +10,6 @@ export { default as Row } from './row'
 
 export { default as Rate } from './rate'
 
+export { default as Avatar } from './avatar'
+
 export { default as Card } from './card'

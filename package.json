@@ -7,6 +7,7 @@
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./build/webpack.dev.config.js --open --hot",
     "site": "cross-env NODE_ENV=development webpack-dev-server --config ./build/webpack.site.config.js --open --hot",
     "test": "jest",
+    "lint": "eslint components",
     "build:site": "webpack --config ./build/webpack.dist.site.config.js",
     "build:dev": "webpack --config ./build/webpack.dist.dev.config.js",
     "build": "webpack --config ./build/webpack.dist.prod.config.js"

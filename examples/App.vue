@@ -124,6 +124,15 @@ export default {
           ]
         },
         {
+          title: 'Feedback',
+          items: [
+            {
+              title: 'Message 全局提示',
+              route: 'message'
+            }
+          ]
+        },
+        {
           title: 'Transition',
           items: [
             {

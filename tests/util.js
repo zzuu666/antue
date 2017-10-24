@@ -14,7 +14,7 @@ export const creatComponentVm = (component, propsData) => {
 
 /**
  * 模仿事件，多用于测试组件的点击等事件。
- * @param {HTMLDOM} dom 原生dom 例如 vm.$el 
+ * @param {HTMLDOM} dom 原生dom 例如 vm.$el
  * @param {*} event 需要模仿的事件
  */
 export const simulateEvent = (dom, event) => {
@@ -53,7 +53,7 @@ export const creatVueVm = (options) => {
 /**
  * Vue 提供的 nextTick 方法
  * 一些依赖 DOM 更新结果的断言必须在nextTick中执行
- * @param {*} callback 
+ * @param {*} callback
  */
 export const nextTick = (callback) => {
   Vue.nextTick(() => {
