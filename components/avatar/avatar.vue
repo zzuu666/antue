@@ -1,5 +1,5 @@
 <template>
-  <span :class="classString">
+  <span :class="classes">
     <img v-if="src && isImgExist" :src="src" @error="handleImgLoadError" />
     <Icon v-else-if="icon" :type="icon" />
     <span v-else ref="children" :class="`${ prefixCls }-string`" :style="childrenStyle">
@@ -57,7 +57,7 @@ export default {
         left: `calc(50% - ${Math.round(this.offsetWidth / 2)}px)`
       }
     },
-    classString () {
+    classes () {
       const prefixCls = this.prefixCls
       const size = this.size && SIZEMAP[this.size]
       return [
@@ -92,16 +92,16 @@ export default {
     handleImgLoadError () {
       this.isImgExist = false
     },
-    getOffSet () {
+    updateOffSetWidth () {
       this.offsetWidth = this.$refs.children && this.$refs.children.offsetWidth
     }
   },
   mounted () {
-    this.getOffSet()
+    this.updateOffSetWidth()
     this.setScale()
   },
   updated () {
-    this.getOffSet()
+    this.updateOffSetWidth()
     this.setScale()
   }
 }
