@@ -70,6 +70,10 @@ const menu = {
           title: 'Navigation',
           items: [
             {
+              title: 'Breadcrumb 面包屑',
+              route: 'compBreadcrumbIndexZh'
+            },
+            {
               title: 'Menu 菜单',
               route: 'compMenuIndexZh'
             }
