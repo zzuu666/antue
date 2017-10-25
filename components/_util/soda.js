@@ -5,17 +5,7 @@ class Soda {
     this.mutations = options.mutations
     assert(typeof options.state === 'function', 'Soda state must be a function.')
     this.state = options.state()
-    this._inject = false
     this.root = vm
-
-    // const { commit } = this
-
-    // const store = this
-
-    // this.commit = function boundCommit (type, payload, options) {
-    //   return commit.call(store, type, payload, options)
-    // }
-
     this.init(vm)
     return this
   }
