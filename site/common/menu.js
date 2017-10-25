@@ -85,6 +85,10 @@ const menu = {
             {
               title: 'Card 卡片',
               route: 'compCardIndexZh'
+            },
+            {
+              title: 'Avatar 头像',
+              route: 'compAvatarIndexZh'
             }
           ]
         },
