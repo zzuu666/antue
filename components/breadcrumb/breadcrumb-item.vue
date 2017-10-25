@@ -1,6 +1,6 @@
 <template>
     <span @click="handleClick">
-      <a :href="href" :class="`${prefixCls}-link`" v-if="href!==undefined || to!==undefined">
+      <a :href="href" :class="`${prefixCls}-link`" v-if="href !== undefined || to !== undefined">
         <slot></slot>
       </a>
       <span :class="`${prefixCls}-link`" v-else>
@@ -16,7 +16,7 @@
 
 <script>
   export default {
-    name: 'breadcrumb-item',
+    name: 'breadcrumbItem',
     props: {
       prefixCls: {
         type: String,
