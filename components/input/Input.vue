@@ -1,49 +1,3 @@
-<template>
-  <span :class="showAddonBefore || showAddonAfter ? `${prefixCls}-group-wrapper`:`${prefixCls}-vue-wrapper`">
-    <span :class="addonWrapper">
-      <span v-if="showAddonBefore" :class="`${prefixCls}-group-addon`">
-        <slot name="addonBefore">
-          {{addonBefore}}
-        </slot>
-      </span>
-      <span v-if="showPrefix" :class="`${prefixCls}-prefix`">
-        <slot name="prefix">
-          {{prefix}}
-        </slot>
-      </span>
-      <input
-        :class="inputClass"
-        :type="type"
-        :value="value"
-        :placeholder="placeholder"
-        :readonly="readonly"
-        :name="name"
-        :number="number"
-        :autofocus="autofocus"
-        :disabled="disabled"
-        :id="id"
-        :autocomplete="autocomplete"
-        @keypress="handleKeyDown"
-        @input="updateValue($event.target.value)"
-        @blur="handleBlur"
-        @focus="handleFocus"
-        @click="handleClick"
-        @change="handleChange"
-      />
-      <span v-if="showSuffix" :class="`${prefixCls}-suffix`">
-        <slot name="suffix">
-          {{suffix}}
-        </slot>
-      </span>
-      <span v-if="showAddonAfter" :class="`${prefixCls}-group-addon`">
-        <slot name="addonAfter">
-          {{addonAfter}}
-        </slot>
-      </span>
-    </span>
-  </span>
-</template>
-
 <script>
   export default {
     name: 'input',
@@ -131,15 +85,62 @@
         return ''
       }
     },
+    render (h) {
+      const basicInput = h('input', {
+        attrs: {
+          type: this.type,
+          value: this.value,
+          placeholder: this.placeholder,
+          readonly: this.readonly,
+          name: this.name,
+          number: this.number,
+          autofocus: this.autofocus,
+          disabled: this.disabled,
+          id: this.id,
+          autocomplete: this.autocomplete
+        },
+        'class': this.inputClass,
+        on: {
+          blur: this.handleBlur,
+          change: this.handleChange,
+          click: this.handleClick,
+          focus: this.handleFocus,
+          input: this.updateValue,
+          keypress: this.handleKeyDown
+        }
+      })
+
+      const prefix = h('span', {'class': `${this.prefixCls}-prefix`}, [this.$slots.prefix || this.prefix])
+      const suffix = h('span', {'class': `${this.prefixCls}-suffix`}, [this.$slots.suffix || this.suffix])
+
+      const affixWrapper = h('span', {'class': `${this.prefixCls}-affix-wrapper`}, [
+        this.showPrefix ? prefix : null,
+        basicInput,
+        this.showSuffix ? suffix : null
+      ])
+
+      const addonBefore = h('span', {'class': `${this.prefixCls}-group-addon`}, [this.$slots.addonBefore || this.addonBefore])
+      const addonAfter = h('span', {'class': `${this.prefixCls}-group-addon`}, [this.$slots.addonAfter || this.addonAfter])
+
+      const addonWrapper = h('span', {'class': this.addonWrapper}, [
+        this.showAddonBefore ? addonBefore : null,
+        affixWrapper,
+        this.showAddonAfter ? addonAfter : null
+      ])
+      const groupWrapper = h('span', {
+        'class': `${this.prefixCls}-group-wrapper`
+      }, [addonWrapper])
+      return groupWrapper
+    },
     methods: {
       handleKeyDown (e) {
         if (e.keyCode === 13) {
-          this.$emit('onPressEnter', e)
+          this.$emit('press-enter', e)
         }
-        this.$emit('onKeyDown', e)
+        this.$emit('keydown', e)
       },
-      updateValue (value) {
-        this.$emit('input', value)
+      updateValue (e) {
+        this.$emit('input', e.target.value)
       },
       handleBlur (e) {
         this.$emit('blur', e)
