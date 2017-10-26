@@ -1,5 +1,5 @@
 import './style/index.js'
-import Input from './Input.vue'
+import Input from './input.vue'
 // import Search from './Search.vue'
 // import TextArea from './TextArea'
 
