@@ -110,27 +110,36 @@
         }
       })
 
-      const prefix = h('span', {'class': `${this.prefixCls}-prefix`}, [this.$slots.prefix || this.prefix])
-      const suffix = h('span', {'class': `${this.prefixCls}-suffix`}, [this.$slots.suffix || this.suffix])
+      let affixWrapper
+      if (this.showSuffix || this.showPrefix) {
+        const prefix = h('span', {'class': `${this.prefixCls}-prefix`}, [this.$slots.prefix || this.prefix])
+        const suffix = h('span', {'class': `${this.prefixCls}-suffix`}, [this.$slots.suffix || this.suffix])
 
-      const affixWrapper = h('span', {'class': `${this.prefixCls}-affix-wrapper`}, [
-        this.showPrefix ? prefix : null,
-        basicInput,
-        this.showSuffix ? suffix : null
-      ])
+        affixWrapper = h('span', {'class': `${this.prefixCls}-affix-wrapper`}, [
+          this.showPrefix ? prefix : null,
+          basicInput,
+          this.showSuffix ? suffix : null
+        ])
+      } else {
+        affixWrapper = basicInput
+      }
 
-      const addonBefore = h('span', {'class': `${this.prefixCls}-group-addon`}, [this.$slots.addonBefore || this.addonBefore])
-      const addonAfter = h('span', {'class': `${this.prefixCls}-group-addon`}, [this.$slots.addonAfter || this.addonAfter])
+      if (this.showAddonBefore || this.showAddonAfter) {
+        const addonBefore = h('span', {'class': `${this.prefixCls}-group-addon`}, [this.$slots.addonBefore || this.addonBefore])
+        const addonAfter = h('span', {'class': `${this.prefixCls}-group-addon`}, [this.$slots.addonAfter || this.addonAfter])
 
-      const addonWrapper = h('span', {'class': this.addonWrapper}, [
-        this.showAddonBefore ? addonBefore : null,
-        affixWrapper,
-        this.showAddonAfter ? addonAfter : null
-      ])
-      const groupWrapper = h('span', {
-        'class': `${this.prefixCls}-group-wrapper`
-      }, [addonWrapper])
-      return groupWrapper
+        const addonWrapper = h('span', {'class': this.addonWrapper}, [
+          this.showAddonBefore ? addonBefore : null,
+          affixWrapper,
+          this.showAddonAfter ? addonAfter : null
+        ])
+        const groupWrapper = h('span', {
+          'class': `${this.prefixCls}-group-wrapper`
+        }, [addonWrapper])
+        return groupWrapper
+      } else {
+        return affixWrapper
+      }
     },
     methods: {
       handleKeyDown (e) {
