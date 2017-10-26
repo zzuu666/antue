@@ -11,6 +11,7 @@ import Radio from './radio'
 import Switch from './switch'
 import Message from './message'
 import Transition from './transition'
+import Breadcrumb from './breadcrumb'
 import Tabs from './tabs'
 import Tag from './tag'
 
@@ -61,6 +62,10 @@ let router = new Router({
     {
       path: '/transition',
       component: Transition
+    },
+    {
+      path: '/breadcrumb',
+      component: Breadcrumb
     },
     {
       path: '/tabs',
