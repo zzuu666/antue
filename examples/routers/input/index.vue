@@ -21,6 +21,9 @@
 注意： 在表单里面，我们只使用大尺寸的输入框。">
           <size-demo></size-demo>
         </code-show>
+        <code-show title="搜索" desc="搜索">
+          <search-demo></search-demo>
+        </code-show>
       </a-col>
     </a-row>
   </container>
@@ -35,6 +38,7 @@
   import SizeDemo from './demo/size'
   import PrefixDemo from './demo/prefix.vue'
   import AddonDemo from './demo/addon.vue'
+  import SearchDemo from './demo/search.vue'
 
   export default {
     components: {
@@ -45,7 +49,8 @@
       CodeShow,
       SizeDemo,
       PrefixDemo,
-      AddonDemo
+      AddonDemo,
+      SearchDemo
     }
   }
 </script>
