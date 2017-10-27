@@ -24,6 +24,9 @@
         <code-show title="搜索" desc="搜索">
           <search-demo></search-demo>
         </code-show>
+        <code-show title="文本域" desc="搜索">
+          <textarea-demo></textarea-demo>
+        </code-show>
       </a-col>
     </a-row>
   </container>
@@ -39,6 +42,7 @@
   import PrefixDemo from './demo/prefix.vue'
   import AddonDemo from './demo/addon.vue'
   import SearchDemo from './demo/search.vue'
+  import TextareaDemo from './demo/textarea.vue'
 
   export default {
     components: {
@@ -50,7 +54,8 @@
       SizeDemo,
       PrefixDemo,
       AddonDemo,
-      SearchDemo
+      SearchDemo,
+      TextareaDemo
     }
   }
 </script>
