@@ -12,6 +12,9 @@
         type: Boolean,
         default: false
       },
+      className: {
+        type: String
+      },
       disabled: {
         type: Boolean,
         default: false
@@ -47,13 +50,6 @@
       value: null
     },
     computed: {
-      addonWrapper () {
-        return [
-          this.showAddonAfter || this.showAddonBefore ? `${this.prefixCls}-wrapper` : '',
-          this.showAddonAfter || this.showAddonBefore ? `${this.prefixCls}-group` : '',
-          this.showSuffix || this.showPrefix ? `${this.prefixCls}-affix-wrapper` : ''
-        ]
-      },
       inputClass () {
         return [
           this.prefixCls,
@@ -110,36 +106,52 @@
         }
       })
 
-      let affixWrapper
-      if (this.showSuffix || this.showPrefix) {
+      const renderLabeledInput = (children) => {
+        if ((!this.showAddonBefore && !this.showAddonAfter)) {
+          return children
+        }
+
+        const wrapperClassName = `${this.prefixCls}-group`
+        const addonClassName = `${wrapperClassName}-addon`
+        const addonBefore = h('span', {'class': addonClassName}, [this.$slots.addonBefore || this.addonBefore])
+        const addonAfter = h('span', {'class': addonClassName}, [this.$slots.addonAfter || this.addonAfter])
+
+        const className = [`${this.prefixCls}-wrapper`, {
+          [wrapperClassName]: (addonBefore || addonAfter)
+        }]
+
+        if (this.showAddonBefore || this.showAddonAfter) {
+          return h('span', {'class': `${this.prefixCls}-group-wrapper`}, [
+            h('span', {'class': className}, [
+              this.showAddonBefore ? addonBefore : null,
+              children,
+              this.showAddonAfter ? addonAfter : null
+            ])
+          ])
+        }
+        return h('span', {'class': className}, [
+          children
+        ])
+      }
+
+      const renderLabeledIcon = (children) => {
+        if (!(this.showSuffix || this.showPrefix)) {
+          return children
+        }
         const prefix = h('span', {'class': `${this.prefixCls}-prefix`}, [this.$slots.prefix || this.prefix])
         const suffix = h('span', {'class': `${this.prefixCls}-suffix`}, [this.$slots.suffix || this.suffix])
-
-        affixWrapper = h('span', {'class': `${this.prefixCls}-affix-wrapper`}, [
+        return h('span', {'class': [this.className, `${this.prefixCls}-affix-wrapper`]}, [
           this.showPrefix ? prefix : null,
-          basicInput,
+          children,
           this.showSuffix ? suffix : null
         ])
-      } else {
-        affixWrapper = basicInput
       }
 
-      if (this.showAddonBefore || this.showAddonAfter) {
-        const addonBefore = h('span', {'class': `${this.prefixCls}-group-addon`}, [this.$slots.addonBefore || this.addonBefore])
-        const addonAfter = h('span', {'class': `${this.prefixCls}-group-addon`}, [this.$slots.addonAfter || this.addonAfter])
-
-        const addonWrapper = h('span', {'class': this.addonWrapper}, [
-          this.showAddonBefore ? addonBefore : null,
-          affixWrapper,
-          this.showAddonAfter ? addonAfter : null
-        ])
-        const groupWrapper = h('span', {
-          'class': `${this.prefixCls}-group-wrapper`
-        }, [addonWrapper])
-        return groupWrapper
-      } else {
-        return affixWrapper
+      const renderInput = () => {
+        return renderLabeledIcon(basicInput)
       }
+
+      return renderLabeledInput(renderInput())
     },
     methods: {
       handleKeyDown (e) {
