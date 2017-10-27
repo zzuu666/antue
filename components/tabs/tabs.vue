@@ -1,5 +1,7 @@
 <script>
 import { oneOf } from '../_util/proptype'
+import Soda from '../_util/soda'
+import store from './store'
 import TabsBar from './tabs-bar'
 import TabsContent from './tabs-content'
 
@@ -7,7 +9,8 @@ export default {
   name: 'tabs',
   data () {
     return {
-      panes: []
+      panes: [],
+      soda: {}
     }
   },
   model: {
@@ -56,6 +59,11 @@ export default {
     TabsBar,
     TabsContent
   },
+  watch: {
+    active (v) {
+      this.soda.active = v
+    }
+  },
   computed: {
     classes () {
       const prefixCls = this.prefixCls
@@ -66,8 +74,8 @@ export default {
         {
           [`${prefixCls}-mini`]: this.size === 'small',
           [`${prefixCls}-vertical`]: this.position === 'left' || this.position === 'right',
-          [`${prefixCls}-card`]: this.type === 'card' || this.type === 'editable-card',
-          [`${prefixCls}-no-animation`]: !this.animated
+          [`${prefixCls}-card`]: this.isCard,
+          [`${prefixCls}-no-animation`]: !this.animated || this.isCard
         }
       ]
     },
@@ -75,59 +83,59 @@ export default {
       return this.panes.map(vm => {
         const { closable, disabled, icon, index } = vm
         const tab = vm.$slots.tab ? vm.$slots.tab : vm.tab
+        const isActive = this.active === index
         return {
           closable,
           disabled,
           icon,
           index,
+          isActive,
           tab
         }
       })
     },
     activeIndex () {
       return this.panes.findIndex(vm => vm.index === this.active)
+    },
+    isCard () {
+      return this.type === 'card' || this.type === 'editable-card'
     }
   },
   methods: {
     getPanes (value) {
-      const slots = this.$refs.content.$children
-      this.panes = slots
-    },
-    handleChange (index) {
-      this.$emit('change', index)
+      const oldPanesLenght = this.panes.length
+      const panes = this.$refs.content.$children
+      if (oldPanesLenght !== panes.length) {
+        this.panes = panes
+        this.$nextTick(() => {
+          this.$soda && this.$soda.init()
+        })
+      }
     },
     handleEdit (action, index) {
       this.$emit('edit', action, index)
-    },
-    handleTabClick (info) {
-      this.$emit('tab-click', info)
-    },
-    handlePrevClick (e) {
-      this.$emit('prev-click', e)
-    },
-    handleNextClick (e) {
-      this.$emit('next-click', e)
     }
   },
   mounted () {
     this.getPanes()
+    this.$nextTick(() => {
+      this.$soda = new Soda(this, store)
+      this.soda.active = this.active
+    })
   },
   render (h) {
     const bar = h('tabs-bar', {
       props: {
         active: this.active,
+        animated: this.animated,
         hideAdd: this.hideAdd,
-        size: this.size,
         position: this.position,
+        size: this.size,
         tabs: this.tabs,
         type: this.type
       },
       on: {
-        change: this.handleChange,
-        edit: this.handleEdit,
-        'tab-click': this.handleTabClick,
-        'next-click': this.handleNextClick,
-        'prev-click': this.handlePrevClick
+        edit: this.handleEdit
       }
     }, [
       this.$slots.extra
@@ -136,7 +144,7 @@ export default {
     const content = h('tabs-content', {
       ref: 'content',
       props: {
-        active: this.active,
+        animated: this.animated,
         activeIndex: this.activeIndex
       },
       on: {

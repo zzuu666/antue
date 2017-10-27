@@ -26,7 +26,7 @@ Ant Design has 3 types of Tabs for different situations.
 | size         | Tab bar size. Only works while `type="line"`. | `default` \| `small` | `default` |
 | position  | Position of tabs | `top` \| `right` \| `bottom` \| `left` | `top` |
 | hideAdd      | Hide plus icon or not. Only works while `type="editable-card"` | boolean | `false` |
-| animated | Whether to change tabs with animation. Only works while `tabPosition="top"\|"bottom"` | boolean \| {inkBar:boolean, tabPane:boolean} | `true`, `false` when `type="card"` |
+| animated | Whether to change tabs with animation. Only works while `position="top" "bottom"` | boolean | `true`, `false` when `type="card"` |
 
 ### Events
 

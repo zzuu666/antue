@@ -14,17 +14,8 @@ export default {
       type: String,
       default: 'ant-tabs'
     },
-    // pane component used
-    active: {
-      type: [String, Number]
-    },
-    // pane component used
     activeIndex: {
       type: Number
-    },
-    animated: {
-      type: Boolean,
-      default: true
     }
   },
   computed: {
@@ -33,7 +24,7 @@ export default {
 
       return [
         `${prefixCls}-content`,
-        this.animated ? `${prefixCls}-content-animated` : `${prefixCls}-content-no-animated`
+        `${prefixCls}-content-animated`
       ]
     },
     style () {
@@ -42,11 +33,6 @@ export default {
         marginLeft: `-${marginLeft}%`
       }
       return style
-    }
-  },
-  methods: {
-    panes () {
-      return this.$children.filter(item => item.$options.name === 'pane')
     }
   },
   updated () {

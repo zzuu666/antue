@@ -29,7 +29,7 @@ Ant Design 依次提供了三级选项卡，分别用于不同的场景。
 | size | 大小，提供 `default` 和 `small` 两种大小，仅当 `type="line"` 时生效。  | string   | 'default'      |
 | position | 页签位置，可选值有 `top` `right` `bottom` `left`  | string   | 'top'      |
 | hideAdd | 是否隐藏加号图标，在 `type="editable-card"` 时有效 | boolean   | false    |
-| animated | 是否使用动画切换 Tabs，在 `tabPosition=top|bottom` 时有效 | boolean \| {inkBar:boolean, tabPane:boolean} | true, 当 type="card" 时为 false |
+| animated | 是否使用动画切换 Tabs，在 `position=top bottom` 时有效 | boolean  | true, 当 type="card" 时为 false |
 
 ### Events
 

@@ -10,14 +10,13 @@ export default {
       type: String,
       default: 'ant-tabs'
     },
-    activeNode: {
-      type: HTMLDivElement
-    },
     animated: {
-      type: Boolean,
-      default: true
+      type: Boolean
     },
     offset: {
+      type: Number
+    },
+    size: {
       type: Number
     },
     vertical: {
@@ -33,24 +32,19 @@ export default {
       ]
     },
     style () {
-      const verticalStyle = (node, offset) => {
+      const verticalStyle = (size, offset) => {
         return {
           transform: `translate3d(0, ${offset}px, 0)`,
-          height: `${node.offsetHeight}px`
+          height: `${size}px`
         }
       }
-      const horizontalStyle = (node, offset) => {
+      const horizontalStyle = (size, offset) => {
         return {
           transform: `translate3d(${offset}px, 0, 0)`,
-          width: `${node.offsetWidth}px`
+          width: `${size}px`
         }
       }
-      const activeNode = this.activeNode
-      return activeNode
-        ? this.vertical
-          ? verticalStyle(activeNode, this.offset)
-          : horizontalStyle(activeNode, this.offset)
-        : {}
+      return this.vertical ? verticalStyle(this.size, this.offset) : horizontalStyle(this.size, this.offset)
     }
   }
 }

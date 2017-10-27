@@ -10,6 +10,11 @@
 <script>
 export default {
   name: 'pane',
+  data () {
+    return {
+      soda: {}
+    }
+  },
   props: {
     prefixCls: {
       type: String,
@@ -43,7 +48,7 @@ export default {
       ]
     },
     active () {
-      return this.index === this.$parent.active
+      return this.index === this.soda.active
     }
   }
 }
