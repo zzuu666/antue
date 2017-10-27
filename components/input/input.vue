@@ -12,9 +12,6 @@
         type: Boolean,
         default: false
       },
-      className: {
-        type: String
-      },
       disabled: {
         type: Boolean,
         default: false
@@ -140,7 +137,7 @@
         }
         const prefix = h('span', {'class': `${this.prefixCls}-prefix`}, [this.$slots.prefix || this.prefix])
         const suffix = h('span', {'class': `${this.prefixCls}-suffix`}, [this.$slots.suffix || this.suffix])
-        return h('span', {'class': [this.className, `${this.prefixCls}-affix-wrapper`]}, [
+        return h('span', {'class': [`${this.prefixCls}-affix-wrapper`]}, [
           this.showPrefix ? prefix : null,
           children,
           this.showSuffix ? suffix : null

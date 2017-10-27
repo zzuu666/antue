@@ -53,7 +53,6 @@
       value: null
     },
     render (h) {
-      this.$props.className = 'ant-input-search'
       const searchIcon = h(AtuIcon, {
         props: {
           type: 'search'
@@ -68,6 +67,7 @@
       })
       return h(AtuInput, {
         props: this.$props,
+        'class': 'ant-input-search',
         on: {
           input: (value) => this.$emit('input', value)
         }
