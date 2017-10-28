@@ -78,5 +78,8 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "dependencies": {
+    "popper.js": "^1.12.6"
+  }
 }
