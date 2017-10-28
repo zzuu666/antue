@@ -21,6 +21,7 @@
   }
 
   export default {
+    name: 'inputTextArea',
     props: {
       autosize: {
         type: [Boolean, Object],

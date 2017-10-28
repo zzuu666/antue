@@ -8,6 +8,7 @@
   import { oneOf } from '../_util/proptype'
 
   export default {
+    name: 'inputGroup',
     props: {
       compact: {
         type: Boolean,

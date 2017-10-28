@@ -69,7 +69,8 @@
         props: this.$props,
         'class': 'ant-input-search',
         on: {
-          input: (value) => this.$emit('input', value)
+          input: (value) => this.$emit('input', value),
+          'press-enter': () => this.$emit('search', this.value)
         }
       }, [searchIcon])
     }
