@@ -70,6 +70,10 @@ const menu = {
           title: 'Navigation',
           items: [
             {
+              title: 'Breadcrumb 面包屑',
+              route: 'compBreadcrumbIndexZh'
+            },
+            {
               title: 'Menu 菜单',
               route: 'compMenuIndexZh'
             }
@@ -81,6 +85,14 @@ const menu = {
             {
               title: 'Card 卡片',
               route: 'compCardIndexZh'
+            },
+            {
+              title: 'Tabs 标签页',
+              route: 'compTabsIndexZh'
+            },
+            {
+              title: 'Avatar 头像',
+              route: 'compAvatarIndexZh'
             }
           ]
         },
@@ -102,6 +114,15 @@ const menu = {
             {
               title: 'Switch 开关',
               route: 'compSwitchIndexZh'
+            }
+          ]
+        },
+        {
+          title: 'Feedback',
+          items: [
+            {
+              title: 'Message 全局提示',
+              route: 'compMessageIndexZh'
             }
           ]
         },

@@ -5,6 +5,8 @@ import './style/index.js'
 
 import Radio from './radio.vue'
 import Group from './group.vue'
+import RadioButton from './radio-button'
 
-Radio.group = Group
+Radio.Group = Group
+Radio.Button = RadioButton
 export default Radio

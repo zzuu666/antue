@@ -2,7 +2,7 @@ export const noop = () => {}
 
 // fork from: https://github.com/react-component/rate/blob/54046ad94aeeac826d6d7d84d2e4d511fca704f5/src/util.js
 
-function getScroll (w, top) {
+const getScroll = (w, top) => {
   let ret = top ? w.pageYOffset : w.pageXOffset
   const method = top ? 'scrollTop' : 'scrollLeft'
   if (typeof ret !== 'number') {
@@ -17,7 +17,7 @@ function getScroll (w, top) {
   return ret
 }
 
-function getClientPosition (elem) {
+const getClientPosition = elem => {
   let box
   let x
   let y
@@ -41,4 +41,8 @@ export const getOffsetLeft = el => {
   const w = doc.defaultView || doc.parentWindow
   pos.left += getScroll(w)
   return pos.left
+}
+
+export const assert = (condition, msg) => {
+  if (!condition) throw new Error(`[antue] ${msg}`)
 }

@@ -22,7 +22,7 @@ Vertical RadioGroup, with more radios.
       <radio value="3" :style="radioStyle">Option C</radio>
       <radio value="4" :style="radioStyle">
         More...
-        <atu-input v-if="this.checkedValue === '4'" style="width: 100px; margin-left: 10px; display: inline-block"></atu-input>
+        <atu-input v-if="this.checkedValue === '4'" style="width: 100px; margin-left: 10px"></atu-input>
       </Radio>
     </radio-group>
   </div>
@@ -44,7 +44,7 @@ Vertical RadioGroup, with more radios.
     },
     components: {
       Radio,
-      RadioGroup: Radio.group,
+      RadioGroup: Radio.Group,
       AtuInput
     }
   }

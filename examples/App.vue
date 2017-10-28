@@ -81,6 +81,10 @@ export default {
             {
               title: 'Menu 菜单',
               route: 'menu'
+            },
+            {
+              title: 'Breadcrumb 面包屑',
+              route: 'breadcrumb'
             }
           ]
         },
@@ -112,6 +116,23 @@ export default {
             {
               title: 'Card 卡片',
               route: 'card'
+            },
+            {
+              title: 'Tabs 标签页',
+              route: 'tabs'
+            },
+            {
+              title: 'Tag 标签',
+              route: 'tag'
+            }
+          ]
+        },
+        {
+          title: 'Feedback',
+          items: [
+            {
+              title: 'Message 全局提示',
+              route: 'message'
             }
           ]
         },
