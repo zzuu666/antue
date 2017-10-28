@@ -13,7 +13,7 @@ title:
 
 Add prefix or suffix icons inside input.
 
-````vue
+```` html
 <template>
   <div class="ant-input-prefix">
     <ant-input v-model="inputData" placeholder="Enter your username" prefix="true">
@@ -26,7 +26,6 @@ Add prefix or suffix icons inside input.
 <script>
   import AntInput from '@/input'
   import AntIcon from '@/icon'
-
   export default {
     data () {
       return {

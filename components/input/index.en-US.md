@@ -12,6 +12,8 @@ Keyboard and mouse can be used for providing or changing data.
 - A user input in a form field is needed.
 - A search input is required.
 
+> because lack select component, some example can not realize
+
 ## API
 
 ### Input
@@ -33,39 +35,33 @@ Keyboard and mouse can be used for providing or changing data.
 | click | The callback function that is triggered when input is clicked. | Function | |
 | change | The callback function that is triggered when content of input changed | Function | |
 
+> different from react, we recommend use `v-model` to replace value and listen update event.
+
 ```html
-<ant-input v-model="value" type="text" @onPressEnter="handlePressEnter">
+<ant-input v-model="value" @press-enter="handlePressEnter">
 ```
 
-### *(not ready)Input.TextArea
+### Input.TextArea
 
 > If you are using `antd@<2.12`, please use `Input[type=textarea]`.
 
 | Property       | Description           | Type     | Default       |
 |----------------|-----------------------|----------|---------------|
-| defaultValue | The initial input content | string |   |
-| value | The input content value | string |   |
-| onPressEnter | The callback function that is triggered when Enter key is pressed. | function(e) |   |
 | autosize | Height autosize feature, can be set to `true|false` or an object `{ minRows: 2, maxRows: 6 }` | boolean\|object | false |
 
 The rest of the props of `Input.TextArea` are the same as the original [textarea](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea).
 
-#### *(not ready)Input.Search
+#### Input.Search
 
 | Property  | Description                          | Type       | Default |
 |-----------|--------------------------------------|------------|---------|
-| onSearch | The callback function that is triggered when you click on the search-icon or press Enter key. | function(value) |  |
+| search | Triggered when you click on the search-icon or press Enter key. | function(value) |  |
 
 Supports all props of `Input`.
 
-#### *(not ready)Input.Group
+#### Input.Group
 
 | Property  | Description                      | Type   | Default   |
 |-----------|----------------------------------|--------|-----------|
 |  size | The size of `Input.Group` specifies the size of the included `Input` fields. Available: `large` `default` `small` | string | `default` |
 |  compact | Whether use compact style | boolean | false |
-
-
-```html
-
-```
