@@ -1,4 +1,12 @@
 <script>
+  import { oneOf } from '../_util/proptype'
+
+  const SIZEMAP = {
+    'small': 'sm',
+    'large': 'lg',
+    'default': ''
+  }
+
   export default {
     name: 'input',
     props: {
@@ -39,7 +47,12 @@
         type: Boolean,
         default: false
       },
-      size: String,
+      size: {
+        type: String,
+        validator (value) {
+          return oneOf(value, ['small', 'large', 'default'])
+        }
+      },
       suffix: String,
       type: {
         type: String
@@ -48,10 +61,13 @@
     },
     computed: {
       inputClass () {
+        const size = this.size && SIZEMAP[this.size]
         return [
           this.prefixCls,
-          this.styleSize ? `${this.prefixCls}-${this.styleSize}` : ``,
-          this.disabled ? `${this.prefixCls}-disabled` : ``
+          {
+            [`${this.prefixCls}-${size}`]: !!size,
+            [`${this.prefixCls}-disabled`]: !!this.disabled
+          }
         ]
       },
       showAddonAfter () {
@@ -65,17 +81,6 @@
       },
       showSuffix () {
         return this.suffix || this.$slots.suffix !== undefined
-      },
-      styleSize () {
-        if (this.size) {
-          switch (this.size) {
-            case 'small': return 'sm'
-            case 'large': return 'lg'
-            case 'default': return ''
-            default: return ''
-          }
-        }
-        return ''
       }
     },
     render (h) {

@@ -1,6 +1,6 @@
 <script>
   import AtuInput from './input'
-  import AtuIcon from '@/icon'
+  import AtuIcon from '../icon'
 
   export default {
     name: 'inputSearch',
