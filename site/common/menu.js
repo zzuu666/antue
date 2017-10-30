@@ -100,6 +100,10 @@ const menu = {
           title: 'Data Entry',
           items: [
             {
+              title: 'Input 输入框',
+              route: 'compInputIndexZh'
+            },
+            {
               title: 'Rate 评分',
               route: 'compRateIndexZh'
             },

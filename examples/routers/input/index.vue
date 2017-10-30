@@ -15,11 +15,20 @@
         <code-show title="前缀和后缀" desc="在输入框上添加前缀或后缀图标。">
           <prefix-demo></prefix-demo>
         </code-show>
+        <code-show title="组合" desc="输入框组合">
+          <group-demo></group-demo>
+        </code-show>
       </a-col>
       <a-col :span="12">
         <code-show title="三种大小" desc="我们为 <input /> 输入框定义了三种尺寸（大、默认、小），高度分别为 32px、28px 和 22px。
 注意： 在表单里面，我们只使用大尺寸的输入框。">
           <size-demo></size-demo>
+        </code-show>
+        <code-show title="搜索" desc="搜索">
+          <search-demo></search-demo>
+        </code-show>
+        <code-show title="文本域" desc="搜索">
+          <textarea-demo></textarea-demo>
         </code-show>
       </a-col>
     </a-row>
@@ -35,6 +44,9 @@
   import SizeDemo from './demo/size'
   import PrefixDemo from './demo/prefix.vue'
   import AddonDemo from './demo/addon.vue'
+  import SearchDemo from './demo/search.vue'
+  import TextareaDemo from './demo/textarea.vue'
+  import GroupDemo from './demo/group.vue'
 
   export default {
     components: {
@@ -45,7 +57,10 @@
       CodeShow,
       SizeDemo,
       PrefixDemo,
-      AddonDemo
+      AddonDemo,
+      SearchDemo,
+      TextareaDemo,
+      GroupDemo
     }
   }
 </script>
