@@ -65,7 +65,6 @@
 </template>
 
 <script>
-  //  import KEYCODE from './KeyCode'
   import LOCALE from './locale/zh_CN'
   import PageOption from './option'
 
