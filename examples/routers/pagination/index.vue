@@ -10,9 +10,9 @@
     <code-show title="更多" desc="更多分页。">
       <more-demo></more-demo>
     </code-show>
-    <!--<code-show title="改变" desc="改变每页显示条目数。">-->
-      <!--<page-size-demo></page-size-demo>-->
-    <!--</code-show>-->
+    <code-show title="改变" desc="改变每页显示条目数。">
+      <page-size-demo></page-size-demo>
+    </code-show>
     <code-show title="跳转" desc="快速跳转到某一页。">
       <jump-demo></jump-demo>
     </code-show>
@@ -21,6 +21,9 @@
     </code-show>
     <code-show title="上一步和下一步" desc="修改上一步和下一步为文字链接。">
       <custom-demo></custom-demo>
+    </code-show>
+    <code-show title="总数" desc="通过设置 showTotal 展示总共有多少数据。">
+      <show-total-demo></show-total-demo>
     </code-show>
   </container>
 </template>
@@ -36,6 +39,7 @@
   import JumpDemo from './demo/jump'
   import ControlledDemo from './demo/controlled'
   import CustomDemo from './demo/custom'
+  import showTotalDemo from './demo/showTotal'
 
   export default {
     components: {
@@ -48,7 +52,8 @@
       PageSizeDemo,
       JumpDemo,
       ControlledDemo,
-      CustomDemo
+      CustomDemo,
+      showTotalDemo
     }
   }
 </script>
