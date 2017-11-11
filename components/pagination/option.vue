@@ -2,7 +2,7 @@
   <li :class="`${prefixCls}`">
     <div :class="`${prefixCls}-quick-jumper`">
       {{locale.jump_to}}
-      <atu-input type="text" v-model="pageText" @onPressEnter="handleJump"></atu-input>
+      <atu-input type="text" v-model="pageText" @press-enter="handleJump"></atu-input>
     </div>
   </li>
 </template>

@@ -159,7 +159,7 @@
         this.handleChange(i)
       },
       handleChange (i) {
-        this.$emit('change-page', i)
+        this.$emit('change-page', i, this.pageSize)
         if (!this.controlled) this.currentPage = i
       },
       handleGoTO () {},

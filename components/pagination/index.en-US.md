@@ -17,16 +17,16 @@ A long list can be divided into several pages by `Pagination`, and only one page
 Property | Description | Type | Default
 -----|-----|-----|------
 current | current page number | number | -
-defaultCurrent | default initial page number | number | 1
 total | total number of data items | number | 0
-defaultPageSize | default number of data items per page | number | 10
 pageSize | number of data items per page | number | -
-onChange | a callback function, executed when the page number is changed, and it takes the resulting page number and pageSize as its arguments | Function(page, pageSize) | noop
-showSizeChanger | determine whether `pageSize` can be changed | boolean | false
-pageSizeOptions | specify the sizeChanger options | string[] | ['10', '20', '30', '40']
-onShowSizeChange | a callback function, executed when `pageSize` is changed | Function(current, size) | noop
+change | a callback function, executed when the page number is changed, and it takes the resulting page number and pageSize as its arguments | Function(page, pageSize) | noop
+showSizeChanger(not ready) | determine whether `pageSize` can be changed | boolean | false
+pageSizeOptions(not ready) | specify the sizeChanger options | string[] | ['10', '20', '30', '40']
+onShowSizeChange(not ready) | a callback function, executed when `pageSize` is changed | Function(current, size) | noop
 showQuickJumper | determine whether you can jump to pages directly | boolean | false
-size | specify the size of `Pagination`, can be set to `small` | string | ""
-simple | whether to use simple mode | boolean | -
-showTotal | to display the total number and range | Function(total, range) | -
-itemRender | to customize item innerHTML | (page, type: 'page' \| 'prev' \| 'next', originalElement) => React.ReactNode | - |
+size(not ready) | specify the size of `Pagination`, can be set to `small` | string | ""
+simple(not ready) | whether to use simple mode | boolean | -
+showTotal(not ready) | to display the total number and range | Function(total, range) | -
+
+## slot
+`prev` and `next` to change next\prev button style.
