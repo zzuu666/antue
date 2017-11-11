@@ -53,15 +53,88 @@ const menu = {
             // }
           ]
         },
-        // {
-        //   title: 'Data Entry',
-        //   items: [
-        //     {
-        //       title: 'Rate 评分',
-        //       route: 'compRateIndexZh'
-        //     }
-        //   ]
-        // }
+        {
+          title: 'Layout',
+          items: [
+            {
+              title: 'Grid 栅格',
+              route: 'compGridIndexZh'
+            },
+            // {
+            //   title: 'Icon 按钮',
+            //   route: 'componentsIconZh'
+            // }
+          ]
+        },
+        {
+          title: 'Navigation',
+          items: [
+            {
+              title: 'Breadcrumb 面包屑',
+              route: 'compBreadcrumbIndexZh'
+            },
+            {
+              title: 'Menu 菜单',
+              route: 'compMenuIndexZh'
+            }
+          ]
+        },
+        {
+          title: 'Data Display',
+          items: [
+            {
+              title: 'Card 卡片',
+              route: 'compCardIndexZh'
+            },
+            {
+              title: 'Tabs 标签页',
+              route: 'compTabsIndexZh'
+            },
+            {
+              title: 'Avatar 头像',
+              route: 'compAvatarIndexZh'
+            }
+          ]
+        },
+        {
+          title: 'Data Entry',
+          items: [
+            {
+              title: 'Input 输入框',
+              route: 'compInputIndexZh'
+            },
+            {
+              title: 'Rate 评分',
+              route: 'compRateIndexZh'
+            },
+            {
+              title: 'Radio 单选框',
+              route: 'compRadioIndexZh'
+            },
+            {
+              title: 'Switch 开关',
+              route: 'compSwitchIndexZh'
+            }
+          ]
+        },
+        {
+          title: 'Feedback',
+          items: [
+            {
+              title: 'Message 全局提示',
+              route: 'compMessageIndexZh'
+            }
+          ]
+        },
+        {
+          title: 'Transition',
+          items: [
+            {
+              title: 'Transition 动画',
+              route: 'compTransitionIndexZh'
+            }
+          ]
+        }
       ]
     }
   ]

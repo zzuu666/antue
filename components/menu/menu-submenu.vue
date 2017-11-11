@@ -1,13 +1,15 @@
 <template>
   <li
+    :aria-expanded="isOpen"
+    aria-haspopup="true"
     :class="[
       `${prefixCls}-submenu`,
       `${prefixCls}-submenu-${mode}`,
       disabled ? `${prefixCls}-submenu-disabled` : ``,
-      open ? `${prefixCls}-submenu-open` : ``
+      isOpen ? `${prefixCls}-submenu-open` : ``
     ]"
-    @mouseenter="handleMouseenter"
-    @mouseleave="handleMouseleave">
+    @mouseenter="handleMouseEnter"
+    @mouseleave="handleMouseLeave">
     <span
       :class="`${prefixCls}-submenu-title`"
       @click="handleClick"
@@ -15,40 +17,74 @@
       v-if="$slots.title">
       <slot name="title"></slot>
     </span>
-    <transition :name="animitionName" v-if="$slots.default">
+    <atu-transition :type="animition.type" :motion="animition.motion" v-if="$slots.default">
       <ul
         :class="[
           prefixCls,
           `${prefixCls}-sub`,
           `${prefixCls}-${subMode}`
         ]"
-        v-show="open">
+        v-show="isOpen">
         <slot></slot>
       </ul>
-    </transition>
+    </atu-transition>
   </li>
 </template>
 
 <script>
-import { switchcaseF } from '../_util/swtichcase'
+import { switchcase } from '../_util/switchcase'
+import AtuTransition from '@/transition'
 
 export default {
-  data () {
-    return {
-      prefixCls: 'ant-menu',
-      timer: null
-    }
-  },
+  name: 'menuSubmenu',
   props: {
     disabled: {
       type: Boolean,
       default: false
     },
-    index: [String, Number]
+    index: [String, Number],
+    prefixCls: {
+      type: String,
+      default: 'ant-menu'
+    }
+  },
+  data () {
+    return {
+      timer: null
+    }
   },
   computed: {
+    animition () {
+      return switchcase({
+        'horizontal': {
+          type: 'slide',
+          motion: 'up'
+        },
+        'vertical': {
+          type: 'zoom',
+          motion: 'big'
+        },
+        'inline': {
+          type: 'collapse'
+        }
+      })('')(this.mode)
+    },
+    path () {
+      return this.$parent.path.slice().concat(this.index)
+    },
+    style () {
+      const res = {}
+      if (this.mode === 'inline' && this.level > 0) {
+        res['padding-left'] = this.level * this.inlineIndent + 'px'
+      }
+      return res
+    },
+    // From parent
     mode () {
       return this.$parent.mode
+    },
+    multiple () {
+      return this.$parent.multiple
     },
     subMode () {
       return this.$parent.mode === 'horizontal' ? 'vertical' : this.$parent.mode
@@ -59,19 +95,11 @@ export default {
     inlineIndent () {
       return this.$parent.inlineIndent
     },
-    style () {
-      let res = {}
-      if (this.mode === 'inline' && this.level > 0) {
-        res['padding-left'] = this.level * this.inlineIndent + 'px'
-      }
-      return res
-    },
-    open () {
+    isOpen () {
       return this.$parent.open.indexOf(this.index) > -1
     },
-    path () {
-      let path = this.$parent.path.slice()
-      return path
+    open () {
+      return this.$parent.open
     },
     selected () {
       return this.$parent.selected
@@ -82,32 +110,32 @@ export default {
     handleSelect () {
       return this.$parent.handleSelect
     },
-    animitionName () {
-      return switchcaseF({
-        'horizontal': 'slide-up',
-        'vertical': 'zoom-big',
-        'inline': ''
-      })('')(this.mode)
+    handleDeSelect () {
+      return this.$parent.handleDeSelect
+    },
+    handleOpenChange () {
+      return this.$parent.handleOpenChange
     }
   },
+  components: {
+    AtuTransition
+  },
   methods: {
-    handleMouseenter (e) {
+    handleClick () {
+      if (this.mode !== 'inline') return
+      this.$parent.handleOpenChange(this.index, !this.isOpen)
+    },
+    handleMouseEnter (e) {
       if (this.mode === 'inline') return
       this.timer && clearTimeout(this.timer)
       this.$parent.handleOpenChange(this.index, true)
     },
-    handleMouseleave (e) {
+    handleMouseLeave (e) {
       if (this.mode === 'inline') return
       this.timer = setTimeout(() => {
         this.$parent.handleOpenChange(this.index, false)
       }, 100)
-    },
-    handleClick () {
-      if (this.mode !== 'inline') return
-      this.$parent.handleOpenChange(this.index, !this.open)
     }
   }
 }
 </script>
-
-

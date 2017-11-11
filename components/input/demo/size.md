@@ -17,54 +17,32 @@ There are three sizes of an Input box: `large` (32px)、`default` (28px) and `sm
 
 Note: Inside of forms, only the large size is used.
 
-````vue
+```` html
 <template>
-  <div class="ant-input-size">
-    <a-row :gutter="12">
-      <a-col :span="12">
-        <ant-input v-model="inputData1" placeholder="Large size" size="large"></ant-input>
-      </a-col>
-      <a-col :span="12">
-        <ant-input v-model="inputData2" placeholder="Default size" size="default"></ant-input>
-      </a-col>
-    </a-row>
-    <a-row>
-      <a-col :span="12">
-        <ant-input v-model="inputData3" placeholder="Small size" size="small"></ant-input>
-      </a-col>
-    </a-row>
+  <div>
+    <ant-input v-model="inputData1" placeholder="Large size" size="large"  :style="style"></ant-input>
+    <ant-input v-model="inputData2" placeholder="Default size" size="default" :style="style"></ant-input>
+    <ant-input v-model="inputData3" placeholder="Small size" size="small" :style="style"></ant-input>
   </div>
 </template>
 
 <script>
   import AntInput from '@/input'
-  import ARow from '@/row'
-  import ACol from '@/col'
-
   export default {
     data () {
       return {
         inputData1: '',
         inputData2: '',
-        inputData3: ''
+        inputData3: '',
+        style: {
+          width: '200px',
+          margin: '0 8px 8px 0'
+        }
       }
     },
     components: {
-      ARow,
-      ACol,
       AntInput
     }
   }
 </script>
-
-<style lang="less" scoped>
-  .ant-input-size {
-    padding: 10px;
-
-    .ant-row {
-      margin-top: 10px;
-    }
-  }
-</style>
-
 ````

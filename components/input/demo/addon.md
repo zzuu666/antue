@@ -13,11 +13,11 @@ title:
 
 Using pre & post tabs example.
 
-````vue
+```` html
 <template>
-  <div class="ant-input-addon">
-    <ant-input v-model="inputData" placeholder="Enter your username" addonBefore="Http://" addonAfter=".com"></ant-input>
-    <ant-input style="margin-top: 10px" v-model="inputData" placeholder="Enter your username" addonAfter="true">
+  <div>
+    <ant-input v-model="inputData1" placeholder="Enter your username" addonBefore="Http://" addonAfter=".com"></ant-input>
+    <ant-input v-model="inputData2" placeholder="Enter your username" addonAfter="true" style="margin-top: 10px">
       <ant-icon slot="addonAfter" type="setting"></ant-icon>
     </ant-input>
   </div>
@@ -26,11 +26,11 @@ Using pre & post tabs example.
 <script>
   import AntInput from '@/input'
   import AntIcon from '@/icon'
-
   export default {
     data () {
       return {
-        inputData: ''
+        inputData1: 'mysite',
+        inputData2: 'mysite'
       }
     },
     components: {
@@ -39,11 +39,4 @@ Using pre & post tabs example.
     }
   }
 </script>
-
-<style lang="less" scoped>
-  .ant-input-addon {
-    padding: 10px;
-  }
-</style>
-
 ````

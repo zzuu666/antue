@@ -5,7 +5,7 @@
     @click="handleClick"
     @mouseup="handleMouseUp"
     @mousedown="handleMouseDown">
-    <a-icon v-if="icon" :type="icon" />
+    <a-icon v-if="iconType" :type="iconType" />
     <span v-if="!shape && justText">
       <slot></slot>
     </span>
@@ -47,7 +47,7 @@ export default {
     size: {
       type: String,
       validator (value) {
-        return oneOf(value, ['small', 'large'])
+        return oneOf(value, ['small', 'large', ''])
       }
     },
     type: {
@@ -80,13 +80,16 @@ export default {
           [`${prefixCls}-${this.type}`]: !!this.type,
           [`${prefixCls}-${this.shape}`]: !!this.shape,
           [`${prefixCls}-${size}`]: !!size,
-          [`${prefixCls}-loading`]: !!this.loading,
+          [`${prefixCls}-loading`]: !!this.isLoading,
           [`${prefixCls}-background-ghost`]: !!this.ghost,
           [`${prefixCls}-clicked`]: !!this.clicked,
           [`${prefixCls}-icon-only`]: !this.children && this.icon && !this.loading
         }
 
       ]
+    },
+    iconType () {
+      return this.isLoading ? 'loading' : this.icon
     }
   },
   components: {
@@ -111,7 +114,6 @@ export default {
   watch: {
     loading (next, cur) {
       cur && this.delayTimeout && clearTimeout(this.delayTimeout)
-
       if (typeof next !== 'boolean' && next && next.delay) {
         this.delayTimeout = setTimeout(() => (this.isLoading = true), next.delay)
       } else {
@@ -124,9 +126,10 @@ export default {
     this.delayTimeout && clearTimeout(this.delayTimeout)
   },
   created () {
+    this.isLoading = this.loading
+
     const children = this.$slots.default
     children && children.length === 1 && children[0].text && (this.justText = true)
   }
 }
 </script>
-

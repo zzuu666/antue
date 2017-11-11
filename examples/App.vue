@@ -79,6 +79,10 @@ export default {
           title: 'Navigation',
           items: [
             {
+              title: 'Breadcrumb 面包屑',
+              route: 'breadcrumb'
+            },
+            {
               title: 'Menu 菜单',
               route: 'menu'
             },
@@ -99,6 +103,49 @@ export default {
             {
               title: 'Rate 评分',
               route: 'rate'
+            },
+            {
+              title: 'Radio 单选框',
+              route: 'radio'
+            },
+            {
+              title: 'Switch 开关',
+              route: 'switch'
+            }
+          ]
+        },
+        {
+          title: 'Data Display',
+          items: [
+            {
+              title: 'Card 卡片',
+              route: 'card'
+            },
+            {
+              title: 'Tabs 标签页',
+              route: 'tabs'
+            },
+            {
+              title: 'Tag 标签',
+              route: 'tag'
+            }
+          ]
+        },
+        {
+          title: 'Feedback',
+          items: [
+            {
+              title: 'Message 全局提示',
+              route: 'message'
+            }
+          ]
+        },
+        {
+          title: 'Transition',
+          items: [
+            {
+              title: 'Transition 输入框',
+              route: 'transition'
             }
           ]
         }

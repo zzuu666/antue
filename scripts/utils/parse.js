@@ -3,7 +3,7 @@ const { failLog, generalLog } = require('./log')
 /**
  * 解析 markdown 文件头部信息
  * @param {*} md md文件内容
- * @param {*} mark md所在路径
+ * @param {*=} mark md所在路径
  * @return {Object} 文件头部信息
  */
 const parseMarkdownHeader = (md, mark) => {
@@ -18,19 +18,18 @@ const parseMarkdownHeader = (md, mark) => {
     const array = el.split(':')
     json[array[0].trim()] = array[1] && array[1].trim()
   })
+  json.order && (json.order = parseInt(json.order, 10))
   return json
 }
 
-const parseDeomMarkdown = (md, component, name) => {
+const parseDemoMarkdown = (md, component, name) => {
   let json = {}
   const mark = `${component}/${name}`
   json.header = parseMarkdownHeader(md, mark)
   if (typeof json.header.order === 'undefined') {
     generalLog(`需要为文件${mark}指定头部order`)
   }
-  json.header.order = parseInt(json.order, 10)
-  const vueHtml = `<${component}-${name}></${component}-${name}>\n`
-  json.display = vueHtml
+  json.display = `<${component}-${name}></${component}-${name}>\n`
   const zhCNStart = md.indexOf('## zh-CN')
   const enUSStart = md.indexOf('## en-US')
   const codeStart = md.indexOf('```` html')
@@ -63,7 +62,7 @@ const parseDocMarkdown = (md) => {
 }
 
 module.exports = {
-  parseDeomMarkdown,
+  parseDemoMarkdown,
   parseComponentMarkdown,
   parseDocMarkdown
 }

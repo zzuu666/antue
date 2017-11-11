@@ -3,12 +3,14 @@
     <div class="code-show-example">
       <slot></slot>
     </div>
-    <div class="code-show-content">
+    <div class="code-show-content markdown">
       <span class="code-show-content-title" v-text="title"></span>
-      <p class="code-show-content-desc" v-html="desc"></p>
+      <p class="code-show-content-desc">
+        <slot name="desc"></slot>
+      </p>
       <atu-icon @click.native="showCode" class="code-show-content-icon" :type="isShow ? 'up' : 'down'" />
     </div>
-     <div v-show="isShow" class="code-show-code">
+     <div v-show="isShow" class="code-show-code markdown">
         <slot name="code"></slot>
       </div>
   </div>
@@ -23,8 +25,7 @@ export default {
     }
   },
   props: {
-    title: String,
-    desc: String
+    title: String
   },
   components: {
     AtuIcon
@@ -42,21 +43,25 @@ export default {
   position: relative;
   border: 1px solid #dfdfdf;
   border-radius: 4px;
+  margin: 12px 0;
 
   &-example {
     position: relative;
-    text-align: center;
-    padding: 32px 0;
+    padding: 42px 20px 50px;
+
+    .ant-menu {
+      text-align: left;
+    }
   }
   &-content {
     position: relative;
     border-top: 1px solid #dfdfdf;
-    padding: 16px 12px;
+    padding: 17px 16px 15px 20px;
 
     &-title {
       position: absolute;
       top: -15px;
-      left: 10;
+      left: 10px;
       padding: 2px 4px;
       background: #fff;
     }
@@ -71,6 +76,7 @@ export default {
    &-code {
     position: relative;
     overflow-x: auto;
+    margin-right: 1px;
     border-top: 1px dashed #dfdfdf;
     pre {
       background-color: #fff

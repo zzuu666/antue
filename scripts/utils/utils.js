@@ -5,7 +5,15 @@
  */
 const generateCamelName = (...argv) => {
   const handleFirstLetter = (str) => str.replace(/\b\w+\b/g, word => word.substring(0, 1).toUpperCase() + word.substring(1))
-  const res = argv.map((el, index) => index === 0 ? el.toLowerCase() : handleFirstLetter(el))
+  const flatten = (arr) => [].concat(...arr)
+  const handleHyphen = (words) => {
+    return flatten(words.map(el => {
+      const hasHyphen = el.indexOf('-') > -1
+      return hasHyphen ? el.split('-') : el
+    }))
+  }
+  const words = handleHyphen(argv)
+  const res = words.map((el, index) => index === 0 ? el.toLowerCase() : handleFirstLetter(el))
   return res.join('')
 }
 
