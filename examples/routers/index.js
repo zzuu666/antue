@@ -14,6 +14,7 @@ import Transition from './transition'
 import Breadcrumb from './breadcrumb'
 import Tabs from './tabs'
 import Tag from './tag'
+import ToolTip from './tooltip'
 
 Vue.use(Router)
 
@@ -74,6 +75,10 @@ let router = new Router({
     {
       path: '/tag',
       component: Tag
+    },
+    {
+      path: '/tooltip',
+      component: ToolTip
     }
   ]
 })
