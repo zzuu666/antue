@@ -79,12 +79,16 @@ export default {
           title: 'Navigation',
           items: [
             {
+              title: 'Breadcrumb 面包屑',
+              route: 'breadcrumb'
+            },
+            {
               title: 'Menu 菜单',
               route: 'menu'
             },
             {
-              title: 'Breadcrumb 面包屑',
-              route: 'breadcrumb'
+              title: 'Pagination 分页',
+              route: 'pagination'
             }
           ]
         },

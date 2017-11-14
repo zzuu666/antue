@@ -5,6 +5,7 @@ import Menu from './menu'
 import Icon from './icon'
 import Input from './input'
 import Rate from './rate'
+import Pagination from './pagination'
 import Card from './card'
 import Grid from './grid'
 import Radio from './radio'
@@ -38,6 +39,10 @@ let router = new Router({
     {
       path: '/rate',
       component: Rate
+    },
+    {
+      path: '/pagination',
+      component: Pagination
     },
     {
       path: '/card',
