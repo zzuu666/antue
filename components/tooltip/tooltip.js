@@ -18,9 +18,10 @@ export default {
       functional: true,
 
       render (h, context) {
+        const data = context.data
         return h('div', {
           'class': ['ant-tooltip-inner']
-        }, context.data.title)
+        }, data.$slots.title || data.title)
       }
     }
   }
