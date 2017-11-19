@@ -9,12 +9,12 @@ commit_website_files() {
   git checkout -b gh-pages
   cp ./site/dist/* ./
   git add .
-  git commit --message "Travis update: $TRAVIS_BUILD_NUMBER"
+  git commit -m "Travis update: $TRAVIS_BUILD_NUMBER"
 }
 
 upload_files() {
   git remote add gh-pages https://${GH_TOKEN}@github.com/zzuu666/antue.git
-  git push --quiet
+  git push --quiet --set-upstream gh-pages gh-pages
 }
 
 setup_git
