@@ -6,7 +6,7 @@ setup_git() {
 }
 
 commit_website_files() {
-  git checkout -b gh-pages
+  git checkout -b local-pages
   cp ./site/dist/* ./
   git add .
   git commit -m "Travis update: $TRAVIS_BUILD_NUMBER"
@@ -14,7 +14,7 @@ commit_website_files() {
 
 upload_files() {
   git remote add gh-pages https://${GH_TOKEN}@github.com/zzuu666/antue.git
-  git push --quiet --set-upstream gh-pages gh-pages
+  git push --quiet --set-upstream gh-pages local-pages
 }
 
 setup_git
