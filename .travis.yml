@@ -7,3 +7,10 @@ script:
   - npm run lint
   - npm test
   - npm run build
+
+master:
+  after_success:
+    - node scripts/generate.js -a
+    - node scripts/generate.js -r
+    - npm run build:site
+    - .travis/push.sh
