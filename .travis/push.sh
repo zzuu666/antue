@@ -3,13 +3,13 @@
 setup_git() {
   git config --global user.email "546485299@qq.com"
   git config --global user.name "Travis CI"
-  git remote add origin https://${GH_TOKEN}@github.com/zzuu666/antue.git
-  git pull
+  git clone https://${GH_TOKEN}@github.com/zzuu666/antue.git gh-pages
+  cd gh-pages
 }
 
 commit_website_files() {
   git checkout gh-pages
-  cp ./site/dist/* ./
+  cp ../site/dist/* ./
   git add .
   git commit -m "Travis update: $TRAVIS_BUILD_NUMBER"
 }
