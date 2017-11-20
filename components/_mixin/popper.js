@@ -148,8 +148,7 @@ export default {
       if (hash) {
         arrow.setAttribute(hash, '')
       }
-      arrow.setAttribute('x-arrow', '')
-      arrow.className = `popper__arrow ${this.prefixCls}-arrow`
+      arrow.className = `${this.prefixCls}-arrow`
       element.querySelector(`.${this.prefixCls}-content`).appendChild(arrow)
     }
   },
