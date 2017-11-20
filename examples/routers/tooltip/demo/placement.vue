@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div style="margin-left: 60px;">
+  <div class="tooltip-show">
+    <div class="tooltip-show-top">
       <atu-tooltip title="prompt text" placement="topLeft">
         <span class="span">TL</span>
       </atu-tooltip>
@@ -11,7 +11,7 @@
         <span class="span">TR</span>
       </atu-tooltip>
     </div>
-    <div>
+    <div class="tooltip-show-middle">
       <span style="display: inline-block; width: 60px;">
         <atu-tooltip title="prompt text" placement="leftTop">
           <span class="span">LT</span>
@@ -23,7 +23,7 @@
           <span class="span">LB</span>
         </atu-tooltip>
       </span>
-      <span style="display: inline-block; margin-left: 220px; width: 60px;">
+      <span style="display: inline-block; margin-left: 204px; width: 60px;">
         <atu-tooltip title="prompt text" placement="rightTop">
           <span class="span">RT</span>
         </atu-tooltip>
@@ -35,7 +35,7 @@
         </atu-tooltip>
       </span>
     </div>
-    <div style="margin-left: 60px;">
+    <div class="tooltip-show-bottom">
       <atu-tooltip title="prompt text" placement="bottomLeft">
         <span class="span">BL</span>
       </atu-tooltip>
@@ -60,15 +60,28 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.span {
-  display: inline-block;
-  width: 60px;
-  height: 32px;
-  line-height: 32px;
-  border-radius: 6px;
-  background-color: #f5f5f5;
-  color: #108ee9;
-  margin: 4px 4px;
-  text-align: center;
+.tooltip-show {
+  &-top,
+  &-bottom {
+    margin-left: 60px;
+    .span {
+      margin: 0 4px;
+    }
+  }
+  &-middle {
+    .span {
+      margin: 4px 0;
+    }
+  }
+  .span {
+    display: inline-block;
+    width: 60px;
+    height: 32px;
+    line-height: 32px;
+    border-radius: 6px;
+    background-color: #f5f5f5;
+    color: #108ee9;
+    text-align: center;
+  }
 }
 </style>

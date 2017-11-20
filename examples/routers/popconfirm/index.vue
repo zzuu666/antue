@@ -5,9 +5,6 @@
       <demo-basic />
     </code-show>
     <code-show>
-      <demo-slot />
-    </code-show>
-    <code-show>
       <demo-placement />
     </code-show>
   </container>
@@ -17,7 +14,6 @@
 import Container from '../../common/container'
 import CodeShow from '../../common/code-show'
 import DemoBasic from './demo/basic'
-import DemoSlot from './demo/slot'
 import DemoPlacement from './demo/placement'
 
 export default {
@@ -25,7 +21,6 @@ export default {
     Container,
     CodeShow,
     DemoBasic,
-    DemoSlot,
     DemoPlacement
   }
 }
