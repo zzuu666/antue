@@ -97,6 +97,14 @@ const menu = {
             {
               title: 'Avatar 头像',
               route: 'compAvatarIndexZh'
+            },
+            {
+              title: 'Tooltip 文字提示',
+              route: 'compTooltipIndexZh'
+            },
+            {
+              title: 'Popover 气泡卡片',
+              route: 'compPopoverIndexZh'
             }
           ]
         },
@@ -127,6 +135,10 @@ const menu = {
             {
               title: 'Message 全局提示',
               route: 'compMessageIndexZh'
+            },
+            {
+              title: 'Popconfirm 气泡确认框',
+              route: 'compPopconfirmIndexZh'
             }
           ]
         },
