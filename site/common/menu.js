@@ -46,7 +46,7 @@ const menu = {
             {
               title: 'Button 按钮',
               route: 'compButtonIndexZh'
-            },
+            }
             // {
             //   title: 'Icon 按钮',
             //   route: 'componentsIconZh'
@@ -59,7 +59,7 @@ const menu = {
             {
               title: 'Grid 栅格',
               route: 'compGridIndexZh'
-            },
+            }
             // {
             //   title: 'Icon 按钮',
             //   route: 'componentsIconZh'
@@ -74,8 +74,12 @@ const menu = {
               route: 'compBreadcrumbIndexZh'
             },
             {
-              title: 'Menu 菜单',
+              title: 'Menu 导航菜单',
               route: 'compMenuIndexZh'
+            },
+            {
+              title: 'Pagination 分页',
+              route: 'compPaginationIndexZh'
             }
           ]
         },
@@ -99,6 +103,10 @@ const menu = {
         {
           title: 'Data Entry',
           items: [
+            {
+              title: 'Input 输入框',
+              route: 'compInputIndexZh'
+            },
             {
               title: 'Rate 评分',
               route: 'compRateIndexZh'

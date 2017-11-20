@@ -13,13 +13,12 @@ title:
 
 Basic usage example.
 
-````vue
+```` html
 <template>
-  <ant-input type="text" v-model="value"></ant-input>
+  <ant-input placeholder="Basic usage" v-model="value"></ant-input>
 </template>
 <script>
   import AntInput from '@/input'
-  
   export default {
     data () {
       return {

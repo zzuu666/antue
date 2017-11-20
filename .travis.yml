@@ -7,3 +7,14 @@ script:
   - npm run lint
   - npm test
   - npm run build
+before_deploy: 
+  - node scripts/generate.js -a
+  - node scripts/generate.js -r
+  - npm run build:site
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GH_TOKEN
+  local_dir: site/dist
+  on:
+    branch: master
