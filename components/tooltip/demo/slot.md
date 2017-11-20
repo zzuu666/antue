@@ -13,7 +13,7 @@ title:
 
 Use slot to custom text, but should't include complex content.
 
-````html
+```` html
 <template>
   <atu-tooltip title="prompt text">
     <span>Tooltip will show when mouse enter.</span>

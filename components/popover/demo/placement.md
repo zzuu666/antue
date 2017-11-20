@@ -13,7 +13,7 @@ title:
 
 There are 12 `placement` options available.
 
-````html
+```` html
 <template>
   <div class="popover-show">
     <div class="popover-show-top">

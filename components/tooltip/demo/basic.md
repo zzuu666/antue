@@ -13,7 +13,7 @@ title:
 
 The simplest usage.
 
-````html
+```` html
 <template>
   <atu-tooltip title="prompt text">
     <span>Tooltip will show when mouse enter.</span>

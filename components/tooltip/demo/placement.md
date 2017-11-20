@@ -13,7 +13,7 @@ title:
 
 The ToolTip has 12 placements choice.
 
-````html
+```` html
 <template>
   <div class="tooltip-show">
     <div class="tooltip-show-top">
