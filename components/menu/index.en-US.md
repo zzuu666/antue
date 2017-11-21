@@ -17,9 +17,9 @@ More layouts with navigation: [layout](/components/layout).
 
 ```html
 <atu-menu>
-  <menu-item>菜单项</menu-item>
-  <sub-menu title="子菜单">
-    <menu-item>子菜单项</menu-item>
+  <menu-item>Menu</menu-item>
+  <sub-menu title="SubMenu">
+    <menu-item>SubMenuItem</menu-item>
   </sub-menu>
 </atu-menu>
 ```
