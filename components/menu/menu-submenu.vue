@@ -14,8 +14,8 @@
       :class="`${prefixCls}-submenu-title`"
       @click="handleClick"
       :style="style"
-      v-if="$slots.title">
-      <slot name="title"></slot>
+      v-if="$slots.title || title">
+      <slot name="title">{{title}}</slot>
     </span>
     <atu-transition :type="animition.type" :motion="animition.motion" v-if="$slots.default">
       <ul
@@ -38,15 +38,16 @@ import AtuTransition from '@/transition'
 export default {
   name: 'menuSubmenu',
   props: {
+    prefixCls: {
+      type: String,
+      default: 'ant-menu'
+    },
     disabled: {
       type: Boolean,
       default: false
     },
     index: [String, Number],
-    prefixCls: {
-      type: String,
-      default: 'ant-menu'
-    }
+    title: String
   },
   data () {
     return {

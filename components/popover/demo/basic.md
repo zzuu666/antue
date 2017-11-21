@@ -9,6 +9,8 @@ title:
 
 最简单的用法，浮层的大小由内容区域决定。
 
+**在使用slot时，slot需要处于主体DOM之后**
+
 ## en-US
 
 The most basic example. The size of the floating layer depends on the contents region.
