@@ -128,6 +128,14 @@ export default {
             {
               title: 'Tag 标签',
               route: 'tag'
+            },
+            {
+              title: 'Tooltip 提示',
+              route: 'tooltip'
+            },
+            {
+              title: 'Popover 文字提示',
+              route: 'popover'
             }
           ]
         },
@@ -137,6 +145,10 @@ export default {
             {
               title: 'Message 全局提示',
               route: 'message'
+            },
+            {
+              title: 'Popconfirm 气泡确认',
+              route: 'popconfirm'
             }
           ]
         },

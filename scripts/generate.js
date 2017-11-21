@@ -242,6 +242,7 @@ const generateComponentsRouterConfig = async () => {
   const sitePath = resolve('site')
   let importString = `import Vue from 'vue'\nimport Router from 'vue-router'\n`
   let configString = ''
+  const redirectString = `    { path: '/', redirect: '/docs/development/first/zh' },\n`
   await Promise.all(['components', 'docs'].map(async dir => {
     let err, components
     ;[err, components] = await to(readDirPromise(path.join(sitePath, dir)))
@@ -260,7 +261,7 @@ const generateComponentsRouterConfig = async () => {
       })
     }))
   }))
-  configString = configString.substring(0, configString.length - 2)
+  configString = redirectString + configString.substring(0, configString.length - 2)
   importString += 'Vue.use(Router)\n'
   const config = '\nlet router = new Router({\n  routes: [\n' + configString + '\n  ]\n})\n\nexport default router\n'
   stableWriteFile(sitePath, 'router.js', importString + config)

@@ -15,6 +15,9 @@ import Transition from './transition'
 import Breadcrumb from './breadcrumb'
 import Tabs from './tabs'
 import Tag from './tag'
+import ToolTip from './tooltip'
+import Popover from './popover'
+import Popconfirm from './popconfirm'
 
 Vue.use(Router)
 
@@ -79,6 +82,18 @@ let router = new Router({
     {
       path: '/tag',
       component: Tag
+    },
+    {
+      path: '/tooltip',
+      component: ToolTip
+    },
+    {
+      path: '/popover',
+      component: Popover
+    },
+    {
+      path: '/popconfirm',
+      component: Popconfirm
     }
   ]
 })
