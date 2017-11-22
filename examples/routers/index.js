@@ -18,6 +18,7 @@ import Tag from './tag'
 import ToolTip from './tooltip'
 import Popover from './popover'
 import Popconfirm from './popconfirm'
+import Timeline from './timeline'
 
 Vue.use(Router)
 
@@ -94,6 +95,10 @@ let router = new Router({
     {
       path: '/popconfirm',
       component: Popconfirm
+    },
+    {
+      path: '/timeline',
+      component: Timeline
     }
   ]
 })
