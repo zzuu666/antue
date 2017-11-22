@@ -136,6 +136,10 @@ export default {
             {
               title: 'Popover 文字提示',
               route: 'popover'
+            },
+            {
+              title: 'Timeline 时间轴',
+              route: 'timeline'
             }
           ]
         },

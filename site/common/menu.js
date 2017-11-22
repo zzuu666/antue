@@ -105,6 +105,10 @@ const menu = {
             {
               title: 'Popover 气泡卡片',
               route: 'compPopoverIndexZh'
+            },
+            {
+              title: 'Timeline 时间轴',
+              route: 'compTimelineIndexZh'
             }
           ]
         },
