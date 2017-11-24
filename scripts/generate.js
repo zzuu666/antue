@@ -74,7 +74,9 @@ const generateVueContainer = (main, demos = []) => {
           title="${title}">
           <template slot="desc">${desc}</template>
           ${display}
-          <template slot="code">${code}</template>
+          <template slot="code">
+            <div v-pre>${code}</div>
+          </template>
         </code-show>
       `
       return string
