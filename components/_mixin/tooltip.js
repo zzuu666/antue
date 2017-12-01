@@ -43,7 +43,8 @@ export default {
   render (h) {
     this.popperVM.vnode = h('atu-transition', {
       props: {
-        type: 'fade'
+        type: 'zoom',
+        motion: 'big-fast'
       }
     }, [
       h('div', {
