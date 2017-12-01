@@ -36,14 +36,6 @@ export default {
     placement: {
       type: String,
       default: 'bottom'
-    },
-    popperOptions: {
-      type: Object,
-      default () {
-        return {
-          gpuAcceleration: false
-        }
-      }
     }
   },
 
@@ -81,7 +73,7 @@ export default {
     createPopper () {
       if (Object.keys(this.placementMap).indexOf(this.placement) === -1) return
       this.popper = this.popper || this.$refs.popper
-      const options = this.popperOptions
+      const options = Object.create(null)
       if (!this.popper || !this.reference) return
       if (this.visibleArrow) this.appendArrow(this.popper)
       document.body.appendChild(this.popper)
@@ -92,6 +84,11 @@ export default {
       options.placement = this.currentPalcement
       options.offset = this.offset
       options.boundariesPadding = this.boundariesPadding
+      options.modifiers = {
+        computeStyle: {
+          gpuAcceleration: false
+        }
+      }
       options.onCreate = () => {
         this.currentPalcement = this.popper.getAttribute('x-placement')
         this.resetTransformOrigin()

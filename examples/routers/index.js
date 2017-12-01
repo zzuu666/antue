@@ -19,6 +19,7 @@ import ToolTip from './tooltip'
 import Popover from './popover'
 import Popconfirm from './popconfirm'
 import Timeline from './timeline'
+import Dropdown from './dropdown'
 
 Vue.use(Router)
 
@@ -99,6 +100,10 @@ let router = new Router({
     {
       path: '/timeline',
       component: Timeline
+    },
+    {
+      path: '/dropdown',
+      component: Dropdown
     }
   ]
 })
