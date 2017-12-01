@@ -14,14 +14,22 @@
 <script>
 export default {
   name: 'menuItem',
+  inject: ['menuRoot'],
+  props: {
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    index: [String, Number]
+  },
   computed: {
     classes () {
-      const prefixCls = this.prefixCls
+      const prefixCls = this.menuRoot.prefixCls
       return [
-        prefixCls,
+        `${prefixCls}-item`,
         {
-          [`${prefixCls}-disabled`]: this.disabled,
-          [`${prefixCls}-selected`]: this.selected
+          [`${prefixCls}-item-disabled`]: this.disabled,
+          [`${prefixCls}-item-selected`]: this.selected
         }
       ]
     },
@@ -50,17 +58,6 @@ export default {
     },
     inlineIndent () {
       return this.$parent.inlineIndent
-    }
-  },
-  props: {
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    index: [String, Number],
-    prefixCls: {
-      type: String,
-      default: 'ant-menu-item'
     }
   },
   methods: {

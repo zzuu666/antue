@@ -16,11 +16,13 @@
 <script>
 export default {
   name: 'menuItemGroup',
+  inject: ['menuRoot'],
   props: {
-    title: String,
-    prefixCls: {
-      type: String,
-      default: 'ant-menu'
+    title: String
+  },
+  data () {
+    return {
+      prefixCls: this.menuRoot.prefixCls
     }
   },
   computed: {
