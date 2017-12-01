@@ -89,6 +89,10 @@ export default {
             {
               title: 'Pagination 分页',
               route: 'pagination'
+            },
+            {
+              title: 'Dropdown 下拉菜单',
+              route: 'dropdown'
             }
           ]
         },
