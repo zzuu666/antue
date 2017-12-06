@@ -5,7 +5,7 @@
     :disabled="disabled">
     <atu-icon v-if="isButton" type="down" />
     <slot v-else></slot>
-    <atu-transition type="slide" motion="up">
+    <atu-transition type="slide" :motion="motion">
       <div
         :class="classes"
         ref="overlay"
@@ -65,6 +65,9 @@ export default {
       return [
         prefixCls
       ].concat(this.placementCls)
+    },
+    motion () {
+      return this.placement.indexOf('top') > -1 ? 'down' : 'up'
     }
   },
   components: {
