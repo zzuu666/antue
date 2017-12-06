@@ -1,20 +1,8 @@
-<template>
-  <div>
-    <slot></slot>
-    <atu-transition type="slide" motion="up">
-      <div
-        :class="classes"
-        ref="overlay"
-        v-show="visible">  
-        <slot name="overlay"></slot>
-      </div>
-    </atu-transition>
-  </div>
-</template>
+
 
 <script>
+import Vue from 'vue'
 import AtuTransition from '../transition'
-import AtuButton from '../button'
 import Popper from '../_mixin/popper'
 import { oneOf } from '../_util/proptype'
 
@@ -52,35 +40,35 @@ export default {
     }
   },
   components: {
-    AtuTransition,
-    AtuButton
+    AtuTransition
   },
   methods: {
     show () {
+      if (this.disabled) return
       clearTimeout(this.timer)
       this.visible = true
     },
     hide () {
+      if (this.disabled) return
       clearTimeout(this.timer)
       this.timer = setTimeout(() => {
         this.visible = false
       }, 150)
     },
     toggle () {
+      if (this.disabled) return
       this.visible = !this.visible
     }
   },
   beforeMount () {
-    this.$slots.overlay = this.$slots.overlay.map(vnode => {
+    this.$slots.overlay.forEach(vnode => {
       vnode.componentOptions.propsData = {
         prefixCls: `${this.prefixCls}-menu`,
         selectable: false
       }
-      return vnode
     })
   },
   mounted () {
-    const overlay = this.$refs.overlay
     const dropdown = this.$slots.default[0].elm
 
     if (this.trigger === 'click') {
@@ -88,13 +76,46 @@ export default {
     } else {
       dropdown.addEventListener('mouseenter', this.show)
       dropdown.addEventListener('mouseleave', this.hide)
-      overlay.addEventListener('mouseenter', this.show)
-      overlay.addEventListener('mouseleave', this.hide)
     }
-    overlay.addEventListener('click', this.hide)
-
-    this.popper = overlay
     this.reference = dropdown
+    this.$nextTick(() => {
+      const overlay = this.$refs.overlay
+      this.popper = overlay
+      if (this.trigger !== 'click') {
+        overlay.addEventListener('mouseenter', this.show)
+        overlay.addEventListener('mouseleave', this.hide)
+      }
+      overlay.addEventListener('click', this.hide)
+    })
+  },
+  beforeCreate () {
+    this.popperVM = new Vue({
+      data: { vnode: '' },
+      render () {
+        return this.vnode
+      }
+    }).$mount()
+  },
+  render (h) {
+    this.popperVM.vnode = h('atu-transition', {
+      props: {
+        type: 'slide',
+        motion: this.placement.indexOf('top') > -1 ? 'down' : 'up'
+      }
+    }, [
+      h('div', {
+        'class': this.classes,
+        directives: [
+          {
+            name: 'show',
+            value: this.visible,
+            expression: 'show'
+          }
+        ],
+        ref: 'overlay'
+      }, this.$slots.overlay)
+    ])
+    return this.$slots.default[0]
   }
 }
 </script>

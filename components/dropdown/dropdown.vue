@@ -1,8 +1,25 @@
-
+<template>
+  <component
+    :is="isButton ? 'atu-button' : 'span'"
+    :type="type"
+    :disabled="disabled">
+    <atu-icon v-if="isButton" type="down" />
+    <slot v-else></slot>
+    <atu-transition type="slide" motion="up">
+      <div
+        :class="classes"
+        ref="overlay"
+        v-show="visible">  
+        <slot name="overlay"></slot>
+      </div>
+    </atu-transition>
+  </component>
+</template>
 
 <script>
-import Vue from 'vue'
 import AtuTransition from '../transition'
+import AtuButton from '../button'
+import AtuIcon from '../icon'
 import Popper from '../_mixin/popper'
 import { oneOf } from '../_util/proptype'
 
@@ -17,17 +34,28 @@ export default {
       type: Boolean,
       default: false
     },
+    isButton: {
+      type: Boolean,
+      default: false
+    },
     trigger: {
       type: String,
       default: 'hover',
       validator (value) {
         return oneOf(value, ['hover', 'click'])
       }
+    },
+    type: {
+      type: String,
+      validator (value) {
+        return oneOf(value, ['primary', 'dashed', 'danger', 'default'])
+      }
     }
   },
   data () {
     return {
-      timer: null
+      timer: null,
+      popperOffset: '0, 5px'
     }
   },
   mixins: [Popper],
@@ -40,82 +68,65 @@ export default {
     }
   },
   components: {
-    AtuTransition
+    AtuTransition,
+    AtuButton,
+    AtuIcon
   },
   methods: {
     show () {
-      if (this.disabled) return
       clearTimeout(this.timer)
       this.visible = true
     },
     hide () {
-      if (this.disabled) return
       clearTimeout(this.timer)
       this.timer = setTimeout(() => {
         this.visible = false
       }, 150)
     },
     toggle () {
-      if (this.disabled) return
       this.visible = !this.visible
+    },
+    /**
+     * 点击其他空白位置需要关闭浮层
+     * @param e
+     */
+    clickDocument (e) {
+      if (!this.visible ||
+        !this.$el ||
+        !this.reference ||
+        !this.popper ||
+        this.$el.contains(e.target) ||
+        this.reference.contains(e.target) ||
+        this.popper.contains(e.target)) return
+      this.hide()
     }
   },
   beforeMount () {
-    this.$slots.overlay.forEach(vnode => {
+    this.$slots.overlay = this.$slots.overlay.map(vnode => {
       vnode.componentOptions.propsData = {
         prefixCls: `${this.prefixCls}-menu`,
         selectable: false
       }
+      return vnode
     })
   },
   mounted () {
-    const dropdown = this.$slots.default[0].elm
+    const overlay = this.$refs.overlay
+    const dropdown = this.isButton ? this.$el : this.$slots.default[0].elm
 
     if (this.trigger === 'click') {
       dropdown.addEventListener('click', this.toggle)
+      document.addEventListener('click', this.clickDocument)
     } else {
       dropdown.addEventListener('mouseenter', this.show)
       dropdown.addEventListener('mouseleave', this.hide)
+      overlay.addEventListener('mouseenter', this.show)
+      overlay.addEventListener('mouseleave', this.hide)
     }
+    overlay.addEventListener('click', this.hide)
+
+    this.popper = overlay
     this.reference = dropdown
-    this.$nextTick(() => {
-      const overlay = this.$refs.overlay
-      this.popper = overlay
-      if (this.trigger !== 'click') {
-        overlay.addEventListener('mouseenter', this.show)
-        overlay.addEventListener('mouseleave', this.hide)
-      }
-      overlay.addEventListener('click', this.hide)
-    })
-  },
-  beforeCreate () {
-    this.popperVM = new Vue({
-      data: { vnode: '' },
-      render () {
-        return this.vnode
-      }
-    }).$mount()
-  },
-  render (h) {
-    this.popperVM.vnode = h('atu-transition', {
-      props: {
-        type: 'slide',
-        motion: this.placement.indexOf('top') > -1 ? 'down' : 'up'
-      }
-    }, [
-      h('div', {
-        'class': this.classes,
-        directives: [
-          {
-            name: 'show',
-            value: this.visible,
-            expression: 'show'
-          }
-        ],
-        ref: 'overlay'
-      }, this.$slots.overlay)
-    ])
-    return this.$slots.default[0]
   }
 }
 </script>

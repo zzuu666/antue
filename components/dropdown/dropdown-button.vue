@@ -8,12 +8,10 @@
     </atu-button>
     <atu-dropdown
       :placement="placement"
-      :trigger="trigger">
-      <atu-button
-        :type="type"
-        :disabled="disabled">
-        <atu-icon type="down" />
-      </atu-button>
+      :trigger="trigger"
+      :is-button="true"
+      :type="type"
+      :disabled="disabled">
       <template slot="overlay">
         <slot name="overlay"></slot>
       </template>
