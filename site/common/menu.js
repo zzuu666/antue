@@ -57,7 +57,7 @@ const menu = {
           title: 'Layout',
           items: [
             {
-              title: 'Grid 栅格',
+              title: 'Grid 栅格',
               route: 'compGridIndexZh'
             }
             // {
