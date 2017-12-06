@@ -46,3 +46,10 @@ export const getOffsetLeft = el => {
 export const assert = (condition, msg) => {
   if (!condition) throw new Error(`[antue] ${msg}`)
 }
+
+/**
+ * Get element offset width
+ * @param {*} node HTMLDOMElemment
+ * @return {Number} width
+ */
+export const getOffsetWidth = (node) => node ? node.offsetWidth : 0

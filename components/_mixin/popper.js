@@ -18,10 +18,10 @@ const placementMap = {
   rightBottom: 'right-end'
 }
 const popperMap = {
-  top: 'top',
-  left: 'left',
-  right: 'right',
-  bottom: 'bottom',
+  'top': 'top',
+  'left': 'left',
+  'right': 'right',
+  'bottom': 'bottom',
   'top-start': 'topLeft',
   'top-end': 'topRight',
   'bottom-start': 'bottomLeft',
@@ -36,17 +36,8 @@ export default {
     placement: {
       type: String,
       default: 'bottom'
-    },
-    popperOptions: {
-      type: Object,
-      default () {
-        return {
-          gpuAcceleration: false
-        }
-      }
     }
   },
-
   data () {
     return {
       placementMap,
@@ -54,10 +45,9 @@ export default {
       popper: null,
       reference: null,
       visible: false,
-      offset: 0,
-      boundariesPadding: 5,
       visibleArrow: false,
-      currentPalcement: ''
+      currentPalcement: '',
+      popperOffset: 0
     }
   },
   watch: {
@@ -81,17 +71,22 @@ export default {
     createPopper () {
       if (Object.keys(this.placementMap).indexOf(this.placement) === -1) return
       this.popper = this.popper || this.$refs.popper
-      const options = this.popperOptions
+      const options = Object.create(null)
       if (!this.popper || !this.reference) return
       if (this.visibleArrow) this.appendArrow(this.popper)
       document.body.appendChild(this.popper)
       if (this.popperJS && this.popperJS.destroy) {
         this.popperJS.destroy()
       }
-
       options.placement = this.currentPalcement
-      options.offset = this.offset
-      options.boundariesPadding = this.boundariesPadding
+      options.modifiers = {
+        computeStyle: {
+          gpuAcceleration: false
+        },
+        offset: {
+          offset: this.popperOffset
+        }
+      }
       options.onCreate = () => {
         this.currentPalcement = this.popper.getAttribute('x-placement')
         this.resetTransformOrigin()
