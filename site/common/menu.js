@@ -82,7 +82,7 @@ const menu = {
               route: 'compPaginationIndexZh'
             },
             {
-              title: 'Dropdown 分页',
+              title: 'Dropdown 下拉菜单',
               route: 'compDropdownIndexZh'
             }
           ]
