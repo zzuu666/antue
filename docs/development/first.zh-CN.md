@@ -16,8 +16,11 @@ Antue 为了保持样式与API与 Ant-Design 的 React 版本高度一致，需�
 
 [Antd Github](https://github.com/ant-design/ant-design)
 
+** 目前参照版本为 antd@2.13.11 [2275195e1](https://github.com/ant-design/ant-design/tree/2.13.11) **
+
 ```
-git clone git@github.com:ant-design/ant-design.git --depth=10
+git clone git@github.com:ant-design/ant-design.git
+git checkout 2.13.11
 ```
 
 ### Fork & PR & Comment & Merge
