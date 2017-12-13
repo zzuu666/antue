@@ -1,7 +1,7 @@
 <template>
   <div>
     <p style="margin-bottom: 20px;">
-      <ant-checkbox :checked="check" :disabled="disable">Checkbox</ant-checkbox>
+      <ant-checkbox v-model="check" :disabled="disable">Checkbox</ant-checkbox>
     </p>
     <p>
       <ant-button @click="toggleCheck">{{ checkText }}</ant-button>
