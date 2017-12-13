@@ -13,6 +13,16 @@
           <demo-base></demo-base>
         </code-show>
       </a-col>
+      <a-col :span="12">
+        <code-show title="不可用" desc="checkbox 不可用。">
+          <checkbox-disabled></checkbox-disabled>
+        </code-show>
+      </a-col>
+      <a-col :span="12">
+        <code-show title="受控的 Checkbox" desc="联动 checkbox。">
+          <controll-checkbox></controll-checkbox>
+        </code-show>
+      </a-col>
     </a-row>
   </container>
 </template>
@@ -23,6 +33,8 @@
   import ARow from '@/row'
   import ACol from '@/col'
   import DemoBase from './demo/base'
+  import CheckboxDisabled from './demo/disabled'
+  import ControllCheckbox from './demo/controll'
 
   export default {
     components: {
@@ -30,7 +42,9 @@
       CodeShow,
       ARow,
       ACol,
-      DemoBase
+      DemoBase,
+      CheckboxDisabled,
+      ControllCheckbox
     }
   }
 </script>
