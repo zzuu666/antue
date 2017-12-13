@@ -14,10 +14,6 @@
         type: Boolean,
         default: false
       },
-      defaultChecked: {
-        type: Boolean,
-        default: false
-      },
       disabled: {
         type: Boolean,
         default: false
@@ -49,9 +45,16 @@
         ]
       }
     },
+    watch: {
+      checked (val) {
+        this.checkedValue = val
+      }
+    },
     methods: {
       handleClick () {
-        this.checkedValue = !this.checkedValue
+        if (!this.disabled) {
+          this.checkedValue = !this.checkedValue
+        }
       }
     }
   }
