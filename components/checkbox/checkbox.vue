@@ -1,6 +1,6 @@
 <template>
   <label :class="prefixCls + '-wrapper'">
-    <span :class="classes"><input type="checkbox" :class="prefixCls + '-input'"><span
+    <span :class="classes" @click="handleClick"><input type="checkbox" :class="prefixCls + '-input'"><span
       :class="prefixCls + '-inner'"/></span>
     <span v-if="$slots.default !== undefined"><slot></slot></span>
   </label>
@@ -10,10 +10,6 @@
   export default {
     name: 'checkbox',
     props: {
-      autoFocus: {
-        type: Boolean,
-        default: false
-      },
       checked: {
         type: Boolean,
         default: false
@@ -35,17 +31,27 @@
         default: 'ant-checkbox'
       }
     },
+    data () {
+      return {
+        checkedValue: this.checked
+      }
+    },
     computed: {
       classes () {
         const prefixCls = this.prefixCls
         return [
           `${prefixCls}`,
           {
-            [`${prefixCls}-checked`]: !!this.checked,
-            [`${prefixCls}-disabled`]: !!this.disabled,
-            [`${prefixCls}-indeterminate`]: !!this.indeterminate
+            [`${prefixCls}-checked`]: this.checkedValue,
+            [`${prefixCls}-disabled`]: this.disabled,
+            [`${prefixCls}-indeterminate`]: this.indeterminate
           }
         ]
+      }
+    },
+    methods: {
+      handleClick () {
+        this.checkedValue = !this.checkedValue
       }
     }
   }
