@@ -10,7 +10,7 @@
   export default {
     name: 'checkbox',
     props: {
-      checked: {
+      value: {
         type: Boolean,
         default: false
       },
@@ -29,7 +29,7 @@
     },
     data () {
       return {
-        checkedValue: this.checked
+        checkedValue: this.value
       }
     },
     computed: {
@@ -46,7 +46,7 @@
       }
     },
     watch: {
-      checked (val) {
+      value (val) {
         this.checkedValue = val
       }
     },
@@ -54,6 +54,7 @@
       handleClick () {
         if (!this.disabled) {
           this.checkedValue = !this.checkedValue
+          this.$emit('input', this.checkedValue)
         }
       }
     }

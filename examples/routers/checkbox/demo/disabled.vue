@@ -1,7 +1,7 @@
 <template>
   <div>
     <ant-checkbox disabled>Checkbox</ant-checkbox>
-    <ant-checkbox checked disabled>Checkbox</ant-checkbox>
+    <ant-checkbox v-model="checked" disabled>Checkbox</ant-checkbox>
   </div>
 </template>
 
@@ -9,6 +9,9 @@
   import AntCheckbox from '@/checkbox'
 
   export default {
-    components: { AntCheckbox }
+    components: { AntCheckbox },
+    data: () => ({
+      checked: true
+    })
   }
 </script>
