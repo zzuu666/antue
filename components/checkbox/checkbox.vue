@@ -48,6 +48,9 @@
     watch: {
       value (val) {
         this.checkedValue = val
+      },
+      checkedValue (val) {
+        this.$emit('change', val)
       }
     },
     methods: {

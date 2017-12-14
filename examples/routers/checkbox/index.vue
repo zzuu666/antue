@@ -23,6 +23,11 @@
           <controll-checkbox></controll-checkbox>
         </code-show>
       </a-col>
+      <a-col :span="12">
+        <code-show title="Checkbox 组" desc="方便的从数组生成 Checkbox 组。">
+          <checkbox-group></checkbox-group>
+        </code-show>
+      </a-col>
     </a-row>
   </container>
 </template>
@@ -35,6 +40,7 @@
   import DemoBase from './demo/base'
   import CheckboxDisabled from './demo/disabled'
   import ControllCheckbox from './demo/controll'
+  import CheckboxGroup from './demo/group'
 
   export default {
     components: {
@@ -44,7 +50,8 @@
       ACol,
       DemoBase,
       CheckboxDisabled,
-      ControllCheckbox
+      ControllCheckbox,
+      CheckboxGroup
     }
   }
 </script>
