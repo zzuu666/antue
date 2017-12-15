@@ -28,6 +28,11 @@
           <checkbox-group></checkbox-group>
         </code-show>
       </a-col>
+      <a-col :span="12">
+        <code-show title="全选" desc="在实现全选效果时，你可能会用到 indeterminate 属性。">
+          <check-all></check-all>
+        </code-show>
+      </a-col>
     </a-row>
   </container>
 </template>
@@ -41,6 +46,7 @@
   import CheckboxDisabled from './demo/disabled'
   import ControllCheckbox from './demo/controll'
   import CheckboxGroup from './demo/group'
+  import CheckAll from './demo/checkall'
 
   export default {
     components: {
@@ -51,7 +57,8 @@
       DemoBase,
       CheckboxDisabled,
       ControllCheckbox,
-      CheckboxGroup
+      CheckboxGroup,
+      CheckAll
     }
   }
 </script>

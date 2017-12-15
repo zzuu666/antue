@@ -48,9 +48,6 @@
     watch: {
       value (val) {
         this.checkedValue = val
-      },
-      checkedValue (val) {
-        this.$emit('change', val)
       }
     },
     methods: {
@@ -58,6 +55,7 @@
         if (!this.disabled) {
           this.checkedValue = !this.checkedValue
           this.$emit('input', this.checkedValue)
+          this.$emit('change', this.checkedValue)
         }
       }
     }
