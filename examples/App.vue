@@ -100,7 +100,10 @@ export default {
           title: 'Data Entry',
           items: [
             {
-
+              title: 'Checkbox 多选框',
+              route: 'checkbox'
+            },
+            {
               title: 'Input 输入框',
               route: 'input'
             },
