@@ -1,12 +1,12 @@
 <template>
   <div>
-    <checkbox-group v-model="value1" :options="options1">Checkbox</checkbox-group>
+    <checkbox-group v-model="value1" :options="options1"></checkbox-group>
     <span>{{ value1 }}</span>
     <br/>
-    <checkbox-group v-model="value2" :options="options2">Checkbox</checkbox-group>
+    <checkbox-group v-model="value2" :options="options2"></checkbox-group>
     <span>{{ value2 }}</span>
     <br/>
-    <checkbox-group v-model="value2" :options="options2" disabled>Checkbox</checkbox-group>
+    <checkbox-group v-model="value2" :options="options2" disabled></checkbox-group>
   </div>
 </template>
 
