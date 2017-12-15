@@ -4,6 +4,7 @@ import Button from './button'
 import Menu from './menu'
 import Icon from './icon'
 import Input from './input'
+import Checkbox from './checkbox'
 import Rate from './rate'
 import Pagination from './pagination'
 import Card from './card'
@@ -36,6 +37,10 @@ let router = new Router({
     {
       path: '/icon',
       component: Icon
+    },
+    {
+      path: '/checkbox',
+      component: Checkbox
     },
     {
       path: '/input',
