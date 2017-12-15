@@ -20,7 +20,7 @@
       </a-col>
       <a-col :span="12">
         <code-show title="受控的 Checkbox" desc="联动 checkbox。">
-          <controll-checkbox></controll-checkbox>
+          <controller-checkbox></controller-checkbox>
         </code-show>
       </a-col>
       <a-col :span="12">

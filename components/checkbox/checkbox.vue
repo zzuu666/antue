@@ -1,7 +1,9 @@
 <template>
   <label :class="prefixCls + '-wrapper'">
-    <span :class="classes" @click="handleClick"><input type="checkbox" :class="prefixCls + '-input'"><span
-      :class="prefixCls + '-inner'"/></span>
+    <span :class="classes" @click="handleClick">
+      <input type="checkbox" :class="prefixCls + '-input'">
+      <span :class="prefixCls + '-inner'"/>
+    </span>
     <span v-if="$slots.default !== undefined"><slot></slot></span>
   </label>
 </template>

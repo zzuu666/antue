@@ -1,9 +1,13 @@
 <template>
   <div :class="prefixCls">
     <slot>
-      <checkbox v-for="(item,index) in items" :key="index"
-                v-model="item.checked" :disabled="disable(item)"
-                :class="prefixCls+'-item'" @change="change">{{ item.label }}
+      <checkbox
+        v-for="(item,index) in items"
+        :key="index"
+        v-model="item.checked"
+        :disabled="disable(item)"
+        :class="prefixCls+'-item'"
+        @change="change">{{ item.label }}
       </checkbox>
     </slot>
   </div>
@@ -13,13 +17,25 @@
   import Checkbox from './checkbox'
 
   export default {
-    name: 'checkbox-group',
+    name: 'checkboxGroup',
     components: { Checkbox },
     props: {
-      disabled: { type: Boolean, default: false },
-      options: { type: Array, default: () => [] },
-      prefixCls: { type: String, default: 'ant-checkbox-group' },
-      value: { type: Array, default: () => [] }
+      disabled: {
+        type: Boolean,
+        default: false
+      },
+      options: {
+        type: Array,
+        default: () => []
+      },
+      prefixCls: {
+        type: String,
+        default: 'ant-checkbox-group'
+      },
+      value: {
+        type: Array,
+        default: () => []
+      }
     },
     computed: {
       items () {
