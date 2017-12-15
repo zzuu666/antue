@@ -19,9 +19,9 @@
       value: { type: Array, default: [] },
       disabled: { type: Boolean, default: false }
     },
-    data () {
-      return {
-        items: this.options.map(item => {
+    computed: {
+      items () {
+        return this.options.map(item => {
           const _item = item.constructor === String ? { label: item, value: item } : item
           return Object.assign({}, _item, { checked: this.value.indexOf(_item.value) > -1 })
         })
