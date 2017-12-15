@@ -49,9 +49,9 @@
   import ACol from '@/col'
   import DemoBase from './demo/base'
   import CheckboxDisabled from './demo/disabled'
-  import ControllCheckbox from './demo/controll'
+  import ControllerCheckbox from './demo/controller'
   import CheckboxGroup from './demo/group'
-  import CheckAll from './demo/checkall'
+  import CheckAll from './demo/check-all'
   import CheckLayout from './demo/layout'
 
   export default {
@@ -62,7 +62,7 @@
       ACol,
       DemoBase,
       CheckboxDisabled,
-      ControllCheckbox,
+      ControllerCheckbox,
       CheckboxGroup,
       CheckAll,
       CheckLayout
