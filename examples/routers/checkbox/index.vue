@@ -28,6 +28,16 @@
           <checkbox-group></checkbox-group>
         </code-show>
       </a-col>
+      <a-col :span="12">
+        <code-show title="全选" desc="在实现全选效果时，你可能会用到 indeterminate 属性。">
+          <check-all></check-all>
+        </code-show>
+      </a-col>
+      <a-col :span="12">
+        <code-show title="布局" desc="Checkbox.Group 内嵌 Checkbox 并与 Grid 组件一起使用，可以实现灵活的布局。">
+          <check-layout></check-layout>
+        </code-show>
+      </a-col>
     </a-row>
   </container>
 </template>
@@ -41,6 +51,8 @@
   import CheckboxDisabled from './demo/disabled'
   import ControllCheckbox from './demo/controll'
   import CheckboxGroup from './demo/group'
+  import CheckAll from './demo/checkall'
+  import CheckLayout from './demo/layout'
 
   export default {
     components: {
@@ -51,7 +63,9 @@
       DemoBase,
       CheckboxDisabled,
       ControllCheckbox,
-      CheckboxGroup
+      CheckboxGroup,
+      CheckAll,
+      CheckLayout
     }
   }
 </script>
