@@ -13,7 +13,7 @@ title:
 
 Generate a group of checkboxes from an array.
 
-````vue
+```` html
 <template>
   <div>
     <checkbox-group v-model="value1" :options="options1"></checkbox-group>

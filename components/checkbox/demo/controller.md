@@ -13,15 +13,15 @@ title:
 
 Communicated with other components.
 
-````vue
+```` html
 <template>
   <div>
     <p style="margin-bottom: 20px;">
       <ant-checkbox v-model="check" :disabled="disable">Checkbox</ant-checkbox>
     </p>
     <p>
-      <ant-button @click="toggleCheck">{{ checkText }}</ant-button>
-      <ant-button @click="disable=!disable">{{ disableText }}</ant-button>
+      <ant-button type="primary" size="small" @click="toggleCheck">{{ checkText }}</ant-button>
+      <ant-button type="primary" size="small" @click="disable=!disable">{{ disableText }}</ant-button>
     </p>
   </div>
 </template>
@@ -52,5 +52,4 @@ Communicated with other components.
     }
   }
 </script>
-
 ````

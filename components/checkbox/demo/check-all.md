@@ -13,7 +13,7 @@ title:
 
 The `indeterminate` property can help you to achieve a 'check all' effect.
 
-````vue
+```` html
 <template>
   <div>
     <div style="border-bottom: 1px solid rgb(233, 233, 233);">

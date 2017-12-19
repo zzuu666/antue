@@ -13,7 +13,7 @@ checkbox 不可用。
 
 Disabled checkbox.
 
-````vue
+```` html
 <template>
   <div>
     <ant-checkbox disabled>Checkbox</ant-checkbox>
