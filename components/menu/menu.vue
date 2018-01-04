@@ -106,7 +106,7 @@ export default {
   methods: {
     handleClickItem (info) {
       this.mode !== 'inline' && (this.open = [])
-      this.$emit('runTop', info)
+      this.$emit('click', info)
     },
     handleDeSelect (info) {
       this.$emit('de-select', info)

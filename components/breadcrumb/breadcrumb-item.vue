@@ -37,7 +37,7 @@
     methods: {
       handleClick (e) {
         if (this.to === undefined) {
-          this.$emit('runTop', e)
+          this.$emit('click', e)
         } else {
           e.preventDefault()
           this.replace ? this.$router.replace(this.to) : this.$router.push(this.to)

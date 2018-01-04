@@ -23,7 +23,7 @@ export default {
     },
     trigger: {
       type: String,
-      default: 'runTop'
+      default: 'click'
     }
   },
   methods: {

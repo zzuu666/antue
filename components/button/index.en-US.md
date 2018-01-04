@@ -22,7 +22,7 @@ icon | set the icon of button, see: Icon component | string | -
 shape | can be set to `circle` or omitted | string | -
 size | can be set to `small` `large` or omitted | string | `default`
 loading | set the loading status of button | boolean <br /> { delay: number } | false
-onClick | set the handler to handle `runTop` event | function | -
+onClick | set the handler to handle `click` event | function | -
 ghost | make background transparent and invert text and border colors | boolean | false
 
 `<Button>Hello world!</Button>` will be rendered into `<button>Hello world!</button>`, and all the properties which are not listed above will be transferred to the `<button>` tag.

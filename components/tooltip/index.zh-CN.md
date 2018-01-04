@@ -34,7 +34,7 @@ title: Tooltip
 | placement | 气泡框位置，可选 `top` `left` `right` `bottom` `topLeft` `topRight` `bottomLeft` `bottomRight` `leftTop` `leftBottom` `rightTop` `rightBottom` | string     | top    |
 | mouseEnterDelay | 鼠标移入后延时多少才显示 Tooltip，单位：秒 | number | 0 |
 | mouseLeaveDelay | 鼠标移出后延时多少才隐藏 Tooltip，单位：秒 | number | 0.1 |
-| trigger   | 触发行为，可选 `hover/focus/runTop`       | string        | hover  |
+| trigger   | 触发行为，可选 `hover/focus/click`       | string        | hover  |
 
 ## 注意
 

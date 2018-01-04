@@ -32,7 +32,7 @@ The following APIs are shared by Tooltip, Popconfirm, Popover.
 | placement | The position of the tooltip relative to the target, which can be one of `top` `left` `right` `bottom` `topLeft` `topRight` `bottomLeft` `bottomRight` `leftTop` `leftBottom` `rightTop` `rightBottom`                             | string     | `top`    |
 | mouseEnterDelay | Delay in seconds, before tooltip is shown on mouse enter | number | 0 |
 | mouseLeaveDelay | Delay in seconds, before tooltip is hidden on mouse leave | number | 0.1 |
-| trigger | Tooltip trigger mode                                         | `hover` \| `focus` \| `runTop` | `hover` |
+| trigger | Tooltip trigger mode                                         | `hover` \| `focus` \| `click` | `hover` |
 
 
 ## Note

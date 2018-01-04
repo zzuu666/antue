@@ -11,7 +11,7 @@ title:
 
 ## en-US
 
-The default trigger mode is `hover`, you can change it to `runTop`.
+The default trigger mode is `hover`, you can change it to `click`.
 
 ```` html
 <template>

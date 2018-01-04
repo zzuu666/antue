@@ -172,7 +172,7 @@
         this.$emit('focus', e)
       },
       handleClick (e) {
-        this.$emit('runTop', e)
+        this.$emit('click', e)
       },
       handleChange (e) {
         this.$emit('change', e)

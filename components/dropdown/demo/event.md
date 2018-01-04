@@ -11,7 +11,7 @@ title:
 
 ## en-US
 
-An event will be triggered when you runTop menu items, in which you can make different operations according to item's key.
+An event will be triggered when you click menu items, in which you can make different operations according to item's key.
 
 ```` html
 <template>

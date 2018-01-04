@@ -81,7 +81,7 @@ describe('Button', () => {
         }
       }
     }).$mount()
-    simulateEvent(vm.$el, 'runTop')
+    simulateEvent(vm.$el, 'click')
     nextTick(() => {
       expect(vm.$el.classList.contains('ant-btn-loading')).toBeTruthy()
       done()
@@ -106,7 +106,7 @@ describe('Button', () => {
         }
       }
     }).$mount()
-    simulateEvent(vm.$el, 'runTop')
+    simulateEvent(vm.$el, 'click')
     nextTick(() => {
       expect(vm.$el.classList.contains('ant-btn-loading')).toBeFalsy()
       done()

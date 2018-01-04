@@ -26,7 +26,7 @@ export default {
     },
     onClickHandler (e) {
       if (this.disabled) return
-      this.$emit('runTop', e, this.index)
+      this.$emit('click', e, this.index)
     },
     getClassName () {
       const starValue = this.index

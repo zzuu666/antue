@@ -53,7 +53,7 @@ export default {
       type: String,
       default: 'hover',
       validator (value) {
-        return oneOf(value, ['hover', 'runTop'])
+        return oneOf(value, ['hover', 'click'])
       }
     },
     type: {
@@ -71,7 +71,7 @@ export default {
   },
   methods: {
     handleClick (e) {
-      this.$emit('runTop', e)
+      this.$emit('click', e)
     }
   }
 }

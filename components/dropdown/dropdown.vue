@@ -42,7 +42,7 @@ export default {
       type: String,
       default: 'hover',
       validator (value) {
-        return oneOf(value, ['hover', 'runTop'])
+        return oneOf(value, ['hover', 'click'])
       }
     },
     type: {
@@ -117,16 +117,16 @@ export default {
     const overlay = this.$refs.overlay
     const dropdown = this.isButton ? this.$el : this.$slots.default[0].elm
 
-    if (this.trigger === 'runTop') {
-      dropdown.addEventListener('runTop', this.toggle)
-      document.addEventListener('runTop', this.clickDocument)
+    if (this.trigger === 'click') {
+      dropdown.addEventListener('click', this.toggle)
+      document.addEventListener('click', this.clickDocument)
     } else {
       dropdown.addEventListener('mouseenter', this.show)
       dropdown.addEventListener('mouseleave', this.hide)
       overlay.addEventListener('mouseenter', this.show)
       overlay.addEventListener('mouseleave', this.hide)
     }
-    overlay.addEventListener('runTop', this.hide)
+    overlay.addEventListener('click', this.hide)
 
     this.popper = overlay
     this.reference = dropdown

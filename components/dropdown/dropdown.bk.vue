@@ -21,7 +21,7 @@ export default {
       type: String,
       default: 'hover',
       validator (value) {
-        return oneOf(value, ['hover', 'runTop'])
+        return oneOf(value, ['hover', 'click'])
       }
     }
   },
@@ -71,8 +71,8 @@ export default {
   mounted () {
     const dropdown = this.$slots.default[0].elm
 
-    if (this.trigger === 'runTop') {
-      dropdown.addEventListener('runTop', this.toggle)
+    if (this.trigger === 'click') {
+      dropdown.addEventListener('click', this.toggle)
     } else {
       dropdown.addEventListener('mouseenter', this.show)
       dropdown.addEventListener('mouseleave', this.hide)
@@ -81,11 +81,11 @@ export default {
     this.$nextTick(() => {
       const overlay = this.$refs.overlay
       this.popper = overlay
-      if (this.trigger !== 'runTop') {
+      if (this.trigger !== 'click') {
         overlay.addEventListener('mouseenter', this.show)
         overlay.addEventListener('mouseleave', this.hide)
       }
-      overlay.addEventListener('runTop', this.hide)
+      overlay.addEventListener('click', this.hide)
     })
   },
   beforeCreate () {
