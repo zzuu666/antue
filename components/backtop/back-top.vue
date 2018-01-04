@@ -1,27 +1,40 @@
 <template>
-  <div class="" @click="click">
+  <div :class="classes" @click="runTop">
     <slot></slot>
   </div>
 </template>
 
 <script>
-  const BackTop = {
+  export default {
     props: {
       item: {
         type: Function,
-        default: () => window
+        default: () => document.body
+      },
+      classStyle: {
+        type: String,
+        default: null
       },
       time: {
         type: Number,
-        default: 0
+        default: 10
       },
       callBack: {
         type: Function,
         default: () => {}
       }
     },
+    computed: {
+      classes () {
+        return this.classStyle === null ? [
+          'ant-btn-top'
+        ] : [
+          this.classStyle
+        ]
+      }
+    },
     methods: {
-      click: function (e) {
+      runTop (e) {
         let offsetHeight = this.getTop()
         const endHeight = this.item().offsetTop
         let nextHeight = offsetHeight
@@ -32,7 +45,7 @@
         }
         function move () {
           setTimeout(() => {
-            nextHeight = this.time === 0 ? endHeight : nextHeight - (offsetHeight - endHeight) / this.time
+            nextHeight = this.time <= 0 ? endHeight : nextHeight - (offsetHeight - endHeight) / this.time
             window.scrollTo(0, nextHeight)
             if ((nextHeight - endHeight) * (offsetHeight - endHeight) <= 0) {
               this.callBack()
@@ -43,7 +56,7 @@
         }
         move.apply(this)
       },
-      getTop: function () {
+      getTop () {
         let scrollTop = 0
         if (document.documentElement && document.documentElement.scrollTop) {
           scrollTop = document.documentElement.scrollTop
@@ -54,14 +67,6 @@
       }
     }
   }
-  export default BackTop
 </script>
 
 
-<style scoped>
-  .back-top{
-    position: fixed;
-    right: 40px;
-    bottom: 40px;
-  }
-</style>

@@ -13,7 +13,7 @@ title:
 
 ## en-US
 
-`CheckableTag` works like Checkbox, click it to toggle checked state.
+`CheckableTag` works like Checkbox, runTop it to toggle checked state.
 
 > it is an absolute controlled component and has no uncontrolled mode.
 

@@ -2,5 +2,5 @@
 
 ### TODO
 1. 模式更改时 vertical 的动画需要取消
-2. 暴露 Submenu 的 title-click 事件
+2. 暴露 Submenu 的 title-runTop 事件
 3. Menu 分割线

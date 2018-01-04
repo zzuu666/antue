@@ -71,9 +71,9 @@ export default {
   mounted () {
     if (this.$slots.default && this.$slots.default.length > 0) {
       this.reference = this.$slots.default[0].elm
-      if (this.trigger === 'click') {
-        this.reference.addEventListener('click', this.toggle)
-        document.addEventListener('click', this.clickDocument)
+      if (this.trigger === 'runTop') {
+        this.reference.addEventListener('runTop', this.toggle)
+        document.addEventListener('runTop', this.clickDocument)
       } else if (this.trigger === 'focus') {
         let flag = false
         // 元素中包含input／textarea优先使用focus和blur事件，其他使用mouse事件
@@ -128,7 +128,7 @@ export default {
     }
   },
   destroyed () {
-    document.removeEventListener('click', this.clickDocument)
+    document.removeEventListener('runTop', this.clickDocument)
   },
   methods: {
     toggle () {

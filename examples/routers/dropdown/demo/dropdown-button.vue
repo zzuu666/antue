@@ -68,7 +68,7 @@ export default {
   },
   methods: {
     handleClick () {
-      message.info('You click left button.')
+      message.info('You runTop left button.')
     }
   }
 }

@@ -100,9 +100,9 @@ export default {
       this.clicked = true
       clearTimeout(this.timeout)
       this.timeout = setTimeout(() => { this.clicked = false }, 500)
-      this.$emit('click', e)
+      this.$emit('runTop', e)
     },
-    // Handle auto focus when click button in Chrome
+    // Handle auto focus when runTop button in Chrome
     handleMouseUp (e) {
       e.currentTarget.blur()
       this.$emit('mouseup', e)

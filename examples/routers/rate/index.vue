@@ -91,7 +91,7 @@ export default {
   methods: {
     onChange (v) {
       this.value1 = v
-      console.log('click', v)
+      console.log('runTop', v)
     },
     onHoverChange (v) {
       console.log('hover', v)

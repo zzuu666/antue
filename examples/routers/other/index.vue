@@ -4,22 +4,23 @@
     <a-row :gutter="12">
       <a-col :span="12">
         <code-show title="回到特定元素的顶部" desc="初级使用：回到页面顶部">
-          <back-top time="10"><ant-button type="primary">回到顶部</ant-button></back-top>
+          <back-top ><ant-button type="primary">默认样式的按钮</ant-button></back-top>
+          <p>请查看右下角</p>
         </code-show>
       </a-col>
       <a-col :span="12">
         <code-show title="回到特定元素的顶部" desc="进阶使用：回到特定元素的位置本例使用this.$refs.dom">
-          <back-top :item="item"><ant-button type="primary">回到文档顶部</ant-button></back-top>
+          <back-top :item="item" classStyle><ant-button type="primary">回到文档顶部</ant-button></back-top>
         </code-show>
       </a-col>
       <a-col :span="12">
-        <code-show title="引入动画" desc="广泛使用：为行为引入动画">
-          <back-top :item="item" time="10"><ant-button type="primary">回到文档顶部</ant-button></back-top>
+        <code-show title="修改动画速度" desc="广泛使用：更改运动的速度，默认值为10，表示动画的持续时间为10(帧)*10 = 100ms。如果您为time传100就是1s的动画啦">
+          <back-top :item="item" :time=100 classStyle><ant-button type="primary">回到文档顶部</ant-button></back-top>
         </code-show>
       </a-col>
       <a-col :span="12">
         <code-show title="设置回调" desc="高阶使用：返回到顶部后执行回调">
-          <back-top :item="item" time="10" :callBack="callBack"><ant-button type="primary">回到文档顶部</ant-button></back-top>
+          <back-top :item="item" :time=100 classStyle :callBack="callBack"><ant-button type="primary">回到文档顶部</ant-button></back-top>
         </code-show>
       </a-col>
     </a-row>
@@ -32,9 +33,9 @@
       </tr>
       <tr>
         <td>time</td>
-        <td>0</td>
+        <td>10</td>
         <td>Number</td>
-        <td>单位是s描述了移动的快慢</td>
+        <td>单位是ms描述了移动的快慢</td>
       </tr>
       <tr>
         <td>callBack</td>
