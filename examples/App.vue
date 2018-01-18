@@ -137,6 +137,10 @@ export default {
             {
               title: 'Message 全局提示',
               route: 'message'
+            },
+            {
+              title: 'Progress 进度条',
+              route: 'progress'
             }
           ]
         },
