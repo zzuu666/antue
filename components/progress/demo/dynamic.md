@@ -1,6 +1,22 @@
+---
+order: 4
+title:
+  zh-CN: 动态展示
+  en-US: Dynamic
+---
+
+## zh-CN
+
+会动的进度条才是好进度条。
+
+## en-US
+
+A dynamic progress bar is better.
+
+````html
 <template>
   <div>
-    <ant-progress type="circle" :percent="percent"/>
+    <ant-progress :percent="percent"/>
     <button-group>
       <ant-button @click="decline" icon="minus"></ant-button>
       <ant-button @click="increase" icon="plus"></ant-button>
@@ -42,3 +58,4 @@
     }
   }
 </script>
+````

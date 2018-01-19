@@ -31,7 +31,7 @@
 <script>
 import { oneOf } from '../_util/proptype'
 import VCircle from './circle'
-import ProgressInfo from './progressInfo'
+import ProgressInfo from './progress-info'
 
 export default {
   components: {

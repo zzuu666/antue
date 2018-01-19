@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ant-progress type="circle" :percent="percent"/>
+    <ant-progress :percent="percent"/>
     <button-group>
       <ant-button @click="decline" icon="minus"></ant-button>
       <ant-button @click="increase" icon="plus"></ant-button>
