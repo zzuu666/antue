@@ -51,7 +51,6 @@ export default {
       this[action](index)
     },
     add () {
-      console.log('88')
       this.panes.push({
         tab: 'New Tab',
         index: `New${this.index++}`
