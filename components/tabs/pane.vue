@@ -10,11 +10,7 @@
 <script>
 export default {
   name: 'pane',
-  data () {
-    return {
-      soda: {}
-    }
-  },
+  inject: ['tabsRoot'],
   props: {
     prefixCls: {
       type: String,
@@ -48,7 +44,7 @@ export default {
       ]
     },
     active () {
-      return this.index === this.soda.active
+      return this.index === this.tabsRoot.active
     }
   }
 }
