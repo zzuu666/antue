@@ -93,6 +93,10 @@ export default {
             {
               title: 'Dropdown 下拉菜单',
               route: 'dropdown'
+            },
+            {
+              title: 'Steps 步骤条',
+              route: 'steps'
             }
           ]
         },
