@@ -4,6 +4,7 @@ import Button from './button'
 import Menu from './menu'
 import Icon from './icon'
 import Input from './input'
+import Checkbox from './checkbox'
 import Rate from './rate'
 import Pagination from './pagination'
 import Card from './card'
@@ -16,6 +17,11 @@ import Breadcrumb from './breadcrumb'
 import Tabs from './tabs'
 import Tag from './tag'
 import Affix from './affix'
+import ToolTip from './tooltip'
+import Popover from './popover'
+import Popconfirm from './popconfirm'
+import Timeline from './timeline'
+import Dropdown from './dropdown'
 
 Vue.use(Router)
 
@@ -32,6 +38,10 @@ let router = new Router({
     {
       path: '/icon',
       component: Icon
+    },
+    {
+      path: '/checkbox',
+      component: Checkbox
     },
     {
       path: '/input',
@@ -84,6 +94,26 @@ let router = new Router({
     {
       path: '/affix',
       component: Affix
+    },
+    {
+      path: '/tooltip',
+      component: ToolTip
+    },
+    {
+      path: '/popover',
+      component: Popover
+    },
+    {
+      path: '/popconfirm',
+      component: Popconfirm
+    },
+    {
+      path: '/timeline',
+      component: Timeline
+    },
+    {
+      path: '/dropdown',
+      component: Dropdown
     }
   ]
 })

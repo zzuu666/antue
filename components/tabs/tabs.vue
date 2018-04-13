@@ -1,7 +1,5 @@
 <script>
 import { oneOf } from '../_util/proptype'
-import Soda from '../_util/soda'
-import store from './store'
 import TabsBar from './tabs-bar'
 import TabsContent from './tabs-content'
 
@@ -9,13 +7,17 @@ export default {
   name: 'tabs',
   data () {
     return {
-      panes: [],
-      soda: {}
+      panes: []
     }
   },
   model: {
     prop: 'active',
     event: 'change'
+  },
+  provide () {
+    return {
+      tabsRoot: this
+    }
   },
   props: {
     prefixCls: {
@@ -58,11 +60,6 @@ export default {
   components: {
     TabsBar,
     TabsContent
-  },
-  watch: {
-    active (v) {
-      this.soda.active = v
-    }
   },
   computed: {
     classes () {
@@ -107,9 +104,6 @@ export default {
       const panes = this.$refs.content.$children
       if (oldPanesLenght !== panes.length) {
         this.panes = panes
-        this.$nextTick(() => {
-          this.$soda && this.$soda.init()
-        })
       }
     },
     handleEdit (action, index) {
@@ -118,10 +112,6 @@ export default {
   },
   mounted () {
     this.getPanes()
-    this.$nextTick(() => {
-      this.$soda = new Soda(this, store)
-      this.soda.active = this.active
-    })
   },
   render (h) {
     const bar = h('tabs-bar', {

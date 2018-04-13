@@ -1,5 +1,5 @@
 <template>
-  <atu-menu :defaultOpenKeys="opens" mode="inline">
+  <atu-menu :defaultOpenKeys="opens" :defaultSelectedKeys="defaultSelects" mode="inline">
     <atu-menu-item v-for="(item, index) in menu.items" :key="index" :index="autoIndex('item', index)">
       <router-link :to="nameRouter(item.route)" replace>
         {{item.title}}
@@ -8,7 +8,7 @@
     <sub-menu v-for="(sub, index) in menu.submenu" :key="index" :index="autoIndex('sub', index)">
       <template slot="title">{{sub.title}}</template>
       <item-group v-for="(group, index) in sub.groups" :key="index" :title="group.title">
-        <atu-menu-item v-for="(item, index) in group.items" :key="index" :index="autoIndex(`${group.title}`, index)">
+        <atu-menu-item v-for="(item, index) in group.items" :key="index" :index="item.route">
           <router-link :to="nameRouter(item.route)" replace>
             {{item.title}}
           </router-link>
@@ -43,10 +43,14 @@ export default {
       }
     }
   },
+  created () {
+    this.defaultSelects = [this.$router.history.current.name]
+  },
   data () {
     return {
       menu: config,
-      opens: ['sub0']
+      opens: ['sub0'],
+      defaultSelects: []
     }
   }
 }

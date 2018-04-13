@@ -6,7 +6,7 @@ export default {
   name: 'transition',
   functional: true,
   render (h, ctx) {
-    const attrs = ctx.data.attrs
+    const attrs = ctx.props
     const type = attrs.type
     // todo tips
     const motion = (type) => {

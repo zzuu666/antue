@@ -1,5 +1,5 @@
 <template>
-  <ul :class="`${this.prefixCls}`">
+  <ul :class="prefixCls">
     <li
       tabIndex="0"
       :class="`${hasPrev ? '' : `${prefixCls}-disabled`} ${prefixCls}-prev`"
@@ -14,7 +14,7 @@
     </li>
 
     <!--first page : when current -->
-    <li tabIndex="0" @click="handleChange(1)" :class="`${this.prefixCls}-item`" v-if="pageRange[0] !== 1">
+    <li tabIndex="0" @click="handleChange(1)" :class="`${prefixCls}-item`" v-if="pageRange[0] !== 1">
       <a>1</a>
     </li>
 
@@ -28,7 +28,7 @@
       <a :class="`${prefixCls}-item-link`"></a>
     </li>
 
-    <li tabIndex="0" v-for="i in pageRange" :class="pagerClasses(i)" @click="clickPage(i)" ref="page">
+    <li tabIndex="0" v-for="i in pageRange" :key="i" :class="pagerClasses(i)" @click="clickPage(i)" ref="page">
       <a>{{i}}</a>
     </li>
 
@@ -43,14 +43,14 @@
     </li>
 
     <!--last page : when current < last - 5-->
-    <li tabIndex="0" @click="handleChange(calculatePage)" :class="`${this.prefixCls}-item`" v-if="pageRange[pageRange.length-1] !== calculatePage">
+    <li tabIndex="0" @click="handleChange(calculatePage)" :class="`${prefixCls}-item`" v-if="pageRange[pageRange.length-1] !== calculatePage">
       <a>{{calculatePage}}</a>
     </li>
 
     <li
       tabIndex="0"
       :aria-disabled="!hasNext"
-      :class="`${this.hasNext ? '' : `${prefixCls}-disabled`} ${prefixCls}-next`"
+      :class="`${hasNext ? '' : `${prefixCls}-disabled`} ${prefixCls}-next`"
       @click="next"
       @keydown="runIfEnterNext"
     >
@@ -65,8 +65,9 @@
 </template>
 
 <script>
-  import LOCALE from './locale/zh_CN'
+  import locale from './locale/zh_CN'
   import PageOption from './option'
+  import { oneOf } from '../_util/proptype'
 
   export default {
     props: {
@@ -97,7 +98,13 @@
       showTitle: Boolean,
       showTotal: Function,
       simple: Boolean,
-      size: String,
+      size: {
+        type: String,
+        validator (value) {
+          return oneOf(value, ['size', ''])
+        },
+        default: ''
+      },
       total: {
         type: Number,
         default: 0
@@ -105,7 +112,7 @@
     },
     data () {
       return {
-        locale: LOCALE,
+        locale,
         currentPage: this.current,
         changeByPager: false
       }
