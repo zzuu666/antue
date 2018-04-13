@@ -79,6 +79,10 @@ export default {
           title: 'Navigation',
           items: [
             {
+              title: 'Affix 固钉',
+              route: 'affix'
+            },
+            {
               title: 'Breadcrumb 面包屑',
               route: 'breadcrumb'
             },

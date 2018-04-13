@@ -15,6 +15,7 @@ import Transition from './transition'
 import Breadcrumb from './breadcrumb'
 import Tabs from './tabs'
 import Tag from './tag'
+import Affix from './affix'
 
 Vue.use(Router)
 
@@ -79,6 +80,10 @@ let router = new Router({
     {
       path: '/tag',
       component: Tag
+    },
+    {
+      path: '/affix',
+      component: Affix
     }
   ]
 })
