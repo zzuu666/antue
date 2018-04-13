@@ -13,10 +13,10 @@ export default {
       activeNode: null,
       inkSize: 0,
       inkOffset: 0,
-      offset: 0,
-      soda: {}
+      offset: 0
     }
   },
+  inject: ['tabsRoot'],
   props: {
     prefixCls: {
       type: String,
@@ -72,21 +72,21 @@ export default {
   methods: {
     handleTabChange (index) {
       this.shouldScroll = true
-      this.$soda.commit('handleTabChange', index)
+      this.tabsRoot.$emit('change', index)
     },
     handlePrev (e) {
       if (!this.prev) return
       const warp = this.$refs.wrap
       const warpWH = this.getOffsetWH(warp)
       this.offset += warpWH
-      this.$soda.commit('handlePrevClick', e)
+      this.tabsRoot.$emit('prev-click', e)
     },
     handleNext (e) {
       if (!this.next) return
       const warp = this.$refs.wrap
       const warpWH = this.getOffsetWH(warp)
       this.offset -= warpWH
-      this.$soda.commit('handleNextClick', e)
+      this.tabsRoot.$emit('next-click', e)
     },
     setInk () {
       const nav = this.$refs.nav
@@ -230,7 +230,7 @@ export default {
         change: this.handleTabChange
       },
       key: item.index,
-      ref: item.index === this.soda.active ? 'active' : ''
+      ref: item.index === this.tabsRoot.active ? 'active' : ''
     }))
 
     const nav = h('div', {
