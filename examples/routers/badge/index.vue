@@ -1,7 +1,5 @@
 <template>
-      <container
-    title="Badge徽标数"
-    profile="图标右上角的圆形徽标数字。">
+  <container title="Badge徽标数" profile="图标右上角的圆形徽标数字。">
     <h2>何时使用</h2>
     <p>一般出现在通知图标或头像的右上角，用于显示需要处理的消息条数，通过醒目视觉形式吸引用户处理。</p>
     <h2>代码演示</h2>
@@ -11,7 +9,7 @@
           <base-demo></base-demo>
         </code-show>
         <code-show title="封顶数字" desc="超过 overflowCount 的会显示为 ${overflowCount}+，默认的 overflowCount 为 99。">
-         <overflow-demo></overflow-demo>
+          <overflow-demo></overflow-demo>
         </code-show>
         <code-show title="状态点" desc="用于表示状态的小圆点。">
           <status-demo></status-demo>
@@ -19,7 +17,7 @@
       </a-col>
       <a-col :span="12">
         <code-show title="独立使用" desc="不包裹任何元素即是独立使用，可自定样式展现。">
-         <no-wrapper-demo></no-wrapper-demo>
+          <no-wrapper-demo></no-wrapper-demo>
         </code-show>
         <code-show title="讨嫌的小红点" desc="没有具体的数字。">
           <dot-demo></dot-demo>
@@ -43,7 +41,7 @@
   import DotDemo from './demo/dot.vue'
   import StatusDemo from './demo/status.vue'
   import ChangeDemo from './demo/change.vue'
-  
+
   export default {
     components: {
       Container,
