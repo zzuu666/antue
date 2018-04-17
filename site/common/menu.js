@@ -84,6 +84,10 @@ const menu = {
             {
               title: 'Dropdown 下拉菜单',
               route: 'compDropdownIndexZh'
+            },
+            {
+              title: 'Steps 步骤条',
+              route: 'compStepsIndexZh'
             }
           ]
         },
