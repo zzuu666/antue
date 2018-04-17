@@ -91,6 +91,10 @@ const menu = {
           title: 'Data Display',
           items: [
             {
+              title: 'Badge 徽标数',
+              route: 'compBadgeIndexZh'
+            },
+            {
               title: 'Card 卡片',
               route: 'compCardIndexZh'
             },
