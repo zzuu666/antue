@@ -11,7 +11,7 @@ export default {
     },
     direction: {
       type: String,
-      default: 'direction'
+      default: 'horizontal'
     },
     iconPrefix: {
       type: String,
@@ -41,27 +41,27 @@ export default {
       this.lastStepOffsetWidth = lastStepOffsetWidth
     },
     updateChildern () {
-      const lastIndex = this.$children.length - 1
+      // const lastIndex = this.$children.length - 1
       this.$children.forEach((component, index) => {
-        const itemWidth = (this.direction === 'vertical' || index === lastIndex) ? '' : `${100 / lastIndex}%`
-        const adjustMarginRight = (this.direction === 'vertical' || index === lastIndex) ? 0 : -Math.round(this.lastStepOffsetWidth / lastIndex + 1)
-        component.itemWidth = itemWidth
-        component.adjustMarginRight = adjustMarginRight
-        component.stepNumber = index + 1
+        // const itemWidth = (this.direction === 'vertical' || index === lastIndex) ? '' : `${100 / lastIndex}%`
+        // const adjustMarginRight = (this.direction === 'vertical' || index === lastIndex) ? 0 : -Math.round(this.lastStepOffsetWidth / lastIndex + 1)
+        // component.itemWidth = itemWidth
+        // component.adjustMarginRight = adjustMarginRight
+        // component.stepNumber = index + 1
 
-        if (this.status === 'error' && index === this.current - 1) {
-          component.isNextError = true
-        } else {
-          component.isNextError = false
-        }
+        // if (this.status === 'error' && index === this.current - 1) {
+        //   component.isNextError = true
+        // } else {
+        //   component.isNextError = false
+        // }
 
-        if (index === this.current) {
-          component.defaultStatus = this.status
-        } else if (index < this.current) {
-          component.defaultStatus = 'finish'
-        } else {
-          component.defaultStatus = 'wait'
-        }
+        // if (index === this.current) {
+        //   component.defaultStatus = this.status
+        // } else if (index < this.current) {
+        //   component.defaultStatus = 'finish'
+        // } else {
+        //   component.defaultStatus = 'wait'
+        // }
       })
     }
   },
@@ -81,8 +81,8 @@ export default {
     }
   },
   mounted () {
-    this.calcStepOffsetWidth(this.$el)
-    this.updateChildern()
+    // this.calcStepOffsetWidth(this.$el)
+    // this.updateChildern()
   },
   beforeUpdate () {
     console.log('steps before update')

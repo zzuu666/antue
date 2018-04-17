@@ -16,8 +16,8 @@ export default {
     return {
       adjustMarginRigh: 0,
       defaultStatus: '',
-      stepNumber: undefined,
       itemWidth: '',
+      stepNumber: undefined,
       isNextError: false
     }
   },
@@ -28,7 +28,7 @@ export default {
         `${prefixCls}-item`,
         `${prefixCls}-status-${this.currentStatus}`,
         {
-          [`${prefixCls}-item-custom`]: !!this.$slots.icon,
+          [`${prefixCls}-custom`]: !!this.$slots.icon,
           [`${prefixCls}-next-error`]: this.isNextError
         }
       ]
@@ -41,8 +41,8 @@ export default {
         `${iconPrefix}icon`,
         {
           [`${iconPrefix}icon-${this.icon}`]: this.icon,
-          [`${iconPrefix}icon-check`]: !this.icon && this.status === 'finish',
-          [`${iconPrefix}icon-cross`]: !this.icon && this.status === 'error'
+          [`${iconPrefix}icon-check`]: !this.icon && this.currentStatus === 'finish',
+          [`${iconPrefix}icon-cross`]: !this.icon && this.currentStatus === 'error'
         }
       ]
     },
@@ -52,6 +52,9 @@ export default {
     iconPrefix () {
       return this.$parent.iconPrefix
     },
+    parentStatus () {
+      return this.$parent.status
+    },
     currentStatus () {
       return this.status || this.defaultStatus
     }
@@ -59,16 +62,36 @@ export default {
   components: {
     AtuIcon
   },
+  mounted () {
+    this.calcItemWidth()
+  },
+  methods: {
+    calcItemWidth () {
+      const parentNode = this.$el.parentNode
+      const brotherChildNodes = parentNode.childNodes
+      const lastStepOffsetWidth = (parentNode.lastChild.offsetWidth || 0) + 1
+      const validChildNodes = Array.prototype.slice.call(brotherChildNodes).filter(node => node.nodeType === 1)
+      const lastIndex = validChildNodes.length - 1
+      const isLastChild = validChildNodes[lastIndex] === this.$el
+      const direction = this.$parent.direction
+      const index = validChildNodes.indexOf(this.$el)
+      this.stepNumber = index + 1
+      this.itemWidth = (direction === 'vertical' || isLastChild) ? '' : `${100 / lastIndex}%`
+      this.adjustMarginRight = (direction === 'vertical' || isLastChild) ? 0 : -Math.round(lastStepOffsetWidth / lastIndex + 1)
+      this.isNextError = (this.parentStatus === 'error' && index === this.$parent.current - 1)
+      this.defaultStatus = index === this.$parent.current ? this.parentStatus : index < this.$parent.current ? 'finish' : 'wait'
+    }
+  },
   render (h) {
     const prefixCls = this.prefixCls
 
     const renderIcon = () => {
       const iconDot = <span class={`${prefixCls}-icon-dot`}></span>
       if (this.progressDot) {
-        return <span className={`${prefixCls}-icon`}>{iconDot}</span>
+        return <span class={`${prefixCls}-icon`}>{iconDot}</span>
       } else if (this.$slots.icon) {
-        return <span className={`${prefixCls}-icon`}>{this.$slots.icon}</span>
-      } else if (this.icon || this.status === 'finish' || this.status === 'error') {
+        return <span class={`${prefixCls}-icon`}>{this.$slots.icon}</span>
+      } else if (this.icon || this.currentStatus === 'finish' || this.currentStatus === 'error') {
         return <span class={this.iconClasses} />
       } else {
         return <span class={`${prefixCls}-icon`}>{this.stepNumber}</span>
