@@ -22,6 +22,7 @@ import Popover from './popover'
 import Popconfirm from './popconfirm'
 import Timeline from './timeline'
 import Dropdown from './dropdown'
+import Steps from './steps'
 
 Vue.use(Router)
 
@@ -114,6 +115,10 @@ let router = new Router({
     {
       path: '/dropdown',
       component: Dropdown
+    },
+    {
+      path: '/steps',
+      component: Steps
     }
   ]
 })

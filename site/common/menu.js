@@ -84,12 +84,20 @@ const menu = {
             {
               title: 'Dropdown 下拉菜单',
               route: 'compDropdownIndexZh'
+            },
+            {
+              title: 'Steps 步骤条',
+              route: 'compStepsIndexZh'
             }
           ]
         },
         {
           title: 'Data Display',
           items: [
+            {
+              title: 'Badge 徽标数',
+              route: 'compBadgeIndexZh'
+            },
             {
               title: 'Card 卡片',
               route: 'compCardIndexZh'
