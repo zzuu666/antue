@@ -13,15 +13,24 @@ title:
 
 By using `status` of `Steps`, you can specify the state for current step.
 
-````jsx
-import { Steps } from 'antd';
-const Step = Steps.Step;
+```` html
+<template>
+  <atu-steps :current="1" status="error">
+    <atu-steps-step title="Finished" description="This is a description." />
+    <atu-steps-step title="In Process" description="This is a description." />
+    <atu-steps-step title="Waiting" description="This is a description." />
+  </atu-steps>
+</template>
 
-ReactDOM.render(
-  <Steps current={1} status="error">
-    <Step title="Finished" description="This is a description" />
-    <Step title="In Process" description="This is a description" />
-    <Step title="Waiting" description="This is a description" />
-  </Steps>
-, mountNode);
+<script>
+import AtuSteps from '@/steps'
+const AtuStepsStep = AtuSteps.Step
+
+export default {
+  components: {
+    AtuSteps,
+    AtuStepsStep
+  }
+}
+</script>
 ````

@@ -13,16 +13,37 @@ title:
 
 You can use your own custom icons by setting the property `icon` for `Steps.Step`.
 
-````jsx
-import { Steps, Icon } from 'antd';
-const Step = Steps.Step;
+```` html
+<template>
+  <atu-steps>
+    <atu-steps-step status="finish" title="Login">
+      <atu-icon slot="icon" type="user"/>
+    </atu-steps-step>
+    <atu-steps-step status="finish" title="Verification">
+      <atu-icon slot="icon" type="solution"/>
+    </atu-steps-step>
+    <atu-steps-step status="process" title="Pay">
+      <atu-icon slot="icon" type="credit-card"/>
+    </atu-steps-step>
+    <atu-steps-step status="wait" title="Done">
+      <atu-icon slot="icon" type="smile-o"/>
+    </atu-steps-step>
+  </atu-steps>
+</template>
 
-ReactDOM.render(
-  <Steps>
-    <Step status="finish" title="Login" icon={<Icon type="user" />} />
-    <Step status="finish" title="Verification" icon={<Icon type="solution" />} />
-    <Step status="process" title="Pay" icon={<Icon type="credit-card" />} />
-    <Step status="wait" title="Done" icon={<Icon type="smile-o" />} />
-  </Steps>
-, mountNode);
+<script>
+import AtuSteps from '@/steps'
+import AtuIcon from '@/icon'
+const AtuStepsStep = AtuSteps.Step
+
+export default {
+  components: {
+    AtuIcon,
+    AtuSteps,
+    AtuStepsStep
+  }
+}
+</script>
+
+
 ````

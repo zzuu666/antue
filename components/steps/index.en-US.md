@@ -13,12 +13,12 @@ When the task is complicated or has a certain sequence in the series of subtasks
 
 ## API
 
-```jsx
-<Steps>
-  <Step title="first step" />
-  <Step title="second step" />
-  <Step title="third step" />
-</Steps>
+``` html
+<atu-steps :current="1">
+    <atu-steps-step title="step 1" description="This is a description." />
+    <atu-steps-step title="step 2" description="This is a description." />
+    <atu-steps-step title="step 3" description="This is a description." />
+  </atu-steps>
 ```
 
 ### Steps

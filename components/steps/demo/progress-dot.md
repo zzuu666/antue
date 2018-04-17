@@ -13,15 +13,25 @@ title:
 
 Steps with progress dot style.
 
-````jsx
-import { Steps } from 'antd';
-const Step = Steps.Step;
+```` html
+<template>
+  <atu-steps progress-dot :current="1">
+    <atu-steps-step title="step 1" description="This is a description." />
+    <atu-steps-step title="step 2" description="This is a description." />
+    <atu-steps-step title="step 3" description="This is a description." />
+  </atu-steps>
+</template>
 
-ReactDOM.render(
-  <Steps progressDot current={1}>
-    <Step title="Finished" description="This is a description." />
-    <Step title="In Progress" description="This is a description." />
-    <Step title="Waiting" description="This is a description." />
-  </Steps>
-, mountNode);
+<script>
+import AtuSteps from '@/steps'
+const AtuStepsStep = AtuSteps.Step
+
+export default {
+  components: {
+    AtuSteps,
+    AtuStepsStep
+  }
+}
+</script>
+
 ````

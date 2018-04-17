@@ -13,15 +13,25 @@ title:
 
 By setting like this: `<Steps size="small">`, you can get a mini version.
 
-````jsx
-import { Steps } from 'antd';
-const Step = Steps.Step;
+```` html
+<template>
+  <atu-steps size="small">
+    <atu-steps-step title="step 1" description="This is a description." />
+    <atu-steps-step title="step 2" description="This is a description." />
+    <atu-steps-step title="step 3" description="This is a description." />
+  </atu-steps>
+</template>
 
-ReactDOM.render(
-  <Steps size="small" current={1}>
-    <Step title="Finished" />
-    <Step title="In Progress" />
-    <Step title="Waiting" />
-  </Steps>
-, mountNode);
+<script>
+import AtuSteps from '@/steps'
+const AtuStepsStep = AtuSteps.Step
+
+export default {
+  components: {
+    AtuSteps,
+    AtuStepsStep
+  }
+}
+</script>
+
 ````
