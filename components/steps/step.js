@@ -62,6 +62,9 @@ export default {
   components: {
     AtuIcon
   },
+  beforeUpdate () {
+    this.calcItemWidth()
+  },
   mounted () {
     this.calcItemWidth()
   },

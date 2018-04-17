@@ -80,16 +80,7 @@ export default {
       ]
     }
   },
-  mounted () {
-    // this.calcStepOffsetWidth(this.$el)
-    // this.updateChildern()
-  },
-  beforeUpdate () {
-    console.log('steps before update')
-  },
   render (h) {
-    // const step = this.$slots.default.filter(vnode => vnode.componentOptions && vnode.componentOptions.Ctor.options.name === 'step')
-    // const lastIndex = step.length - 1
     return (
       <div class={this.classes}>
         {

@@ -1,5 +1,5 @@
 <template>
-  <atu-steps :current="1">
+  <atu-steps progress-dot :current="1">
     <atu-steps-step title="step 1" description="This is a description." />
     <atu-steps-step title="step 2" description="This is a description." />
     <atu-steps-step title="step 3" description="This is a description." />
