@@ -22,17 +22,8 @@ import Popover from './popover'
 import Popconfirm from './popconfirm'
 import Timeline from './timeline'
 import Dropdown from './dropdown'
-
-<<<<<<<
-HEAD
 import Avatar from './avatar'
-
-======
-=
 import Steps from './steps'
-
->>>>>>>
-master
 
 Vue.use(Router)
 
