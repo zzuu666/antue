@@ -28,10 +28,6 @@ export default {
     SiteHeader,
     SiteMenu,
     SiteFooter
-  },
-  data () {
-    return {
-    }
   }
 }
 </script>

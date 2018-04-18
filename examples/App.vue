@@ -89,6 +89,14 @@ export default {
             {
               title: 'Pagination 分页',
               route: 'pagination'
+            },
+            {
+              title: 'Dropdown 下拉菜单',
+              route: 'dropdown'
+            },
+            {
+              title: 'Steps 步骤条',
+              route: 'steps'
             }
           ]
         },
@@ -96,7 +104,10 @@ export default {
           title: 'Data Entry',
           items: [
             {
-
+              title: 'Checkbox 多选框',
+              route: 'checkbox'
+            },
+            {
               title: 'Input 输入框',
               route: 'input'
             },
@@ -128,6 +139,18 @@ export default {
             {
               title: 'Tag 标签',
               route: 'tag'
+            },
+            {
+              title: 'Tooltip 提示',
+              route: 'tooltip'
+            },
+            {
+              title: 'Popover 文字提示',
+              route: 'popover'
+            },
+            {
+              title: 'Timeline 时间轴',
+              route: 'timeline'
             }
           ]
         },
@@ -141,6 +164,10 @@ export default {
             {
               title: 'Progress 进度条',
               route: 'progress'
+            },
+            {
+              title: 'Popconfirm 气泡确认',
+              route: 'popconfirm'
             }
           ]
         },

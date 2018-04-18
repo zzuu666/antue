@@ -76,6 +76,11 @@ export default {
       open: []
     }
   },
+  provide () {
+    return {
+      menuRoot: this
+    }
+  },
   computed: {
     classes () {
       const prefixCls = this.prefixCls

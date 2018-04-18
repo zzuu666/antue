@@ -57,7 +57,7 @@ const menu = {
           title: 'Layout',
           items: [
             {
-              title: 'Grid 栅格',
+              title: 'Grid 栅格',
               route: 'compGridIndexZh'
             }
             // {
@@ -80,12 +80,24 @@ const menu = {
             {
               title: 'Pagination 分页',
               route: 'compPaginationIndexZh'
+            },
+            {
+              title: 'Dropdown 下拉菜单',
+              route: 'compDropdownIndexZh'
+            },
+            {
+              title: 'Steps 步骤条',
+              route: 'compStepsIndexZh'
             }
           ]
         },
         {
           title: 'Data Display',
           items: [
+            {
+              title: 'Badge 徽标数',
+              route: 'compBadgeIndexZh'
+            },
             {
               title: 'Card 卡片',
               route: 'compCardIndexZh'
@@ -97,6 +109,18 @@ const menu = {
             {
               title: 'Avatar 头像',
               route: 'compAvatarIndexZh'
+            },
+            {
+              title: 'Tooltip 文字提示',
+              route: 'compTooltipIndexZh'
+            },
+            {
+              title: 'Popover 气泡卡片',
+              route: 'compPopoverIndexZh'
+            },
+            {
+              title: 'Timeline 时间轴',
+              route: 'compTimelineIndexZh'
             }
           ]
         },
@@ -127,6 +151,10 @@ const menu = {
             {
               title: 'Message 全局提示',
               route: 'compMessageIndexZh'
+            },
+            {
+              title: 'Popconfirm 气泡确认框',
+              route: 'compPopconfirmIndexZh'
             }
           ]
         },

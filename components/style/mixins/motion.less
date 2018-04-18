@@ -12,12 +12,11 @@
 
 .make-motion(@className, @keyframeName, @duration: @animation-duration-base) {
   .@{className}-enter,
-  .@{className}-leave-to {
+  .@{className}-appear {
     .motion-common(@duration);
     animation-play-state: paused;
   }
-  .@{className}-leave,
-  .@{className}-enter-to {
+  .@{className}-leave {
     .motion-common-leave(@duration);
     animation-play-state: paused;
   }

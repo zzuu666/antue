@@ -53,7 +53,7 @@ export default {
     type: {
       type: String,
       validator (value) {
-        return oneOf(value, ['primary', 'dashed', 'danger'])
+        return oneOf(value, ['primary', 'dashed', 'danger', 'default'])
       }
     }
   },

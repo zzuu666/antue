@@ -51,4 +51,23 @@
     top: 1px;
     position: relative;
   }
+
+  &-notice.move-up-leave.move-up-leave-active {
+    animation-name: MessageMoveOut;
+    overflow: hidden;
+    animation-duration: .3s;
+  }
+}
+
+@keyframes MessageMoveOut {
+  0% {
+    opacity: 1;
+    max-height: 150px;
+    padding: 8px;
+  }
+  100% {
+    opacity: 0;
+    max-height: 0;
+    padding: 0;
+  }
 }

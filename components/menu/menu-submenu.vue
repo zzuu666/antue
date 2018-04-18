@@ -10,13 +10,13 @@
     ]"
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave">
-    <span
+    <div
       :class="`${prefixCls}-submenu-title`"
       @click="handleClick"
       :style="style"
-      v-if="$slots.title">
-      <slot name="title"></slot>
-    </span>
+      v-if="$slots.title || title">
+      <slot name="title">{{title}}</slot>
+    </div>
     <atu-transition :type="animition.type" :motion="animition.motion" v-if="$slots.default">
       <ul
         :class="[
@@ -33,24 +33,23 @@
 
 <script>
 import { switchcase } from '../_util/switchcase'
-import AtuTransition from '@/transition'
+import AtuTransition from '../transition'
 
 export default {
   name: 'menuSubmenu',
+  inject: ['menuRoot'],
   props: {
     disabled: {
       type: Boolean,
       default: false
     },
     index: [String, Number],
-    prefixCls: {
-      type: String,
-      default: 'ant-menu'
-    }
+    title: String
   },
   data () {
     return {
-      timer: null
+      timer: null,
+      prefixCls: this.menuRoot.prefixCls
     }
   },
   computed: {

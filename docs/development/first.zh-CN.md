@@ -6,7 +6,9 @@ title: 开发流程
 
 ### 确认开发组件
 
-**[20171017更新] 目前由于要处理组件之间通信问题，正在开发解决方案，暂时不接受伙伴们的PR。**
+开发组件之前请在仓库[Projects Components Development Status](https://github.com/zzuu666/antue/projects/1) TODO 中确认要开发的组件，发邮件至[antue-dev@outlook.com](mailto:antue-dev@outlook.com)认领组件，避免重复开发。
+
+`在开发中遇到任何问题也可以通过邮件的方式来讨论。`
 
 ### Clone Ant-Design
 
@@ -14,8 +16,11 @@ Antue 为了保持样式与API与 Ant-Design 的 React 版本高度一致，需�
 
 [Antd Github](https://github.com/ant-design/ant-design)
 
+** 目前参照版本为 antd@2.13.11 [2275195e1](https://github.com/ant-design/ant-design/tree/2.13.11) **
+
 ```
-git clone git@github.com:ant-design/ant-design.git --depth=10
+git clone git@github.com:ant-design/ant-design.git
+git checkout 2.13.11
 ```
 
 ### Fork & PR & Comment & Merge
