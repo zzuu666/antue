@@ -50,7 +50,7 @@ export default {
     strokeLinecap: {
       type: String,
       default: 'round',
-      validator: function (value) {
+      validator (value) {
         return ['butt', 'round', 'square'].indexOf(value) !== -1
       }
     },
@@ -71,14 +71,14 @@ export default {
       default: 0
     },
     gapPosition: {
-      validator: function (value) {
+      validator (value) {
         return ['top', 'bottom', 'left', 'right'].indexOf(value) !== -1
       },
       default: 'top'
     }
   },
   computed: {
-    pathString: function () {
+    pathString () {
       const radius = 50 - (this.strokeWidth / 2)
       let beginPositionX = 0
       let beginPositionY = -radius
@@ -107,7 +107,7 @@ export default {
       a ${radius},${radius} 0 1 1 ${endPositionX},${-endPositionY}
       a ${radius},${radius} 0 1 1 ${-endPositionX},${endPositionY}`
     },
-    trailPathStyle: function () {
+    trailPathStyle () {
       const radius = 50 - (this.strokeWidth / 2)
       const len = Math.PI * 2 * radius
       return {
@@ -116,7 +116,7 @@ export default {
         transition: 'stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s'
       }
     },
-    strokePathStyle: function () {
+    strokePathStyle () {
       const radius = 50 - (this.strokeWidth / 2)
       const len = Math.PI * 2 * radius
       return {

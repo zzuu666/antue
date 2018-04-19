@@ -93,10 +93,10 @@ let router = new Router({
       component: Tag
     },
     {
-<<<<<<< HEAD
       path: '/progress',
       component: Progress
-=======
+    },
+    {
       path: '/tooltip',
       component: ToolTip
     },
@@ -119,7 +119,6 @@ let router = new Router({
     {
       path: '/steps',
       component: Steps
->>>>>>> b8bbe35633da7c65ad8ae9d6ea39a740f83642e5
     }
   ]
 })
