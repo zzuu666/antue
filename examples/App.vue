@@ -93,6 +93,10 @@ export default {
             {
               title: 'Dropdown 下拉菜单',
               route: 'dropdown'
+            },
+            {
+              title: 'Steps 步骤条',
+              route: 'steps'
             }
           ]
         },
@@ -156,6 +160,10 @@ export default {
             {
               title: 'Message 全局提示',
               route: 'message'
+            },
+            {
+              title: 'Progress 进度条',
+              route: 'progress'
             },
             {
               title: 'Popconfirm 气泡确认',
