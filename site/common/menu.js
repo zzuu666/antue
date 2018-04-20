@@ -149,6 +149,10 @@ const menu = {
               route: 'compMessageIndexZh'
             },
             {
+              title: 'Notification 通知提醒框',
+              route: 'compNotificationIndexZh'
+            },
+            {
               title: 'Popconfirm 气泡确认框',
               route: 'compPopconfirmIndexZh'
             }
