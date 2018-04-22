@@ -13,7 +13,7 @@ title:
 
 A standard progress bar.
 
-````html
+```` html
 <template>
   <div>
     <ant-progress :percent="30"></ant-progress>

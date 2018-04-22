@@ -157,6 +157,10 @@ const menu = {
               route: 'compMessageIndexZh'
             },
             {
+              title: 'Progress 进度条',
+              route: 'compProgressIndexZh'
+            },
+            {
               title: 'Popconfirm 气泡确认框',
               route: 'compPopconfirmIndexZh'
             }

@@ -13,7 +13,7 @@ title:
 
 You can custom text format by setting `format`.
 
-````html
+```` html
 <template>
   <div>
     <ant-progress type="circle" :percent="75" :format="percent => `${percent} Days`"/>
