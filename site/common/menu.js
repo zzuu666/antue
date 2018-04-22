@@ -70,6 +70,10 @@ const menu = {
           title: 'Navigation',
           items: [
             {
+              title: 'Affix 固钉',
+              route: 'compAffixIndexZh'
+            },
+            {
               title: 'Breadcrumb 面包屑',
               route: 'compBreadcrumbIndexZh'
             },

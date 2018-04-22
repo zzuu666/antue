@@ -15,8 +15,8 @@ Set a `target` for 'Affix', which is listen to scroll event of target element (d
 
 ```` html
 <template>
-  <div class="scrollable-container" ref="container">
-    <div class="background">
+  <div class="scrollable-container" ref="container" style="height: 100px;overflow-y: scroll">
+    <div class="background" style="padding-top: 60px;height: 300px;background-image: url('https://zos.alipayobjects.com/rmsportal/RmjwQiJorKyobvI.jpg')">
       <Affix :target="passRef">
         <atu-button type="primary">
           Fixed at the top of container
@@ -25,7 +25,6 @@ Set a `target` for 'Affix', which is listen to scroll event of target element (d
     </div>
   </div>
 </template>
-
 <script>
   import Affix from '@/affix'
   import AtuButton from '@/button'
@@ -41,8 +40,6 @@ Set a `target` for 'Affix', which is listen to scroll event of target element (d
     }
   }
 </script>
-````
-
 <style>
 #components-affix-demo-target .scrollable-container {
   height: 100px;
@@ -54,3 +51,4 @@ Set a `target` for 'Affix', which is listen to scroll event of target element (d
   background-image: url('https://zos.alipayobjects.com/rmsportal/RmjwQiJorKyobvI.jpg');
 }
 </style>
+````
