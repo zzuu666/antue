@@ -1,12 +1,8 @@
 <template>
   <div>
-    <Affix>
-      <atu-button type="primary">Affix top</atu-button>
+    <Affix :offsetTop="120" @on-change="handleStatusChange">
+      <atu-button>120px to affix top</atu-button>
     </Affix>
-    <br/>
-    <affix :offsetBottom="0">
-      <atu-button type="primary">Affix bottom</atu-button>
-    </affix>
   </div>
 </template>
 
@@ -15,6 +11,9 @@
   import AtuButton from '@/button'
 
   export default {
+    methods: {
+      handleStatusChange (affixed) { console.log(affixed) }
+    },
     components: {
       Affix,
       AtuButton
