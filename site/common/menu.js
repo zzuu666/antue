@@ -95,6 +95,10 @@ const menu = {
           title: 'Data Display',
           items: [
             {
+              title: 'Avatar 头像',
+              route: 'compAvatarIndexZh'
+            },
+            {
               title: 'Badge 徽标数',
               route: 'compBadgeIndexZh'
             },
@@ -105,10 +109,6 @@ const menu = {
             {
               title: 'Tabs 标签页',
               route: 'compTabsIndexZh'
-            },
-            {
-              title: 'Avatar 头像',
-              route: 'compAvatarIndexZh'
             },
             {
               title: 'Tooltip 文字提示',

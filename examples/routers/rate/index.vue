@@ -36,21 +36,21 @@
         <code-show title="其他字符" desc="可以将星星替换为其他字符，比如字母，数字，字体图标甚至中文。">
           <div>
             <rate :default-value="defaultValue" :allow-valf="allowHalf">
-              <template scope="props">
+              <template slot-scope="props">
                 <Icon type="heart"></Icon>
               </template>
             </rate>
           </div>
           <div>
             <rate :default-value="defaultValue" :allow-half="allowHalf">
-              <template scope="props">
+              <template slot-scope="props">
                 <span>A</span>
               </template>
             </rate>
           </div>
           <div>
             <rate :default-value="defaultValue" :allow-half="allowHalf">
-              <template scope="props">
+              <template slot-scope="props">
                 <span>好</span>
               </template>
             </rate>

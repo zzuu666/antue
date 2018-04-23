@@ -55,7 +55,7 @@ subtitle: 导航菜单
 | 参数     | 说明           | 类型     | 默认值       |
 |----------|----------------|----------|--------------|
 | disabled    | 是否禁用 | boolean   |  false  |
-| index   | item 的唯一标志 |  string |  |
+| index   | item 的唯一标志 |  string |  |  |
 
 ### Menu.SubMenu
 
@@ -63,7 +63,7 @@ subtitle: 导航菜单
 |----------|----------------|----------|--------------|
 | disabled    | 是否禁用 | boolean   |  false  |
 | index | 唯一标志 |  string |  |
-| title    | 子菜单项值 | string |    |
+| title    | 子菜单项值 | string |   |  |
 
 ### Menu.SubMenu Slots
 
@@ -75,5 +75,5 @@ subtitle: 导航菜单
 
 | 参数     | 说明           | 类型     | 默认值       |
 |----------|----------------|----------|--------------|
-| title    | 分组标题       | string\|ReactNode |    |
+| title    | 分组标题       | string |    |
 
