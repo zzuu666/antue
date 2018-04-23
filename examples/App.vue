@@ -170,6 +170,10 @@ export default {
               route: 'message'
             },
             {
+              title: 'Progress 进度条',
+              route: 'progress'
+            },
+            {
               title: 'Popconfirm 气泡确认',
               route: 'popconfirm'
             }
