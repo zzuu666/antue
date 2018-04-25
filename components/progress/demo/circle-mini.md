@@ -13,7 +13,7 @@ title:
 
 A smaller circular progress bar.
 
-````jsx
+```` html
 <template>
   <div>
     <ant-progress type="circle" :percent="30" :width="80" />

@@ -13,7 +13,7 @@ title:
 
 By setting `type=dashboard`, you can get a dashboard style of progress easily.
 
-````html
+```` html
 <template>
   <div>
     <ant-progress type="dashboard" :percent="75"/>

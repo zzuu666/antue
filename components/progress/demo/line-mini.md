@@ -13,7 +13,7 @@ title:
 
 Appropriate for a narrow area.
 
-````html
+```` html
 <template>
   <div :style="{width: '170px'}">
     <ant-progress :percent="30" :stroke-width="5"></ant-progress>

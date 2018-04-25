@@ -1,13 +1,13 @@
 language: node_js
 node_js:
-  - 8.5.0
+  - 9.11.1
 before_install:
-  - npm install
+  - npm i
 script:
   - npm run lint
   - npm test
   - npm run build
-before_deploy: 
+before_deploy:
   - node scripts/generate.js -a
   - node scripts/generate.js -r
   - npm run build:site

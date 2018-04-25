@@ -70,6 +70,10 @@ const menu = {
           title: 'Navigation',
           items: [
             {
+              title: 'Affix 固钉',
+              route: 'compAffixIndexZh'
+            },
+            {
               title: 'Breadcrumb 面包屑',
               route: 'compBreadcrumbIndexZh'
             },
@@ -95,6 +99,10 @@ const menu = {
           title: 'Data Display',
           items: [
             {
+              title: 'Avatar 头像',
+              route: 'compAvatarIndexZh'
+            },
+            {
               title: 'Badge 徽标数',
               route: 'compBadgeIndexZh'
             },
@@ -105,10 +113,6 @@ const menu = {
             {
               title: 'Tabs 标签页',
               route: 'compTabsIndexZh'
-            },
-            {
-              title: 'Avatar 头像',
-              route: 'compAvatarIndexZh'
             },
             {
               title: 'Tooltip 文字提示',
@@ -157,8 +161,16 @@ const menu = {
               route: 'compNotificationIndexZh'
             },
             {
+              title: 'Progress 进度条',
+              route: 'compProgressIndexZh'
+            },
+            {
               title: 'Popconfirm 气泡确认框',
               route: 'compPopconfirmIndexZh'
+            },
+            {
+              title: 'Progress进度条',
+              route: 'compProgressIndexZh'
             }
           ]
         },
