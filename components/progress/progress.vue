@@ -6,8 +6,7 @@
         <div :class="`${prefixCls}-inner`">
           <div :class="`${prefixCls}-bg`" :style="percentStyle"></div>
         </div>
-      </div>
-      <progress-info v-show="showInfo" :progress-status="progressStatus" :percent="percent" :format="format" :icon-type="iconType" :prefix-cls="prefixCls"></progress-info>
+      </div><progress-info v-show="showInfo" :progress-status="progressStatus" :percent="percent" :format="format" :icon-type="iconType" :prefix-cls="prefixCls" />
     </div>
     <div v-else-if="type === 'circle' || type === 'dashboard'">
       <div :class="`${prefixCls}-inner`" :style="circleStyle">
@@ -19,10 +18,7 @@
           :trail-color="trailColor"
           :prefix-cls="prefixCls"
           :gap-degree="gapDeg"
-          :gap-position="gapPos"
-        >
-        </v-circle>
-        <progress-info v-show="showInfo" :progress-status="progressStatus" :percent="percent" :format="format" :icon-type="iconType" :prefix-cls="prefixCls"></progress-info>
+          :gap-position="gapPos" /><progress-info v-show="showInfo" :progress-status="progressStatus" :percent="percent" :format="format" :icon-type="iconType" :prefix-cls="prefixCls"></progress-info>
       </div>
     </div>
   </div>
