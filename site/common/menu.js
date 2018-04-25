@@ -70,6 +70,10 @@ const menu = {
           title: 'Navigation',
           items: [
             {
+              title: 'Affix 固钉',
+              route: 'compAffixIndexZh'
+            },
+            {
               title: 'Breadcrumb 面包屑',
               route: 'compBreadcrumbIndexZh'
             },
@@ -151,6 +155,10 @@ const menu = {
             {
               title: 'Message 全局提示',
               route: 'compMessageIndexZh'
+            },
+            {
+              title: 'Progress 进度条',
+              route: 'compProgressIndexZh'
             },
             {
               title: 'Popconfirm 气泡确认框',

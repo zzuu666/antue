@@ -17,6 +17,7 @@ import Transition from './transition'
 import Breadcrumb from './breadcrumb'
 import Tabs from './tabs'
 import Tag from './tag'
+import Affix from './affix'
 import Progress from './progress'
 import ToolTip from './tooltip'
 import Popover from './popover'
@@ -93,6 +94,10 @@ let router = new Router({
     {
       path: '/tag',
       component: Tag
+    },
+    {
+      path: '/affix',
+      component: Affix
     },
     {
       path: '/progress',
