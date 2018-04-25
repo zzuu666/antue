@@ -26,6 +26,7 @@ import Timeline from './timeline'
 import Dropdown from './dropdown'
 import Avatar from './avatar'
 import Steps from './steps'
+import BackTop from './back-top'
 
 Vue.use(Router)
 
@@ -130,9 +131,14 @@ let router = new Router({
     {
       path: '/avatar',
       component: Avatar
-    }, {
+    },
+    {
       path: '/steps',
       component: Steps
+    },
+    {
+      path: '/backtop',
+      component: BackTop
     }
   ]
 })
