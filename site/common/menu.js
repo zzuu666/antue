@@ -157,6 +157,10 @@ const menu = {
               route: 'compMessageIndexZh'
             },
             {
+              title: 'Notification 通知提醒框',
+              route: 'compNotificationIndexZh'
+            },
+            {
               title: 'Progress 进度条',
               route: 'compProgressIndexZh'
             },
