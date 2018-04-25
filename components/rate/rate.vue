@@ -11,7 +11,7 @@
       @click="onClick"
       @hover="onHover"
       :prefix-cls="`${prefixCls}-star`">
-      <template scope="props">
+      <template slot-scope="props">
         <slot>
            <Icon type="star"></Icon>
         </slot>

@@ -1,0 +1,28 @@
+<template>
+  <div>
+    <div>
+      <Avatar size="large" icon="user" />
+      <Avatar icon="user" />
+      <Avatar size="small" icon="user" />
+    </div>
+    <div>
+      <Avatar shape="square" size="large" icon="user" />
+      <Avatar shape="square" icon="user" />
+      <Avatar shape="square" size="small" icon="user" />
+    </div>
+  </div>
+</template>
+<script>
+  import Avatar from '@/avatar'
+  export default {
+    components: {
+      Avatar
+    }
+  }
+</script>
+<style>
+  #components-avatar-demo-basic .ant-avatar {
+    margin-top: 16px;
+    margin-right: 16px;
+  }
+</style>
