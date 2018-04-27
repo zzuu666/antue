@@ -6,7 +6,10 @@
         invalid ? `${prefixCls}-input-invalid` : ''
       ]"
       :placeholder="placeholder">
-    <a :class="`${prefixCls}-clear-btn`" />
+    <a
+      v-if="allowEmpty"
+      :class="`${prefixCls}-clear-btn`"
+      :title="clearText" />
   </div>
 </template>
 
@@ -14,6 +17,14 @@
 export default {
   props: {
     prefixCls: String,
+    allowEmpty: {
+      type: Boolean,
+      default: true
+    },
+    clearText: {
+      type: String,
+      default: 'clear'
+    },
     invalid: {
       type: Boolean,
       default: false

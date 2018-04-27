@@ -3,7 +3,7 @@
     :class="classes"
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave">
-    <ul>
+    <ul ref="list">
       <li
         v-for="(item, index) in options"
         :class="{
@@ -20,8 +20,30 @@
 </template>
 
 <script>
+
+const scrollTo = (element, to, duration) => {
+  const requestAnimationFrame = window.requestAnimationFrame ||
+    function requestAnimationFrameTimeout () {
+      return setTimeout(arguments[0], 10)
+    }
+  // jump to target if duration zero
+  if (duration <= 0) {
+    element.scrollTop = to
+    return
+  }
+  const difference = to - element.scrollTop
+  const perTick = difference / duration * 10
+
+  requestAnimationFrame(() => {
+    element.scrollTop = element.scrollTop + perTick
+    if (element.scrollTop === to) return
+    scrollTo(element, to, duration - 10)
+  })
+}
+
 export default {
   props: {
+    isShow: Boolean,
     prefixCls: String,
     options: Array,
     selectedIndex: Number,
@@ -30,6 +52,14 @@ export default {
   data () {
     return {
       active: false
+    }
+  },
+  watch: {
+    isShow (v) {
+      v && this.scrollToSelected(0)
+    },
+    selectedIndex (v) {
+      this.scrollToSelected(120)
     }
   },
   methods: {
@@ -41,6 +71,17 @@ export default {
     },
     handleClick (value) {
       this.$emit('selected', this.type, value)
+    },
+    scrollToSelected (duration) {
+      const select = this.$el
+      const list = this.$refs.list
+      if (!list) {
+        return
+      }
+      const index = this.selectedIndex < 0 ? 0 : this.selectedIndex
+      const topOption = list.children[index]
+      const to = topOption.offsetTop
+      scrollTo(select, to, duration)
     }
   },
   computed: {
@@ -53,6 +94,9 @@ export default {
         }
       ]
     }
+  },
+  mounted () {
+    this.scrollToSelected(0)
   }
 }
 </script>
