@@ -8,6 +8,9 @@ import { oneOf } from '../_util/proptype'
 export default {
   name: 'timepicker',
   mixins: [Popper],
+  model: {
+    event: 'change'
+  },
   data () {
     return {
       showHour: true,
@@ -99,10 +102,13 @@ export default {
   methods: {
     handleClick () {
       this.visible = !this.visible
+    },
+    handleChange (value) {
+      console.log(value)
+      this.$emit('change', value)
     }
   },
   render (h) {
-    console.log(this.defaultOpenValue.hour())
     const vm = this
     this.popperVM = new Vue({
       render () {
@@ -119,8 +125,11 @@ export default {
               disabledMinutes={ vm.disabledMinutes }
               disabledSeconds={ vm.disabledSeconds }
               hideDisabledOptions={ vm.hideDisabledOptions }
+              prefixCls={ `${vm.prefixCls}-panel` }
               use12Hours={ vm.use12Hours }
-              isShow={ vm.visible }>
+              isShow={ vm.visible }
+              onChange={ vm.handleChange }
+              value={ vm.value }>
               { vm.$slots.addon }
             </Panel>
           </div>

@@ -1,5 +1,5 @@
 <template>
-  <time-picker :value="time" />
+  <time-picker v-model="time" />
 </template>
 
 <script>

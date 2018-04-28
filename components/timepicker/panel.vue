@@ -15,57 +15,30 @@ const generateOptions = (length, disabledOptions, hideDisabledOptions, step = 1)
 
 export default {
   props: {
-    prefixCls: {
-      type: String,
-      default: 'ant-time-picker-panel'
-    },
-    allowEmpty: {
-      type: Boolean,
-      default: true
-    },
-    clearText: {
-      type: String,
-      default: 'clear'
-    },
-    defaultOpenValue: {
-      type: Object
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    disabledHours: {
-      type: Function,
-      default: () => []
-    },
-    disabledMinutes: {
-      type: Function,
-      default: (h) => []
-    },
-    disabledSeconds: {
-      type: Function,
-      default: (h, m) => []
-    },
-    hideDisabledOptions: {
-      type: Boolean,
-      default: false
-    },
+    prefixCls: String,
+    defaultOpenValue: Object,
+    disabledHours: Function,
+    disabledMinutes: Function,
+    disabledSeconds: Function,
     isShow: Boolean,
-    format: {
-      type: String,
-      default: 'HH:mm:ss'
-    },
-    use12Hours: {
-      type: Boolean,
-      default: false
-    },
-    value: {
-      type: Object
-    }
+    hourOptions: Array,
+    minuteOptions: Array,
+    secondOptions: Array,
+    showHour: Boolean,
+    showMinute: Boolean,
+    showSecond: Boolean,
+    use12Hours: Boolean,
+    isAM: Boolean,
+    value: null
   },
   components: {
     PickerHeader,
     PickerCombobox
+  },
+  methods: {
+    handleChange (value) {
+      this.$emit('change', value)
+    }
   },
   render () {
     const hourOptions = generateOptions(24)
@@ -95,7 +68,9 @@ export default {
           isShow= { this.isShow }
           hourOptions={ hourOptions }
           minuteOptions={ minuteOptions }
-          secondOptions={ secondOptions } />
+          secondOptions={ secondOptions }
+          onChange={ this.handleChange }
+          value={ this.value } />
         { addon() }
       </div>
     )

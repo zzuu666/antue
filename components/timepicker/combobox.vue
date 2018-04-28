@@ -25,14 +25,45 @@ export default {
     showHour: Boolean,
     showMinute: Boolean,
     showSecond: Boolean,
-    value: `null`
+    use12Hours: Boolean,
+    isAM: Boolean,
+    value: null
   },
   components: {
     PickerSelect
   },
   methods: {
-    handleSelected (type, value) {
-      // TODO
+    handleSelected (type, itemValue) {
+      const value = (this.value || this.defaultOpenValue).clone()
+      if (type === 'hour') {
+        if (this.use12Hours) {
+          if (this.props.isAM) {
+            value.hour(+itemValue % 12)
+          } else {
+            value.hour((+itemValue % 12) + 12)
+          }
+        } else {
+          value.hour(+itemValue)
+        }
+      } else if (type === 'minute') {
+        value.minute(+itemValue)
+      } else if (type === 'ampm') {
+        const ampm = itemValue.toUpperCase()
+        if (this.use12Hours) {
+          if (ampm === 'PM' && value.hour() < 12) {
+            value.hour((value.hour() % 12) + 12)
+          }
+
+          if (ampm === 'AM') {
+            if (value.hour() >= 12) {
+              value.hour(value.hour() - 12)
+            }
+          }
+        }
+      } else {
+        value.second(+itemValue)
+      }
+      this.$emit('change', value)
     }
   },
   render () {
