@@ -5,11 +5,13 @@
         `${prefixCls}-input`,
         invalid ? `${prefixCls}-input-invalid` : ''
       ]"
-      :placeholder="placeholder">
+      :placeholder="placeholder"
+      :value="value && value.format(this.format) || ''">
     <a
       v-if="allowEmpty"
       :class="`${prefixCls}-clear-btn`"
-      :title="clearText" />
+      :title="clearText"
+      @click="handleClearClick" />
   </div>
 </template>
 
@@ -25,13 +27,17 @@ export default {
       type: String,
       default: 'clear'
     },
+    format: String,
     invalid: {
       type: Boolean,
       default: false
     },
-    placeholder: {
-      type: String,
-      default: 'Select Time'
+    placeholder: String,
+    value: null
+  },
+  methods: {
+    handleClearClick (e) {
+      this.$emit('clear', e)
     }
   }
 }

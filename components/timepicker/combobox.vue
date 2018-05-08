@@ -70,9 +70,9 @@ export default {
     const value = this.value || this.defaultOpenValue
 
     const getHourSelect = hour => {
-      // if (!this.showHour) {
-      //   return null
-      // }
+      if (!this.showHour) {
+        return null
+      }
       const disabledOptions = []
       const hourOptionsAdj = this.use12Hours
         ? [12].concat(this.hourOptions.filter(h => h < 12 && h > 0))
@@ -95,9 +95,9 @@ export default {
     }
 
     const getMinuteSelect = minute => {
-      // if (!this.showMinute) {
-      //   return null
-      // }
+      if (!this.showMinute) {
+        return null
+      }
       // const disabledOptions = this.disabledSeconds(value.hour(), value.minute())
       const disabledOptions = []
       const options = this.minuteOptions.map(option => formatOption(option, disabledOptions))
@@ -116,9 +116,9 @@ export default {
     }
 
     const getSecondSelect = second => {
-      // if (!this.showSecond) {
-      //   return null;
-      // }
+      if (!this.showSecond) {
+        return null
+      }
       // const disabledOptions = this.disabledSeconds(value.hour(), value.minute());
       const disabledOptions = []
       const options = this.secondOptions.map(option => formatOption(option, disabledOptions))

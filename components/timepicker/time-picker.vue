@@ -4,6 +4,20 @@ import moment from 'moment'
 import Popper from '../_mixin/popper'
 import Panel from './panel'
 import { oneOf } from '../_util/proptype'
+import Transition from '../transition'
+
+export function generateShowHourMinuteSecond (format) {
+  // Ref: http://momentjs.com/docs/#/parsing/string-format/
+  return {
+    showHour: (
+      format.indexOf('H') > -1 ||
+        format.indexOf('h') > -1 ||
+        format.indexOf('k') > -1
+    ),
+    showMinute: format.indexOf('m') > -1,
+    showSecond: format.indexOf('s') > -1
+  }
+}
 
 export default {
   name: 'timepicker',
@@ -15,7 +29,15 @@ export default {
     return {
       showHour: true,
       showMinute: true,
-      showSecond: true
+      showSecond: true,
+      popperModifiers: {
+        inner: {
+          enabled: true
+        },
+        offset: {
+          offset: '2px'
+        }
+      }
     }
   },
   props: {
@@ -62,6 +84,14 @@ export default {
       type: String,
       default: 'HH:mm:ss'
     },
+    placement: {
+      type: String,
+      default: 'topLeft'
+    },
+    placeholder: {
+      type: String,
+      default: 'Select Time'
+    },
     size: {
       type: String,
       default: 'default',
@@ -81,7 +111,8 @@ export default {
     }
   },
   components: {
-    Panel
+    Panel,
+    Transition
   },
   computed: {
     classes () {
@@ -102,37 +133,51 @@ export default {
   methods: {
     handleClick () {
       this.visible = !this.visible
+      this.$refs.input.blur()
     },
     handleChange (value) {
-      console.log(value)
       this.$emit('change', value)
+    },
+    handleClear (e) {
+      this.visible = false
+      this.$emit('clear', e)
     }
   },
   render (h) {
+    const { showHour, showMinute, showSecond } = generateShowHourMinuteSecond(this.format)
+
     const vm = this
     this.popperVM = new Vue({
       render () {
         return (
-          <div
-            class={ `${vm.prefixCls}-panel` }
-            v-show={ vm.visible }
-            ref="popper">
-            <Panel
-              allowEmpty={ vm.allowEmpty }
-              clearText={ vm.clearText }
-              defaultOpenValue={ vm.defaultOpenValue }
-              disabledHours={ vm.disabledHours }
-              disabledMinutes={ vm.disabledMinutes }
-              disabledSeconds={ vm.disabledSeconds }
-              hideDisabledOptions={ vm.hideDisabledOptions }
-              prefixCls={ `${vm.prefixCls}-panel` }
-              use12Hours={ vm.use12Hours }
-              isShow={ vm.visible }
-              onChange={ vm.handleChange }
-              value={ vm.value }>
-              { vm.$slots.addon }
-            </Panel>
-          </div>
+          <Transition type="slide" motion="up">
+            <div
+              class={ `${vm.prefixCls}-panel` }
+              v-show={ vm.visible }
+              ref="popper">
+              <Panel
+                allowEmpty={ vm.allowEmpty }
+                clearText={ vm.clearText }
+                defaultOpenValue={ vm.defaultOpenValue }
+                disabledHours={ vm.disabledHours }
+                disabledMinutes={ vm.disabledMinutes }
+                disabledSeconds={ vm.disabledSeconds }
+                format={ vm.format }
+                hideDisabledOptions={ vm.hideDisabledOptions }
+                prefixCls={ `${vm.prefixCls}-panel` }
+                placeholder={ vm.placeholder }
+                showHour={ showHour }
+                showMinute={ showMinute }
+                showSecond={ showSecond }
+                use12Hours={ vm.use12Hours }
+                isShow={ vm.visible }
+                onChange={ vm.handleChange }
+                onClear={ vm.handleClear }
+                value={ vm.value }>
+                { vm.$slots.addon }
+              </Panel>
+            </div>
+          </Transition>
         )
       }
     }).$mount()
@@ -140,10 +185,14 @@ export default {
     return (
       <span
         ref="picker"
-        class={this.classes}
-        onClick={this.handleClick}>
-        <input class={`${this.prefixCls}-input`} />
-        <span class={`${this.prefixCls}-icon`} />
+        class={ this.classes }
+        onClick={ this.handleClick }>
+        <input
+          ref="input"
+          class={ `${this.prefixCls}-input` }
+          placeholder={ this.placeholder }
+          value={ this.value && this.value.format(this.format) || '' } />
+        <span class={ `${this.prefixCls}-icon` } />
       </span>
     )
   }

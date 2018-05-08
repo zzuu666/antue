@@ -21,8 +21,10 @@ export default {
     disabledMinutes: Function,
     disabledSeconds: Function,
     isShow: Boolean,
+    format: String,
     hourOptions: Array,
     minuteOptions: Array,
+    placeholder: String,
     secondOptions: Array,
     showHour: Boolean,
     showMinute: Boolean,
@@ -38,6 +40,9 @@ export default {
   methods: {
     handleChange (value) {
       this.$emit('change', value)
+    },
+    handleHeaderClick (e) {
+      this.$emit('clear', e)
     }
   },
   render () {
@@ -61,7 +66,11 @@ export default {
         <PickerHeader
           prefixCls={ this.prefixCls }
           allowEmpty={ this.allowEmpty }
-          clearText={ this.clearText } />
+          clearText={ this.clearText }
+          format={ this.format }
+          onClear={ this.handleHeaderClick }
+          placeholder={ this.placeholder }
+          value={ this.value } />
         <PickerCombobox
           prefixCls={ this.prefixCls }
           defaultOpenValue={ this.defaultOpenValue }
@@ -69,6 +78,9 @@ export default {
           hourOptions={ hourOptions }
           minuteOptions={ minuteOptions }
           secondOptions={ secondOptions }
+          showHour={ this.showHour }
+          showMinute={ this.showMinute }
+          showSecond={ this.showSecond }
           onChange={ this.handleChange }
           value={ this.value } />
         { addon() }

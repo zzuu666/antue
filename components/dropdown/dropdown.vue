@@ -55,7 +55,11 @@ export default {
   data () {
     return {
       timer: null,
-      popperOffset: '0, 5px'
+      popperModifiers: {
+        offset: {
+          offset: '0, 5px'
+        }
+      }
     }
   },
   mixins: [Popper],
