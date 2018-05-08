@@ -18,6 +18,7 @@ export default {
     disabledHours: Function,
     disabledMinutes: Function,
     disabledSeconds: Function,
+    format: String,
     isShow: Boolean,
     hourOptions: Array,
     minuteOptions: Array,
@@ -53,7 +54,6 @@ export default {
           if (ampm === 'PM' && value.hour() < 12) {
             value.hour((value.hour() % 12) + 12)
           }
-
           if (ampm === 'AM') {
             if (value.hour() >= 12) {
               value.hour(value.hour() - 12)
@@ -136,11 +136,34 @@ export default {
       )
     }
 
+    const getAMPMSelect = () => {
+      if (!this.use12Hours) {
+        return null
+      }
+      const AMPMOptions = ['am', 'pm'] // If format has A char, then we should uppercase AM/PM
+        .map(c => this.format.match(/\sA/) ? c.toUpperCase() : c)
+        .map(c => ({ value: c }))
+
+      const selectedIndex = this.isAM ? 0 : 1
+
+      return (
+        <PickerSelect
+          isShow={ this.isShow }
+          prefixCls={ this.prefixCls }
+          options={ AMPMOptions }
+          selectedIndex={ selectedIndex }
+          type="second"
+          onSelected={ this.handleSelected }
+        />
+      )
+    }
+
     return (
       <div class={ `${this.prefixCls}-combobox` }>
         { getHourSelect(value.hour()) }
         { getMinuteSelect(value.minute()) }
         { getSecondSelect(value.second()) }
+        { getAMPMSelect() }
       </div>
     )
   }

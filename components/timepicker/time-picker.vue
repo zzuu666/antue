@@ -136,7 +136,7 @@ export default {
       this.$refs.input.blur()
     },
     handleChange (value) {
-      this.$emit('change', value)
+      this.$emit('change', value, value.format(this.format))
     },
     handleClear (e) {
       this.visible = false

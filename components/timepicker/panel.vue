@@ -74,6 +74,7 @@ export default {
         <PickerCombobox
           prefixCls={ this.prefixCls }
           defaultOpenValue={ this.defaultOpenValue }
+          format={ this.format }
           isShow= { this.isShow }
           hourOptions={ hourOptions }
           minuteOptions={ minuteOptions }
