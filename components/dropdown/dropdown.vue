@@ -9,7 +9,7 @@
       <div
         :class="classes"
         ref="overlay"
-        v-show="visible">  
+        v-show="visible">
         <slot name="overlay"></slot>
       </div>
     </atu-transition>

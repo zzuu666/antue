@@ -195,6 +195,15 @@ export default {
               route: 'transition'
             }
           ]
+        },
+        {
+          title: 'Other',
+          items: [
+            {
+              title: 'BackTop 回到顶部',
+              route: 'backtop'
+            }
+          ]
         }
       ]
     }

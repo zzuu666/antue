@@ -27,6 +27,7 @@ import Dropdown from './dropdown'
 import Avatar from './avatar'
 import Steps from './steps'
 import TimePicker from './timepicker'
+import BackTop from './back-top'
 
 Vue.use(Router)
 
@@ -139,6 +140,10 @@ let router = new Router({
     {
       path: '/timepicker',
       component: TimePicker
+    },
+    {
+      path: '/backtop',
+      component: BackTop
     }
   ]
 })

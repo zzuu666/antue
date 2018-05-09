@@ -179,8 +179,12 @@ const menu = {
           ]
         },
         {
-          title: 'Transition',
+          title: 'Other',
           items: [
+            {
+              title: 'BackTop 回到顶部',
+              route: 'compBacktopIndexZh'
+            },
             {
               title: 'Transition 动画',
               route: 'compTransitionIndexZh'
