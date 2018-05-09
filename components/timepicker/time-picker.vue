@@ -141,6 +141,10 @@ export default {
     this.popper = this.popperVM.$el
     this.reference = this.$refs.picker
     this.visible = this.open
+    document.addEventListener('click', this.closePopper)
+  },
+  destroyed () {
+    document.removeEventListener('click', this.closePopper)
   },
   watch: {
     open (v) {
@@ -164,6 +168,16 @@ export default {
     handleClear (e) {
       this.visible = false
       this.$emit('clear', e)
+    },
+    closePopper (e) {
+      if (!this.visible ||
+        !this.$el ||
+        !this.reference ||
+        !this.popper ||
+        this.$el.contains(e.target) ||
+        this.reference.contains(e.target) ||
+        this.popper.contains(e.target)) return
+      this.visible = false
     }
   },
   render (h) {
