@@ -12,7 +12,7 @@
         }"
         :disabled="item.disabled"
         :key="item.value"
-        @click="handleClick(item.value)">
+        @click="!item.disabled ? handleClick(item.value) : null">
         {{ item.value }}
       </li>
     </ul>

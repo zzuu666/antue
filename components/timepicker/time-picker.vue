@@ -37,7 +37,8 @@ export default {
         offset: {
           offset: '2px'
         }
-      }
+      },
+      visible: false
     }
   },
   props: {
@@ -76,13 +77,17 @@ export default {
       type: Function,
       default: (h, m) => []
     },
+    format: {
+      type: String,
+      default: ''
+    },
     hideDisabledOptions: {
       type: Boolean,
       default: false
     },
-    format: {
-      type: String,
-      default: 'HH:mm:ss'
+    open: {
+      type: Boolean,
+      default: false
     },
     placement: {
       type: String,
@@ -91,6 +96,10 @@ export default {
     placeholder: {
       type: String,
       default: 'Select Time'
+    },
+    popupClassName: {
+      type: String,
+      default: ''
     },
     size: {
       type: String,
@@ -123,15 +132,29 @@ export default {
           [`${prefixCls}-${this.size}`]: !!this.size
         }
       ]
+    },
+    defaultFormat () {
+      return this.format ? this.format : this.use12Hours ? 'h:mm:ss a' : 'HH:mm:ss'
     }
   },
   mounted () {
     this.popper = this.popperVM.$el
     this.reference = this.$refs.picker
-    // console.log(this.popperVM)
+    this.visible = this.open
+  },
+  watch: {
+    open (v) {
+      this.visible = v
+    },
+    visible (v) {
+      this.$emit('open-change', v)
+    }
   },
   methods: {
     handleClick () {
+      if (this.disabled) {
+        return
+      }
       this.visible = !this.visible
       this.$refs.input.blur()
     },
@@ -144,7 +167,7 @@ export default {
     }
   },
   render (h) {
-    const { showHour, showMinute, showSecond } = generateShowHourMinuteSecond(this.format)
+    const { showHour, showMinute, showSecond } = generateShowHourMinuteSecond(this.defaultFormat)
 
     const vm = this
     this.popperVM = new Vue({
@@ -152,7 +175,13 @@ export default {
         return (
           <Transition type="slide" motion="up">
             <div
-              class={ `${vm.prefixCls}-panel` }
+              class={[
+                `${vm.prefixCls}-panel`,
+                vm.popupClassName,
+                {
+                  [`${vm.prefixCls}-panel-narrow`]: (!showHour || !showMinute || !showSecond) && !vm.use12Hours
+                }
+              ]}
               v-show={ vm.visible }
               ref="popper">
               <Panel
@@ -162,7 +191,7 @@ export default {
                 disabledHours={ vm.disabledHours }
                 disabledMinutes={ vm.disabledMinutes }
                 disabledSeconds={ vm.disabledSeconds }
-                format={ vm.format }
+                format={ vm.defaultFormat }
                 hideDisabledOptions={ vm.hideDisabledOptions }
                 prefixCls={ `${vm.prefixCls}-panel` }
                 placeholder={ vm.placeholder }
@@ -174,7 +203,7 @@ export default {
                 onChange={ vm.handleChange }
                 onClear={ vm.handleClear }
                 value={ vm.value }>
-                { vm.$slots.addon }
+                { vm.$slots.default }
               </Panel>
             </div>
           </Transition>
@@ -190,8 +219,9 @@ export default {
         <input
           ref="input"
           class={ `${this.prefixCls}-input` }
+          disabled={ this.disabled }
           placeholder={ this.placeholder }
-          value={ this.value && this.value.format(this.format) || '' } />
+          value={ this.value && this.value.format(this.defaultFormat) || '' } />
         <span class={ `${this.prefixCls}-icon` } />
       </span>
     )

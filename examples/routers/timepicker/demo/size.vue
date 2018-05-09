@@ -8,6 +8,7 @@
 
 <script>
 import TimePicker from '@/timepicker'
+import moment from 'moment'
 
 export default {
   components: {
@@ -15,9 +16,9 @@ export default {
   },
   data () {
     return {
-      time1: null,
-      time2: null,
-      time3: null
+      time1: moment('12:08:23', 'HH:mm:ss'),
+      time2: moment('12:08:23', 'HH:mm:ss'),
+      time3: moment('12:08:23', 'HH:mm:ss')
     }
   }
 }

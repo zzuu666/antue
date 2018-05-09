@@ -38,7 +38,7 @@ export default {
       const value = (this.value || this.defaultOpenValue).clone()
       if (type === 'hour') {
         if (this.use12Hours) {
-          if (this.props.isAM) {
+          if (this.isAM) {
             value.hour(+itemValue % 12)
           } else {
             value.hour((+itemValue % 12) + 12)
@@ -73,7 +73,7 @@ export default {
       if (!this.showHour) {
         return null
       }
-      const disabledOptions = []
+      const disabledOptions = this.disabledHours()
       const hourOptionsAdj = this.use12Hours
         ? [12].concat(this.hourOptions.filter(h => h < 12 && h > 0))
         : this.hourOptions
@@ -98,8 +98,7 @@ export default {
       if (!this.showMinute) {
         return null
       }
-      // const disabledOptions = this.disabledSeconds(value.hour(), value.minute())
-      const disabledOptions = []
+      const disabledOptions = this.disabledMinutes(value.hour())
       const options = this.minuteOptions.map(option => formatOption(option, disabledOptions))
       const selectedIndex = this.minuteOptions.indexOf(minute)
 
@@ -119,8 +118,7 @@ export default {
       if (!this.showSecond) {
         return null
       }
-      // const disabledOptions = this.disabledSeconds(value.hour(), value.minute());
-      const disabledOptions = []
+      const disabledOptions = this.disabledSeconds(value.hour(), value.minute())
       const options = this.secondOptions.map(option => formatOption(option, disabledOptions))
       const selectedIndex = this.secondOptions.indexOf(second)
 
@@ -152,7 +150,7 @@ export default {
           prefixCls={ this.prefixCls }
           options={ AMPMOptions }
           selectedIndex={ selectedIndex }
-          type="second"
+          type="ampm"
           onSelected={ this.handleSelected }
         />
       )
