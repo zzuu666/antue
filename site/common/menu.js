@@ -146,6 +146,10 @@ const menu = {
             {
               title: 'Switch 开关',
               route: 'compSwitchIndexZh'
+            },
+            {
+              title: 'TimePicker 时间选择框',
+              route: 'compTimepickerIndexZh'
             }
           ]
         },
