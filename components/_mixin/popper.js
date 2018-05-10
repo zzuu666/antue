@@ -31,6 +31,7 @@ const popperMap = {
   'right-start': 'rightTop',
   'right-end': 'rightBottom'
 }
+
 export default {
   props: {
     placement: {
@@ -47,7 +48,7 @@ export default {
       visible: false,
       visibleArrow: false,
       currentPalcement: '',
-      popperOffset: 0
+      popperModifiers: {}
     }
   },
   watch: {
@@ -79,14 +80,12 @@ export default {
         this.popperJS.destroy()
       }
       options.placement = this.currentPalcement
-      options.modifiers = {
+      const defaultModifiers = {
         computeStyle: {
           gpuAcceleration: false
-        },
-        offset: {
-          offset: this.popperOffset
         }
       }
+      options.modifiers = Object.assign({}, defaultModifiers, this.popperModifiers)
       options.onCreate = () => {
         this.currentPalcement = this.popper.getAttribute('x-placement')
         this.resetTransformOrigin()

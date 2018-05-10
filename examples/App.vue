@@ -126,6 +126,10 @@ export default {
             {
               title: 'Switch 开关',
               route: 'switch'
+            },
+            {
+              title: 'TimePicker 时间选择框',
+              route: 'timepicker'
             }
           ]
         },

@@ -84,6 +84,7 @@
   ],
   "dependencies": {
     "lodash.debounce": "^4.0.8",
+    "moment": "^2.22.1",
     "popper.js": "^1.12.6"
   }
 }

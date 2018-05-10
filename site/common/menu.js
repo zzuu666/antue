@@ -146,6 +146,10 @@ const menu = {
             {
               title: 'Switch 开关',
               route: 'compSwitchIndexZh'
+            },
+            {
+              title: 'TimePicker 时间选择框',
+              route: 'compTimepickerIndexZh'
             }
           ]
         },
@@ -167,10 +171,6 @@ const menu = {
             {
               title: 'Popconfirm 气泡确认框',
               route: 'compPopconfirmIndexZh'
-            },
-            {
-              title: 'Progress进度条',
-              route: 'compProgressIndexZh'
             }
           ]
         },
