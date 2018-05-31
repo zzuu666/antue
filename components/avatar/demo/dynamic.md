@@ -39,7 +39,7 @@ For letter type Avatar, when the letters are too long to display, the font size 
     methods: {
       changeUser () {
         const index = UserList.indexOf(this.user)
-        this.user  = index < UserList.length - 1 ? UserList[index + 1] : UserList[0]
+        this.user = index < UserList.length - 1 ? UserList[index + 1] : UserList[0]
         this.color = index < colorList.length -1 ? colorList[index + 1] : colorList[0]
       }
     }

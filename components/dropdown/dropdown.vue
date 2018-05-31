@@ -9,7 +9,7 @@
       <div
         :class="classes"
         ref="overlay"
-        v-show="visible">  
+        v-show="visible">
         <slot name="overlay"></slot>
       </div>
     </atu-transition>
@@ -55,7 +55,11 @@ export default {
   data () {
     return {
       timer: null,
-      popperOffset: '0, 5px'
+      popperModifiers: {
+        offset: {
+          offset: '0, 5px'
+        }
+      }
     }
   },
   mixins: [Popper],
