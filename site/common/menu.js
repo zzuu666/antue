@@ -59,11 +59,11 @@ const menu = {
             {
               title: 'Grid 栅格',
               route: 'compGridIndexZh'
+            },
+            {
+              title: 'Layout 布局',
+              route: 'compLayoutIndexZh'
             }
-            // {
-            //   title: 'Icon 按钮',
-            //   route: 'componentsIconZh'
-            // }
           ]
         },
         {
@@ -169,6 +169,7 @@ const menu = {
               route: 'compProgressIndexZh'
             },
             {
+
               title: 'Popconfirm 气泡确认框',
               route: 'compPopconfirmIndexZh'
             }
