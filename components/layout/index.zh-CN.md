@@ -97,7 +97,12 @@ title: Layout
 | style | 指定样式 | object | - |
 | trigger | 自定义 trigger，设置为 null 时隐藏 trigger | string | - |
 | width | 宽度 | number | 200 |
-| on-collapse | 展开-收起时的回调函数，有点击 trigger 以及响应式反馈两种方式可以触发 | (collapsed, type) => {} | - |
+
+#### 事件
+
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| collapse | 展开-收起时的回调函数，有点击 trigger 以及响应式反馈两种方式可以触发 | (collapsed, type) => {} | - |
 
 #### breakpoint width
 

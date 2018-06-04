@@ -1,22 +1,16 @@
 <template>
-  <div :class="`${prefixCls}-footer`" :style="footerStyle">
+  <div :class="`${prefixCls}-footer`">
     <slot></slot>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'ant-footer',
+  name: 'layout-footer',
   props: {
     prefixCls: {
       type: String,
       default: 'ant-layout'
-    },
-    footerStyle: {
-      type: Object,
-      default () {
-        return {}
-      }
     }
   }
 }

@@ -1,49 +1,49 @@
 <template>
   <div class="code-box-demo">
-    <Layout>
-      <Header>Header</Header>
-      <Content>Content</Content>
-      <Footer>Footer</Footer>
-    </Layout>
+    <atu-layout>
+      <atu-header>Header</atu-header>
+      <atu-content>Content</atu-content>
+      <atu-footer>Footer</atu-footer>
+    </atu-layout>
 
-    <Layout>
-      <Header>Header</Header>
-      <Layout hasSider>
-        <Sider>Sider</Sider>
-        <Content>Content</Content>
-      </Layout>
-      <Footer>Footer</Footer>
-    </Layout>
+    <atu-layout>
+      <atu-header>Header</atu-header>
+      <atu-layout has-sider>
+        <atu-sider>Sider</atu-sider>
+        <atu-content>Content</atu-content>
+      </atu-layout>
+      <atu-footer>Footer</atu-footer>
+    </atu-layout>
 
-    <Layout>
-      <Header>Header</Header>
-      <Layout hasSider>
-        <Content>Content</Content>
-        <Sider>Sider</Sider>
-      </Layout>
-      <Footer>Footer</Footer>
-    </Layout>
+    <atu-layout>
+      <atu-header>Header</atu-header>
+      <atu-layout has-sider>
+        <atu-content>Content</atu-content>
+        <atu-sider>Sider</atu-sider>
+      </atu-layout>
+      <atu-footer>Footer</atu-footer>
+    </atu-layout>
 
-    <Layout hasSider>
-      <Sider>Sider</Sider>
-      <Layout>
-        <Header>Header</Header>
-        <Content>Content</Content>
-        <Footer>Footer</Footer>
-      </Layout>
-    </Layout>
+    <atu-layout has-sider>
+      <atu-sider>Sider</atu-sider>
+      <atu-layout>
+        <atu-header>Header</atu-header>
+        <atu-content>Content</atu-content>
+        <atu-footer>Footer</atu-footer>
+      </atu-layout>
+    </atu-layout>
   </div>
 </template>
 <script>
-import Layout from '@/layout'
+import AtuLayout from '@/layout'
 
 export default {
   components: {
-    Layout,
-    Sider: Layout.Sider,
-    Header: Layout.Header,
-    Content: Layout.Content,
-    Footer: Layout.Footer
+    AtuLayout,
+    AtuSider: AtuLayout.Sider,
+    AtuHeader: AtuLayout.Header,
+    AtuContent: AtuLayout.Content,
+    AtuFooter: AtuLayout.Footer
   }
 }
 </script>

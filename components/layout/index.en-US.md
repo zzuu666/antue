@@ -96,7 +96,13 @@ The sidebar.
 | style | to customize the styles | object | - |
 | trigger | specify the customized trigger, set to null to hide the trigger | string\|ReactNode | - |
 | width | width of the sidebar | number\|string | 200 |
-| on-collapse | the callback function, executed by clicking the trigger or activating the responsive layout | (collapsed, type) => {} | - |
+
+
+#### Event
+
+| Property | Description | Type | Default |
+| -------- | ----------- | ---- | ------- |
+| collapse | the callback function, executed by clicking the trigger or activating the responsive layout | (collapsed, type) => {} | - |
 
 #### breakpoint width
 

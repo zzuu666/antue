@@ -19,37 +19,37 @@ Layout.Sider supports responsive layout.
 
 ```` html
 <template>
-  <Layout :hasSider='true'>
-    <Sider collapsible @on-collapse="onCollapse" breakpoint="md" :collapsedWidth="0">
-      <div class="logo"></div>
-      <Menu mode="inline" theme="dark" :defaultSelectedKeys="['1']" :inlineCollapsed="slotProps.collapsed" slot-scope="slotProps">
-        <MenuItem index="1">
-        <Icon type="user" />
+  <atu-layout has-sider>
+    <atu-sider collapsible @collapse="onCollapse" breakpoint="md" :collapsedWidth="0">
+      <div class="logo" />
+      <atu-menu mode="inline" theme="dark" :defaultSelectedKeys="['1']" :inlineCollapsed="slotProps.collapsed" slot-scope="slotProps">
+        <atu-menu-item index="1">
+        <atu-icon type="user" />
         <span>nav 1</span>
-        </MenuItem>
-        <MenuItem index="2">
-        <Icon type="video-camera" />
+        </atu-menu-item>
+        <atu-menu-item index="2">
+        <atu-icon type="video-camera" />
         <span>nav 2</span>
-        </MenuItem>
-        <MenuItem index="3">
-        <Icon type="upload" />
+        </atu-menu-item>
+        <atu-menu-item index="3">
+        <atu-icon type="upload" />
         <span>nav 3</span>
-        </MenuItem>
-      </Menu>
-    </Sider>
-    <Layout>
-      <Header style="background: #fff; padding: 0;">
-      </Header>
-      <Content style="margin: 24px 16px; padding: 24px; background: #fff; minHeight: 280px">Content</Content>
-    </Layout>
-  </Layout>
+        </atu-menu-item>
+      </atu-menu>
+    </atu-sider>
+    <atu-layout>
+      <atu-header style="background: #fff; padding: 0;">
+      </atu-header>
+      <atu-content style="margin: 24px 16px; padding: 24px; background: #fff; minHeight: 280px">Content</atu-content>
+    </atu-layout>
+  </atu-layout>
 </template>
 
 <script>
-import Layout from '@/layout'
-import Breadcrumb from '@/breadcrumb'
-import Menu from '@/menu'
-import Icon from '@/icon'
+import AtuLayout from '@/layout'
+import AtuBreadcrumb from '@/breadcrumb'
+import AtuMenu from '@/menu'
+import AtuIcon from '@/icon'
 
 export default {
   props: {
@@ -59,16 +59,16 @@ export default {
     }
   },
   components: {
-    Layout,
-    Sider: Layout.Sider,
-    Header: Layout.Header,
-    Content: Layout.Content,
-    Footer: Layout.Footer,
-    Breadcrumb,
-    BreadcrumbItem: Breadcrumb.Item,
-    Menu,
-    MenuItem: Menu.Item,
-    Icon
+    AtuLayout,
+    AtuSider: AtuLayout.Sider,
+    AtuHeader: AtuLayout.Header,
+    AtuContent: AtuLayout.Content,
+    AtuFooter: AtuLayout.Footer,
+    AtuBreadcrumb,
+    AtuBreadcrumbItem: AtuBreadcrumb.Item,
+    AtuMenu,
+    AtuMenuItem: AtuMenu.Item,
+    AtuIcon
   },
   methods: {
     onCollapse (collapsed, type) {

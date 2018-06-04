@@ -1,5 +1,5 @@
 <template>
-  <div :class="[`${prefixCls}`, {[`${prefixCls}-has-sider`] : hasSider}]" :style='layoutStyle'>
+  <div :class="[`${prefixCls}`, {[`${prefixCls}-has-sider`] : hasSider}]">
     <slot></slot>
   </div>
 </template>
@@ -15,18 +15,7 @@ export default {
     hasSider: {
       type: Boolean,
       default: false
-    },
-    layoutStyle: {
-      type: Object,
-      default () {
-        return {}
-      }
     }
   }
 }
 </script>
-
-<style lang="less" scoped>
-
-</style>
-

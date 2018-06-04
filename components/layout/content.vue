@@ -1,5 +1,5 @@
 <template>
-  <div :class="`${prefixCls}-content`" :style='contentStyle'>
+  <div :class="`${prefixCls}-content`">
     <slot></slot>
   </div>
 </template>
@@ -10,12 +10,6 @@ export default {
     prefixCls: {
       type: String,
       default: 'ant-layout'
-    },
-    contentStyle: {
-      type: Object,
-      default () {
-        return {}
-      }
     }
   }
 }

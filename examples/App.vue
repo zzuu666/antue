@@ -72,6 +72,10 @@ export default {
             {
               title: 'Grid 栅格',
               route: 'grid'
+            },
+            {
+              title: 'Layout 布局',
+              route: 'layout'
             }
           ]
         },
