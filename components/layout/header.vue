@@ -1,28 +1,17 @@
 <template>
-  <div :class="`${prefixCls}-header`" :style="headerStyle">
+  <div :class="`${prefixCls}-header`">
     <slot></slot>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'header',
+  name: 'layout-header',
   props: {
     prefixCls: {
       type: String,
       default: 'ant-layout'
-    },
-    headerStyle: {
-      type: Object,
-      default () {
-        return {}
-      }
     }
   }
 }
 </script>
-
-<style scoped>
-
-</style>
-

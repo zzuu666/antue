@@ -10,7 +10,7 @@
 <script>
 import { oneOf } from '../_util/proptype'
 export default {
-  name: 'menu',
+  name: 'atu-menu',
   props: {
     prefixCls: {
       type: String,

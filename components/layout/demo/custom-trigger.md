@@ -7,46 +7,46 @@ title:
 
 ## zh-CN
 
-要使用自定义触发器，可以设置 `trigger={null}` 来隐藏默认设定。
+要使用自定义触发器，可以设置 `:trigger="null"` 来隐藏默认设定。
 
 ## en-US
 
-If you want to use a customized trigger, you can hide the default one by setting `trigger={null}`.
+If you want to use a customized trigger, you can hide the default one by setting `:trigger="null"`.
 
 ```` html
 <template>
-  <Layout :hasSider='true'>
-    <Sider collapsible @on-collapse="onCollapse" trigger="null" ref="siderVM">
-      <div class="logo"></div>
-      <Menu mode="inline" theme="dark" :defaultSelectedKeys="['1']" :inlineCollapsed="collapsed" slot-scope="{collapsed}">
-        <MenuItem index="1">
-        <Icon type="user" />
-        <span>nav 1</span>
-        </MenuItem>
-        <MenuItem index="2">
-        <Icon type="video-camera" />
-        <span>nav 2</span>
-        </MenuItem>
-        <MenuItem index="3">
-        <Icon type="upload" />
-        <span>nav 3</span>
-        </MenuItem>
-      </Menu>
-    </Sider>
-    <Layout>
-      <Header style="background: #fff; padding: 0;">
-        <Icon :type="triggerIcon" class="trigger" @click.native="toggle" />
-      </Header>
-      <Content style="margin: 24px 16px; padding: 24px; background: #fff; minHeight: 280px">Content</Content>
-    </Layout>
-  </Layout>
+  <atu-layout has-sider>
+    <atu-sider collapsible @collapse="onCollapse" :trigger="null" ref="siderVM">
+      <div class="logo" />
+      <atu-menu mode="inline" theme="dark" :defaultSelectedKeys="['1']" :inlineCollapsed="collapsed" slot-scope="{collapsed}">
+        <atu-menu-item index="1">
+          <atu-icon type="user" />
+          <span>nav 1</span>
+        </atu-menu-item>
+        <atu-menu-item index="2">
+          <atu-icon type="video-camera" />
+          <span>nav 2</span>
+        </atu-menu-item>
+        <atu-menu-item index="3">
+          <atu-icon type="upload" />
+          <span>nav 3</span>
+        </atu-menu-item>
+      </atu-menu>
+    </atu-sider>
+    <atu-layout>
+      <atu-header style="background: #fff; padding: 0;">
+        <atu-icon :type="triggerIcon" class="trigger" @click.native="toggle" />
+      </atu-header>
+      <atu-content style="margin: 24px 16px; padding: 24px; background: #fff; minHeight: 280px">Content</atu-content>
+    </atu-layout>
+  </atu-layout>
 </template>
 
 <script>
-import Layout from '@/layout'
-import Breadcrumb from '@/breadcrumb'
-import Menu from '@/menu'
-import Icon from '@/icon'
+import AtuLayout from '@/layout'
+import AtuBreadcrumb from '@/breadcrumb'
+import AtuMenu from '@/menu'
+import AtuIcon from '@/icon'
 
 export default {
   props: {
@@ -61,16 +61,16 @@ export default {
     }
   },
   components: {
-    Layout,
-    Sider: Layout.Sider,
-    Header: Layout.Header,
-    Content: Layout.Content,
-    Footer: Layout.Footer,
-    Breadcrumb,
-    BreadcrumbItem: Breadcrumb.Item,
-    Menu,
-    MenuItem: Menu.Item,
-    Icon
+    AtuLayout,
+    AtuSider: AtuLayout.Sider,
+    AtuHeader: AtuLayout.Header,
+    AtuContent: AtuLayout.Content,
+    AtuFooter: AtuLayout.Footer,
+    AtuBreadcrumb,
+    AtuBreadcrumbItem: AtuBreadcrumb.Item,
+    AtuMenu,
+    AtuMenuItem: AtuMenu.Item,
+    AtuIcon
   },
   methods: {
     onCollapse () {

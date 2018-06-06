@@ -22,51 +22,51 @@ Top-bottom structure is conform with the top-bottom viewing habit, it's a classi
 
 ```` html
 <template>
-  <Layout>
-    <Header>
-      <div class="logo"></div>
-      <Menu mode="horizontal" theme="dark" :defaultSelectedKeys="['2']" style="line-height: 64px;">
-        <menu-item index="1">nav 1</menu-item>
-        <menu-item index="2">nav 2</menu-item>
-        <menu-item index="3">nav 3</menu-item>
-      </Menu>
-    </Header>
-    <Content :style="{padding: '0 50px'}">
-      <breadcrumb style="margin: 16px 0;">
-        <breadcrumb-item>
+  <atu-layout>
+    <atu-header>
+      <div class="logo" />
+      <atu-menu mode="horizontal" theme="dark" :defaultSelectedKeys="['2']" style="line-height: 64px;">
+        <atu-menu-item index="1">nav 1</atu-menu-item>
+        <atu-menu-item index="2">nav 2</atu-menu-item>
+        <atu-menu-item index="3">nav 3</atu-menu-item>
+      </atu-menu>
+    </atu-header>
+    <atu-content :style="{padding: '0 50px'}">
+      <atu-breadcrumb style="margin: 16px 0;">
+        <atu-breadcrumb-item>
           Home
-        </breadcrumb-item>
-        <breadcrumb-item>
+        </atu-breadcrumb-item>
+        <atu-breadcrumb-item>
           List
-        </breadcrumb-item>
-        <breadcrumb-item>
+        </atu-breadcrumb-item>
+        <atu-breadcrumb-item>
           App
-        </breadcrumb-item>
-      </breadcrumb>
+        </atu-breadcrumb-item>
+      </atu-breadcrumb>
       <div style="background: #fff; padding: 24px; min-height: 280px">Content</div>
-    </Content>
-    <Footer :style="{textAlign: 'center'}">
+    </atu-content>
+    <atu-footer :style="{textAlign: 'center'}">
       Ant Design ©2016 Created by Ant UED
-    </Footer>
-  </Layout>
+    </atu-footer>
+  </atu-layout>
 </template>
 
 <script>
-import Layout from '@/layout'
-import Breadcrumb from '@/breadcrumb'
-import Menu from '@/menu'
+import AtuLayout from '@/layout'
+import AtuBreadcrumb from '@/breadcrumb'
+import AtuMenu from '@/menu'
 
 export default {
   components: {
-    Layout,
-    Sider: Layout.Sider,
-    Header: Layout.Header,
-    Content: Layout.Content,
-    Footer: Layout.Footer,
-    Breadcrumb,
-    BreadcrumbItem: Breadcrumb.Item,
-    Menu,
-    MenuItem: Menu.Item
+    AtuLayout,
+    AtuSider: AtuLayout.Sider,
+    AtuHeader: AtuLayout.Header,
+    AtuContent: AtuLayout.Content,
+    AtuFooter: AtuLayout.Footer,
+    AtuBreadcrumb,
+    AtuBreadcrumbItem: AtuBreadcrumb.Item,
+    AtuMenu,
+    AtuMenuItem: AtuMenu.Item
   }
 }
 </script>
@@ -80,4 +80,5 @@ export default {
   float: left;
 }
 </style>
+
 ````
