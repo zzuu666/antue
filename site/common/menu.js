@@ -179,6 +179,10 @@ const menu = {
           title: 'Other',
           items: [
             {
+              title: 'Anchor 锚点',
+              route: 'compAnchorIndexZh'
+            },
+            {
               title: 'BackTop 回到顶部',
               route: 'compBacktopIndexZh'
             },

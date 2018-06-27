@@ -186,7 +186,7 @@ export default {
             return
           }
           const target = document.querySelector(this.links[i].href)
-          if (inArea(target)) {
+          if (target && inArea(target)) {
             return this.links[i]
           }
         }
