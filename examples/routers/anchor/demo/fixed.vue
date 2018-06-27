@@ -1,5 +1,5 @@
 <template>
-  <Anchor>
+  <Anchor :affix="false">
     <Link href="#components-anchor-demo-basic" title="Basic demo" />
     <Link href="#components-anchor-demo-fixed" title="Fixed demo" />
     <Link href="#API" title="API">

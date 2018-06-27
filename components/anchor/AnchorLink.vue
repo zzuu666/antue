@@ -14,8 +14,14 @@ export default {
       type: String,
       default: 'ant-anchor'
     },
-    href: String,
-    title: String
+    href: {
+      type: String,
+      default: '#'
+    },
+    title: {
+      type: String,
+      default: ''
+    }
   },
   data () {
     return {

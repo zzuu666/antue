@@ -1,18 +1,8 @@
-<template>
-  <div :class="`${prefixCls}-wrapper`" style="max-height: 100vh;">
-    <div :class="`${prefixCls}`">
-      <div :class="`${prefixCls}-ink`">
-        <span :class="ballCls" style="top: 10.5px;" ref="ink"></span>
-      </div>
-      <slot></slot>
-    </div>
-  </div>
-</template>
-
 <script>
 import debounce from 'lodash.debounce'
 import getScroll from '../_util/getScroll'
 import getRequestAnimationFrame from '../_util/getRequestAnimationFrame'
+import Affix from '@/affix'
 
 function getOffsetTop (element) {
   if (!element) {
@@ -118,6 +108,14 @@ export default {
     }
   },
   computed: {
+    baseCls () {
+      return [
+        `${this.prefixCls}`,
+        {
+          'fixed': !this.affix && !this.showInkInFixed
+        }
+      ]
+    },
     ballCls () {
       return [
         `${this.prefixCls}-ink-ball`,
@@ -133,6 +131,9 @@ export default {
       if (oldv !== null) oldv.active = false
       if (newv !== null) newv.active = true
     }
+  },
+  components: {
+    Affix
   },
   methods: {
     registerLink (link) {
@@ -199,6 +200,24 @@ export default {
   },
   beforeDestroy () {
     this.getContainer().removeEventListener('scroll', this.scrollHandler)
+  },
+  render (h) {
+    const { prefixCls, baseCls, ballCls, offsetTop, affix } = this
+    const anchorContent = (
+      <div class={`${prefixCls}-wrapper`} style={{ maxHeight: '100vh' }}>
+        <div class={baseCls}>
+          <div class={`${prefixCls}-ink`}>
+            <span class={ballCls} style={{ top: '10.5px' }} ref="ink"></span>
+          </div>
+          { this.$slots.default }
+        </div>
+      </div>
+    )
+    return !affix ? anchorContent : (
+      <Affix offsetTop={offsetTop}>
+        {anchorContent}
+      </Affix>
+    )
   }
 }
 </script>
