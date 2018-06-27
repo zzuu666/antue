@@ -23,19 +23,9 @@
       <br/><br/>
       <div id="Anchor-Props">
         <h2>Anchor-Props</h2>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
       </div>
       <div id="Link-Props">
         <h2>Link-Props</h2>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
       </div>
     </a-row>
   </container>
@@ -64,5 +54,8 @@ export default {
 <style lang="less" scoped>
 .code-show {
   margin-top: 20px;
+}
+#API, #Anchor-Props, #Link-Props{
+  height: 200px;
 }
 </style>

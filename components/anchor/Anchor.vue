@@ -1,8 +1,8 @@
 <template>
-  <div class="ant-anchor-wrapper" style="max-height: 100vh;">
-    <div class="ant-anchor">
-      <div class="ant-anchor-ink">
-        <span class="ant-anchor-ink-ball" :class="{'visible' : !!activeLink}" style="top: 10.5px;" ref="ink"></span>
+  <div :class="`${prefixCls}-wrapper`" style="max-height: 100vh;">
+    <div :class="`${prefixCls}`">
+      <div :class="`${prefixCls}-ink`">
+        <span :class="ballCls" style="top: 10.5px;" ref="ink"></span>
       </div>
       <slot></slot>
     </div>
@@ -117,45 +117,42 @@ export default {
       animating: false
     }
   },
+  computed: {
+    ballCls () {
+      return [
+        `${this.prefixCls}-ink-ball`,
+        {
+          'visible': !!this.activeLink
+        }
+      ]
+    }
+  },
   watch: {
-    activeLink (newv) {
+    activeLink (newv, oldv) {
       this.updateInk()
+      if (oldv !== null) oldv.active = false
+      if (newv !== null) newv.active = true
     }
   },
   methods: {
-    // getChildContext () {
-    //   return {
-    //     antAnchor: {
-    //       registerLink: (link) => {
-    //         if (!this.links.includes(link)) {
-    //           this.links.push(link)
-    //         }
-    //       },
-    //       unregisterLink: (link) => {
-    //         const index = this.links.indexOf(link)
-    //         if (index !== -1) {
-    //           this.links.splice(index, 1)
-    //         }
-    //       },
-    //       activeLink: this.state.activeLink,
-    //       scrollTo: this.handleScrollTo,
-    //     },
-    //   }
-    // },
-    clearActive () {
-      if (!this.activeLink) return
-      this.activeLink.active = false
+    registerLink (link) {
+      if (!this.links.includes(link)) this.links.push(link)
     },
-    handleAnchorClick (vm) {
-      this.clearActive()
-      this.activeLink = vm
-      vm.active = true
+    unregisterLink (link) {
+      const index = this.links.indexOf(link)
+      if (index !== -1) {
+        this.links.splice(index, 1)
+      }
+    },
+    handleAnchorClick (link) {
+      this.activeLink = link
       this.handleScrollTo(this.activeLink.href)
     },
     updateInk () {
       if (typeof document === 'undefined') {
         return
       }
+      if (!this.activeLink) return
       const linkNode = this.activeLink.$el.firstElementChild
       if (linkNode) {
         this.$refs.ink.style.top = `${linkNode.offsetTop + linkNode.clientHeight / 2 - 4.5}px`
@@ -178,14 +175,17 @@ export default {
       if (typeof document === 'undefined') {
         return activeLink
       }
+      const inArea = (target) => {
+        const areaHeight = this.offsetTop + this.bounds
+        return getOffsetTop(target) < areaHeight && (getOffsetTop(target) + target.offsetHeight) > areaHeight
+      }
       if (this.links.length > 0) {
         for (let i = 0; i < this.links.length; i++) {
           if (typeof document === 'undefined') {
             return
           }
-          const ele = document.querySelector(this.links[i].href)
-          const rect = ele.getBoundingClientRect()
-          if (rect.top <= this.bounds && (rect.top + rect.height) > this.bounds) {
+          const target = document.querySelector(this.links[i].href)
+          if (inArea(target)) {
             return this.links[i]
           }
         }

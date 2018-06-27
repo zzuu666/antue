@@ -1,6 +1,6 @@
 <template>
-  <div class="ant-anchor-link" :class="{'ant-anchor-link-active':active}">
-    <a class="ant-anchor-link-title" :class="{'ant-anchor-link-title-active':active}" :href="href" :title="title" @click.prevent="handleClick">{{title}}</a>
+  <div :class="linkCls">
+    <a :class="titleCls" :href="href" :title="title" @click.prevent="handleClick">{{title}}</a>
     <slot></slot>
   </div>
 </template>
@@ -22,15 +22,35 @@ export default {
       active: false
     }
   },
+  computed: {
+    linkCls () {
+      return [
+        `${this.prefixCls}-link`,
+        {
+          [`${this.prefixCls}-link-active`]: this.active
+        }
+      ]
+    },
+    titleCls () {
+      return [
+        `${this.prefixCls}-link-title`,
+        {
+          [`${this.prefixCls}-link-title-active`]: this.active
+        }
+      ]
+    }
+  },
   methods: {
     handleClick () {
       if (this.active) return
       this.anchorRoot.$emit('anchorClick', this)
-      // document.querySelector(this.href).scrollIntoViewIfNeeded()
     }
   },
   mounted () {
-    if (!this.anchorRoot.links.includes(this)) this.anchorRoot.links.push(this)
+    this.anchorRoot.registerLink(this)
+  },
+  beforeDestroy () {
+    this.anchorRoot.unRegisterLink(this)
   }
 }
 </script>
