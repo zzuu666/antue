@@ -204,6 +204,10 @@ export default {
           title: 'Other',
           items: [
             {
+              title: 'Anchor 锚点',
+              route: 'anchor'
+            },
+            {
               title: 'BackTop 回到顶部',
               route: 'backtop'
             }
