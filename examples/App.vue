@@ -141,6 +141,10 @@ export default {
           title: 'Data Display',
           items: [
             {
+              title: 'Table 表格',
+              route: 'table'
+            },
+            {
               title: 'Avatar 头像',
               route: 'avatar'
             },
