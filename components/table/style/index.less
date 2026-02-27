@@ -1,0 +1,293 @@
+@import "../../style/themes/default";
+@import "../../style/mixins/index";
+
+@table-prefix-cls: ~"@{ant-prefix}-table";
+
+.@{table-prefix-cls}-wrapper {
+  position: relative;
+  zoom: 1;
+  clear: both;
+
+  .@{table-prefix-cls}-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 4;
+
+    &-mask {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #fff;
+      opacity: 0.5;
+      transition: opacity .3s;
+    }
+
+    &-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: @primary-color;
+      font-size: @font-size-lg;
+    }
+  }
+}
+
+.@{table-prefix-cls} {
+  font-size: @font-size-base;
+  color: @text-color;
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  border-radius: @border-radius-base @border-radius-base 0 0;
+  transition: opacity .3s;
+
+  &-thead > tr > th {
+    background: @table-header-bg;
+    font-weight: 500;
+    transition: background .3s ease;
+    text-align: left;
+    color: @heading-color;
+    padding: @table-padding-vertical @table-padding-horizontal;
+    border-bottom: @border-width-base @border-style-base @border-color-split;
+    word-break: break-all;
+
+    &[colspan] {
+      text-align: center;
+    }
+  }
+
+  &-tbody > tr > td {
+    padding: @table-padding-vertical @table-padding-horizontal;
+    border-bottom: @border-width-base @border-style-base @border-color-split;
+    transition: all .3s;
+    word-break: break-all;
+  }
+
+  &-tbody > tr:hover > td {
+    background: @table-row-hover-bg;
+  }
+
+  &-tbody > tr.@{table-prefix-cls}-row-selected > td {
+    background: @table-selected-row-bg;
+  }
+
+  // bordered
+  &-bordered {
+    border-left: @border-width-base @border-style-base @border-color-split;
+    border-top: @border-width-base @border-style-base @border-color-split;
+
+    .@{table-prefix-cls}-thead > tr > th,
+    .@{table-prefix-cls}-tbody > tr > td {
+      border-right: @border-width-base @border-style-base @border-color-split;
+    }
+
+    .@{table-prefix-cls}-thead > tr > th {
+      border-bottom: @border-width-base @border-style-base @border-color-split;
+    }
+  }
+
+  // middle size
+  &-middle {
+    .@{table-prefix-cls}-thead > tr > th,
+    .@{table-prefix-cls}-tbody > tr > td {
+      padding: 12px 8px;
+    }
+  }
+
+  // small size
+  &-small {
+    .@{table-prefix-cls}-thead > tr > th,
+    .@{table-prefix-cls}-tbody > tr > td {
+      padding: 8px 8px;
+    }
+
+    .@{table-prefix-cls}-thead > tr > th {
+      background: @component-background;
+      border-bottom: @border-width-base @border-style-base @border-color-split;
+    }
+  }
+
+  // placeholder
+  &-placeholder {
+    text-align: center;
+    color: @disabled-color;
+    padding: 16px 8px !important;
+  }
+
+  // selection column
+  &-selection-column {
+    width: 62px;
+    min-width: 62px;
+    text-align: center;
+  }
+
+  // column sorting
+  &-column-has-sorters {
+    cursor: pointer;
+    user-select: none;
+
+    &:hover {
+      background: @table-header-sort-bg;
+    }
+  }
+
+  &-column-sort {
+    background: @table-header-sort-bg;
+  }
+
+  &-column-sorter {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 4px;
+    width: 14px;
+    position: relative;
+    height: 17px;
+
+    &-ascend,
+    &-descend {
+      display: block;
+      width: 14px;
+      height: 8px;
+      line-height: 8px;
+      text-align: center;
+      color: @disabled-color;
+      cursor: pointer;
+      font-size: 10px;
+
+      &.active {
+        color: @primary-color;
+      }
+
+      &:hover {
+        color: @primary-color;
+      }
+    }
+
+    &-ascend {
+      margin-bottom: 1px;
+    }
+  }
+
+  // column filter
+  &-filter-icon-wrapper {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  &-filter-icon {
+    display: inline-block;
+    margin-left: 4px;
+    cursor: pointer;
+    color: @disabled-color;
+    font-size: 12px;
+    vertical-align: middle;
+
+    &:hover {
+      color: @text-color;
+    }
+
+    &-active {
+      color: @primary-color;
+
+      &:hover {
+        color: @primary-color;
+      }
+    }
+  }
+
+  &-filter-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    min-width: 96px;
+    background: @component-background;
+    border-radius: @border-radius-base;
+    box-shadow: @box-shadow-base;
+    z-index: @zindex-dropdown;
+    margin-top: 4px;
+
+    &-menu {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      max-height: 264px;
+      overflow-y: auto;
+      border-bottom: @border-width-base @border-style-base @border-color-split;
+
+      &-item {
+        padding: 5px 12px;
+        cursor: pointer;
+        overflow: hidden;
+        white-space: nowrap;
+
+        .ant-checkbox-wrapper {
+          margin-right: 8px;
+        }
+
+        &:hover {
+          background: @item-hover-bg;
+        }
+
+        &-selected {
+          background: @item-active-bg;
+        }
+      }
+    }
+
+    &-btns {
+      padding: 7px 8px;
+      overflow: hidden;
+    }
+
+    &-link {
+      cursor: pointer;
+      color: @primary-color;
+      padding: 0 4px;
+
+      &:hover {
+        color: @primary-5;
+      }
+
+      &.reset {
+        float: right;
+      }
+    }
+  }
+
+  // alignment
+  &-align-left {
+    text-align: left;
+  }
+
+  &-align-center {
+    text-align: center;
+  }
+
+  &-align-right {
+    text-align: right;
+  }
+
+  // fixed header
+  &-fixed-header {
+    .@{table-prefix-cls}-header {
+      overflow: hidden;
+    }
+
+    .@{table-prefix-cls}-body {
+      overflow-y: auto;
+    }
+  }
+}
+
+// pagination
+.@{table-prefix-cls}-pagination {
+  margin: 16px 0;
+  text-align: right;
+}
