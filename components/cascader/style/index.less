@@ -1,0 +1,188 @@
+@import "../../style/themes/default";
+@import "../../style/mixins/index";
+
+@cascader-prefix-cls: ~"@{ant-prefix}-cascader";
+
+.@{cascader-prefix-cls} {
+  position: relative;
+  display: inline-block;
+  font-size: @font-size-base;
+  color: @text-color;
+  box-sizing: border-box;
+
+  &-picker {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    cursor: pointer;
+    background-color: @component-background;
+    border: @border-width-base @border-style-base @border-color-base;
+    border-radius: @border-radius-base;
+    outline: none;
+    transition: all .3s @ease-in-out;
+    padding: 0 30px 0 @input-padding-horizontal;
+    height: @input-height-base;
+    line-height: @input-height-base - 2px;
+
+    &:hover {
+      border-color: @primary-color;
+    }
+
+    &-label {
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      max-width: 100%;
+      vertical-align: middle;
+    }
+
+    &-clear {
+      position: absolute;
+      right: 28px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: @disabled-color;
+      font-size: 12px;
+      cursor: pointer;
+      display: none;
+
+      &:hover {
+        color: @text-color-secondary;
+      }
+    }
+
+    &-arrow {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: @disabled-color;
+      font-size: 12px;
+      line-height: 1;
+      transition: transform .3s;
+    }
+
+    &-disabled {
+      background: @disabled-bg;
+      color: @disabled-color;
+      cursor: not-allowed;
+
+      .@{cascader-prefix-cls}-picker {
+        cursor: not-allowed;
+
+        &:hover {
+          border-color: @border-color-base;
+        }
+      }
+    }
+
+    &-open .@{cascader-prefix-cls}-picker-arrow {
+      transform: translateY(-50%) rotate(180deg);
+    }
+  }
+
+  &:hover .@{cascader-prefix-cls}-picker-clear {
+    display: inline-block;
+  }
+
+  &-picker-lg {
+    .@{cascader-prefix-cls}-picker {
+      height: @input-height-lg;
+      line-height: @input-height-lg - 2px;
+    }
+  }
+
+  &-picker-sm {
+    .@{cascader-prefix-cls}-picker {
+      height: @input-height-sm;
+      line-height: @input-height-sm - 2px;
+    }
+  }
+
+  &-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: @font-size-base;
+    color: @text-color;
+    cursor: pointer;
+  }
+
+  &-menus {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: @zindex-dropdown;
+    background-color: @component-background;
+    border-radius: @border-radius-base;
+    box-shadow: @box-shadow-base;
+    margin-top: 4px;
+    white-space: nowrap;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  &-menu {
+    display: inline-block;
+    vertical-align: top;
+    min-width: 111px;
+    max-height: 180px;
+    overflow-y: auto;
+    list-style: none;
+    margin: 0;
+    padding: 4px 0;
+    border-right: @border-width-base @border-style-base @border-color-split;
+
+    &:last-child {
+      border-right: 0;
+    }
+
+    &-item {
+      position: relative;
+      display: block;
+      padding: 5px 12px;
+      line-height: 22px;
+      font-weight: normal;
+      color: @text-color;
+      white-space: nowrap;
+      cursor: pointer;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: all .3s;
+      padding-right: 24px;
+
+      &:hover {
+        background-color: @item-hover-bg;
+      }
+
+      &-active {
+        font-weight: 600;
+        background-color: @item-active-bg;
+      }
+
+      &-disabled {
+        color: @disabled-color;
+        cursor: not-allowed;
+
+        &:hover {
+          background-color: transparent;
+        }
+      }
+
+      &-expand {
+        padding-right: 24px;
+      }
+
+      &-expand-icon {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: @text-color-secondary;
+        font-size: 10px;
+      }
+    }
+  }
+}
