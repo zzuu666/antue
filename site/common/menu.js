@@ -99,6 +99,10 @@ const menu = {
           title: 'Data Display',
           items: [
             {
+              title: 'Table 表格',
+              route: 'compTableIndexZh'
+            },
+            {
               title: 'Avatar 头像',
               route: 'compAvatarIndexZh'
             },
