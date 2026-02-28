@@ -1,0 +1,82 @@
+@import "../../style/themes/default";
+@import "../../style/mixins/index";
+
+@anchor-prefix-cls: ~"@{ant-prefix}-anchor";
+
+.@{anchor-prefix-cls}-wrapper {
+  overflow: auto;
+  padding-left: 4px;
+  margin-left: -4px;
+
+  &.@{anchor-prefix-cls}-fixed {
+    position: fixed;
+  }
+}
+
+.@{anchor-prefix-cls} {
+  &-wrapper {
+    position: relative;
+    padding-left: 2px;
+  }
+
+  &-ink {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+
+    &::before {
+      content: ' ';
+      position: relative;
+      width: 2px;
+      height: 100%;
+      display: block;
+      background-color: @border-color-split;
+      margin: 0 auto;
+    }
+
+    &-ball {
+      position: absolute;
+      left: 50%;
+      display: none;
+      width: 8px;
+      height: 8px;
+      border-radius: 8px;
+      border: 2px solid @primary-color;
+      background-color: @component-background;
+      transform: translateX(-50%);
+      transition: top @animation-duration-base @ease-in-out;
+
+      &.visible {
+        display: inline-block;
+      }
+    }
+  }
+
+  &-link {
+    padding: 7px 0 7px 16px;
+    line-height: 1.143;
+
+    &-title {
+      display: block;
+      position: relative;
+      padding: 4px 0 4px 0;
+      color: @text-color;
+      font-size: @font-size-base;
+      text-decoration: none;
+      transition: all @animation-duration-base;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 170px;
+
+      &:hover {
+        color: @primary-color;
+      }
+
+      &-active {
+        color: @primary-color;
+      }
+    }
+  }
+}
