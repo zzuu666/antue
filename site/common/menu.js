@@ -1,10 +1,5 @@
 const menu = {
-  items: [
-    // {
-    //   title: 'Ant Design of Vue',
-    //   route: ''
-    // }
-  ],
+  items: [],
   submenu: [
     {
       title: '参与贡献',
@@ -47,10 +42,6 @@ const menu = {
               title: 'Button 按钮',
               route: 'compButtonIndexZh'
             }
-            // {
-            //   title: 'Icon 按钮',
-            //   route: 'componentsIconZh'
-            // }
           ]
         },
         {
@@ -63,6 +54,10 @@ const menu = {
             {
               title: 'Layout 布局',
               route: 'compLayoutIndexZh'
+            },
+            {
+              title: 'Divider 分割线',
+              route: 'compDividerIndexZh'
             }
           ]
         },
@@ -96,48 +91,31 @@ const menu = {
           ]
         },
         {
-          title: 'Data Display',
-          items: [
-            {
-              title: 'Table 表格',
-              route: 'compTableIndexZh'
-            },
-            {
-              title: 'Avatar 头像',
-              route: 'compAvatarIndexZh'
-            },
-            {
-              title: 'Badge 徽标数',
-              route: 'compBadgeIndexZh'
-            },
-            {
-              title: 'Card 卡片',
-              route: 'compCardIndexZh'
-            },
-            {
-              title: 'Tabs 标签页',
-              route: 'compTabsIndexZh'
-            },
-            {
-              title: 'Tooltip 文字提示',
-              route: 'compTooltipIndexZh'
-            },
-            {
-              title: 'Popover 气泡卡片',
-              route: 'compPopoverIndexZh'
-            },
-            {
-              title: 'Timeline 时间轴',
-              route: 'compTimelineIndexZh'
-            }
-          ]
-        },
-        {
           title: 'Data Entry',
           items: [
             {
+              title: 'AutoComplete 自动完成',
+              route: 'compAutoCompleteIndexZh'
+            },
+            {
+              title: 'Cascader 级联选择',
+              route: 'compCascaderIndexZh'
+            },
+            {
+              title: 'DatePicker 日期选择框',
+              route: 'compDatePickerIndexZh'
+            },
+            {
+              title: 'Form 表单',
+              route: 'compFormIndexZh'
+            },
+            {
               title: 'Input 输入框',
               route: 'compInputIndexZh'
+            },
+            {
+              title: 'InputNumber 数字输入框',
+              route: 'compInputNumberIndexZh'
             },
             {
               title: 'Rate 评分',
@@ -148,6 +126,14 @@ const menu = {
               route: 'compRadioIndexZh'
             },
             {
+              title: 'Select 选择器',
+              route: 'compSelectIndexZh'
+            },
+            {
+              title: 'Slider 滑动输入条',
+              route: 'compSliderIndexZh'
+            },
+            {
               title: 'Switch 开关',
               route: 'compSwitchIndexZh'
             },
@@ -156,8 +142,73 @@ const menu = {
               route: 'compTimepickerIndexZh'
             },
             {
-              title: 'Select 选择器',
-              route: 'compSelectIndexZh'
+              title: 'Transfer 穿梭框',
+              route: 'compTransferIndexZh'
+            },
+            {
+              title: 'TreeSelect 树选择',
+              route: 'compTreeSelectIndexZh'
+            },
+            {
+              title: 'Upload 上传',
+              route: 'compUploadIndexZh'
+            }
+          ]
+        },
+        {
+          title: 'Data Display',
+          items: [
+            {
+              title: 'Avatar 头像',
+              route: 'compAvatarIndexZh'
+            },
+            {
+              title: 'Badge 徽标数',
+              route: 'compBadgeIndexZh'
+            },
+            {
+              title: 'Calendar 日历',
+              route: 'compCalendarIndexZh'
+            },
+            {
+              title: 'Card 卡片',
+              route: 'compCardIndexZh'
+            },
+            {
+              title: 'Carousel 走马灯',
+              route: 'compCarouselIndexZh'
+            },
+            {
+              title: 'Collapse 折叠面板',
+              route: 'compCollapseIndexZh'
+            },
+            {
+              title: 'List 列表',
+              route: 'compListIndexZh'
+            },
+            {
+              title: 'Popover 气泡卡片',
+              route: 'compPopoverIndexZh'
+            },
+            {
+              title: 'Table 表格',
+              route: 'compTableIndexZh'
+            },
+            {
+              title: 'Tabs 标签页',
+              route: 'compTabsIndexZh'
+            },
+            {
+              title: 'Timeline 时间轴',
+              route: 'compTimelineIndexZh'
+            },
+            {
+              title: 'Tooltip 文字提示',
+              route: 'compTooltipIndexZh'
+            },
+            {
+              title: 'Tree 树形控件',
+              route: 'compTreeIndexZh'
             }
           ]
         },
@@ -165,35 +216,46 @@ const menu = {
           title: 'Feedback',
           items: [
             {
+              title: 'Alert 警告提示',
+              route: 'compAlertIndexZh'
+            },
+            {
+              title: 'Drawer 抽屉',
+              route: 'compDrawerIndexZh'
+            },
+            {
               title: 'Message 全局提示',
               route: 'compMessageIndexZh'
+            },
+            {
+              title: 'Modal 对话框',
+              route: 'compModalIndexZh'
             },
             {
               title: 'Notification 通知提醒框',
               route: 'compNotificationIndexZh'
             },
             {
-              title: 'Progress 进度条',
-              route: 'compProgressIndexZh'
-            },
-            {
-
               title: 'Popconfirm 气泡确认框',
               route: 'compPopconfirmIndexZh'
             },
             {
-              title: 'Alert 警告提示',
-              route: 'compAlertIndexZh'
+              title: 'Progress 进度条',
+              route: 'compProgressIndexZh'
             },
             {
-              title: 'Modal 对话框',
-              route: 'compModalIndexZh'
+              title: 'Spin 加载中',
+              route: 'compSpinIndexZh'
             }
           ]
         },
         {
           title: 'Other',
           items: [
+            {
+              title: 'Anchor 锚点',
+              route: 'compAnchorIndexZh'
+            },
             {
               title: 'BackTop 回到顶部',
               route: 'compBacktopIndexZh'
