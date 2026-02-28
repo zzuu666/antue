@@ -76,6 +76,10 @@ export default {
             {
               title: 'Layout 布局',
               route: 'layout'
+            },
+            {
+              title: 'Divider 分割线',
+              route: 'divider'
             }
           ]
         },
@@ -138,6 +142,42 @@ export default {
             {
               title: 'Select 选择器',
               route: 'select'
+            },
+            {
+              title: 'InputNumber 数字输入框',
+              route: 'input-number'
+            },
+            {
+              title: 'Slider 滑动输入条',
+              route: 'slider'
+            },
+            {
+              title: 'AutoComplete 自动完成',
+              route: 'auto-complete'
+            },
+            {
+              title: 'Cascader 级联选择',
+              route: 'cascader'
+            },
+            {
+              title: 'Form 表单',
+              route: 'form'
+            },
+            {
+              title: 'Transfer 穿梭框',
+              route: 'transfer'
+            },
+            {
+              title: 'TreeSelect 树选择',
+              route: 'tree-select'
+            },
+            {
+              title: 'Upload 上传',
+              route: 'upload'
+            },
+            {
+              title: 'DatePicker 日期选择框',
+              route: 'date-picker'
             }
           ]
         },
@@ -179,6 +219,26 @@ export default {
             {
               title: 'Timeline 时间轴',
               route: 'timeline'
+            },
+            {
+              title: 'Collapse 折叠面板',
+              route: 'collapse'
+            },
+            {
+              title: 'Carousel 走马灯',
+              route: 'carousel'
+            },
+            {
+              title: 'List 列表',
+              route: 'list'
+            },
+            {
+              title: 'Tree 树形控件',
+              route: 'tree'
+            },
+            {
+              title: 'Calendar 日历',
+              route: 'calendar'
             }
           ]
         },
@@ -204,6 +264,14 @@ export default {
             {
               title: 'Modal 对话框',
               route: 'modal'
+            },
+            {
+              title: 'Spin 加载中',
+              route: 'spin'
+            },
+            {
+              title: 'Drawer 抽屉',
+              route: 'drawer'
             }
           ]
         },
@@ -222,6 +290,10 @@ export default {
             {
               title: 'BackTop 回到顶部',
               route: 'backtop'
+            },
+            {
+              title: 'Anchor 锚点',
+              route: 'anchor'
             }
           ]
         }
