@@ -134,6 +134,10 @@ export default {
             {
               title: 'TimePicker 时间选择框',
               route: 'timepicker'
+            },
+            {
+              title: 'Select 选择器',
+              route: 'select'
             }
           ]
         },
@@ -192,6 +196,14 @@ export default {
             {
               title: 'Popconfirm 气泡确认',
               route: 'popconfirm'
+            },
+            {
+              title: 'Alert 警告提示',
+              route: 'alert'
+            },
+            {
+              title: 'Modal 对话框',
+              route: 'modal'
             }
           ]
         },

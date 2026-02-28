@@ -30,6 +30,9 @@ import TimePicker from './timepicker'
 import BackTop from './back-top'
 import Layout from './layout'
 import Table from './table'
+import Alert from './alert'
+import Select from './select'
+import Modal from './modal'
 
 Vue.use(Router)
 
@@ -154,6 +157,18 @@ let router = new Router({
     {
       path: '/table',
       component: Table
+    },
+    {
+      path: '/alert',
+      component: Alert
+    },
+    {
+      path: '/select',
+      component: Select
+    },
+    {
+      path: '/modal',
+      component: Modal
     }
   ]
 })

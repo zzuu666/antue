@@ -154,6 +154,10 @@ const menu = {
             {
               title: 'TimePicker 时间选择框',
               route: 'compTimepickerIndexZh'
+            },
+            {
+              title: 'Select 选择器',
+              route: 'compSelectIndexZh'
             }
           ]
         },
@@ -176,6 +180,14 @@ const menu = {
 
               title: 'Popconfirm 气泡确认框',
               route: 'compPopconfirmIndexZh'
+            },
+            {
+              title: 'Alert 警告提示',
+              route: 'compAlertIndexZh'
+            },
+            {
+              title: 'Modal 对话框',
+              route: 'compModalIndexZh'
             }
           ]
         },

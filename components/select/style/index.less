@@ -1,0 +1,279 @@
+@import "../../style/themes/default";
+@import "../../style/mixins/index";
+
+@select-prefix-cls: ~"@{ant-prefix}-select";
+
+.@{select-prefix-cls} {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  font-size: @font-size-base;
+  color: @text-color;
+  box-sizing: border-box;
+
+  &-selection {
+    position: relative;
+    display: block;
+    background-color: @component-background;
+    border: @border-width-base @border-style-base @border-color-base;
+    border-radius: @border-radius-base;
+    outline: none;
+    cursor: pointer;
+    transition: all .3s @ease-in-out;
+    user-select: none;
+
+    &:hover {
+      border-color: @primary-color;
+    }
+
+    &--single {
+      height: @input-height-base;
+
+      .@{select-prefix-cls}-selection__rendered {
+        line-height: @input-height-base - 2px;
+        padding: 0 30px 0 @input-padding-horizontal;
+      }
+    }
+
+    &--multiple {
+      min-height: @input-height-base;
+      padding-bottom: 3px;
+
+      .@{select-prefix-cls}-selection__rendered {
+        padding: 0 30px 0 @input-padding-horizontal;
+        line-height: @input-height-base - 2px;
+      }
+    }
+
+    &__rendered {
+      display: block;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      position: relative;
+    }
+
+    &__placeholder {
+      color: @input-placeholder-color;
+    }
+
+    &-selected-value {
+      float: left;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      max-width: 100%;
+    }
+
+    &__choice {
+      display: inline-block;
+      background-color: @background-color-base;
+      border: 1px solid @border-color-split;
+      border-radius: @border-radius-sm;
+      padding: 0 20px 0 8px;
+      margin-right: 4px;
+      margin-top: 3px;
+      max-width: 99%;
+      position: relative;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      transition: padding .3s @ease-in-out;
+      height: 22px;
+      line-height: 20px;
+      font-size: @font-size-base;
+
+      &__content {
+        display: inline-block;
+        max-width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+
+      &__remove {
+        position: absolute;
+        right: 4px;
+        top: 0;
+        color: @text-color-secondary;
+        line-height: inherit;
+        cursor: pointer;
+        font-size: 10px;
+        font-weight: bold;
+        display: inline-block;
+
+        &:hover {
+          color: @text-color;
+        }
+      }
+    }
+
+    &__clear {
+      position: absolute;
+      right: 28px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: @disabled-color;
+      font-size: 12px;
+      cursor: pointer;
+      display: none;
+
+      &:hover {
+        color: @text-color-secondary;
+      }
+    }
+  }
+
+  &:hover &-selection__clear {
+    display: inline-block;
+  }
+
+  &-arrow {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: @disabled-color;
+    font-size: 12px;
+    line-height: 1;
+    transition: transform .3s;
+  }
+
+  &-open &-arrow {
+    transform: translateY(-50%) rotate(180deg);
+  }
+
+  &-disabled {
+    .@{select-prefix-cls}-selection {
+      background: @disabled-bg;
+      color: @disabled-color;
+      cursor: not-allowed;
+      opacity: 1;
+
+      &:hover {
+        border-color: @border-color-base;
+      }
+    }
+  }
+
+  &-lg {
+    .@{select-prefix-cls}-selection--single {
+      height: @input-height-lg;
+
+      .@{select-prefix-cls}-selection__rendered {
+        line-height: @input-height-lg - 2px;
+      }
+    }
+  }
+
+  &-sm {
+    .@{select-prefix-cls}-selection--single {
+      height: @input-height-sm;
+
+      .@{select-prefix-cls}-selection__rendered {
+        line-height: @input-height-sm - 2px;
+      }
+    }
+  }
+
+  &-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: @zindex-dropdown;
+    background-color: @component-background;
+    border-radius: @border-radius-base;
+    box-shadow: @box-shadow-base;
+    margin-top: 4px;
+    box-sizing: border-box;
+    overflow: hidden;
+
+    &-search {
+      padding: 8px;
+      display: block;
+
+      .@{select-prefix-cls}-search__field {
+        width: 100%;
+        padding: 4px 7px;
+        border: @border-width-base @border-style-base @border-color-base;
+        border-radius: @border-radius-base;
+        outline: none;
+        font-size: @font-size-base;
+
+        &:focus {
+          border-color: @primary-color;
+        }
+      }
+    }
+
+    &-menu {
+      max-height: 250px;
+      overflow-y: auto;
+      list-style: none;
+      margin: 0;
+      padding: 4px 0;
+
+      &-item {
+        position: relative;
+        display: block;
+        padding: 5px 12px;
+        line-height: 22px;
+        font-weight: normal;
+        color: @text-color;
+        white-space: nowrap;
+        cursor: pointer;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: background .3s ease;
+
+        &:hover {
+          background-color: @item-hover-bg;
+        }
+
+        &-selected {
+          font-weight: 600;
+          background-color: @item-active-bg;
+        }
+
+        &-active {
+          background-color: @item-active-bg;
+        }
+
+        &-disabled {
+          color: @disabled-color;
+          cursor: not-allowed;
+
+          &:hover {
+            background-color: transparent;
+          }
+        }
+      }
+    }
+  }
+
+  &-search--inline &-search__field {
+    border: 0;
+    outline: none;
+    font-size: @font-size-base;
+    width: 0.75em;
+    max-width: 100%;
+  }
+
+  &-dropdown-slide-up-enter-active {
+    animation: antSelectDropdownSlideUp .3s;
+  }
+
+  &-dropdown-slide-up-leave-active {
+    animation: antSelectDropdownSlideDown .3s;
+  }
+}
+
+@keyframes antSelectDropdownSlideUp {
+  from { opacity: 0; transform: scaleY(0.8); transform-origin: 0% 0%; }
+  to   { opacity: 1; transform: scaleY(1);   transform-origin: 0% 0%; }
+}
+
+@keyframes antSelectDropdownSlideDown {
+  from { opacity: 1; transform: scaleY(1);   transform-origin: 0% 0%; }
+  to   { opacity: 0; transform: scaleY(0.8); transform-origin: 0% 0%; }
+}

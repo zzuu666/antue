@@ -1,0 +1,144 @@
+@import "../../style/themes/default";
+@import "../../style/mixins/index";
+
+@modal-prefix-cls: ~"@{ant-prefix}-modal";
+
+.@{modal-prefix-cls} {
+  position: relative;
+  width: auto;
+  margin: 0 auto;
+  top: 100px;
+  padding-bottom: 24px;
+
+  &-centered {
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+  }
+
+  &-wrap {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: @zindex-modal;
+    overflow: auto;
+    outline: 0;
+  }
+
+  &-mask {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: @zindex-modal-mask;
+    background-color: @modal-mask-bg;
+    height: 100%;
+  }
+
+  &-mask-enter-active {
+    animation: antModalMaskIn .3s;
+  }
+  &-mask-leave-active {
+    animation: antModalMaskOut .3s;
+  }
+
+  &-enter-active {
+    animation: antModalIn .3s;
+  }
+  &-leave-active {
+    animation: antModalOut .3s;
+  }
+
+  &-content {
+    position: relative;
+    background-color: @component-background;
+    background-clip: padding-box;
+    border: 0;
+    border-radius: @border-radius-base;
+    box-shadow: @shadow-2;
+  }
+
+  &-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    outline: 0;
+    cursor: pointer;
+    line-height: 1;
+    color: @text-color-secondary;
+    transition: color .3s;
+
+    &:hover {
+      color: @text-color;
+    }
+
+    &-x {
+      display: block;
+      width: 56px;
+      height: 56px;
+      line-height: 56px;
+      text-align: center;
+      font-size: @font-size-lg;
+      font-style: normal;
+    }
+  }
+
+  &-header {
+    padding: 16px 24px;
+    border-radius: @border-radius-base @border-radius-base 0 0;
+    background: @component-background;
+    color: @text-color;
+    border-bottom: @border-width-base @border-style-base @border-color-split;
+  }
+
+  &-title {
+    margin: 0;
+    font-size: @font-size-lg;
+    line-height: 22px;
+    font-weight: 500;
+    color: @heading-color;
+  }
+
+  &-body {
+    padding: 24px;
+    font-size: @font-size-base;
+    line-height: 1.5;
+  }
+
+  &-footer {
+    padding: 10px 16px;
+    text-align: right;
+    border-top: @border-width-base @border-style-base @border-color-split;
+    border-radius: 0 0 @border-radius-base @border-radius-base;
+
+    .ant-btn + .ant-btn {
+      margin-left: 8px;
+    }
+  }
+}
+
+@keyframes antModalIn {
+  from { opacity: 0; transform: scale(0.5); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes antModalOut {
+  from { opacity: 1; transform: scale(1); }
+  to   { opacity: 0; transform: scale(0.5); }
+}
+@keyframes antModalMaskIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes antModalMaskOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
