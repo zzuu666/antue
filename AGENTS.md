@@ -1,26 +1,19 @@
-# Antue
-
-Vue 2.x UI component library implementing Ant Design specification.
-
 ## Cursor Cloud specific instructions
 
-### Runtime requirement
-
-This project requires **Node.js 10.x** (installed via `nvm install 10.24.1 && nvm use 10.24.1`). Node 12+ and especially Node 14+ will break the build due to incompatible Webpack 3 / babel-core 6 / jest 21 dependencies.
+This is an **Antue** Vue 2.x component library (Ant Design for Vue). Node 10 is required (the project uses webpack 3 and babel 6).
 
 ### Key commands
+- **Lint**: `npm run lint` — runs eslint on `components/` only
+- **Test**: `npm test` — runs Jest
+- **Build**: `npm run build` — production webpack build
+- **Dev server**: `npm run dev` — starts webpack-dev-server for the examples app on port 8080
 
-All commands are defined in `package.json`:
+### Project structure
+- `components/` — source for all UI components
+- `examples/` — demo app with Vue Router; `examples/routers/index.js` registers routes, `examples/App.vue` has the sidebar menu
+- `build/` — webpack configs (dev, site, dist)
 
-| Command | Purpose |
-|---|---|
-| `npm run lint` | ESLint on `components/` |
-| `npm test` | Jest unit tests |
-| `npm run build` | Production build (Webpack 3) |
-| `npm run dev` | Dev server with component examples (port 8080) |
-| `npm run site` | Documentation site dev server |
-
-### Dev server notes
-
-- `npm run dev` uses `--open` flag which may fail headlessly; use `npx cross-env NODE_ENV=development webpack-dev-server --config ./build/webpack.dev.config.js --host 0.0.0.0 --port 8080 --hot` for cloud environments to avoid auto-opening a browser.
-- No backend services, databases, or Docker containers are required.
+### Gotchas
+- The eslint config extends `standard`, which enforces `object-property-newline` in `.vue` `components: {}` blocks. Each property must be on its own line.
+- `node_modules` is pre-installed; `npm install` is sufficient to refresh after dependency changes.
+- The `@` alias in webpack resolves to `components/`, so imports like `import Foo from '@/foo'` map to `components/foo/index.js`.
