@@ -1,0 +1,96 @@
+@import "../../style/themes/default";
+@import "../../style/mixins/index";
+
+@carousel-prefix-cls: ~"@{ant-prefix}-carousel";
+
+.@{carousel-prefix-cls} {
+  position: relative;
+  overflow: hidden;
+  font-size: @font-size-base;
+
+  .@{carousel-prefix-cls}-slick-list {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .@{carousel-prefix-cls}-slick-track {
+    position: relative;
+    width: 100%;
+  }
+
+  &-vertical {
+    .@{carousel-prefix-cls}-slick-track {
+      flex-direction: column;
+    }
+  }
+
+  .slick-dots {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      margin: 0 4px;
+      cursor: pointer;
+
+      button {
+        display: block;
+        width: 16px;
+        height: 3px;
+        padding: 0;
+        border: 0;
+        background: @text-color;
+        opacity: 0.3;
+        outline: none;
+        font-size: 0;
+        cursor: pointer;
+        transition: all 0.5s;
+        border-radius: 1px;
+      }
+
+      &.slick-active button {
+        width: 24px;
+        opacity: 1;
+        background: @primary-color;
+      }
+    }
+
+    &-bottom {
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    &-top {
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    &-left {
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      flex-direction: column;
+
+      li {
+        margin: 4px 0;
+      }
+    }
+
+    &-right {
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      flex-direction: column;
+
+      li {
+        margin: 4px 0;
+      }
+    }
+  }
+}
