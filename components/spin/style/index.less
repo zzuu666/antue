@@ -1,0 +1,166 @@
+@import "../../style/themes/default";
+@import "../../style/mixins/index";
+
+@spin-prefix-cls: ~"@{ant-prefix}-spin";
+
+.@{spin-prefix-cls} {
+  color: @primary-color;
+  vertical-align: middle;
+  text-align: center;
+  opacity: 0;
+  position: absolute;
+  transition: transform .3s @ease-in-out-circ;
+  font-size: @font-size-base;
+
+  &-spinning {
+    opacity: 1;
+    position: static;
+    display: inline-block;
+  }
+
+  &-nested-loading {
+    position: relative;
+
+    > div > .@{spin-prefix-cls} {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      z-index: 4;
+      max-height: 320px;
+    }
+
+    > div > .@{spin-prefix-cls} .@{spin-prefix-cls}-dot {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -(@spin-dot-size / 2);
+    }
+
+    > div > .@{spin-prefix-cls} .@{spin-prefix-cls}-text {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      padding-top: (@spin-dot-size / 2) + 2px;
+      text-shadow: 0 1px 2px #fff;
+    }
+
+    > div > .@{spin-prefix-cls}.@{spin-prefix-cls}-show-text .@{spin-prefix-cls}-dot {
+      margin-top: -(@spin-dot-size / 2) - 10px;
+    }
+  }
+
+  &-sm &-dot {
+    font-size: @spin-dot-size-sm;
+    width: @spin-dot-size-sm;
+    height: @spin-dot-size-sm;
+
+    i {
+      width: (@spin-dot-size-sm - 4px) / 2;
+      height: (@spin-dot-size-sm - 4px) / 2;
+    }
+  }
+
+  &-lg &-dot {
+    font-size: @spin-dot-size-lg;
+    width: @spin-dot-size-lg;
+    height: @spin-dot-size-lg;
+
+    i {
+      width: (@spin-dot-size-lg - 4px) / 2;
+      height: (@spin-dot-size-lg - 4px) / 2;
+    }
+  }
+
+  &-dot {
+    position: relative;
+    display: inline-block;
+    font-size: @spin-dot-size;
+    width: @spin-dot-size;
+    height: @spin-dot-size;
+    animation: antRotate 1.2s infinite linear;
+
+    i {
+      width: (@spin-dot-size - 4px) / 2;
+      height: (@spin-dot-size - 4px) / 2;
+      border-radius: 100%;
+      background-color: @primary-color;
+      transform: scale(0.75);
+      display: block;
+      position: absolute;
+      opacity: 0.3;
+      animation: antSpinMove 1s infinite linear alternate;
+      transform-origin: 50% 50%;
+
+      &:nth-child(1) {
+        left: 0;
+        top: 0;
+      }
+
+      &:nth-child(2) {
+        right: 0;
+        top: 0;
+        animation-delay: 0.4s;
+      }
+
+      &:nth-child(3) {
+        right: 0;
+        bottom: 0;
+        animation-delay: 0.8s;
+      }
+
+      &:nth-child(4) {
+        left: 0;
+        bottom: 0;
+        animation-delay: 1.2s;
+      }
+    }
+  }
+
+  &-text {
+    font-size: @font-size-base;
+    padding-top: 6px;
+    display: block;
+  }
+
+  &-container {
+    position: relative;
+    transition: opacity .3s;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: #fff;
+      opacity: 0;
+      transition: all .3s;
+      pointer-events: none;
+    }
+  }
+
+  &-blur {
+    pointer-events: none;
+    user-select: none;
+    overflow: hidden;
+    opacity: 0.5;
+
+    &::after {
+      opacity: 0.4;
+      pointer-events: auto;
+    }
+  }
+}
+
+@keyframes antSpinMove {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes antRotate {
+  to {
+    transform: rotate(405deg);
+  }
+}
