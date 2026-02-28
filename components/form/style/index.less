@@ -1,0 +1,179 @@
+@import "../../style/themes/default";
+@import "../../style/mixins/index";
+
+@form-prefix-cls: ~"@{ant-prefix}-form";
+@form-item-prefix-cls: ~"@{form-prefix-cls}-item";
+
+// Form layout
+.@{form-prefix-cls} {
+  font-family: @font-family;
+  font-size: @font-size-base;
+  color: @text-color;
+}
+
+// Horizontal layout: label and input side by side
+.@{form-prefix-cls}-horizontal {
+  .@{form-item-prefix-cls} {
+    display: flex;
+    margin-bottom: @form-item-margin-bottom;
+  }
+
+  .@{form-item-prefix-cls}-label {
+    flex: none;
+    text-align: right;
+    padding-right: 8px;
+    line-height: @input-height-base;
+  }
+
+  .@{form-item-prefix-cls}-control-wrapper {
+    flex: 1;
+  }
+}
+
+// Vertical layout: label on top
+.@{form-prefix-cls}-vertical {
+  .@{form-item-prefix-cls} {
+    display: block;
+    margin-bottom: @form-item-margin-bottom;
+  }
+
+  .@{form-item-prefix-cls}-label {
+    display: block;
+    padding: @form-vertical-label-padding;
+    margin: @form-vertical-label-margin;
+    text-align: left;
+    line-height: @line-height-base;
+  }
+}
+
+// Inline layout: all items in one row
+.@{form-prefix-cls}-inline {
+  .@{form-item-prefix-cls} {
+    display: inline-block;
+    margin-right: 16px;
+    margin-bottom: @form-item-margin-bottom;
+  }
+
+  .@{form-item-prefix-cls}-label {
+    display: inline-block;
+    padding-right: 8px;
+    line-height: @input-height-base;
+  }
+
+  .@{form-item-prefix-cls}-control-wrapper {
+    display: inline-block;
+    vertical-align: top;
+  }
+}
+
+// Form item
+.@{form-item-prefix-cls} {
+  margin-bottom: @form-item-margin-bottom;
+  font-size: @font-size-base;
+  line-height: @line-height-base;
+
+  &-label {
+    color: @label-color;
+
+    > label {
+      color: @label-color;
+
+      &::after when (@form-item-trailing-colon = true) {
+        content: ':';
+        margin: 0 8px 0 2px;
+        position: relative;
+        top: -0.5px;
+      }
+    }
+  }
+
+  &-required {
+    > label::before,
+    &::before {
+      display: inline-block;
+      margin-right: 4px;
+      content: '*';
+      font-family: SimSun;
+      font-size: @font-size-base;
+      color: @label-required-color;
+      line-height: 1;
+    }
+  }
+
+  &-control {
+    position: relative;
+    line-height: @input-height-base;
+  }
+
+  &-explain {
+    color: @error-color;
+    font-size: @font-size-base;
+    line-height: 1.5;
+    margin-top: 2px;
+  }
+
+  &-extra {
+    color: @text-color-secondary;
+    font-size: @font-size-base;
+    line-height: @line-height-base;
+    margin-top: 4px;
+  }
+
+  &-has-error {
+    .@{form-item-prefix-cls}-explain {
+      color: @error-color;
+    }
+
+    .@{ant-prefix}-input {
+      border-color: @error-color;
+
+      &:focus {
+        border-color: @error-color;
+        box-shadow: 0 0 0 2px fade(@error-color, 20%);
+      }
+    }
+  }
+
+  &-has-success {
+    .@{form-item-prefix-cls}-explain {
+      color: @success-color;
+    }
+  }
+
+  &-has-warning {
+    .@{form-item-prefix-cls}-explain {
+      color: @warning-color;
+    }
+
+    .@{ant-prefix}-input {
+      border-color: @warning-color;
+
+      &:focus {
+        border-color: @warning-color;
+        box-shadow: 0 0 0 2px fade(@warning-color, 20%);
+      }
+    }
+  }
+
+  &-is-validating {
+    .@{form-item-prefix-cls}-control::after {
+      content: '';
+      display: inline-block;
+      animation: loadingCircle 1s infinite linear;
+    }
+  }
+
+  &-with-help {
+    margin-bottom: @form-item-margin-bottom - 2px;
+  }
+}
+
+// Hide required mark
+.@{form-prefix-cls}-hide-required-mark {
+  .@{form-item-prefix-cls}-required {
+    > label::before,
+    &::before {
+      display: none;
+    }
+  }
+}

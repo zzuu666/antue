@@ -21,3 +21,5 @@ export { default as Alert } from './alert'
 export { default as Select } from './select'
 
 export { default as Modal } from './modal'
+
+export { default as Form } from './form'
