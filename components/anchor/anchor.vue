@@ -86,7 +86,6 @@
     },
     mounted () {
       this.handleScroll = () => {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop
         let currentLink = ''
         this.links.forEach(href => {
           const target = document.querySelector(href)
