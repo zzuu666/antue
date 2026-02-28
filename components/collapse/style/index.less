@@ -1,0 +1,83 @@
+@import "../../style/themes/default";
+@import "../../style/mixins/index";
+
+@collapse-prefix-cls: ~"@{ant-prefix}-collapse";
+
+.@{collapse-prefix-cls} {
+  background-color: @background-color-base;
+  border: @border-width-base @border-style-base @border-color-base;
+  border-bottom: 0;
+  border-radius: @border-radius-base;
+  font-size: @font-size-base;
+  line-height: @line-height-base;
+
+  &-borderless {
+    background-color: transparent;
+    border: 0;
+  }
+
+  &-item {
+    border-bottom: @border-width-base @border-style-base @border-color-split;
+
+    &-active {
+      > .@{collapse-prefix-cls}-item-header {
+        .@{collapse-prefix-cls}-arrow {
+          transform: rotate(90deg);
+        }
+      }
+    }
+
+    &-disabled {
+      > .@{collapse-prefix-cls}-item-header {
+        cursor: not-allowed;
+        color: @disabled-color;
+      }
+    }
+  }
+
+  &-item-header {
+    position: relative;
+    padding: 12px 16px 12px 40px;
+    color: @heading-color;
+    cursor: pointer;
+    line-height: 22px;
+    transition: all @animation-duration-base @ease-in-out;
+
+    .@{collapse-prefix-cls}-arrow {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      font-size: 12px;
+      display: inline-block;
+      transition: transform @animation-duration-base @ease-in-out;
+    }
+  }
+
+  &-content {
+    overflow: hidden;
+    color: @text-color;
+    background-color: @component-background;
+    border-top: @border-width-base @border-style-base @border-color-split;
+
+    &-box {
+      padding: 16px;
+    }
+  }
+
+  &-content-enter-active,
+  &-content-leave-active {
+    transition: all @animation-duration-slow @ease-in-out;
+  }
+
+  &-content-enter,
+  &-content-leave-to {
+    opacity: 0;
+    max-height: 0;
+  }
+
+  &-content-enter-to,
+  &-content-leave {
+    opacity: 1;
+    max-height: 500px;
+  }
+}
