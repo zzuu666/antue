@@ -1,0 +1,123 @@
+@import "../../style/themes/default";
+@import "../../style/mixins/index";
+
+@list-prefix-cls: ~"@{ant-prefix}-list";
+
+.@{list-prefix-cls} {
+  position: relative;
+  font-size: @font-size-base;
+  color: @text-color;
+  line-height: 1.5;
+
+  &-items {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+
+    &-content {
+      flex: 1;
+    }
+
+    &-extra {
+      margin-left: 40px;
+    }
+
+    &-meta {
+      display: flex;
+      align-items: flex-start;
+      font-size: 0;
+
+      &-avatar {
+        margin-right: 16px;
+
+        img {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+        }
+      }
+
+      &-content {
+        flex: 1 0;
+      }
+
+      &-title {
+        margin-bottom: 4px;
+        color: @text-color;
+        font-size: @font-size-base;
+        line-height: 22px;
+      }
+
+      &-description {
+        color: @text-color-secondary;
+        font-size: @font-size-base;
+        line-height: 22px;
+      }
+    }
+  }
+
+  &-bordered {
+    border: @border-width-base @border-style-base @border-color-split;
+    border-radius: @border-radius-base;
+
+    .@{list-prefix-cls}-header,
+    .@{list-prefix-cls}-footer,
+    .@{list-prefix-cls}-item {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+  }
+
+  &-split {
+    .@{list-prefix-cls}-item {
+      border-bottom: @border-width-base @border-style-base @border-color-split;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+    .@{list-prefix-cls}-header {
+      border-bottom: @border-width-base @border-style-base @border-color-split;
+    }
+
+    .@{list-prefix-cls}-footer {
+      border-top: @border-width-base @border-style-base @border-color-split;
+    }
+  }
+
+  &-header,
+  &-footer {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  &-lg {
+    .@{list-prefix-cls}-item {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+  }
+
+  &-sm {
+    .@{list-prefix-cls}-item {
+      padding-top: 8px;
+      padding-bottom: 8px;
+    }
+  }
+
+  &-loading {
+    text-align: center;
+  }
+
+  &-spin {
+    text-align: center;
+    padding: 12px;
+  }
+}
