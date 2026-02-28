@@ -1,0 +1,123 @@
+@import "../../style/themes/default";
+@import "../../style/mixins/index";
+
+@transfer-prefix-cls: ~"@{ant-prefix}-transfer";
+
+.@{transfer-prefix-cls} {
+  display: flex;
+  align-items: stretch;
+  font-size: @font-size-base;
+  color: @text-color;
+  box-sizing: border-box;
+
+  &-list {
+    display: inline-block;
+    width: 180px;
+    border: @border-width-base @border-style-base @border-color-base;
+    border-radius: @border-radius-base;
+    vertical-align: middle;
+
+    &-header {
+      padding: 8px 12px;
+      border-bottom: @border-width-base @border-style-base @border-color-split;
+      background: @background-color-base;
+      overflow: hidden;
+
+      &-selected {
+        float: left;
+        margin-left: 4px;
+        color: @text-color-secondary;
+      }
+
+      &-title {
+        float: right;
+        color: @text-color;
+      }
+    }
+
+    &-body-search-wrapper {
+      padding: 8px;
+    }
+
+    &-search {
+      width: 100%;
+      padding: 4px 7px;
+      border: @border-width-base @border-style-base @border-color-base;
+      border-radius: @border-radius-base;
+      outline: none;
+      font-size: @font-size-base;
+
+      &:focus {
+        border-color: @primary-color;
+      }
+    }
+
+    &-content {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      max-height: 200px;
+      overflow-y: auto;
+
+      &-item {
+        padding: 6px 12px;
+        transition: all .3s;
+        cursor: pointer;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+
+        &:hover {
+          background-color: @item-hover-bg;
+        }
+
+        &-disabled {
+          color: @disabled-color;
+          cursor: not-allowed;
+
+          &:hover {
+            background-color: transparent;
+          }
+        }
+
+        &-text {
+          margin-left: 8px;
+        }
+      }
+    }
+  }
+
+  &-operation {
+    display: inline-flex;
+    flex-direction: column;
+    align-self: center;
+    margin: 0 8px;
+    vertical-align: middle;
+
+    &-btn {
+      display: block;
+      margin: 4px 0;
+      border: @border-width-base @border-style-base @primary-color;
+      background-color: @primary-color;
+      color: #fff;
+      border-radius: @border-radius-base;
+      padding: 0 8px;
+      height: 24px;
+      line-height: 22px;
+      font-size: @font-size-base;
+      cursor: pointer;
+      outline: none;
+
+      &:hover {
+        opacity: 0.85;
+      }
+
+      &[disabled] {
+        background-color: @disabled-bg;
+        border-color: @border-color-base;
+        color: @disabled-color;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
