@@ -36,8 +36,13 @@
 
   export default {
     components: {
-      Container, ARow, ACol, CodeShow,
-      DemoBasic, DemoFooter, DemoCentered
+      Container,
+      ARow,
+      ACol,
+      CodeShow,
+      DemoBasic,
+      DemoFooter,
+      DemoCentered
     }
   }
 </script>
