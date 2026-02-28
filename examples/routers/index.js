@@ -33,6 +33,24 @@ import Table from './table'
 import Alert from './alert'
 import Select from './select'
 import Modal from './modal'
+import Spin from './spin'
+import Divider from './divider'
+import InputNumber from './input-number'
+import Collapse from './collapse'
+import Drawer from './drawer'
+import Slider from './slider'
+import Anchor from './anchor'
+import Form from './form'
+import List from './list'
+import Carousel from './carousel'
+import AutoComplete from './auto-complete'
+import Cascader from './cascader'
+import Transfer from './transfer'
+import Tree from './tree'
+import TreeSelect from './tree-select'
+import Upload from './upload'
+import DatePicker from './date-picker'
+import Calendar from './calendar'
 
 Vue.use(Router)
 
@@ -169,6 +187,78 @@ let router = new Router({
     {
       path: '/modal',
       component: Modal
+    },
+    {
+      path: '/spin',
+      component: Spin
+    },
+    {
+      path: '/divider',
+      component: Divider
+    },
+    {
+      path: '/input-number',
+      component: InputNumber
+    },
+    {
+      path: '/collapse',
+      component: Collapse
+    },
+    {
+      path: '/drawer',
+      component: Drawer
+    },
+    {
+      path: '/slider',
+      component: Slider
+    },
+    {
+      path: '/anchor',
+      component: Anchor
+    },
+    {
+      path: '/form',
+      component: Form
+    },
+    {
+      path: '/list',
+      component: List
+    },
+    {
+      path: '/carousel',
+      component: Carousel
+    },
+    {
+      path: '/auto-complete',
+      component: AutoComplete
+    },
+    {
+      path: '/cascader',
+      component: Cascader
+    },
+    {
+      path: '/transfer',
+      component: Transfer
+    },
+    {
+      path: '/tree',
+      component: Tree
+    },
+    {
+      path: '/tree-select',
+      component: TreeSelect
+    },
+    {
+      path: '/upload',
+      component: Upload
+    },
+    {
+      path: '/date-picker',
+      component: DatePicker
+    },
+    {
+      path: '/calendar',
+      component: Calendar
     }
   ]
 })
