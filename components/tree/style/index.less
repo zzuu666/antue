@@ -1,0 +1,137 @@
+@import "../../style/themes/default";
+@import "../../style/mixins/index";
+
+@tree-prefix-cls: ~"@{ant-prefix}-tree";
+
+.@{tree-prefix-cls} {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: @font-size-base;
+  color: @text-color;
+
+  li {
+    list-style: none;
+    margin: 0;
+    padding: 4px 0;
+    white-space: nowrap;
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0 0 0 18px;
+    }
+  }
+
+  &-switcher {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    cursor: pointer;
+    vertical-align: top;
+    color: @text-color-secondary;
+    transition: transform .3s;
+
+    &-noop {
+      cursor: default;
+    }
+
+    &_open {
+      color: @text-color-secondary;
+    }
+
+    &_close {
+      color: @text-color-secondary;
+    }
+  }
+
+  &-checkbox {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin: 4px 4px 0 2px;
+    border: @border-width-base @border-style-base @border-color-base;
+    border-radius: @border-radius-sm;
+    cursor: pointer;
+    vertical-align: top;
+    background-color: @component-background;
+    transition: all .3s;
+    position: relative;
+
+    &:hover {
+      border-color: @primary-color;
+    }
+
+    &-inner {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    &-checked {
+      background-color: @primary-color;
+      border-color: @primary-color;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 5px;
+        width: 4px;
+        height: 8px;
+        border: 2px solid #fff;
+        border-top: 0;
+        border-left: 0;
+        transform: rotate(45deg);
+      }
+    }
+
+    &-disabled {
+      background-color: @disabled-bg;
+      border-color: @border-color-base;
+      cursor: not-allowed;
+
+      &:hover {
+        border-color: @border-color-base;
+      }
+    }
+  }
+
+  &-node-content-wrapper {
+    display: inline-block;
+    padding: 0 4px;
+    height: 24px;
+    line-height: 24px;
+    border-radius: @border-radius-sm;
+    cursor: pointer;
+    vertical-align: top;
+    transition: all .3s;
+
+    &:hover {
+      background-color: @item-hover-bg;
+    }
+  }
+
+  &-node-selected {
+    background-color: @item-active-bg;
+  }
+
+  &-treenode-disabled {
+    > .@{tree-prefix-cls}-node-content-wrapper {
+      color: @disabled-color;
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+
+  &-child-tree {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 18px;
+  }
+}
