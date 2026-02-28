@@ -1,0 +1,105 @@
+@import "../../style/themes/default";
+@import "../../style/mixins/index";
+
+@tree-select-prefix-cls: ~"@{ant-prefix}-select";
+
+.@{tree-select-prefix-cls}-tree-dropdown {
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 4px 0;
+}
+
+.@{tree-select-prefix-cls}-tree-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.@{tree-select-prefix-cls}-tree-child-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 18px;
+}
+
+.@{tree-select-prefix-cls}-tree-node {
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.@{tree-select-prefix-cls}-tree-switcher {
+  display: inline-block;
+  width: 18px;
+  text-align: center;
+  cursor: pointer;
+  color: @text-color-secondary;
+  font-size: @font-size-base;
+  vertical-align: middle;
+}
+
+.@{tree-select-prefix-cls}-tree-checkbox {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+  vertical-align: middle;
+  cursor: pointer;
+
+  &-inner {
+    display: block;
+    width: 14px;
+    height: 14px;
+    border: @border-width-base @border-style-base @border-color-base;
+    border-radius: @border-radius-sm;
+    background-color: @component-background;
+    transition: all .3s;
+  }
+
+  &-checked &-inner {
+    background-color: @primary-color;
+    border-color: @primary-color;
+  }
+
+  &-disabled {
+    cursor: not-allowed;
+
+    .@{tree-select-prefix-cls}-tree-checkbox-inner {
+      background-color: @disabled-bg;
+    }
+  }
+}
+
+.@{tree-select-prefix-cls}-tree-node-title {
+  display: inline-block;
+  padding: 0 4px;
+  cursor: pointer;
+  border-radius: @border-radius-sm;
+  transition: all .3s;
+  vertical-align: middle;
+  color: @text-color;
+  font-size: @font-size-base;
+
+  &:hover {
+    background-color: @item-hover-bg;
+  }
+
+  &-selected {
+    background-color: @item-active-bg;
+    font-weight: 600;
+  }
+
+  &-disabled {
+    color: @disabled-color;
+    cursor: not-allowed;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}
+
+.@{tree-select-prefix-cls}-tree-node-disabled {
+  .@{tree-select-prefix-cls}-tree-node-title {
+    color: @disabled-color;
+    cursor: not-allowed;
+  }
+}
