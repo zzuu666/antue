@@ -1,0 +1,189 @@
+@import "../../style/themes/default";
+@import "../../style/mixins/index";
+
+@calendar-prefix-cls: ~"@{ant-prefix}-calendar";
+
+.@{calendar-prefix-cls}-picker {
+  position: relative;
+  display: inline-block;
+  font-size: @font-size-base;
+  color: @text-color;
+
+  &-input {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+
+    .ant-input {
+      cursor: pointer;
+    }
+  }
+
+  &-clear {
+    position: absolute;
+    right: 28px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: @disabled-color;
+    font-size: @font-size-base;
+    cursor: pointer;
+    display: none;
+    z-index: 1;
+
+    &:hover {
+      color: @text-color-secondary;
+    }
+  }
+
+  &:hover &-clear {
+    display: inline-block;
+  }
+
+  &-icon {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: @disabled-color;
+    font-size: @font-size-base;
+    line-height: 1;
+  }
+
+  &-disabled {
+    .ant-input {
+      background: @disabled-bg;
+      color: @disabled-color;
+      cursor: not-allowed;
+    }
+  }
+
+  &-lg .ant-input {
+    height: @input-height-lg;
+  }
+
+  &-sm .ant-input {
+    height: @input-height-sm;
+  }
+}
+
+.@{calendar-prefix-cls} {
+  position: relative;
+  font-size: @font-size-base;
+  line-height: @line-height-base;
+  color: @text-color;
+}
+
+.@{calendar-prefix-cls}-panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: @zindex-picker;
+  background-color: @component-background;
+  border-radius: @border-radius-base;
+  box-shadow: @box-shadow-base;
+  margin-top: 4px;
+  width: 280px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.@{calendar-prefix-cls}-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-bottom: @border-width-base @border-style-base @border-color-split;
+
+  a {
+    display: inline-block;
+    padding: 0 4px;
+    color: @text-color-secondary;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 24px;
+
+    &:hover {
+      color: @primary-color;
+    }
+  }
+}
+
+.@{calendar-prefix-cls}-ym-select {
+  flex: 1;
+  text-align: center;
+  font-weight: 500;
+}
+
+.@{calendar-prefix-cls}-body {
+  padding: 8px 12px;
+}
+
+.@{calendar-prefix-cls}-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+
+  th {
+    text-align: center;
+    color: @text-color-secondary;
+    font-weight: normal;
+    padding: 4px 0;
+    line-height: 18px;
+  }
+}
+
+.@{calendar-prefix-cls}-cell {
+  text-align: center;
+  padding: 2px 0;
+  cursor: pointer;
+
+  .@{calendar-prefix-cls}-date {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    border-radius: @border-radius-base;
+    transition: all .3s;
+  }
+
+  &:hover .@{calendar-prefix-cls}-date {
+    background-color: @item-hover-bg;
+  }
+
+  &-in-month {
+    color: @text-color;
+  }
+
+  &-out-month {
+    color: @disabled-color;
+  }
+
+  &-today .@{calendar-prefix-cls}-date {
+    border: @border-width-base @border-style-base @primary-color;
+    color: @primary-color;
+  }
+
+  &-selected .@{calendar-prefix-cls}-date {
+    background-color: @primary-color;
+    color: #fff;
+    border-color: @primary-color;
+  }
+}
+
+.@{calendar-prefix-cls}-slide-up-enter-active {
+  animation: antCalendarSlideUp .3s;
+}
+
+.@{calendar-prefix-cls}-slide-up-leave-active {
+  animation: antCalendarSlideDown .3s;
+}
+
+@keyframes antCalendarSlideUp {
+  from { opacity: 0; transform: scaleY(0.8); transform-origin: 0% 0%; }
+  to   { opacity: 1; transform: scaleY(1);   transform-origin: 0% 0%; }
+}
+
+@keyframes antCalendarSlideDown {
+  from { opacity: 1; transform: scaleY(1);   transform-origin: 0% 0%; }
+  to   { opacity: 0; transform: scaleY(0.8); transform-origin: 0% 0%; }
+}
