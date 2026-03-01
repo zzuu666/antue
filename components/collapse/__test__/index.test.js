@@ -1,5 +1,5 @@
 import ACollapse from '../index'
-import { creatVueVm, nextTick } from 'util.js'
+import { creatVueVm, nextTick, renderVmString } from 'util.js'
 
 const ACollapsePanel = ACollapse.Panel
 
@@ -63,5 +63,35 @@ describe('Collapse', () => {
       components: { ACollapse, ACollapsePanel }
     }).$mount()
     expect(vm.$el.querySelector('.ant-collapse-item-disabled')).toBeTruthy()
+  })
+
+  it('should match snapshot for basic collapse', () => {
+    const vm = creatVueVm({
+      template: `
+        <a-collapse :defaultActiveKey="['1']">
+          <a-collapse-panel header="Panel 1" panelKey="1"><p>Content 1</p></a-collapse-panel>
+          <a-collapse-panel header="Panel 2" panelKey="2"><p>Content 2</p></a-collapse-panel>
+        </a-collapse>
+      `,
+      components: { ACollapse, ACollapsePanel }
+    })
+    renderVmString(vm, (str) => {
+      expect(str).toMatchSnapshot()
+    })
+  })
+
+  it('should match snapshot for accordion', () => {
+    const vm = creatVueVm({
+      template: `
+        <a-collapse accordion :defaultActiveKey="['1']">
+          <a-collapse-panel header="H1" panelKey="1"><p>C1</p></a-collapse-panel>
+          <a-collapse-panel header="H2" panelKey="2"><p>C2</p></a-collapse-panel>
+        </a-collapse>
+      `,
+      components: { ACollapse, ACollapsePanel }
+    })
+    renderVmString(vm, (str) => {
+      expect(str).toMatchSnapshot()
+    })
   })
 })

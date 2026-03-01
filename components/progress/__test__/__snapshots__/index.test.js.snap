@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Progress should match snapshot for circle progress 1`] = `
+"<div data-server-rendered=\\"true\\" class=\\"ant-progress ant-progress-circle ant-progress-status-normal ant-progress-show-info\\"><div><div class=\\"ant-progress-inner\\" style=\\"width:132px;height:132px;font-size:27.12px;\\"><svg viewBox=\\"0 0 100 100\\" class=\\"ant-progress-circle\\"><path d=\\"M 50,50 m 0,-47
+      a 47,47 0 1 1 0,94
+      a 47,47 0 1 1 0,-94\\" stroke=\\"#f3f3f3 \\" stroke-width=\\"6\\" fill-opacity=\\"0\\" style=\\"stroke-dasharray:295.3097094374406px 295.3097094374406px;stroke-dashoffset:-0px;transition:stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s;\\"></path> <path d=\\"M 50,50 m 0,-47
+      a 47,47 0 1 1 0,94
+      a 47,47 0 1 1 0,-94\\" stroke-linecap=\\"round\\" stroke=\\"#108ee9\\" stroke-width=\\"6\\" fill-opacity=\\"0\\" style=\\"stroke-dasharray:221.48228207808043px 295.3097094374406px;stroke-dashoffset:-0px;transition:stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s;\\"></path></svg><span class=\\"ant-progress-text\\">75%</span></div></div></div>"
+`;
+
+exports[`Progress should match snapshot for dashboard progress 1`] = `
+"<div data-server-rendered=\\"true\\" class=\\"ant-progress ant-progress-circle ant-progress-status-normal ant-progress-show-info\\"><div><div class=\\"ant-progress-inner\\" style=\\"width:132px;height:132px;font-size:27.12px;\\"><svg viewBox=\\"0 0 100 100\\" class=\\"ant-progress-circle\\"><path d=\\"M 50,50 m 0,47
+      a 47,47 0 1 1 0,-94
+      a 47,47 0 1 1 0,94\\" stroke=\\"#f3f3f3 \\" stroke-width=\\"6\\" fill-opacity=\\"0\\" style=\\"stroke-dasharray:220.30970943744057px 295.3097094374406px;stroke-dashoffset:-37.5px;transition:stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s;\\"></path> <path d=\\"M 50,50 m 0,47
+      a 47,47 0 1 1 0,-94
+      a 47,47 0 1 1 0,94\\" stroke-linecap=\\"round\\" stroke=\\"#108ee9\\" stroke-width=\\"6\\" fill-opacity=\\"0\\" style=\\"stroke-dasharray:132.18582566246434px 295.3097094374406px;stroke-dashoffset:-37.5px;transition:stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s;\\"></path></svg><span class=\\"ant-progress-text\\">60%</span></div></div></div>"
+`;
+
+exports[`Progress should match snapshot for exception status 1`] = `"<div data-server-rendered=\\"true\\" class=\\"ant-progress ant-progress-line ant-progress-status-exception ant-progress-show-info\\"><div><div class=\\"ant-progress-outer\\"><div class=\\"ant-progress-inner\\"><div class=\\"ant-progress-bg\\" style=\\"width:70%;height:10px;\\"></div></div></div><span class=\\"ant-progress-text\\"><i class=\\"anticon anticon-cross-circle\\"></i></span></div></div>"`;
+
+exports[`Progress should match snapshot for line progress 1`] = `"<div data-server-rendered=\\"true\\" class=\\"ant-progress ant-progress-line ant-progress-status-normal ant-progress-show-info\\"><div><div class=\\"ant-progress-outer\\"><div class=\\"ant-progress-inner\\"><div class=\\"ant-progress-bg\\" style=\\"width:50%;height:10px;\\"></div></div></div><span class=\\"ant-progress-text\\">50%</span></div></div>"`;

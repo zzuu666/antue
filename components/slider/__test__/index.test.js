@@ -1,5 +1,5 @@
 import ASlider from '../index'
-import { creatVueVm } from 'util.js'
+import { creatVueVm, renderVmString } from 'util.js'
 
 describe('Slider', () => {
   it('should render slider', () => {
@@ -35,5 +35,35 @@ describe('Slider', () => {
       components: { ASlider }
     }).$mount()
     expect(vm.$el.querySelector('.ant-slider-track').style.width).toBe('50%')
+  })
+
+  it('should match snapshot for basic slider', () => {
+    const vm = creatVueVm({
+      template: `<a-slider :value="30" />`,
+      components: { ASlider }
+    })
+    renderVmString(vm, (str) => {
+      expect(str).toMatchSnapshot()
+    })
+  })
+
+  it('should match snapshot for disabled slider', () => {
+    const vm = creatVueVm({
+      template: `<a-slider :value="50" disabled />`,
+      components: { ASlider }
+    })
+    renderVmString(vm, (str) => {
+      expect(str).toMatchSnapshot()
+    })
+  })
+
+  it('should match snapshot for vertical slider', () => {
+    const vm = creatVueVm({
+      template: `<a-slider :value="30" vertical />`,
+      components: { ASlider }
+    })
+    renderVmString(vm, (str) => {
+      expect(str).toMatchSnapshot()
+    })
   })
 })

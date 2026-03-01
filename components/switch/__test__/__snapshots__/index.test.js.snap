@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Switch should match snapshot for checked switch 1`] = `
+"<span tabindex=\\"0\\" data-server-rendered=\\"true\\" class=\\"ant-switch ant-switch-checked\\"><span class=\\"ant-switch-inner\\">
+       
+     </span></span>"
+`;
+
+exports[`Switch should match snapshot for disabled switch 1`] = `
+"<span tabindex=\\"0\\" data-server-rendered=\\"true\\" class=\\"ant-switch ant-switch-disabled\\"><span class=\\"ant-switch-inner\\">
+       
+     </span></span>"
+`;
+
+exports[`Switch should match snapshot for small switch 1`] = `
+"<span tabindex=\\"0\\" data-server-rendered=\\"true\\" class=\\"ant-switch ant-switch-checked ant-switch-small\\"><span class=\\"ant-switch-inner\\">
+       
+     </span></span>"
+`;
+
+exports[`Switch should match snapshot for unchecked switch 1`] = `
+"<span tabindex=\\"0\\" data-server-rendered=\\"true\\" class=\\"ant-switch\\"><span class=\\"ant-switch-inner\\">
+       
+     </span></span>"
+`;

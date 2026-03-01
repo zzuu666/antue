@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Badge should match snapshot for default status 1`] = `"<!---->"`;
+
+exports[`Badge should match snapshot for error status 1`] = `"<!---->"`;
+
+exports[`Badge should match snapshot for processing status 1`] = `"<!---->"`;
+
+exports[`Badge should match snapshot for success status 1`] = `"<!---->"`;
+
+exports[`Badge should match snapshot for warning status 1`] = `"<!---->"`;

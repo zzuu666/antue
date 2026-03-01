@@ -1,5 +1,5 @@
 import ACarousel from '../index'
-import { creatVueVm } from 'util.js'
+import { creatVueVm, renderVmString } from 'util.js'
 
 describe('Carousel', () => {
   it('should render carousel', () => {
@@ -44,5 +44,21 @@ describe('Carousel', () => {
     }).$mount()
     const track = vm.$el.querySelector('.ant-carousel-slick-track')
     expect(track.children.length).toBe(4)
+  })
+
+  it('should match snapshot', () => {
+    const vm = creatVueVm({
+      template: `
+        <a-carousel>
+          <div>Slide 1</div>
+          <div>Slide 2</div>
+          <div>Slide 3</div>
+        </a-carousel>
+      `,
+      components: { ACarousel }
+    })
+    renderVmString(vm, (str) => {
+      expect(str).toMatchSnapshot()
+    })
   })
 })

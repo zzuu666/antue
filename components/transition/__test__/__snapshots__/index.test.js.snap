@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Transition should match snapshot for fade transition 1`] = `"<div data-server-rendered=\\"true\\">Fade Content</div>"`;
+
+exports[`Transition should match snapshot for zoom transition 1`] = `"<div data-server-rendered=\\"true\\">Zoom Content</div>"`;

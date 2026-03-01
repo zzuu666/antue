@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Col should match snapshot for responsive col 1`] = `"<div data-server-rendered=\\"true\\" class=\\"ant-row\\" style=\\"margin-left:-8px;margin-right:-8px;\\"><div class=\\"ant-col-xs-24 ant-col-sm-12 ant-col-md-8 ant-col-lg-6\\" style=\\"padding-left:8px;padding-right:8px;\\">Responsive</div></div>"`;
+
+exports[`Row should match snapshot for basic row 1`] = `"<div data-server-rendered=\\"true\\" class=\\"ant-row\\"><div class=\\"ant-col-12\\">Left</div><div class=\\"ant-col-12\\">Right</div></div>"`;
+
+exports[`Row should match snapshot for flex row 1`] = `"<div data-server-rendered=\\"true\\" class=\\"ant-row-flex ant-row-flex-space-between ant-row-flex-middle\\"><div class=\\"ant-col-6\\">A</div><div class=\\"ant-col-6\\">B</div></div>"`;

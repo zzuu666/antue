@@ -1,5 +1,5 @@
 import AAnchor from '../index'
-import { creatVueVm, nextTick } from 'util.js'
+import { creatVueVm, nextTick, renderVmString } from 'util.js'
 
 const AAnchorLink = AAnchor.Link
 
@@ -50,6 +50,21 @@ describe('Anchor', () => {
     nextTick(() => {
       expect(vm.$el.querySelector('.ant-anchor-link-title-active')).toBeTruthy()
       done()
+    })
+  })
+
+  it('should match snapshot', () => {
+    const vm = creatVueVm({
+      template: `
+        <a-anchor>
+          <a-anchor-link href="#section1" title="Section 1"></a-anchor-link>
+          <a-anchor-link href="#section2" title="Section 2"></a-anchor-link>
+        </a-anchor>
+      `,
+      components: { AAnchor, AAnchorLink }
+    })
+    renderVmString(vm, (str) => {
+      expect(str).toMatchSnapshot()
     })
   })
 })

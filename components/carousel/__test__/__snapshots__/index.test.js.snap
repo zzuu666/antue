@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Carousel should match snapshot 1`] = `"<div data-server-rendered=\\"true\\" class=\\"ant-carousel\\"><div class=\\"ant-carousel-slick-list\\"><div class=\\"ant-carousel-slick-track\\" style=\\"transform:translateX(0%);transition:transform 0.3s linear;display:flex;\\"><div>Slide 1</div> <div>Slide 2</div> <div>Slide 3</div></div></div> <ul class=\\"slick-dots slick-dots-bottom\\"><li class=\\"slick-active\\"><button>1</button></li><li><button>2</button></li><li><button>3</button></li></ul></div>"`;

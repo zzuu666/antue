@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List should match snapshot for basic list 1`] = `"<div data-server-rendered=\\"true\\" class=\\"ant-list ant-list-bordered ant-list-split\\"><!----> <!----> <div class=\\"ant-list-items\\"><div class=\\"ant-list-item\\"><div class=\\"ant-list-item-content\\">Item 1</div> <!----></div> <div class=\\"ant-list-item\\"><div class=\\"ant-list-item-content\\">Item 2</div> <!----></div></div> <!----></div>"`;
+
+exports[`List should match snapshot for small list 1`] = `"<div data-server-rendered=\\"true\\" class=\\"ant-list ant-list-bordered ant-list-split ant-list-sm\\"><!----> <!----> <div class=\\"ant-list-items\\"><div class=\\"ant-list-item\\"><div class=\\"ant-list-item-content\\">Item</div> <!----></div></div> <!----></div>"`;

@@ -1,5 +1,5 @@
 import AList from '../index'
-import { creatVueVm } from 'util.js'
+import { creatVueVm, renderVmString } from 'util.js'
 
 const AListItem = AList.Item
 
@@ -47,5 +47,30 @@ describe('List', () => {
       components: { AList }
     }).$mount()
     expect(vmLarge.$el.classList.contains('ant-list-lg')).toBeTruthy()
+  })
+
+  it('should match snapshot for basic list', () => {
+    const vm = creatVueVm({
+      template: `
+        <a-list bordered>
+          <a-list-item>Item 1</a-list-item>
+          <a-list-item>Item 2</a-list-item>
+        </a-list>
+      `,
+      components: { AList, AListItem }
+    })
+    renderVmString(vm, (str) => {
+      expect(str).toMatchSnapshot()
+    })
+  })
+
+  it('should match snapshot for small list', () => {
+    const vm = creatVueVm({
+      template: `<a-list size="small" bordered><a-list-item>Item</a-list-item></a-list>`,
+      components: { AList, AListItem }
+    })
+    renderVmString(vm, (str) => {
+      expect(str).toMatchSnapshot()
+    })
   })
 })

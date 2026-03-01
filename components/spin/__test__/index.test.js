@@ -1,5 +1,5 @@
 import Spin from '../index'
-import { creatComponentVm, creatVueVm, nextTick } from 'util.js'
+import { creatComponentVm, creatVueVm, nextTick, renderVmString } from 'util.js'
 
 describe('Spin', () => {
   it('should render correctly', () => {
@@ -37,6 +37,36 @@ describe('Spin', () => {
     nextTick(() => {
       expect(vm.$el.classList.contains('ant-spin-spinning')).toBeFalsy()
       done()
+    })
+  })
+
+  it('should match snapshot for default spin', () => {
+    const vm = creatVueVm({
+      template: `<spin />`,
+      components: { Spin }
+    })
+    renderVmString(vm, (str) => {
+      expect(str).toMatchSnapshot()
+    })
+  })
+
+  it('should match snapshot for spin with tip', () => {
+    const vm = creatVueVm({
+      template: `<spin tip="Loading..." />`,
+      components: { Spin }
+    })
+    renderVmString(vm, (str) => {
+      expect(str).toMatchSnapshot()
+    })
+  })
+
+  it('should match snapshot for large spin', () => {
+    const vm = creatVueVm({
+      template: `<spin size="large" />`,
+      components: { Spin }
+    })
+    renderVmString(vm, (str) => {
+      expect(str).toMatchSnapshot()
     })
   })
 })

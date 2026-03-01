@@ -1,5 +1,5 @@
 import Divider from '../index'
-import { creatComponentVm, creatVueVm } from 'util.js'
+import { creatComponentVm, creatVueVm, renderVmString } from 'util.js'
 
 describe('Divider', () => {
   it('should render horizontal divider by default', () => {
@@ -27,5 +27,35 @@ describe('Divider', () => {
     const innerText = vm.$el.querySelector('.ant-divider-inner-text')
     expect(innerText).not.toBeNull()
     expect(innerText.textContent).toBe('Text')
+  })
+
+  it('should match snapshot for horizontal divider', () => {
+    const vm = creatVueVm({
+      template: `<divider />`,
+      components: { Divider }
+    })
+    renderVmString(vm, (str) => {
+      expect(str).toMatchSnapshot()
+    })
+  })
+
+  it('should match snapshot for vertical divider', () => {
+    const vm = creatVueVm({
+      template: `<divider type="vertical" />`,
+      components: { Divider }
+    })
+    renderVmString(vm, (str) => {
+      expect(str).toMatchSnapshot()
+    })
+  })
+
+  it('should match snapshot for dashed divider with text', () => {
+    const vm = creatVueVm({
+      template: `<divider dashed>Section</divider>`,
+      components: { Divider }
+    })
+    renderVmString(vm, (str) => {
+      expect(str).toMatchSnapshot()
+    })
   })
 })

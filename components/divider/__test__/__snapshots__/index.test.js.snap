@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Divider should match snapshot for dashed divider with text 1`] = `"<div data-server-rendered=\\"true\\" class=\\"ant-divider ant-divider-horizontal ant-divider-dashed ant-divider-with-text ant-divider-with-text-center\\"><span class=\\"ant-divider-inner-text\\">Section</span></div>"`;
+
+exports[`Divider should match snapshot for horizontal divider 1`] = `"<div data-server-rendered=\\"true\\" class=\\"ant-divider ant-divider-horizontal\\"><!----></div>"`;
+
+exports[`Divider should match snapshot for vertical divider 1`] = `"<div data-server-rendered=\\"true\\" class=\\"ant-divider ant-divider-vertical\\"><!----></div>"`;

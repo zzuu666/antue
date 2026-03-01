@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Alert should match snapshot for alert with description 1`] = `"<div data-server-rendered=\\"true\\" class=\\"ant-alert ant-alert-info ant-alert-with-description\\"><i class=\\"anticon anticon-info-circle ant-alert-icon\\"></i> <span class=\\"ant-alert-message\\">Title</span> <span class=\\"ant-alert-description\\">Desc</span> <!----></div>"`;
+
+exports[`Alert should match snapshot for banner alert 1`] = `"<div data-server-rendered=\\"true\\" class=\\"ant-alert ant-alert-info ant-alert-no-icon ant-alert-banner\\"><!----> <span class=\\"ant-alert-message\\">Banner</span> <!----> <!----></div>"`;
+
+exports[`Alert should match snapshot for closable alert 1`] = `"<div data-server-rendered=\\"true\\" class=\\"ant-alert ant-alert-info ant-alert-no-icon ant-alert-closable\\"><!----> <span class=\\"ant-alert-message\\">Closable</span> <!----> <a class=\\"ant-alert-close-icon\\"><i class=\\"anticon anticon-cross\\"></i></a></div>"`;
+
+exports[`Alert should match snapshot for success alert 1`] = `"<div data-server-rendered=\\"true\\" class=\\"ant-alert ant-alert-success ant-alert-no-icon\\"><!----> <span class=\\"ant-alert-message\\">Success Tips</span> <!----> <!----></div>"`;

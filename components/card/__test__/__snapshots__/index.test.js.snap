@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card should match snapshot for basic card 1`] = `
+"<div data-server-rendered=\\"true\\" class=\\"ant-card ant-card-bordered\\"><div class=\\"ant-card-head\\"><div class=\\"ant-card-head-title\\">
+        Card Title
+      </div> <div class=\\"ant-card-extra\\">
+        
+      </div></div> <div class=\\"ant-card-body\\"><!----> Card content</div></div>"
+`;
+
+exports[`Card should match snapshot for card with extra 1`] = `
+"<div data-server-rendered=\\"true\\" class=\\"ant-card ant-card-bordered\\"><div class=\\"ant-card-head\\"><div class=\\"ant-card-head-title\\">
+        Title
+      </div> <div class=\\"ant-card-extra\\">
+        More
+      </div></div> <div class=\\"ant-card-body\\"><!----> Body</div></div>"
+`;
+
+exports[`Card should match snapshot for loading card 1`] = `
+"<div data-server-rendered=\\"true\\" class=\\"ant-card ant-card-loading ant-card-bordered\\"><div class=\\"ant-card-head\\"><div class=\\"ant-card-head-title\\">
+        Loading
+      </div> <div class=\\"ant-card-extra\\">
+        
+      </div></div> <div class=\\"ant-card-body\\"><div class=\\"ant-card-loading-content\\"><p class=\\"ant-card-loading-block\\" style=\\"width:94%;\\"></p> <p><span class=\\"ant-card-loading-block\\" style=\\"width:28%;\\"></span> <span class=\\"ant-card-loading-block\\" style=\\"width:62%;\\"></span></p> <p><span class=\\"ant-card-loading-block\\" style=\\"width:22%;\\"></span> <span class=\\"ant-card-loading-block\\" style=\\"width:66%;\\"></span></p> <p><span class=\\"ant-card-loading-block\\" style=\\"width:56%;\\"></span> <span class=\\"ant-card-loading-block\\" style=\\"width:39%;\\"></span></p> <p><span class=\\"ant-card-loading-block\\" style=\\"width:21%;\\"></span> <span class=\\"ant-card-loading-block\\" style=\\"width:15%;\\"></span> <span class=\\"ant-card-loading-block\\" style=\\"width:40%;\\"></span></p></div> <!----></div></div>"
+`;
+
+exports[`Card.Grid should match snapshot 1`] = `"<div data-server-rendered=\\"true\\" class=\\"ant-card-grid\\">Grid Content</div>"`;

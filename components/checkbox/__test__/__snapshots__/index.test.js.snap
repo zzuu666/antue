@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox should match snapshot for checked 1`] = `"<label data-server-rendered=\\"true\\" class=\\"ant-checkbox-wrapper\\"><span class=\\"ant-checkbox ant-checkbox-checked\\"><input type=\\"checkbox\\" class=\\"ant-checkbox-input\\"> <span class=\\"ant-checkbox-inner\\"></span></span> <span>Checked</span></label>"`;
+
+exports[`Checkbox should match snapshot for disabled 1`] = `"<label data-server-rendered=\\"true\\" class=\\"ant-checkbox-wrapper\\"><span class=\\"ant-checkbox ant-checkbox-disabled\\"><input type=\\"checkbox\\" class=\\"ant-checkbox-input\\"> <span class=\\"ant-checkbox-inner\\"></span></span> <span>Disabled</span></label>"`;
+
+exports[`Checkbox should match snapshot for unchecked 1`] = `"<label data-server-rendered=\\"true\\" class=\\"ant-checkbox-wrapper\\"><span class=\\"ant-checkbox\\"><input type=\\"checkbox\\" class=\\"ant-checkbox-input\\"> <span class=\\"ant-checkbox-inner\\"></span></span> <span>Label</span></label>"`;
+
+exports[`CheckboxGroup should match snapshot for group 1`] = `
+"<div data-server-rendered=\\"true\\" class=\\"ant-checkbox-group\\"><label class=\\"ant-checkbox-wrapper ant-checkbox-group-item\\"><span class=\\"ant-checkbox ant-checkbox-checked\\"><input type=\\"checkbox\\" class=\\"ant-checkbox-input\\"> <span class=\\"ant-checkbox-inner\\"></span></span> <span>Apple
+    </span></label><label class=\\"ant-checkbox-wrapper ant-checkbox-group-item\\"><span class=\\"ant-checkbox\\"><input type=\\"checkbox\\" class=\\"ant-checkbox-input\\"> <span class=\\"ant-checkbox-inner\\"></span></span> <span>Pear
+    </span></label><label class=\\"ant-checkbox-wrapper ant-checkbox-group-item\\"><span class=\\"ant-checkbox\\"><input type=\\"checkbox\\" class=\\"ant-checkbox-input\\"> <span class=\\"ant-checkbox-inner\\"></span></span> <span>Orange
+    </span></label></div>"
+`;

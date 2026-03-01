@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input should match snapshot for basic input 1`] = `"<input placeholder=\\"Enter text\\" autocomplete=\\"off\\" data-server-rendered=\\"true\\" class=\\"ant-input\\">"`;
+
+exports[`Input should match snapshot for input with addons 1`] = `"<span data-server-rendered=\\"true\\" class=\\"ant-input-group-wrapper\\"><span class=\\"ant-input-wrapper ant-input-group\\"><span class=\\"ant-input-group-addon\\">http://</span><input placeholder=\\"\\" autocomplete=\\"off\\" class=\\"ant-input\\"><span class=\\"ant-input-group-addon\\">.com</span></span></span>"`;
+
+exports[`Input should match snapshot for input with prefix and suffix 1`] = `"<span data-server-rendered=\\"true\\" class=\\"ant-input-affix-wrapper\\"><span class=\\"ant-input-prefix\\">user</span><input placeholder=\\"\\" autocomplete=\\"off\\" class=\\"ant-input\\"><span class=\\"ant-input-suffix\\">search</span></span>"`;
+
+exports[`Input.Group should match snapshot for input group 1`] = `"<span data-server-rendered=\\"true\\" class=\\"ant-input-group ant-input-group-compact\\"><input placeholder=\\"\\" autocomplete=\\"off\\" class=\\"ant-input\\"><input placeholder=\\"\\" autocomplete=\\"off\\" class=\\"ant-input\\"></span>"`;
+
+exports[`Input.Search should match snapshot for search input 1`] = `"<span data-server-rendered=\\"true\\" class=\\"ant-input-affix-wrapper ant-input-search\\"><input placeholder=\\"Search\\" autocomplete=\\"off\\" class=\\"ant-input\\"><span class=\\"ant-input-suffix\\"><i class=\\"anticon anticon-search ant-input-search-icon\\"></i></span></span>"`;
+
+exports[`Input.TextArea should match snapshot for textarea 1`] = `"<textarea rows=\\"4\\" data-server-rendered=\\"true\\" class=\\"ant-input\\"></textarea>"`;

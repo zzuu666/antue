@@ -1,5 +1,5 @@
 import AAlert from '../index'
-import { creatVueVm, nextTick } from 'util.js'
+import { creatVueVm, nextTick, renderVmString } from 'util.js'
 
 describe('Alert', () => {
   it('should render success alert', () => {
@@ -73,5 +73,45 @@ describe('Alert', () => {
       components: { AAlert }
     }).$mount()
     expect(vm.$el.classList.contains('ant-alert-banner')).toBeTruthy()
+  })
+
+  it('should match snapshot for success alert', () => {
+    const vm = creatVueVm({
+      template: `<a-alert type="success" message="Success Tips"></a-alert>`,
+      components: { AAlert }
+    })
+    renderVmString(vm, (str) => {
+      expect(str).toMatchSnapshot()
+    })
+  })
+
+  it('should match snapshot for alert with description', () => {
+    const vm = creatVueVm({
+      template: `<a-alert message="Title" description="Desc" showIcon></a-alert>`,
+      components: { AAlert }
+    })
+    renderVmString(vm, (str) => {
+      expect(str).toMatchSnapshot()
+    })
+  })
+
+  it('should match snapshot for closable alert', () => {
+    const vm = creatVueVm({
+      template: `<a-alert message="Closable" closable></a-alert>`,
+      components: { AAlert }
+    })
+    renderVmString(vm, (str) => {
+      expect(str).toMatchSnapshot()
+    })
+  })
+
+  it('should match snapshot for banner alert', () => {
+    const vm = creatVueVm({
+      template: `<a-alert message="Banner" banner></a-alert>`,
+      components: { AAlert }
+    })
+    renderVmString(vm, (str) => {
+      expect(str).toMatchSnapshot()
+    })
   })
 })

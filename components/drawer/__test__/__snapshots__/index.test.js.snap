@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Drawer should match snapshot for left drawer 1`] = `"<div data-server-rendered=\\"true\\" class=\\"ant-drawer-wrap ant-drawer-left\\"><div class=\\"ant-drawer-mask\\"></div> <div class=\\"ant-drawer ant-drawer-left\\" style=\\"width:256px;\\"><div class=\\"ant-drawer-content\\"><div class=\\"ant-drawer-header\\"><div class=\\"ant-drawer-title\\">Left</div></div> <button class=\\"ant-drawer-close\\"><i class=\\"anticon anticon-cross\\"></i></button> <div class=\\"ant-drawer-body\\"><p>Left</p></div></div></div></div>"`;
+
+exports[`Drawer should match snapshot for right drawer 1`] = `"<div data-server-rendered=\\"true\\" class=\\"ant-drawer-wrap ant-drawer-right\\"><div class=\\"ant-drawer-mask\\"></div> <div class=\\"ant-drawer ant-drawer-right\\" style=\\"width:256px;\\"><div class=\\"ant-drawer-content\\"><div class=\\"ant-drawer-header\\"><div class=\\"ant-drawer-title\\">Right Drawer</div></div> <button class=\\"ant-drawer-close\\"><i class=\\"anticon anticon-cross\\"></i></button> <div class=\\"ant-drawer-body\\"><p>Content</p></div></div></div></div>"`;
