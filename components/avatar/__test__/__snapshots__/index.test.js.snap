@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Avatar should match snapshot for icon avatar 1`] = `"<span data-server-rendered=\\"true\\" class=\\"ant-avatar ant-avatar-circle ant-avatar-icon\\"><i class=\\"anticon anticon-user\\"></i></span>"`;
+
+exports[`Avatar should match snapshot for image avatar 1`] = `"<span data-server-rendered=\\"true\\" class=\\"ant-avatar ant-avatar-circle ant-avatar-image\\"><img src=\\"https://example.com/avatar.png\\"></span>"`;
+
+exports[`Avatar should match snapshot for square large avatar 1`] = `"<span data-server-rendered=\\"true\\" class=\\"ant-avatar ant-avatar-lg ant-avatar-square ant-avatar-icon\\"><i class=\\"anticon anticon-user\\"></i></span>"`;
+
+exports[`Avatar should match snapshot for text avatar 1`] = `"<span data-server-rendered=\\"true\\" class=\\"ant-avatar ant-avatar-circle\\"><span class=\\"ant-avatar-string\\" style=\\"transform:scale(1);position:absolute;display:inline-block;left:calc(50% - 0px);\\">U</span></span>"`;

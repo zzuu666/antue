@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout should match snapshot for full layout 1`] = `"<div data-server-rendered=\\"true\\" class=\\"ant-layout\\"><div class=\\"ant-layout-header\\">Header</div><div class=\\"ant-layout-content\\">Content</div><div class=\\"ant-layout-footer\\">Footer</div></div>"`;
+
+exports[`Sider should match snapshot for layout with sider 1`] = `"<div data-server-rendered=\\"true\\" class=\\"ant-layout ant-layout-has-sider\\"><div class=\\"ant-layout-sider\\" style=\\"flex:0 0 200px;max-width:200px;min-width:200px;width:200px;\\"><div class=\\"ant-layout-sider-children\\">Sider</div> <!----> <!----></div><div class=\\"ant-layout\\"><div class=\\"ant-layout-header\\">Header</div><div class=\\"ant-layout-content\\">Content</div></div></div>"`;

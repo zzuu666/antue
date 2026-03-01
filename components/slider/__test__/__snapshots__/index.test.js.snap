@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Slider should match snapshot for basic slider 1`] = `"<div data-server-rendered=\\"true\\" class=\\"ant-slider\\"><div class=\\"ant-slider-rail\\"></div> <div class=\\"ant-slider-track\\" style=\\"width:30%;\\"></div> <div class=\\"ant-slider-handle\\" style=\\"left:30%;\\"></div></div>"`;
+
+exports[`Slider should match snapshot for disabled slider 1`] = `"<div data-server-rendered=\\"true\\" class=\\"ant-slider ant-slider-disabled\\"><div class=\\"ant-slider-rail\\"></div> <div class=\\"ant-slider-track\\" style=\\"width:50%;\\"></div> <div class=\\"ant-slider-handle\\" style=\\"left:50%;\\"></div></div>"`;
+
+exports[`Slider should match snapshot for vertical slider 1`] = `"<div data-server-rendered=\\"true\\" class=\\"ant-slider ant-slider-vertical\\"><div class=\\"ant-slider-rail\\"></div> <div class=\\"ant-slider-track\\" style=\\"height:30%;bottom:0;\\"></div> <div class=\\"ant-slider-handle\\" style=\\"bottom:30%;\\"></div></div>"`;

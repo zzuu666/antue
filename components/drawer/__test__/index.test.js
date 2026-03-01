@@ -1,5 +1,5 @@
 import ADrawer from '../index'
-import { creatVueVm, nextTick } from 'util.js'
+import { creatVueVm, nextTick, renderVmString } from 'util.js'
 
 describe('Drawer', () => {
   it('should render when visible', () => {
@@ -45,5 +45,25 @@ describe('Drawer', () => {
       components: { ADrawer }
     }).$mount()
     expect(vm.$el.querySelector('.ant-drawer').style.width).toBe('400px')
+  })
+
+  it('should match snapshot for right drawer', () => {
+    const vm = creatVueVm({
+      template: `<a-drawer :visible="true" title="Right Drawer"><p>Content</p></a-drawer>`,
+      components: { ADrawer }
+    })
+    renderVmString(vm, (str) => {
+      expect(str).toMatchSnapshot()
+    })
+  })
+
+  it('should match snapshot for left drawer', () => {
+    const vm = creatVueVm({
+      template: `<a-drawer :visible="true" title="Left" placement="left"><p>Left</p></a-drawer>`,
+      components: { ADrawer }
+    })
+    renderVmString(vm, (str) => {
+      expect(str).toMatchSnapshot()
+    })
   })
 })

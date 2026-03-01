@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckableTag should match snapshot for checked tag 1`] = `"<div data-server-rendered=\\"true\\" class=\\"ant-tag ant-tag-checkable ant-tag-checkable-checked\\">Checked</div>"`;
+
+exports[`Tag should match snapshot for basic tag 1`] = `"<div data-server-rendered=\\"true\\" class=\\"ant-tag\\" style=\\"background-color:null;\\"><span class=\\"ant-tag-text\\">Tag 1</span> <!----></div>"`;
+
+exports[`Tag should match snapshot for closable tag 1`] = `"<div data-server-rendered=\\"true\\" class=\\"ant-tag\\" style=\\"background-color:null;\\"><span class=\\"ant-tag-text\\">Closable</span> <i class=\\"anticon anticon-cross\\"></i></div>"`;
+
+exports[`Tag should match snapshot for colored tag 1`] = `"<div data-server-rendered=\\"true\\" class=\\"ant-tag ant-tag-green\\" style=\\"background-color:null;\\"><span class=\\"ant-tag-text\\">Green</span> <!----></div>"`;

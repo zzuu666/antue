@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Anchor should match snapshot 1`] = `"<div data-server-rendered=\\"true\\" class=\\"ant-anchor-wrapper ant-anchor-fixed\\"><div class=\\"ant-anchor-wrapper\\"><div class=\\"ant-anchor-ink\\"><span class=\\"ant-anchor-ink-ball\\"></span></div> <div class=\\"ant-anchor-link\\"><a href=\\"#section1\\" title=\\"Section 1\\" class=\\"ant-anchor-link-title\\">Section 1</a> </div> <div class=\\"ant-anchor-link\\"><a href=\\"#section2\\" title=\\"Section 2\\" class=\\"ant-anchor-link-title\\">Section 2</a> </div></div></div>"`;

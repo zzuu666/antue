@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dropdown should match snapshot 1`] = `"<span data-server-rendered=\\"true\\"><a>Trigger</a>  <div class=\\"ant-dropdown ant-dropdown-placement-bottom\\" style=\\"display:none;\\"><ul aria-activedescendant=\\"\\" role=\\"menu\\" class=\\"ant-menu ant-menu-root ant-menu-light ant-menu-vertical\\"><li role=\\"menuitem\\" class=\\"ant-menu-item\\">Item 1</li> <li role=\\"menuitem\\" class=\\"ant-menu-item\\">Item 2</li></ul></div></span>"`;

@@ -1,5 +1,5 @@
 import AntForm from '../index'
-import { creatVueVm, nextTick } from 'util.js'
+import { creatVueVm, nextTick, renderVmString } from 'util.js'
 
 const AntFormItem = AntForm.Item
 
@@ -223,6 +223,58 @@ describe('Form', () => {
           done()
         })
       })
+    })
+  })
+
+  it('should match snapshot for horizontal form', () => {
+    const vm = creatVueVm({
+      template: `
+        <ant-form>
+          <ant-form-item label="Username"><input /></ant-form-item>
+        </ant-form>
+      `,
+      components: {
+        AntForm,
+        AntFormItem
+      }
+    })
+    renderVmString(vm, (str) => {
+      expect(str).toMatchSnapshot()
+    })
+  })
+
+  it('should match snapshot for vertical form', () => {
+    const vm = creatVueVm({
+      template: `
+        <ant-form layout="vertical">
+          <ant-form-item label="Username"><input /></ant-form-item>
+        </ant-form>
+      `,
+      components: {
+        AntForm,
+        AntFormItem
+      }
+    })
+    renderVmString(vm, (str) => {
+      expect(str).toMatchSnapshot()
+    })
+  })
+
+  it('should match snapshot for inline form', () => {
+    const vm = creatVueVm({
+      template: `
+        <ant-form layout="inline">
+          <ant-form-item label="Name"><input /></ant-form-item>
+          <ant-form-item label="Email"><input /></ant-form-item>
+        </ant-form>
+      `,
+      components: {
+        AntForm,
+        AntFormItem
+      }
+    })
+    renderVmString(vm, (str) => {
+      expect(str).toMatchSnapshot()
     })
   })
 })

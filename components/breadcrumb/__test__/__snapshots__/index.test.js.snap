@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Breadcrumb should match snapshot for basic breadcrumb 1`] = `
+"<div data-server-rendered=\\"true\\" class=\\"ant-breadcrumb\\"><span><span class=\\"ant-breadcrumb-link\\">Home</span> <span class=\\"ant-breadcrumb-separator\\">
+      /
+    </span></span> <span><span class=\\"ant-breadcrumb-link\\">List</span> <span class=\\"ant-breadcrumb-separator\\">
+      /
+    </span></span> <span><span class=\\"ant-breadcrumb-link\\">Detail</span> <span class=\\"ant-breadcrumb-separator\\">
+      /
+    </span></span></div>"
+`;
+
+exports[`Breadcrumb should match snapshot with links 1`] = `
+"<div data-server-rendered=\\"true\\" class=\\"ant-breadcrumb\\"><span><a href=\\"/\\" class=\\"ant-breadcrumb-link\\">Home</a> <span class=\\"ant-breadcrumb-separator\\">
+      /
+    </span></span> <span><a href=\\"/list\\" class=\\"ant-breadcrumb-link\\">List</a> <span class=\\"ant-breadcrumb-separator\\">
+      /
+    </span></span> <span><span class=\\"ant-breadcrumb-link\\">Detail</span> <span class=\\"ant-breadcrumb-separator\\">
+      /
+    </span></span></div>"
+`;

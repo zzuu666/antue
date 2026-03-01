@@ -10,6 +10,7 @@ module.exports = {
   },
   'moduleNameMapper': {
     '\\.(css|less)$': '<rootDir>/tests/__mocks__/style.js',
+    '^@/(.*)$': '<rootDir>/components/$1',
     'util.js': '<rootDir>/tests/util.js'
   },
   'coverageDirectory': './coverage/',

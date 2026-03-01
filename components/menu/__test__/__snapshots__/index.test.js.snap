@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Menu should match snapshot for basic menu 1`] = `"<ul aria-activedescendant=\\"\\" role=\\"menu\\" data-server-rendered=\\"true\\" class=\\"ant-menu ant-menu-root ant-menu-light ant-menu-vertical\\"><li role=\\"menuitem\\" class=\\"ant-menu-item\\">Item 1</li> <li role=\\"menuitem\\" class=\\"ant-menu-item\\">Item 2</li></ul>"`;
+
+exports[`Menu should match snapshot for menu with submenu 1`] = `"<ul aria-activedescendant=\\"\\" role=\\"menu\\" data-server-rendered=\\"true\\" class=\\"ant-menu ant-menu-root ant-menu-light ant-menu-vertical\\"><li aria-haspopup=\\"true\\" class=\\"ant-menu-submenu ant-menu-submenu-vertical\\"><div class=\\"ant-menu-submenu-title\\">Sub Menu</div> <ul class=\\"ant-menu ant-menu-sub ant-menu-vertical\\" style=\\"display:none;\\"> <li role=\\"menuitem\\" class=\\"ant-menu-item\\">Sub Item 1</li></ul></li></ul>"`;

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form should match snapshot for horizontal form 1`] = `"<form data-server-rendered=\\"true\\" class=\\"ant-form ant-form-horizontal\\"><div class=\\"ant-form-item\\"><label class=\\"ant-form-item-label\\">Username</label> <div class=\\"ant-form-item-control-wrapper\\"><div class=\\"ant-form-item-control\\"><input> <!----> <!----></div></div></div></form>"`;
+
+exports[`Form should match snapshot for inline form 1`] = `"<form data-server-rendered=\\"true\\" class=\\"ant-form ant-form-inline\\"><div class=\\"ant-form-item\\"><label class=\\"ant-form-item-label\\">Name</label> <div class=\\"ant-form-item-control-wrapper\\"><div class=\\"ant-form-item-control\\"><input> <!----> <!----></div></div></div> <div class=\\"ant-form-item\\"><label class=\\"ant-form-item-label\\">Email</label> <div class=\\"ant-form-item-control-wrapper\\"><div class=\\"ant-form-item-control\\"><input> <!----> <!----></div></div></div></form>"`;
+
+exports[`Form should match snapshot for vertical form 1`] = `"<form data-server-rendered=\\"true\\" class=\\"ant-form ant-form-vertical\\"><div class=\\"ant-form-item\\"><label class=\\"ant-form-item-label\\">Username</label> <div class=\\"ant-form-item-control-wrapper\\"><div class=\\"ant-form-item-control\\"><input> <!----> <!----></div></div></div></form>"`;

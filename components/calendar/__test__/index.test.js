@@ -1,5 +1,5 @@
 import ACalendar from '../index'
-import { creatVueVm, nextTick } from 'util.js'
+import { creatVueVm, nextTick, renderVmString } from 'util.js'
 
 describe('Calendar', () => {
   it('should render calendar', () => {
@@ -42,6 +42,16 @@ describe('Calendar', () => {
       expect(panelMode).toBe('year')
       expect(vm.$el.querySelector('.ant-fullcalendar-month-panel')).toBeTruthy()
       done()
+    })
+  })
+
+  it('should match snapshot', () => {
+    const vm = creatVueVm({
+      template: `<a-calendar></a-calendar>`,
+      components: { ACalendar }
+    })
+    renderVmString(vm, (str) => {
+      expect(str).toMatchSnapshot()
     })
   })
 })

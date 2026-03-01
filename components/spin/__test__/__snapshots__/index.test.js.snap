@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Spin should match snapshot for default spin 1`] = `"<div data-server-rendered=\\"true\\" class=\\"ant-spin ant-spin-spinning\\"><span class=\\"ant-spin-dot\\"><i></i><i></i><i></i><i></i></span> <!----> <!----></div>"`;
+
+exports[`Spin should match snapshot for large spin 1`] = `"<div data-server-rendered=\\"true\\" class=\\"ant-spin ant-spin-spinning ant-spin-lg\\"><span class=\\"ant-spin-dot\\"><i></i><i></i><i></i><i></i></span> <!----> <!----></div>"`;
+
+exports[`Spin should match snapshot for spin with tip 1`] = `"<div data-server-rendered=\\"true\\" class=\\"ant-spin ant-spin-spinning ant-spin-show-text\\"><span class=\\"ant-spin-dot\\"><i></i><i></i><i></i><i></i></span> <span class=\\"ant-spin-text\\">Loading...</span> <!----></div>"`;
